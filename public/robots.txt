@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://manoa-randrianarisoa-missi.vercel.app/sitemap.xml
+Sitemap: https://manoa-arch.vercel.app/sitemap.xml
