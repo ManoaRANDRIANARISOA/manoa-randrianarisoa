@@ -1,0 +1,359 @@
+// ==============================================================================
+// SYSTEM ARCHITECTURE BLUEPRINT & TOPOLOGY VISUALIZER
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.architecture-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, rgba(0, 242, 254, 0.03) 0%, transparent 60%);
+}
+
+.blueprint-container {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Topology Canvas & Node Canvas Stage
+.blueprint-stage {
+  @include glass(rgba(13, 17, 26, 0.8), 20px, var(--border-light));
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+
+  @include mobile {
+    padding: 1.25rem;
+  }
+
+  .stage-toolbar {
+    @include flex-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+
+    .stage-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .icon-arch {
+        color: var(--accent-primary);
+      }
+
+      h4 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+    }
+
+    .preset-selector {
+      display: flex;
+      gap: 0.5rem;
+
+      .preset-chip {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        padding: 0.3rem 0.65rem;
+        border-radius: var(--radius-sm);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border-subtle);
+        color: var(--text-muted);
+        transition: all var(--duration-fast) ease;
+
+        &:hover, &.active {
+          color: var(--accent-primary);
+          border-color: var(--accent-badge-border);
+          background: var(--accent-badge-bg);
+        }
+      }
+    }
+  }
+
+  // Visual Pipeline Nodes
+  .pipeline-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+
+    // Connective conduits
+    &::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      bottom: 2rem;
+      left: 2rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-primary), rgba(255, 255, 255, 0.1), var(--accent-primary));
+      opacity: 0.3;
+      z-index: 0;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  .arch-node {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-lg);
+    background: rgba(18, 24, 36, 0.6);
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-smooth);
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+
+    .node-index {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      @include flex-center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      transition: all var(--duration-fast) ease;
+    }
+
+    .node-body {
+      .node-header-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.3rem;
+
+        .node-name {
+          font-family: var(--font-display);
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+
+        .node-badge {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          padding: 0.15rem 0.5rem;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.05);
+          color: var(--text-muted);
+        }
+      }
+
+      .node-desc {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.45;
+      }
+    }
+
+    .node-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.35rem;
+
+      @include mobile {
+        align-items: flex-start;
+      }
+
+      .latency-chip {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--status-emerald);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .protocol-label {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-dim);
+      }
+    }
+
+    &:hover {
+      background: rgba(24, 32, 48, 0.8);
+      border-color: var(--border-light);
+      transform: translateX(4px);
+
+      .node-index {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+        background: var(--accent-badge-bg);
+      }
+    }
+
+    &.selected {
+      background: rgba(24, 32, 48, 0.95);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 25px var(--accent-glow);
+
+      .node-index {
+        background: var(--accent-primary);
+        color: #07090e;
+        border-color: var(--accent-primary);
+      }
+
+      .node-name {
+        color: var(--accent-primary);
+      }
+    }
+  }
+}
+
+// Side Inspector Panel
+.blueprint-inspector {
+  @include glass(rgba(14, 19, 29, 0.9), 20px, var(--border-light));
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 5.5rem;
+
+  .inspector-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 1.25rem;
+
+    .inspector-title-wrap {
+      .inspector-label {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent-primary);
+        margin-bottom: 0.25rem;
+      }
+
+      .inspector-title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+    }
+
+    .node-health-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--status-emerald);
+    }
+  }
+
+  .inspector-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    .spec-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      .spec-label {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .spec-value {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+    }
+
+    .metrics-chips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+
+      .chip-card {
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+
+        .chip-key {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          color: var(--text-dim);
+          display: block;
+          margin-bottom: 0.2rem;
+        }
+
+        .chip-val {
+          font-family: var(--font-mono);
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+      }
+    }
+
+    .code-spec-snippet {
+      background: #05070a;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      line-height: 1.5;
+      @include custom-scrollbar;
+    }
+
+    .grounded-project-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--accent-badge-bg);
+      border: 1px solid var(--accent-badge-border);
+      border-radius: var(--radius-md);
+      font-size: 0.825rem;
+      color: var(--text-primary);
+
+      .proj-icon {
+        color: var(--accent-primary);
+      }
+    }
+  }
+}

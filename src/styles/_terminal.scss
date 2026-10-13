@@ -1,0 +1,140 @@
+// ==============================================================================
+// INTERACTIVE ARCHITECT CONSOLE (TERMINAL MODAL)
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.terminal-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  @include flex-center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+
+    .terminal-window {
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 760px;
+  max-height: 80vh;
+  background: #090c13;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--accent-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.95) translateY(10px);
+  transition: transform var(--duration-normal) var(--ease-smooth);
+
+  .terminal-top-bar {
+    @include flex-between;
+    background: #0d121c;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+
+    .traffic-lights {
+      display: flex;
+      gap: 6px;
+
+      span {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+
+        &.close { background: #ef4444; cursor: pointer; }
+        &.min { background: #f59e0b; }
+        &.max { background: #10b981; }
+      }
+    }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .terminal-shortcuts {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+  }
+
+  .terminal-body {
+    flex: 1;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.825rem;
+    line-height: 1.6;
+    overflow-y: auto;
+    @include custom-scrollbar;
+    color: #e2e8f0;
+
+    .terminal-line {
+      margin-bottom: 0.5rem;
+      word-break: break-word;
+
+      &.system-msg {
+        color: var(--text-muted);
+      }
+
+      &.success {
+        color: var(--status-emerald);
+      }
+
+      &.highlight {
+        color: var(--accent-primary);
+      }
+
+      &.error {
+        color: var(--status-rose);
+      }
+    }
+
+    .command-echo {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+  }
+
+  .terminal-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.25rem;
+    background: #0c1018;
+    border-top: 1px solid var(--border-subtle);
+
+    .prompt-label {
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: var(--accent-primary);
+      white-space: nowrap;
+    }
+
+    input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: #ffffff;
+      caret-color: var(--accent-primary);
+    }
+  }
+}

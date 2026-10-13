@@ -1,0 +1,275 @@
+// ==============================================================================
+// CONTACT & TECHNICAL FOOTER
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.contact-section {
+  position: relative;
+}
+
+.contact-card-wrapper {
+  @include glass(rgba(14, 19, 29, 0.85), 24px, var(--border-light));
+  border-radius: var(--radius-xl);
+  padding: 3.5rem;
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    gap: 2.5rem;
+  }
+
+  @include mobile {
+    padding: 1.5rem;
+  }
+}
+
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .contact-lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+
+    strong {
+      color: var(--text-primary);
+    }
+  }
+
+  .direct-channels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+
+    .channel-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: all var(--duration-fast) ease;
+
+      .channel-icon {
+        color: var(--accent-primary);
+        flex-shrink: 0;
+      }
+
+      .channel-content {
+        flex: 1;
+
+        .channel-label {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          color: var(--text-muted);
+          text-transform: uppercase;
+        }
+
+        .channel-value {
+          font-family: var(--font-mono);
+          font-size: 0.9rem;
+          color: var(--text-primary);
+          font-weight: 500;
+        }
+      }
+
+      .copy-btn {
+        padding: 0.35rem 0.65rem;
+        font-family: var(--font-mono);
+        font-size: 0.725rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
+        color: var(--text-secondary);
+        transition: all var(--duration-fast) ease;
+
+        &:hover {
+          color: var(--accent-primary);
+          border-color: var(--accent-badge-border);
+          background: var(--accent-badge-bg);
+        }
+      }
+
+      &:hover {
+        border-color: var(--border-light);
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+
+  .availability-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    font-size: 0.825rem;
+    color: var(--status-emerald);
+    font-weight: 500;
+
+    .status-ping {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--status-emerald);
+      box-shadow: 0 0 10px var(--status-emerald);
+    }
+  }
+}
+
+// Contact Form
+.contact-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    input, textarea {
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all var(--duration-fast) ease;
+
+      &:focus {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 15px var(--accent-subtle);
+      }
+
+      &::placeholder {
+        color: var(--text-dim);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .form-status-msg {
+    display: none;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-md);
+
+    &.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--status-emerald);
+    }
+  }
+}
+
+// Site Footer
+.site-footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+
+  .footer-inner {
+    @include flex-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .footer-coords {
+        font-family: var(--font-mono);
+        font-size: 0.725rem;
+        color: var(--text-dim);
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+
+      a {
+        color: var(--text-muted);
+        &:hover {
+          color: var(--accent-primary);
+        }
+      }
+    }
+
+    .footer-right {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+  }
+}
+
+// Toast notification for copy
+.toast-notice {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 300;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(14, 19, 29, 0.95);
+  border: 1px solid var(--accent-badge-border);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all var(--duration-normal) var(--ease-bounce);
+  pointer-events: none;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

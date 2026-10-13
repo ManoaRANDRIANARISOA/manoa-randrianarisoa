@@ -1,0 +1,236 @@
+// ==============================================================================
+// HERO SECTION
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+
+  @include mobile {
+    padding-top: 6rem;
+  }
+}
+
+// Background Architectural Canvas
+.hero-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 0;
+  opacity: 0.85;
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .canvas-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+}
+
+// Telemetry pill
+.hero-telemetry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: rgba(18, 24, 36, 0.8);
+  border: 1px solid var(--border-light);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(8px);
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--status-emerald);
+    box-shadow: 0 0 10px var(--status-emerald);
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  .coord-chip {
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+}
+
+// Main Title
+.hero-title-group {
+  margin-bottom: 1.5rem;
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+
+    .name-gradient {
+      @include gradient-text(linear-gradient(135deg, #ffffff 40%, var(--accent-primary) 100%));
+    }
+  }
+
+  .hero-role-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    letter-spacing: -0.02em;
+
+    .role-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+  }
+}
+
+.hero-description {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 780px;
+  margin-bottom: 2.5rem;
+
+  strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .highlight-arch {
+    color: var(--accent-primary);
+    background: var(--accent-badge-bg);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    border: 1px solid var(--accent-badge-border);
+  }
+}
+
+// Action button group
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+
+  @include mobile {
+    margin-bottom: 2.5rem;
+  }
+}
+
+// Metrics bar
+.hero-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  @include glass(rgba(14, 19, 29, 0.7), 16px, var(--border-subtle));
+  border-radius: var(--radius-lg);
+  max-width: 1040px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -0.65rem;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--border-subtle);
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    .metric-value-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+
+      .metric-value {
+        font-family: var(--font-display);
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.03em;
+      }
+
+      .metric-unit {
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--accent-primary);
+      }
+    }
+
+    .metric-label {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+  }
+}

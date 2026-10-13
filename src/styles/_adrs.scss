@@ -1,0 +1,160 @@
+// ==============================================================================
+// ARCHITECTURAL DECISION RECORDS (ADRs)
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.adrs-section {
+  position: relative;
+}
+
+.adr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 1040px;
+}
+
+.adr-card {
+  @include glass(rgba(14, 19, 29, 0.7), 16px, var(--border-subtle));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  transition: all var(--duration-fast) ease;
+
+  &.open {
+    border-color: var(--border-light);
+    background: rgba(18, 24, 36, 0.85);
+
+    .adr-header .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .adr-content {
+      display: block;
+    }
+  }
+
+  .adr-header {
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+
+    @include mobile {
+      padding: 1rem 1.25rem;
+    }
+
+    .adr-head-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .adr-id-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--accent-primary);
+        background: var(--accent-badge-bg);
+        border: 1px solid var(--accent-badge-border);
+        padding: 0.2rem 0.6rem;
+        border-radius: var(--radius-sm);
+      }
+
+      .adr-title {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+    }
+
+    .adr-head-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .adr-status-pill {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: var(--radius-full);
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--status-emerald);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+      }
+
+      .chevron-icon {
+        color: var(--text-muted);
+        transition: transform var(--duration-fast) ease;
+      }
+    }
+  }
+
+  .adr-content {
+    display: none;
+    padding: 0 1.75rem 1.75rem 1.75rem;
+    border-top: 1px solid var(--border-subtle);
+
+    @include mobile {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+
+    .adr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+
+      @include tablet {
+        grid-template-columns: 1fr;
+      }
+
+      .adr-column {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+
+        .col-title {
+          font-family: var(--font-mono);
+          font-size: 0.725rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--text-muted);
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+
+        .col-text {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          line-height: 1.55;
+        }
+      }
+    }
+
+    .adr-takeaway {
+      margin-top: 1.25rem;
+      padding: 0.85rem 1.15rem;
+      background: var(--accent-badge-bg);
+      border-left: 3px solid var(--accent-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+
+      strong {
+        color: var(--accent-primary);
+        font-family: var(--font-mono);
+      }
+    }
+  }
+}

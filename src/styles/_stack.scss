@@ -1,0 +1,75 @@
+// ==============================================================================
+// TECHNICAL MATRIX & COMPETENCIES
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.stack-section {
+  position: relative;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.matrix-card {
+  @include glass(rgba(14, 19, 29, 0.7), 16px, var(--border-subtle));
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all var(--duration-fast) ease;
+
+  &:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+  }
+
+  .card-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      @include flex-center;
+      background: var(--accent-badge-bg);
+      border: 1px solid var(--accent-badge-border);
+      color: var(--accent-primary);
+    }
+
+    .matrix-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+
+  .skills-pill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .matrix-highlight-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: auto;
+  }
+}

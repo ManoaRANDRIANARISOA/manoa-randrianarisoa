@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manoa Randrianarisoa — Architecte Technique & Lead Full-Stack</title>
+  <meta name="description" content="Portfolio d'Architecte Technique & Lead Full-Stack Senior de Manoa Randrianarisoa. Systèmes distribués, Offline-First, SaaS Multi-Tenant (ResHPro, Study-Agent, Maboo) et Master IA.">
+  <meta name="keywords" content="Architecte Technique, Développeur Full-Stack Senior, Offline-First, SaaS Multi-tenant, React 19, Next.js, Electron, PostgreSQL, Supabase, TypeScript, Madagascar, Remote">
+  <meta name="author" content="Manoa Randrianarisoa">
+
+  <!-- Open Graph / Meta Réseaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Manoa Randrianarisoa — Architecte Technique & Lead Full-Stack">
+  <meta property="og:description" content="Concevoir des architectures logicielles résilientes, mesurables et centrées sur l'impact métier. Découvrir mes systèmes en production.">
+  <meta property="og:image" content="/assets/manoa.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2307090e'/><text x='50' y='68' font-size='50' font-family='monospace' font-weight='bold' fill='%2300f2fe' text-anchor='middle'>M</text></svg>">
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet SCSS entry -->
+  <link rel="stylesheet" href="/src/styles/main.scss">
+</head>
+<body>
+
+  <!-- SITE HEADER & NAVIGATION -->
+  <header class="site-header" id="site-header">
+    <div class="app-container">
+      <div class="nav-inner">
+        <!-- Brand / Identity -->
+        <a href="#hero" class="brand-logo" title="Manoa Randrianarisoa - Accueil">
+          <span class="status-indicator" title="Système opérationnel & disponible"></span>
+          <span>MANOA.ARCH</span>
+          <span class="brand-badge">RND-SYS</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav aria-label="Navigation principale">
+          <ul class="nav-links">
+            <li><a href="#architecture" class="nav-link">Architecture</a></li>
+            <li><a href="#projects" class="nav-link">Systèmes & Projets</a></li>
+            <li><a href="#adrs" class="nav-link">ADRs</a></li>
+            <li><a href="#stack" class="nav-link">Matrice Tech</a></li>
+            <li><a href="#about" class="nav-link">Parcours</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Quick Actions & Telemetry Controls -->
+        <div class="nav-actions">
+          <!-- Theme Palette Selector -->
+          <div class="theme-toggle-group" title="Sélectionner la palette télémétrique">
+            <button class="theme-color-btn cyan active" data-theme="cyan" aria-label="Thème Cyan Blueprint"></button>
+            <button class="theme-color-btn emerald" data-theme="emerald" aria-label="Thème Émeraude Terminal"></button>
+            <button class="theme-color-btn amber" data-theme="amber" aria-label="Thème Ambre Signal"></button>
+            <button class="theme-color-btn violet" data-theme="violet" aria-label="Thème Violet Deep"></button>
+          </div>
+
+          <!-- Sound Synthesizer Switcher -->
+          <button class="sound-btn" id="sound-toggle-btn" aria-label="Activer/Désactiver le son d'interface">
+            <span class="sound-icon-wrap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </span>
+          </button>
+
+          <!-- Quick Terminal Trigger -->
+          <button class="cli-btn" data-open-terminal title="Ouvrir la console interactive de l'Architecte (Raccourci: Ctrl+K)">
+            <span>&gt;_ CLI</span>
+            <kbd>Ctrl+K</kbd>
+          </button>
+
+          <!-- Direct CV Hub Action -->
+          <button class="cv-quick-btn" data-open-cv title="Consulter ou télécharger les CVs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>CV PDF</span>
+          </button>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Ouvrir le menu mobile">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu mobile">
+    <button class="close-drawer-btn" id="close-drawer-btn" aria-label="Fermer le menu mobile">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <ul class="mobile-links">
+      <li><a href="#hero">Accueil</a></li>
+      <li><a href="#architecture">Architecture Systèmes</a></li>
+      <li><a href="#projects">Systèmes & Projets</a></li>
+      <li><a href="#adrs">Décisions (ADRs)</a></li>
+      <li><a href="#stack">Matrice Technique</a></li>
+      <li><a href="#about">Parcours & Master IA</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="margin-top:auto; display:flex; flex-direction:column; gap:0.75rem;">
+      <button class="btn-primary" data-open-cv style="width:100%;">Télécharger CV PDF</button>
+      <button class="btn-secondary" data-open-terminal style="width:100%;">&gt;_ Console CLI</button>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEWPORT CONTENT -->
+  <main>
+
+    <!-- SECTION: HERO INTERACTIVE -->
+    <section class="hero-section" id="hero">
+      <!-- Interactive Network Mesh Canvas Background -->
+      <div class="hero-canvas-wrapper">
+        <canvas id="hero-canvas"></canvas>
+        <span class="canvas-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          CANVAS INTERACTIF : CLIQUEZ POUR ÉMETTRE UNE ONDE TÉLÉMÉTRIQUE
+        </span>
+      </div>
+
+      <div class="app-container">
+        <div class="hero-content">
+          <!-- Status pill -->
+          <div class="hero-telemetry-badge">
+            <span class="live-dot"></span>
+            <span>NODE_STATUS : OPTIMAL</span>
+            <span>•</span>
+            <span class="coord-chip">ANTANANARIVO [-18.8792, 47.5079] // REMOTE INT.</span>
+          </div>
+
+          <!-- Main Title -->
+          <div class="hero-title-group">
+            <h1 class="hero-name">
+              <span class="name-gradient">MANOA</span><br>
+              RANDRIANARISOA
+            </h1>
+            <div class="hero-role-title">
+              <span>Architecte Technique &amp; Lead Full-Stack</span>
+              <span class="role-badge">Master IA / ISPM</span>
+              <span class="role-badge">Offline-First &amp; Cloud</span>
+            </div>
+          </div>
+
+          <!-- Executive Narrative Summary -->
+          <p class="hero-description">
+            Concepteur de <strong>systèmes distribués résilients</strong>, d'architectures SaaS multi-tenant et d'applications critiques opérant en environnement contraint. Du composant d'interface aux pipelines de données synchronisées, je transforme des problématiques complexes en <span class="highlight-arch">socles logiciels performants, sécurisés et pérennes</span>.
+          </p>
+
+          <!-- Hero Actions -->
+          <div class="hero-actions">
+            <a href="#architecture" class="btn-primary" id="btn-explore-arch">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              <span>Explorer l'Architecture</span>
+            </a>
+            <a href="#projects" class="btn-secondary" id="btn-explore-projects">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Consulter les Réalisations</span>
+            </a>
+            <button class="btn-secondary" data-open-terminal title="Ouvrir la console interactive">
+              <span style="font-family: var(--font-mono);">&gt;_ CLI</span>
+            </button>
+            <button class="btn-ghost" data-open-cv>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>Consulter CV (PDF)</span>
+            </button>
+          </div>
+
+          <!-- Telemetry Metrics Strip -->
+          <div class="hero-metrics-bar">
+            <div class="metric-item">
+              <div class="metric-value-wrap">
+                <span class="metric-value">100%</span>
+                <span class="metric-unit">Offline-First</span>
+              </div>
+              <span class="metric-label">Zéro interruption locale sur coupure réseau (Study-Agent)</span>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value-wrap">
+                <span class="metric-value">-40%</span>
+                <span class="metric-unit">Latence TTFB</span>
+              </div>
+              <span class="metric-label">Optimisation de rendu SSR & recherche instantanée Meilisearch</span>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value-wrap">
+                <span class="metric-value">-70%</span>
+                <span class="metric-unit">Temps Ingestion</span>
+              </div>
+              <span class="metric-label">Automatisation de bout en bout pipeline OCR & ERP Sage</span>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value-wrap">
+                <span class="metric-value">v1.2.2</span>
+                <span class="metric-unit">Prod Live</span>
+              </div>
+              <span class="metric-label">Système ERP scolaire déployé en production continue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: INTERACTIVE SYSTEM ARCHITECTURE BLUEPRINT -->
+    <section class="section-wrapper architecture-section" id="architecture">
+      <div class="app-container">
+        <!-- Section Header -->
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="pulse-dot"></span>
+            <span>TOPOLOGIE &amp; CONCEPTION SYSTÈMES</span>
+          </div>
+          <h2 class="section-heading">L'Approche Architecturale : Résilience &amp; Évolutivité</h2>
+          <p class="section-subheading">
+            Chaque système que je conçois repose sur une stricte séparation des responsabilités, une isolation des données (RBAC) et une capacité à opérer en mode dégradé ou hors-ligne sans corruption. Cliquez sur chaque palier pour inspecter les garanties techniques et le code de référence.
+          </p>
+        </div>
+
+        <!-- Interactive Blueprint Workbench -->
+        <div class="blueprint-container">
+          <!-- Left: Node Pipeline Canvas -->
+          <div class="blueprint-stage">
+            <div class="stage-toolbar">
+              <div class="stage-title-wrap">
+                <svg class="icon-arch" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <h4>Pipeline Distribué Unifié</h4>
+              </div>
+              <div class="preset-selector">
+                <button class="preset-chip active" data-preset="all">Vue Globale</button>
+                <button class="preset-chip" data-preset="offline">Flux Offline-First</button>
+                <button class="preset-chip" data-preset="multi-tenant">Isolation RBAC</button>
+                <button class="preset-chip" data-preset="search">Moteur Recherche</button>
+              </div>
+            </div>
+
+            <div class="pipeline-grid" id="pipeline-nodes-list">
+              <!-- Dynamically rendered via architecture-viewer.js -->
+            </div>
+          </div>
+
+          <!-- Right: Inspector Drawer Panel -->
+          <aside class="blueprint-inspector" id="architecture-inspector" aria-label="Inspecteur de nœud architectural">
+            <!-- Dynamically populated via architecture-viewer.js -->
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CASE STUDIES & PROJECTS GALLERY -->
+    <section class="section-wrapper projects-section" id="projects">
+      <div class="app-container">
+        <!-- Section Header -->
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="pulse-dot"></span>
+            <span>RÉALISATIONS DE PRODUCTION</span>
+          </div>
+          <h2 class="section-heading">Systèmes Livrés &amp; Études de Cas</h2>
+          <p class="section-subheading">
+            Des applications concrètes utilisées au quotidien : suites logicielles SaaS multi-établissements, logiciels d'administration scolaire en production locale, boutiques e-commerce headless et pipelines d'intégration d'entreprise.
+          </p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="project-filter-bar">
+          <button class="filter-btn active" data-filter="all">
+            <span>Tous les systèmes</span>
+            <span class="count-badge">6</span>
+          </button>
+          <button class="filter-btn" data-filter="saas">
+            <span>SaaS &amp; Cloud</span>
+            <span class="count-badge">3</span>
+          </button>
+          <button class="filter-btn" data-filter="desktop">
+            <span>Desktop &amp; Offline-First</span>
+            <span class="count-badge">2</span>
+          </button>
+          <button class="filter-btn" data-filter="mobile">
+            <span>Mobile &amp; Lead</span>
+            <span class="count-badge">1</span>
+          </button>
+        </div>
+
+        <!-- Projects Grid Container -->
+        <div class="projects-grid" id="projects-grid-container">
+          <!-- Dynamically populated via projects-manager.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ARCHITECTURAL DECISION RECORDS (ADRs) -->
+    <section class="section-wrapper adrs-section" id="adrs">
+      <div class="app-container">
+        <!-- Section Header -->
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="pulse-dot"></span>
+            <span>INGÉNIERIE &amp; ARBITRAGES TECHNIQUES</span>
+          </div>
+          <h2 class="section-heading">Architectural Decision Records (ADRs)</h2>
+          <p class="section-subheading">
+            L'architecture technique est avant tout l'art du compromis éclairé. Voici les registres de décisions réelles prises face à des contraintes de terrain (infrastructure instable, scalabilité financière, temps de réponse critique).
+          </p>
+        </div>
+
+        <div class="adr-list">
+          <!-- ADR 001 -->
+          <article class="adr-card open">
+            <div class="adr-header">
+              <div class="adr-head-left">
+                <span class="adr-id-badge">ADR-001</span>
+                <h3 class="adr-title">Paradigme Hybride Offline-First (SQLite + Supabase) vs Cloud Monolithique</h3>
+              </div>
+              <div class="adr-head-right">
+                <span class="adr-status-pill">ADOPTÉ &amp; EN PROD</span>
+                <svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="adr-content">
+              <div class="adr-grid">
+                <div class="adr-column">
+                  <span class="col-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    Contexte &amp; Problème
+                  </span>
+                  <p class="col-text">
+                    Au sein du Lycée Manjary Soa (Madagascar), les coupures d'électricité et d'accès internet sont fréquentes. Une solution 100% Web Cloud bloquait la saisie des notes et la délibération des conseils de classe.
+                  </p>
+                </div>
+                <div class="adr-column">
+                  <span class="col-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Décision d'Architecture
+                  </span>
+                  <p class="col-text">
+                    Déploiement d'une application Electron avec base locale SQLite en mode WAL (Write-Ahead Logging). File d'attente de mutations (Delta Ledger) synchronisée de manière asynchrone et idempotente vers Supabase dès retour du réseau.
+                  </p>
+                </div>
+                <div class="adr-column">
+                  <span class="col-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Conséquences &amp; Bénéfices
+                  </span>
+                  <p class="col-text">
+                    100% de disponibilité opérationnelle locale, latence de saisie nulle (&lt; 1ms), génération instantanée des bulletins sans dépendance cloud. Conflits résolus via horodatage vectoriel.
+                  </p>
+                </div>
+              </div>
+              <div class="adr-takeaway">
+                <strong>Enseignement Clé :</strong> La résilience logicielle doit s'adapter à la réalité des infrastructures physiques, sans sacrifier la centralisation des données de l'administration.
+              </div>
+            </div>
+          </article>
+
+          <!-- ADR 002 -->
+          <article class="adr-card">
+            <div class="adr-header">
+              <div class="adr-head-left">
+                <span class="adr-id-badge">ADR-002</span>
+                <h3 class="adr-title">Isolation Logique Multi-Tenant (PostgreSQL Row-Level Security) vs Multi-Bases</h3>
+              </div>
+              <div class="adr-head-right">
+                <span class="adr-status-pill">ADOPTÉ DANS RESHPRO</span>
+                <svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="adr-content">
+              <div class="adr-grid">
+                <div class="adr-column">
+                  <span class="col-title">Contexte</span>
+                  <p class="col-text">Pour la suite SaaS hôtelière ResHPro, chaque établissement hôtelier doit disposer d'une étanchéité absolue de ses réservations, stocks et finances, tout en limitant les coûts d'hébergement au lancement.</p>
+                </div>
+                <div class="adr-column">
+                  <span class="col-title">Décision</span>
+                  <p class="col-text">Adoption d'une architecture mono-base PostgreSQL couplée aux politiques natives de Row-Level Security (RLS) injectant le tenant_id validé par JWT dans le contexte de session de chaque requête.</p>
+                </div>
+                <div class="adr-column">
+                  <span class="col-title">Conséquences</span>
+                  <p class="col-text">Coût d'infrastructure divisé par 5 par rapport à un modèle multi-bases, migrations de schémas centralisées et sécurité infalsifiable même en cas d'omission d'une clause WHERE applicative.</p>
+                </div>
+              </div>
+              <div class="adr-takeaway">
+                <strong>Enseignement Clé :</strong> Déplacer la sécurité d'isolation au plus près du moteur de base de données élimine les failles humaines du code applicatif.
+              </div>
+            </div>
+          </article>
+
+          <!-- ADR 003 -->
+          <article class="adr-card">
+            <div class="adr-header">
+              <div class="adr-head-left">
+                <span class="adr-id-badge">ADR-003</span>
+                <h3 class="adr-title">Rendu Hybride SSR &amp; Streaming (React Router 7) pour Maboo E-Commerce</h3>
+              </div>
+              <div class="adr-head-right">
+                <span class="adr-status-pill">DÉPLOYÉ</span>
+                <svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="adr-content">
+              <div class="adr-grid">
+                <div class="adr-column">
+                  <span class="col-title">Contexte</span>
+                  <p class="col-text">L'ancienne version SPA souffrait d'un Time-To-Interactive trop élevé sur mobile et d'un indexage SEO insuffisant sur les catalogues multilingues.</p>
+                </div>
+                <div class="adr-column">
+                  <span class="col-title">Décision</span>
+                  <p class="col-text">Refonte avec React Router 7 en mode SSR avec streaming HTTP des blocs non critiques (recommandations produits et avis) après le rendu instantané du shell produit.</p>
+                </div>
+                <div class="adr-column">
+                  <span class="col-title">Conséquences</span>
+                  <p class="col-text">Score Core Web Vitals LCP inférieur à 1.2s sur réseau mobile 4G, visibilité SEO optimale pour les bots de recherche, et fluidité de navigation conservée via hydratation progressive.</p>
+                </div>
+              </div>
+              <div class="adr-takeaway">
+                <strong>Enseignement Clé :</strong> Le streaming HTML moderne permet d'allier les bénéfices SEO du serveur à la vivacité de navigation d'une SPA sans compromis.
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: TECHNICAL MATRIX & COMPETENCIES -->
+    <section class="section-wrapper stack-section" id="stack">
+      <div class="app-container">
+        <!-- Section Header -->
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="pulse-dot"></span>
+            <span>ARSENAL &amp; ÉCOSYSTÈME</span>
+          </div>
+          <h2 class="section-heading">Matrice des Compétences Techniques</h2>
+          <p class="section-subheading">
+            Une maîtrise transversale éprouvée, de la conception bas-niveau d'interfaces aux protocoles d'échanges, en passant par l'IA appliquée et la gouvernance d'équipe.
+          </p>
+        </div>
+
+        <div class="matrix-grid">
+          <!-- Card 1: Frontend & Mobile -->
+          <article class="matrix-card">
+            <div class="card-header-row">
+              <div class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <h3 class="matrix-title">Frontend &amp; Mobile Core</h3>
+            </div>
+            <div class="skills-pill-cloud">
+              <span class="tech-tag primary">React 18 / 19</span>
+              <span class="tech-tag primary">TypeScript</span>
+              <span class="tech-tag primary">Next.js 14/15</span>
+              <span class="tech-tag primary">React Native</span>
+              <span class="tech-tag">React Router 7 (SSR)</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">TailwindCSS v4</span>
+              <span class="tech-tag">SCSS / SASS</span>
+              <span class="tech-tag">Zustand</span>
+              <span class="tech-tag">Redux Toolkit</span>
+              <span class="tech-tag">Radix UI</span>
+              <span class="tech-tag">GSAP / Motion</span>
+            </div>
+            <p class="matrix-highlight-note">
+              Composants headless hautement découplés, typage strict de bout en bout et optimisation fine du DOM.
+            </p>
+          </article>
+
+          <!-- Card 2: Backend & Distributed -->
+          <article class="matrix-card">
+            <div class="card-header-row">
+              <div class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              </div>
+              <h3 class="matrix-title">Backend &amp; Données</h3>
+            </div>
+            <div class="skills-pill-cloud">
+              <span class="tech-tag primary">PostgreSQL</span>
+              <span class="tech-tag primary">Node.js</span>
+              <span class="tech-tag primary">Express 5</span>
+              <span class="tech-tag primary">SQLite (WAL)</span>
+              <span class="tech-tag">Supabase</span>
+              <span class="tech-tag">GraphQL</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">Meilisearch</span>
+              <span class="tech-tag">PHP / Laravel</span>
+              <span class="tech-tag">Zod</span>
+              <span class="tech-tag">SQL Avancé &amp; Recette</span>
+            </div>
+            <p class="matrix-highlight-note">
+              Schémas relationnels normalisés, politiques RLS, transactions ACID et mise en cache prédictive.
+            </p>
+          </article>
+
+          <!-- Card 3: Architecture & Systems -->
+          <article class="matrix-card">
+            <div class="card-header-row">
+              <div class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <h3 class="matrix-title">Architecture &amp; Systèmes</h3>
+            </div>
+            <div class="skills-pill-cloud">
+              <span class="tech-tag primary">SaaS Multi-Tenant</span>
+              <span class="tech-tag primary">Offline-First Engine</span>
+              <span class="tech-tag primary">Modèle RBAC</span>
+              <span class="tech-tag">Electron Desktop</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Git / GitHub Actions</span>
+              <span class="tech-tag">Linux / Nginx</span>
+              <span class="tech-tag">Micro-services / Modulithe</span>
+            </div>
+            <p class="matrix-highlight-note">
+              Tolérance aux pannes, découplage modulaire et élimination proactive de la dette technique.
+            </p>
+          </article>
+
+          <!-- Card 4: AI & Computer Vision -->
+          <article class="matrix-card">
+            <div class="card-header-row">
+              <div class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+              </div>
+              <h3 class="matrix-title">IA, Vision &amp; Traitement</h3>
+            </div>
+            <div class="skills-pill-cloud">
+              <span class="tech-tag primary">Master IA (ISPM)</span>
+              <span class="tech-tag primary">Python</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Pipeline OCR</span>
+              <span class="tech-tag">Algorithmique Avancée</span>
+              <span class="tech-tag">Intégration LLM &amp; Agents</span>
+            </div>
+            <p class="matrix-highlight-note">
+              Formation universitaire approfondie en traitement du signal, vision par ordinateur et réseaux neuronaux.
+            </p>
+          </article>
+
+          <!-- Card 5: Product & Delivery -->
+          <article class="matrix-card">
+            <div class="card-header-row">
+              <div class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <h3 class="matrix-title">Gouvernance &amp; Produit</h3>
+            </div>
+            <div class="skills-pill-cloud">
+              <span class="tech-tag primary">Agile / Scrum &amp; Daily</span>
+              <span class="tech-tag primary">Management Équipe (4 Devs)</span>
+              <span class="tech-tag">Cadrage Fonctionnel</span>
+              <span class="tech-tag">Recette SQL &amp; ERP</span>
+              <span class="tech-tag">Figma (UI/UX Prototypage)</span>
+              <span class="tech-tag">Revue de code &amp; Mentoring</span>
+            </div>
+            <p class="matrix-highlight-note">
+              Capacité à faire le pont entre exigences métier complexes, contraintes budgétaires et excellence technique.
+            </p>
+          </article>
+
+          <!-- Card 6: ERP & Enterprise Integration -->
+          <article class="matrix-card">
+            <div class="card-header-row">
+              <div class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <h3 class="matrix-title">Intégration ERP &amp; Métier</h3>
+            </div>
+            <div class="skills-pill-cloud">
+              <span class="tech-tag primary">Sage ERP APIs</span>
+              <span class="tech-tag primary">Gestion Stocks &amp; Pertes</span>
+              <span class="tech-tag">Module POS / Caisse</span>
+              <span class="tech-tag">Génération Vectorielle PDF</span>
+              <span class="tech-tag">Recharts BI Dashboards</span>
+            </div>
+            <p class="matrix-highlight-note">
+              Expertise solide sur les flux financiers, traçabilité d'inventaires et conformité réglementaire.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: ABOUT, PHILOSOPHY & JOURNEY TIMELINE -->
+    <section class="section-wrapper about-section" id="about">
+      <div class="app-container">
+        <!-- Section Header -->
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="pulse-dot"></span>
+            <span>IDENTITÉ &amp; PARCOURS ACADÉMIQUE</span>
+          </div>
+          <h2 class="section-heading">L'Ingénieur Derrière les Systèmes</h2>
+          <p class="section-subheading">
+            Double formation d'élite en Électronique, Informatique &amp; IA à l'ISPM, combinée à une pratique intensive du terrain sur des projets internationaux et locaux.
+          </p>
+        </div>
+
+        <div class="about-layout">
+          <!-- Sticky Profile Card -->
+          <aside class="profile-card-sticky" aria-label="Carte profil de Manoa">
+            <div class="photo-frame">
+              <img src="/assets/manoa.jpg" alt="Photo de Manoa Randrianarisoa" class="photo-img">
+              <span class="online-indicator" title="Actif et disponible"></span>
+            </div>
+
+            <h3 class="profile-name">Manoa Randrianarisoa</h3>
+            <span class="profile-title">ARCHITECTE TECHNIQUE &amp; FULL-STACK</span>
+
+            <div class="profile-meta-list">
+              <div class="meta-row">
+                <svg class="row-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Antananarivo, Madagascar (UTC+3)</span>
+              </div>
+              <div class="meta-row">
+                <svg class="row-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <span>Disponible : Missions Remote &amp; CDI</span>
+              </div>
+              <div class="meta-row">
+                <svg class="row-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                <span>Master Informatique, Électronique &amp; IA</span>
+              </div>
+            </div>
+
+            <div class="profile-cta">
+              <button class="btn-primary" data-open-cv style="width:100%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Télécharger Mon CV</span>
+              </button>
+            </div>
+          </aside>
+
+          <!-- Timeline & Narrative Column -->
+          <div class="timeline-narrative">
+            <div class="philosophy-card">
+              <h3>Philosophie d'Ingénierie</h3>
+              <p>
+                « Je ne conçois pas le code comme une finalité, mais comme la charpente rigoureuse d'une promesse métier. Une architecture réussie est celle qui sait s'effacer : elle ne fait pas de bruit, répond en quelques millisecondes, absorbe les pannes sans alerter l'utilisateur et permet à l'équipe de déployer sans crainte. »
+              </p>
+              <p>
+                Mon passage par le cycle Master en Électronique et IA m'a inculqué le respect viscéral de la ressource matérielle : chaque cycle CPU, chaque octet transmis sur le réseau et chaque index SQL ont un coût mesurable.
+              </p>
+            </div>
+
+            <div class="timeline-container">
+              <!-- Item 1 -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2025 — PRÉSENT</span>
+                <h4 class="timeline-role">Consultant Indépendant / Architecte Technique</h4>
+                <span class="timeline-company">Multi-projets Internationaux &amp; Locaux</span>
+                <p class="timeline-desc">
+                  Conception de bout en bout de la suite SaaS <strong>ResHPro</strong> (React 18 / PostgreSQL multi-tenant), du système ERP scolaire <strong>Study-Agent</strong> (en production v1.2.2 avec modèle Offline-First) et de la boutique <strong>Maboo</strong> (React 19 / SSR streaming).
+                </p>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2025 — 2026</span>
+                <h4 class="timeline-role">Architecte Technique &amp; Lead Mobile</h4>
+                <span class="timeline-company">Given Day Tech (France / Associatif)</span>
+                <p class="timeline-desc">
+                  Architecture logicielle mobile-first sous React Native et Node.js. Encadrement et coordination d'une équipe technique de <strong>4 développeurs</strong>, gouvernance agile et livraison dans le cadre d'un projet solidaire.
+                </p>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2025 — PRÉSENT</span>
+                <h4 class="timeline-role">Développeur Full-Stack Senior</h4>
+                <span class="timeline-company">ToutPourSaGloire.com (International)</span>
+                <p class="timeline-desc">
+                  Refonte en architecture modulaire Next.js &amp; GraphQL. Intégration du moteur Meilisearch permettant une réduction de <strong>40% du temps de chargement</strong> sur les catalogues multimédias.
+                </p>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2023 — 2024</span>
+                <h4 class="timeline-role">Développeur CMS &amp; Designer UI/UX</h4>
+                <span class="timeline-company">RICSM (États-Unis / Remote)</span>
+                <p class="timeline-desc">
+                  Conception des maquettes sous Figma et livraison d'une plateforme web institutionnelle répondant aux standards américains d'accessibilité.
+                </p>
+              </div>
+
+              <!-- Item 5 -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2022</span>
+                <h4 class="timeline-role">Développeur Full-Stack &amp; Pipeline OCR</h4>
+                <span class="timeline-company">EQIMA (Antananarivo)</span>
+                <p class="timeline-desc">
+                  Digitalisation complète de la saisie comptable via OCR et synchronisation directe avec l'API Sage ERP, générant une réduction de <strong>70% du temps de traitement</strong>.
+                </p>
+              </div>
+
+              <!-- Item 6: Degrees -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2022 — 2024</span>
+                <h4 class="timeline-role">Master en Électronique, Informatique &amp; IA</h4>
+                <span class="timeline-company">Institut Supérieur Polytechnique de Madagascar (ISPM)</span>
+                <p class="timeline-desc">
+                  Conception logicielle avancée, algorithmique, traitement d'images (OpenCV), vision industrielle et modèles de Deep Learning.
+                </p>
+              </div>
+
+              <!-- Item 7: Licence -->
+              <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <span class="timeline-year">2018 — 2022</span>
+                <h4 class="timeline-role">Licence en Électronique &amp; Informatique</h4>
+                <span class="timeline-company">Institut Supérieur Polytechnique de Madagascar (ISPM)</span>
+                <p class="timeline-desc">
+                  Génie logiciel, architectures système, programmation concurrente et réseaux de communication.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CONTACT & COLLABORATION -->
+    <section class="section-wrapper contact-section" id="contact">
+      <div class="app-container">
+        <!-- Section Header -->
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="pulse-dot"></span>
+            <span>ÉCHANGE &amp; COLLABORATION</span>
+          </div>
+          <h2 class="section-heading">Initialiser une Connexion</h2>
+          <p class="section-subheading">
+            Vous cherchez un Architecte Technique pour cadrer une refonte stratégique, un Lead Full-Stack capable d'emmener une équipe, ou un partenaire d'ingénierie sur un projet exigeant ?
+          </p>
+        </div>
+
+        <div class="contact-card-wrapper">
+          <!-- Direct Channels -->
+          <div class="contact-info-col">
+            <div>
+              <p class="contact-lead">
+                Disponible pour des missions <strong>internationales en remote</strong>, du conseil d'architecture ou un rôle exécutif. Je réponds sous 24h avec une analyse concrète de votre besoin.
+              </p>
+
+              <div class="direct-channels-list">
+                <!-- Channel 1: Email -->
+                <div class="channel-item">
+                  <svg class="channel-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <div class="channel-content">
+                    <span class="channel-label">Adresse Email</span>
+                    <a href="mailto:manoa.wrk@gmail.com" class="channel-value">manoa.wrk@gmail.com</a>
+                  </div>
+                  <button class="copy-btn" data-copy="manoa.wrk@gmail.com" title="Copier l'email">Copier</button>
+                </div>
+
+                <!-- Channel 2: Phone -->
+                <div class="channel-item">
+                  <svg class="channel-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <div class="channel-content">
+                    <span class="channel-label">Téléphone / WhatsApp</span>
+                    <a href="tel:+261347151789" class="channel-value">+261 34 71 517 89</a>
+                  </div>
+                  <button class="copy-btn" data-copy="+261 34 71 517 89" title="Copier le numéro">Copier</button>
+                </div>
+
+                <!-- Channel 3: GitHub -->
+                <div class="channel-item">
+                  <svg class="channel-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <div class="channel-content">
+                    <span class="channel-label">Profil GitHub</span>
+                    <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" rel="noopener noreferrer" class="channel-value">github.com/ManoaRANDRIANARISOA</a>
+                  </div>
+                  <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" rel="noopener noreferrer" class="copy-btn">Ouvrir</a>
+                </div>
+
+                <!-- Channel 4: LinkedIn -->
+                <div class="channel-item">
+                  <svg class="channel-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  <div class="channel-content">
+                    <span class="channel-label">Réseau LinkedIn</span>
+                    <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" rel="noopener noreferrer" class="channel-value">linkedin.com/in/manoa-randrianarisoa</a>
+                  </div>
+                  <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" rel="noopener noreferrer" class="copy-btn">Ouvrir</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="availability-box">
+              <span class="status-ping"></span>
+              <span>DISPONIBLE IMMÉDIATEMENT • REMOTE MONDE ENTIER OU LOCAL</span>
+            </div>
+          </div>
+
+          <!-- Contact Direct Message Form -->
+          <form class="contact-form-col" id="contact-form" aria-label="Formulaire de contact">
+            <div class="form-group">
+              <label for="sender-name">Votre Nom &amp; Organisation</label>
+              <input type="text" id="sender-name" name="name" placeholder="Ex: Jean Dupont • CTO chez Acme Corp" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-email">Votre Adresse Email</label>
+              <input type="email" id="sender-email" name="email" placeholder="nom@entreprise.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-message">Nature du Projet ou Enjeu Technique</label>
+              <textarea id="sender-message" name="message" placeholder="Décrivez votre besoin : refonte d'architecture, cadrage SaaS, mission de lead tech, audit de performance..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary form-submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <span>Transmettre la Demande</span>
+            </button>
+
+            <div class="form-status-msg" id="form-status-msg"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="app-container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-brand">MANOA RANDRIANARISOA // ARCHITECTE TECHNIQUE</span>
+          <span class="footer-coords">LAT: -18.8792° S • LNG: 47.5079° E • MASTER ISPM 2024</span>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#hero">Haut de page</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#projects">Systèmes</a></li>
+          <li><a href="#adrs">ADRs</a></li>
+          <li><a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+
+        <div class="footer-right">
+          <span>&copy; 2026 MANOA RANDRIANARISOA. CONÇU SANS MODÈLE GÉNÉRIQUE.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TERMINAL CONSOLE MODAL (CLI) -->
+  <div class="terminal-modal-backdrop" id="terminal-modal" role="dialog" aria-modal="true" aria-label="Console interactive de l'Architecte">
+    <div class="terminal-window">
+      <div class="terminal-top-bar">
+        <div class="traffic-lights">
+          <span class="close" id="close-terminal-btn" title="Fermer la console (Échap)"></span>
+          <span class="min"></span>
+          <span class="max"></span>
+        </div>
+        <span class="terminal-title">manoa@arch:~$ [SYS_INTERACTIVE_CLI]</span>
+        <span class="terminal-shortcuts">Tapez 'help' • Échap pour fermer</span>
+      </div>
+
+      <div class="terminal-body" id="terminal-output">
+        <p class="terminal-line system-msg">========================================================</p>
+        <p class="terminal-line system-msg">SYSTÈME TÉLÉMÉTRIQUE DE MANOA RANDRIANARISOA v2.4.0</p>
+        <p class="terminal-line system-msg">Architecte Technique &amp; Lead Full-Stack • Master IA ISPM</p>
+        <p class="terminal-line system-msg">Tapez <span class="highlight">help</span> pour afficher l'ensemble des commandes.</p>
+        <p class="terminal-line system-msg">========================================================</p>
+      </div>
+
+      <div class="terminal-input-row">
+        <span class="prompt-label">manoa@arch:~$</span>
+        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="Ex: help, whoami, projects, stack, adrs, metrics, cv...">
+      </div>
+    </div>
+  </div>
+
+  <!-- CV SELECTION & DOWNLOAD HUB MODAL -->
+  <div class="cv-modal-backdrop" id="cv-modal" role="dialog" aria-modal="true" aria-label="Hub de téléchargement des CVs">
+    <div class="cv-modal-card">
+      <div class="cv-modal-header">
+        <div class="cv-title-wrap">
+          <h3>Curriculum Vitae — Manoa Randrianarisoa</h3>
+          <p>Sélectionnez la version adaptée à vos exigences de recrutement</p>
+        </div>
+        <button class="close-cv-btn" id="close-cv-btn" aria-label="Fermer la fenêtre de CV">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="cv-modal-body">
+        <!-- Option 1: Architecte Technique -->
+        <article class="cv-option-card">
+          <div class="option-info">
+            <span class="option-tag">Offre Technique &amp; Ingénierie</span>
+            <h4 class="option-title">Développeur Full-Stack &amp; Architecte Technique Senior</h4>
+            <p class="option-desc">
+              Focus systèmes distribués, SaaS multi-tenant, architecture Offline-First, React 19, TypeScript, Express 5, PostgreSQL et Master IA.
+            </p>
+          </div>
+          <div class="option-actions">
+            <a href="/assets/CV_Manoa_Architecte.pdf" download="CV_Manoa_Randrianarisoa_Architecte.pdf" class="btn-primary" style="padding:0.6rem 1.1rem; font-size:0.85rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Télécharger PDF</span>
+            </a>
+            <a href="/assets/CV_Manoa_Architecte.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:0.6rem 0.9rem; font-size:0.85rem;">
+              <span>Ouvrir</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Option 2: Product Owner ERP -->
+        <article class="cv-option-card">
+          <div class="option-info">
+            <span class="option-tag">Offre Produit &amp; Gestion Métier</span>
+            <h4 class="option-title">Product Owner ERP &amp; Recette SQL</h4>
+            <p class="option-desc">
+              Focus cadrage fonctionnel, modélisation de flux stocks &amp; hôtellerie, validation SQL, conformité comptable et pilotage agile.
+            </p>
+          </div>
+          <div class="option-actions">
+            <a href="/assets/CV_Manoa_ERP.pdf" download="CV_Manoa_Product_Owner_ERP.pdf" class="btn-primary" style="padding:0.6rem 1.1rem; font-size:0.85rem;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Télécharger PDF</span>
+            </a>
+            <a href="/assets/CV_Manoa_ERP.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:0.6rem 0.9rem; font-size:0.85rem;">
+              <span>Ouvrir</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIPBOARD TOAST NOTIFICATION -->
+  <div class="toast-notice" id="toast-notice" role="status" aria-live="polite"></div>
+
+  <!-- APPLICATION LOGIC BOOTSTRAP -->
+  <script type="module" src="/src/scripts/app.js"></script>
+</body>
+</html>

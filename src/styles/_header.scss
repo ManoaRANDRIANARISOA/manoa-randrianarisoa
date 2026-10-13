@@ -1,0 +1,277 @@
+// ==============================================================================
+// NAVIGATION HEADER
+// ==============================================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 0;
+  transition: all var(--duration-normal) ease;
+
+  &.scrolled {
+    padding: 0.65rem 0;
+    @include glass(rgba(7, 9, 14, 0.85), 20px, var(--border-subtle));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.nav-inner {
+  @include flex-between;
+  gap: 1.5rem;
+}
+
+// Brand Logo
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: var(--accent-badge-bg);
+    border: 1px solid var(--accent-badge-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .status-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--status-emerald);
+    box-shadow: 0 0 8px var(--status-emerald);
+    animation: pulse 2.5s infinite;
+  }
+}
+
+// Desktop Nav
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+
+  @include tablet {
+    display: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color var(--duration-fast) ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width var(--duration-normal) var(--ease-smooth);
+    }
+
+    &:hover, &.active {
+      color: var(--text-primary);
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Action Bar
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .theme-toggle-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 3px;
+    gap: 3px;
+
+    .theme-color-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: transform var(--duration-fast) ease, border-color var(--duration-fast) ease;
+
+      &.cyan { background-color: #00f2fe; }
+      &.emerald { background-color: #10b981; }
+      &.amber { background-color: #f59e0b; }
+      &.violet { background-color: #a855f7; }
+
+      &:hover {
+        transform: scale(1.15);
+      }
+
+      &.active {
+        border-color: #ffffff;
+        box-shadow: 0 0 8px currentColor;
+      }
+    }
+  }
+
+  .sound-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    transition: all var(--duration-fast) ease;
+
+    &:hover {
+      color: var(--text-primary);
+      border-color: var(--border-light);
+    }
+
+    &.sound-on {
+      color: var(--accent-primary);
+      border-color: var(--accent-badge-border);
+      background: var(--accent-badge-bg);
+    }
+  }
+
+  .cli-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    transition: all var(--duration-fast) ease;
+
+    kbd {
+      padding: 0.1rem 0.3rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 3px;
+      font-size: 0.65rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    &:hover {
+      color: var(--accent-primary);
+      border-color: var(--border-accent);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .cv-quick-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-md);
+    background: var(--accent-badge-bg);
+    border: 1px solid var(--accent-badge-border);
+    color: var(--accent-primary);
+    transition: all var(--duration-fast) ease;
+
+    &:hover {
+      background: var(--accent-primary);
+      color: #07090e;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+
+    @include tablet {
+      display: flex;
+    }
+  }
+}
+
+// Mobile Nav Overlay
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 360px;
+  height: 100vh;
+  z-index: 150;
+  @include glass(rgba(10, 14, 22, 0.98), 24px, var(--border-light));
+  padding: 5rem 2rem 2rem;
+  transition: right var(--duration-normal) var(--ease-smooth);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &.open {
+    right: 0;
+  }
+
+  .close-drawer-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--text-secondary);
+  }
+
+  .mobile-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    a {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+
+      &:hover, &.active {
+        color: var(--accent-primary);
+      }
+    }
+  }
+}

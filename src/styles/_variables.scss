@@ -1,0 +1,100 @@
+// ==============================================================================
+// VARIABLES & DESIGN TOKENS - ARCHITECTURAL BLUEPRINT DESIGN SYSTEM
+// ==============================================================================
+
+:root {
+  // Base Palette (Obsidian & Slate)
+  --bg-primary: #07090e;
+  --bg-secondary: #0d111a;
+  --bg-surface: #121824;
+  --bg-surface-elevated: #182030;
+  --bg-card: rgba(18, 24, 36, 0.75);
+  --bg-card-hover: rgba(24, 32, 48, 0.85);
+
+  // Border & Grid Lines
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(0, 242, 254, 0.25);
+  --grid-line-color: rgba(0, 242, 254, 0.04);
+
+  // Text Colors
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #475569;
+  --text-code: #38bdf8;
+
+  // Active Accent Theme (Default: Architectural Cyan)
+  --accent-primary: #00f2fe;
+  --accent-secondary: #4facfe;
+  --accent-glow: rgba(0, 242, 254, 0.35);
+  --accent-subtle: rgba(0, 242, 254, 0.1);
+  --accent-badge-bg: rgba(0, 242, 254, 0.08);
+  --accent-badge-border: rgba(0, 242, 254, 0.25);
+
+  // Semantic Status Colors
+  --status-emerald: #10b981;
+  --status-emerald-glow: rgba(16, 185, 129, 0.3);
+  --status-amber: #f59e0b;
+  --status-amber-glow: rgba(245, 158, 11, 0.3);
+  --status-rose: #f43f5e;
+
+  // Typography
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  // Transitions & Easings
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  // Elevation & Shadows
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 35px var(--accent-glow);
+
+  // Radii
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+// Preset Themes
+[data-theme="emerald"] {
+  --accent-primary: #10b981;
+  --accent-secondary: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.35);
+  --accent-subtle: rgba(16, 185, 129, 0.1);
+  --accent-badge-bg: rgba(16, 185, 129, 0.08);
+  --accent-badge-border: rgba(16, 185, 129, 0.25);
+  --text-code: #34d399;
+  --grid-line-color: rgba(16, 185, 129, 0.04);
+}
+
+[data-theme="amber"] {
+  --accent-primary: #f59e0b;
+  --accent-secondary: #d97706;
+  --accent-glow: rgba(245, 158, 11, 0.35);
+  --accent-subtle: rgba(245, 158, 11, 0.1);
+  --accent-badge-bg: rgba(245, 158, 11, 0.08);
+  --accent-badge-border: rgba(245, 158, 11, 0.25);
+  --text-code: #fbbf24;
+  --grid-line-color: rgba(245, 158, 11, 0.04);
+}
+
+[data-theme="violet"] {
+  --accent-primary: #a855f7;
+  --accent-secondary: #7c3aed;
+  --accent-glow: rgba(168, 85, 247, 0.35);
+  --accent-subtle: rgba(168, 85, 247, 0.1);
+  --accent-badge-bg: rgba(168, 85, 247, 0.08);
+  --accent-badge-border: rgba(168, 85, 247, 0.25);
+  --text-code: #c084fc;
+  --grid-line-color: rgba(168, 85, 247, 0.04);
+}
