@@ -1,8 +1,43 @@
 // ==============================================================================
 // AUTHENTIC PROJECTS & CASE STUDIES DATABASE
+// Each entry carries an `en` sub-object with localized display fields.
 // ==============================================================================
 
 export const PROJECTS_DATA = [
+  {
+    id: 'anka',
+    title: 'ANKA — Collecte Terrain ESG',
+    type: 'Plateforme PWA Offline-First & Back-Office (Digital Energy Challenge / AFD)',
+    category: 'mobile',
+    featured: true,
+    status: 'MVP en Delivery (Oct.–Déc. 2026)',
+    summary: 'Digitalisation ESG du suivi de projets d\'électrification rurale à Madagascar pour ANKA : collecte de données terrain hors-ligne (enquêtes socio-économiques, suivi de chantiers, remontée d\'incidents), synchronisation cloud et pilotage par KPI pour le siège.',
+    architecturePoints: [
+      'Cadrage du TDR bailleur (AFD) : matrice de traçabilité de 45 exigences (TR-01→TR-45), levée des contradictions et arbitrages MVP formalisés.',
+      'Dimensionnement offline-first pour le terrain déconnecté jusqu\'à 14 jours : volumétrie médias 84–252 Mo, double horodatage, objectifs RPO 24 h / RTO 4 h.',
+      'Socle full-stack : PWA React / Dexie (IndexedDB) synchronisée à une API NestJS / PostgreSQL avec modèle hybride relationnel + JSONB, RBAC et auth JWT / MFA.',
+      'Encadrement d\'un développeur full-time : backlog, planning hebdomadaire, remises traçables (manifests + preuves) et plan de passation documenté.'
+    ],
+    stack: ['PWA React', 'NestJS', 'Prisma', 'PostgreSQL (JSONB)', 'Dexie.js Offline', 'OpenAPI', 'JWT / MFA', 'Docker'],
+    metrics: '45 Exigences Tracées • 14 J Offline (RPO 24 h / RTO 4 h)',
+    githubUrl: null,
+    liveUrl: null,
+    role: 'Architecte Technique & Lead Projet',
+    en: {
+      title: 'ANKA — ESG Field Data Collection',
+      type: 'Offline-First PWA & Back-Office Platform (Digital Energy Challenge / AFD)',
+      status: 'MVP in Delivery (Oct–Dec 2026)',
+      summary: 'ESG digitalization of rural electrification project tracking in Madagascar for ANKA: offline field data collection (socio-economic surveys, construction site monitoring, incident reporting), cloud synchronization and KPI-driven oversight for headquarters.',
+      architecturePoints: [
+        "Framed the funder's Terms of Reference (AFD): 45-requirement traceability matrix (TR-01→TR-45), resolved contradictions and formalized MVP trade-offs.",
+        'Offline-first sizing for field operations disconnected up to 14 days: 84–252 MB media volume, double timestamping, RPO 24h / RTO 4h targets.',
+        'Full-stack foundation: PWA React / Dexie (IndexedDB) synced to a NestJS / PostgreSQL API with hybrid relational + JSONB model, RBAC and JWT / MFA auth.',
+        'Mentoring a full-time developer: backlog, weekly planning, traceable delivery packs (manifests + evidence) and a documented handover plan.'
+      ],
+      metrics: '45 Traced Requirements • 14 Days Offline (RPO 24h / RTO 4h)',
+      role: 'Technical Architect & Project Lead'
+    }
+  },
   {
     id: 'reshpro',
     title: 'ResHPro',
@@ -21,7 +56,21 @@ export const PROJECTS_DATA = [
     metrics: 'Multi-Tenant RBAC • Zero Collision Réservation',
     githubUrl: 'https://github.com/ManoaRANDRIANARISOA/ResHPro',
     liveUrl: null,
-    role: 'Architecte Technique & Lead Full-Stack'
+    role: 'Architecte Technique & Lead Full-Stack',
+    en: {
+      title: 'ResHPro',
+      type: 'Multi-Tenant Cloud SaaS & POS',
+      status: 'Active & Evolving',
+      summary: 'Complete multi-establishment hospitality, restaurant and inventory management SaaS suite with granular access control and a real-time reservation engine.',
+      architecturePoints: [
+        'Multi-tenant architecture with strict data isolation and a fine-grained RBAC model.',
+        'Drag & drop visual reservation engine with zero overlap (RoomCalendar module).',
+        'Unit-level stock traceability, loss declarations (PerteDialog) and replenishment workflows.',
+        'Real-time financial dashboards and decision-grade analytics with Recharts.'
+      ],
+      metrics: 'Multi-Tenant RBAC • Zero Reservation Collision',
+      role: 'Technical Architect & Lead Full-Stack'
+    }
   },
   {
     id: 'study-agent',
@@ -42,7 +91,21 @@ export const PROJECTS_DATA = [
     githubUrl: 'https://github.com/ManoaRANDRIANARISOA/study-agent',
     secondaryGithub: 'https://github.com/ManoaRANDRIANARISOA/lms',
     liveUrl: null,
-    role: 'Architecte Technique & Concepteur'
+    role: 'Architecte Technique & Concepteur',
+    en: {
+      title: 'Study-Agent / LMS',
+      type: 'Hybrid Desktop & Cloud School System',
+      status: 'In Production v1.2.2 (Lycée Manjary Soa)',
+      summary: 'Complete school and administrative management system deployed in production at a private education institution. Built on a strict Offline-First paradigm to withstand network outages.',
+      architecturePoints: [
+        'Offline-First architecture: ultra-fast local SQLite cache combined with Supabase / Postgres cloud sync as soon as the network returns.',
+        'Vector-based certified report card generation via jsPDF, with instant weighted grade computation.',
+        'Full management coverage: tuition, enrollments, fee payment tracking and internal accounting.',
+        'Packaged as an Electron application with a reactive React 19 and Tailwind CSS v4 interface.'
+      ],
+      metrics: 'Production v1.2.2 • 100% Offline Uptime',
+      role: 'Technical Architect & Designer'
+    }
   },
   {
     id: 'maboo',
@@ -62,7 +125,21 @@ export const PROJECTS_DATA = [
     metrics: 'Streaming SSR • TTFB Ultra-faible',
     githubUrl: 'https://github.com/ManoaRANDRIANARISOA/maboo_fe_overhaul',
     liveUrl: null,
-    role: 'Architecte & Lead Frontend'
+    role: 'Architecte & Lead Frontend',
+    en: {
+      title: 'Maboo E-Commerce & CMS',
+      type: 'Headless Storefront & Hybrid CMS',
+      status: 'Delivered & Deployed',
+      summary: 'Custom CMS and headless online store built with React 19 and React Router 7 SSR, optimized for international SEO and instant display performance.',
+      architecturePoints: [
+        'Migration to React Router 7 with hybrid SSR rendering and streaming of critical data.',
+        'Dynamic multilingual catalog engine (i18n) and fine-grained B2B quote and complex cart management.',
+        'Shipping management, automatic stock-out alerts and a unified administration interface.',
+        'Highly decoupled reactive state management via Zustand.'
+      ],
+      metrics: 'SSR Streaming • Ultra-low TTFB',
+      role: 'Architect & Lead Frontend'
+    }
   },
   {
     id: 'given-day-tech',
@@ -81,7 +158,20 @@ export const PROJECTS_DATA = [
     metrics: 'Équipe de 4 Ingénieurs • Cadrage de bout en bout',
     githubUrl: 'https://github.com/ManoaRANDRIANARISOA',
     liveUrl: null,
-    role: 'Architecte Technique & Lead Mobile'
+    role: 'Architecte Technique & Lead Mobile',
+    en: {
+      title: 'Given Day Tech',
+      type: 'Solidarity Mobile Application',
+      status: 'Mission Accomplished (France / Remote)',
+      summary: 'Led the technical architecture and coordinated a team of 4 developers to design a modern, resilient solidarity mobile application.',
+      architecturePoints: [
+        'Mobile-first software architecture with React Native and a Node.js / PostgreSQL backend.',
+        'Functional framing, deliverable prioritization following Agile Scrum principles and systematic code reviews.',
+        'Technical budget management, relational data schema modeling and testing strategy.'
+      ],
+      metrics: 'Team of 4 Engineers • End-to-End Framing',
+      role: 'Technical Architect & Mobile Lead'
+    }
   },
   {
     id: 'toutpoursagloire',
@@ -100,7 +190,20 @@ export const PROJECTS_DATA = [
     metrics: '-40% Temps de Chargement • Recherche Instantanée',
     githubUrl: 'https://toutpoursagloire.com',
     liveUrl: 'https://toutpoursagloire.com',
-    role: 'Développeur Full-Stack Senior'
+    role: 'Développeur Full-Stack Senior',
+    en: {
+      title: 'ToutPourSaGloire.com',
+      type: 'Media Platform & Search Engine',
+      status: 'In International Production',
+      summary: 'Refactored critical modules of a high-traffic media platform. Migration to a modern React / Next.js architecture with instant search.',
+      architecturePoints: [
+        'Complete overhaul of the "Series" section into a decoupled modular Next.js architecture.',
+        'GraphQL API integration and global query waterfall optimization.',
+        'Instant search infrastructure with Meilisearch, reducing loading time by 40%.'
+      ],
+      metrics: '-40% Loading Time • Instant Search',
+      role: 'Senior Full-Stack Developer'
+    }
   },
   {
     id: 'eqima',
@@ -119,6 +222,19 @@ export const PROJECTS_DATA = [
     metrics: '-70% Temps de Traitement • Zéro Saisie Manuelle',
     githubUrl: 'https://github.com/ManoaRANDRIANARISOA',
     liveUrl: null,
-    role: 'Ingénieur Full-Stack & OCR'
+    role: 'Ingénieur Full-Stack & OCR',
+    en: {
+      title: 'EQIMA — Accounting Dematerialization',
+      type: 'OCR Pipeline & Sage ERP Ingestion',
+      status: 'Enterprise Project Delivered',
+      summary: 'Automation of the accounting processing chain through an intelligent OCR pipeline coupled with the official Sage ERP API.',
+      architecturePoints: [
+        'Optical character recognition (OCR) detection and recognition pipeline to extract key data from supporting documents.',
+        'Bidirectional interfacing with the Sage API for automated journal entry recording.',
+        '70% reduction in administrative processing time for accounting teams.'
+      ],
+      metrics: '-70% Processing Time • Zero Manual Entry',
+      role: 'Full-Stack Engineer & OCR'
+    }
   }
 ];

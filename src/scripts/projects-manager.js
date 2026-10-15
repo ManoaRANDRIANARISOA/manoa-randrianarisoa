@@ -3,6 +3,7 @@
 // ==============================================================================
 import { PROJECTS_DATA } from './projects-data.js';
 import { sound } from './audio-engine.js';
+import { getLang, onLangChange, t } from './i18n.js';
 
 export function initProjectsManager() {
   const container = document.getElementById('projects-grid-container');
@@ -11,12 +12,25 @@ export function initProjectsManager() {
 
   let currentFilter = 'all';
 
+  function localize(project) {
+    if (getLang() === 'en' && project.en) {
+      return { ...project, ...project.en };
+    }
+    return project;
+  }
+
   function renderProjects(filter = 'all') {
-    const filtered = filter === 'all' 
-      ? PROJECTS_DATA 
+    const filtered = filter === 'all'
+      ? PROJECTS_DATA
       : PROJECTS_DATA.filter(p => p.category === filter);
 
     container.innerHTML = filtered.map(project => `
+      ${renderProjectCard(localize(project))}
+    `).join('');
+  }
+
+  function renderProjectCard(project) {
+    return `
       <article class="project-card ${project.featured ? 'featured' : ''}" data-id="${project.id}">
         <div>
           <div class="project-header-row">
@@ -49,30 +63,30 @@ export function initProjectsManager() {
 
             <div class="project-actions">
               ${project.githubUrl ? `
-                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="action-link" title="Consulter le code source sur GitHub">
+                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="action-link" title="${t('common.githubTitle')}">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>Code GitHub</span>
+                  <span>${t('common.codeGithub')}</span>
                 </a>
               ` : ''}
 
               ${project.secondaryGithub ? `
-                <a href="${project.secondaryGithub}" target="_blank" rel="noopener noreferrer" class="action-link" title="Repository LMS lié">
+                <a href="${project.secondaryGithub}" target="_blank" rel="noopener noreferrer" class="action-link" title="${t('common.lmsTitle')}">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span>LMS Repo</span>
+                  <span>${t('common.lmsRepo')}</span>
                 </a>
               ` : ''}
 
               ${project.liveUrl ? `
-                <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="action-link primary" title="Visiter le site en ligne">
+                <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="action-link primary" title="${t('common.liveTitle')}">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  <span>Site Live</span>
+                  <span>${t('common.siteLive')}</span>
                 </a>
               ` : ''}
             </div>
           </div>
         </div>
       </article>
-    `).join('');
+    `;
   }
 
   // Filter click events
@@ -85,6 +99,8 @@ export function initProjectsManager() {
       renderProjects(currentFilter);
     });
   });
+
+  onLangChange(() => renderProjects(currentFilter));
 
   renderProjects('all');
 }

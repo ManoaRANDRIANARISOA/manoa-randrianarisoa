@@ -10,8 +10,12 @@ import { initTerminal } from './terminal.js';
 import { initThemeManager } from './theme-manager.js';
 import { initScrollAnimations } from './scroll-animations.js';
 import { sound } from './audio-engine.js';
+import { initI18n, t, onLangChange } from './i18n.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Initialize Internationalization (before any dynamic rendering)
+  initI18n();
+
   // 1. Initialize Lucide Icons
   createIcons({ icons });
 
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (soundBtn) {
     const updateSoundUI = (enabled) => {
       soundBtn.classList.toggle('sound-on', enabled);
-      soundBtn.setAttribute('title', enabled ? 'Son télémétrique : Activé' : 'Son télémétrique : Muet');
+      soundBtn.setAttribute('title', t(enabled ? 'header.soundTitleOn' : 'header.soundTitleOff'));
       const iconWrap = soundBtn.querySelector('.sound-icon-wrap');
       if (iconWrap) {
         iconWrap.innerHTML = enabled
@@ -56,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const isEnabled = sound.toggle();
       updateSoundUI(isEnabled);
     });
+
+    onLangChange(() => updateSoundUI(sound.enabled));
   }
 
   // 10. CV Modal Triggers
@@ -133,9 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const val = btn.getAttribute('data-copy');
       navigator.clipboard.writeText(val).then(() => {
-        showToast(`✓ Copié dans le presse-papier : ${val}`);
+        showToast(`${t('common.copied')}${val}`);
       }).catch(() => {
-        showToast(`Copié : ${val}`);
+        showToast(`${t('common.copyFallback')}${val}`);
       });
     });
   });
@@ -152,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = contactForm.querySelector('#sender-message')?.value || '';
 
       sound.playClick();
-      formStatus.textContent = '✓ Message enregistré ! Redirection vers votre client mail...';
+      formStatus.textContent = t('contact.statusOk');
       formStatus.className = 'form-status-msg success';
 
       const mailtoUrl = `mailto:manoa.wrk@gmail.com?subject=Contact%20Portfolio%20de%20${encodeURIComponent(name)}&body=${encodeURIComponent(`De: ${name} (${email})\n\n${message}`)}`;
