@@ -4,145 +4,189 @@
 // ==============================================================================
 import { sound } from './audio-engine.js';
 import { setTheme } from './theme-manager.js';
-import { getLang } from './i18n.js';
+import { getLang, setLang } from './i18n.js';
 
 const TERM_STRINGS = {
   help: {
     fr: `
           <strong>COMMANDES DISPONIBLES :</strong><br>
-          • <span class="highlight">whoami / bio</span> : Profil exécutif & formation Master IA<br>
-          • <span class="highlight">projects</span>     : Liste des projets en production & liens GitHub<br>
-          • <span class="highlight">stack</span>        : Matrice des technologies maîtrisées<br>
-          • <span class="highlight">adrs</span>         : Registre des décisions d'architecture (ADRs)<br>
-          • <span class="highlight">metrics</span>      : Indicateurs de performance (-40% TTFB, -70% OCR...)<br>
-          • <span class="highlight">cv</span>           : Ouvrir le hub de téléchargement CV PDF<br>
-          • <span class="highlight">theme &lt;nom&gt;</span>  : Modifier le thème (cyan | emerald | amber | violet)<br>
-          • <span class="highlight">contact</span>      : Coordonnées directes (Email, Tél, GitHub)<br>
+          • <span class="highlight">whoami</span>       : Profil, formation et statut de disponibilité<br>
+          • <span class="highlight">journey</span>      : Parcours chronologique (missions, stage, enseignement, diplômes)<br>
+          • <span class="highlight">projects</span>     : Systèmes livrés & liens GitHub<br>
+          • <span class="highlight">stack</span>        : Matrice des technologies réellement utilisées<br>
+          • <span class="highlight">adrs</span>         : Registre des décisions d'architecture (ADR)<br>
+          • <span class="highlight">metrics</span>      : Chiffres clés, avec leur périmètre de mesure<br>
+          • <span class="highlight">cv</span>           : Ouvrir le hub de téléchargement CV (PDF)<br>
+          • <span class="highlight">theme &lt;nom&gt;</span>  : Couleur d'accent (teal | indigo | ochre | moss)<br>
+          • <span class="highlight">lang &lt;fr|en&gt;</span> : Basculer la langue du site<br>
+          • <span class="highlight">contact</span>      : Coordonnées directes<br>
           • <span class="highlight">clear</span>        : Effacer la console
         `,
     en: `
           <strong>AVAILABLE COMMANDS:</strong><br>
-          • <span class="highlight">whoami / bio</span> : Executive profile & AI MSc background<br>
-          • <span class="highlight">projects</span>     : List of production projects & GitHub links<br>
-          • <span class="highlight">stack</span>        : Mastered technology matrix<br>
-          • <span class="highlight">adrs</span>         : Architectural decision records (ADRs)<br>
-          • <span class="highlight">metrics</span>      : Performance indicators (-40% TTFB, -70% OCR...)<br>
-          • <span class="highlight">cv</span>           : Open the resume download hub<br>
-          • <span class="highlight">theme &lt;name&gt;</span> : Switch theme (cyan | emerald | amber | violet)<br>
-          • <span class="highlight">contact</span>      : Direct contact details (Email, Phone, GitHub)<br>
+          • <span class="highlight">whoami</span>       : Profile, education and availability status<br>
+          • <span class="highlight">journey</span>      : Chronological career path (missions, internship, teaching, degrees)<br>
+          • <span class="highlight">projects</span>     : Shipped systems & GitHub links<br>
+          • <span class="highlight">stack</span>        : Matrix of technologies actually used<br>
+          • <span class="highlight">adrs</span>         : Architectural decision records (ADR)<br>
+          • <span class="highlight">metrics</span>      : Key figures, with their measurement scope<br>
+          • <span class="highlight">cv</span>           : Open the resume download hub (PDF)<br>
+          • <span class="highlight">theme &lt;name&gt;</span> : Accent colour (teal | indigo | ochre | moss)<br>
+          • <span class="highlight">lang &lt;fr|en&gt;</span> : Switch the site language<br>
+          • <span class="highlight">contact</span>      : Direct contact details<br>
           • <span class="highlight">clear</span>        : Clear the console
         `
   },
   whoami: {
     fr: `
           <strong>MANOA RANDRIANARISOA</strong><br>
-          Architecte Technique & Développeur Full-Stack Senior<br>
-          Master Électronique, Informatique & IA (ISPM Antananarivo - 2024)<br>
-          Spécialisé dans la résilience des systèmes (Offline-First), le multi-tenant cloud et les architectures robustes.
+          Architecte technique & développeur full-stack senior — Antananarivo, Madagascar (UTC+3)<br>
+          Master Électronique, Informatique & IA (ISPM) : soutenu et validé, diplôme en cours d'émission.<br>
+          Licence Électronique & Informatique (ISPM, 2018—2022).<br>
+          Spécialisé dans la résilience des systèmes (offline-first), le multi-tenant cloud et l'encadrement d'équipes remote.
         `,
     en: `
           <strong>MANOA RANDRIANARISOA</strong><br>
-          Technical Architect & Senior Full-Stack Developer<br>
-          MSc Electronics, Computer Science & AI (ISPM Antananarivo - 2024)<br>
-          Specialized in system resilience (Offline-First), cloud multi-tenancy and robust architectures.
+          Technical architect & senior full-stack developer — Antananarivo, Madagascar (UTC+3)<br>
+          MSc Electronics, Computer Science & AI (ISPM): defended and validated, diploma pending issuance.<br>
+          Bachelor's in Electronics & Computer Science (ISPM, 2018—2022).<br>
+          Specialized in system resilience (offline-first), cloud multi-tenancy and mentoring remote teams.
+        `
+  },
+  journey: {
+    fr: `
+          <strong>FIL DU PARCOURS :</strong><br>
+          • 2025 — présent : Consultant indépendant / architecte technique (ANKA, ResHPro, Study-Agent, Maboo)<br>
+          • 2025 — 2026    : Architecte technique & lead mobile, Given Day Tech (France, associatif) — 4 développeurs<br>
+          • 2025 — présent : Développeur full-stack senior, ToutPourSaGloire.com (international)<br>
+          • 2023 — 2024    : Développeur CMS & designer UI/UX, RICSM (États-Unis, remote) via IKS Antananarivo<br>
+          • 2022 (6 mois)  : Stage full-stack & pipeline OCR, EQIMA (Antananarivo)<br>
+          • 2020 — 2023    : Enseignant vacataire en informatique, électronique et mathématiques appliquées<br>
+          • 2022 — 2024    : Master Électronique, Informatique & IA — ISPM<br>
+          • 2018 — 2022    : Licence Électronique & Informatique — ISPM
+        `,
+    en: `
+          <strong>CAREER THREAD:</strong><br>
+          • 2025 — present : Independent consultant / technical architect (ANKA, ResHPro, Study-Agent, Maboo)<br>
+          • 2025 — 2026    : Technical architect & mobile lead, Given Day Tech (France, non-profit) — 4 developers<br>
+          • 2025 — present : Senior full-stack developer, ToutPourSaGloire.com (international)<br>
+          • 2023 — 2024    : CMS developer & UI/UX designer, RICSM (United States, remote) via IKS Antananarivo<br>
+          • 2022 (6 months): Full-stack & OCR pipeline internship, EQIMA (Antananarivo)<br>
+          • 2020 — 2023    : Part-time teacher in computer science, electronics and applied mathematics<br>
+          • 2022 — 2024    : MSc Electronics, Computer Science & AI — ISPM<br>
+          • 2018 — 2022    : Bachelor's in Electronics & Computer Science — ISPM
         `
   },
   projects: {
     fr: `
-          <strong>PROJETS MAJEURS :</strong><br>
-          1. <strong>ANKA (AFD / Digital Energy Challenge)</strong> : Collecte Terrain ESG Offline-First [45 exigences tracées / PWA React-Dexie / NestJS / 14 j offline]<br>
-          2. <strong>ResHPro</strong> : SaaS Multi-tenant Hôtellerie, POS & Stocks [React 18 / PostgreSQL / RBAC]<br>
-          3. <strong>Study-Agent / LMS</strong> : ERP Scolaire v1.2.2 en Production [Offline-First / Electron / SQLite / Supabase]<br>
-          4. <strong>Maboo</strong> : E-Commerce Headless & CMS [React 19 / React Router 7 SSR / Zustand]<br>
-          5. <strong>Given Day Tech</strong> : Lead Mobile & Archi (Équipe de 4) [React Native / Node.js]<br>
-          6. <strong>ToutPourSaGloire.com</strong> : Média & Moteur Meilisearch [-40% temps de chargement]<br>
-          7. <strong>EQIMA</strong> : OCR & Ingestion Sage ERP [-70% traitement factures]
+          <strong>SYSTÈMES LIVRÉS :</strong><br>
+          1. <strong>ANKA (AFD / Digital Energy Challenge)</strong> — collecte terrain ESG offline-first [45 exigences tracées · PWA React-Dexie · NestJS · 14 j hors-ligne]<br>
+          2. <strong>ResHPro</strong> — SaaS multi-tenant hôtellerie, POS & stocks [React 18 · PostgreSQL · RBAC]<br>
+          3. <strong>Study-Agent / LMS</strong> — ERP scolaire en production locale [offline-first · Electron · SQLite · Supabase]<br>
+          4. <strong>Maboo</strong> — boutique headless, contribution frontend [React 19 · React Router 7 SSR · Zustand] — code client non public<br>
+          5. <strong>Given Day Tech</strong> — lead mobile & architecture, équipe de 4 [React Native · Node.js]<br>
+          6. <strong>ToutPourSaGloire.com</strong> — plateforme média & moteur Meilisearch [-40% temps de chargement]<br>
+          7. <strong>EQIMA</strong> — stage : pipeline OCR & ingestion Sage ERP [-70% temps de traitement]<br>
+          <span class="system-msg">Les dépôts clients sont privés pour raisons contractuelles ; les dépôts personnels sont publics.</span>
         `,
     en: `
-          <strong>MAJOR PROJECTS:</strong><br>
-          1. <strong>ANKA (AFD / Digital Energy Challenge)</strong> : Offline-First ESG field collection [45 traced requirements / PWA React-Dexie / NestJS / 14 days offline]<br>
-          2. <strong>ResHPro</strong> : Multi-tenant Hospitality SaaS, POS & Inventory [React 18 / PostgreSQL / RBAC]<br>
-          3. <strong>Study-Agent / LMS</strong> : School ERP v1.2.2 In Production [Offline-First / Electron / SQLite / Supabase]<br>
-          4. <strong>Maboo</strong> : Headless E-Commerce & CMS [React 19 / React Router 7 SSR / Zustand]<br>
-          5. <strong>Given Day Tech</strong> : Mobile & Archi Lead (Team of 4) [React Native / Node.js]<br>
-          6. <strong>ToutPourSaGloire.com</strong> : Media Platform & Meilisearch Engine [-40% loading time]<br>
-          7. <strong>EQIMA</strong> : OCR & Sage ERP Ingestion [-70% invoice processing]
+          <strong>SHIPPED SYSTEMS:</strong><br>
+          1. <strong>ANKA (AFD / Digital Energy Challenge)</strong> — offline-first ESG field collection [45 traced requirements · PWA React-Dexie · NestJS · 14 days offline]<br>
+          2. <strong>ResHPro</strong> — multi-tenant hospitality, POS & inventory SaaS [React 18 · PostgreSQL · RBAC]<br>
+          3. <strong>Study-Agent / LMS</strong> — school ERP in local production [offline-first · Electron · SQLite · Supabase]<br>
+          4. <strong>Maboo</strong> — headless storefront, frontend contribution [React 19 · React Router 7 SSR · Zustand] — client code not public<br>
+          5. <strong>Given Day Tech</strong> — mobile & architecture lead, team of 4 [React Native · Node.js]<br>
+          6. <strong>ToutPourSaGloire.com</strong> — media platform & Meilisearch engine [-40% loading time]<br>
+          7. <strong>EQIMA</strong> — internship: OCR pipeline & Sage ERP ingestion [-70% processing time]<br>
+          <span class="system-msg">Client repositories are private for contractual reasons; personal repositories are public.</span>
         `
   },
   stack: {
     fr: `
           <strong>COMPÉTENCES PRINCIPALES :</strong><br>
           • Frontend : React 18/19, TypeScript, Next.js, React Native, Tailwind CSS, Vite, Zustand<br>
-          • Backend : Node.js, Express 5, PostgreSQL, Supabase, SQLite (WAL Mode), GraphQL, REST<br>
-          • Systèmes & Archi : SaaS Multi-tenant, RBAC, Electron, Docker, CI/CD, Git, Linux<br>
-          • Données & IA : Python, TensorFlow, OpenCV, Algorithmique avancée
+          • Backend : Node.js, NestJS, Express 5, PostgreSQL, Supabase, SQLite (mode WAL), GraphQL, REST<br>
+          • Systèmes & architecture : SaaS multi-tenant, RBAC, offline-first, Electron, Docker, CI/CD, Git, Linux<br>
+          • Données & IA : Python, OpenCV, TensorFlow, algorithmique
         `,
     en: `
           <strong>CORE SKILLS:</strong><br>
           • Frontend: React 18/19, TypeScript, Next.js, React Native, Tailwind CSS, Vite, Zustand<br>
-          • Backend: Node.js, Express 5, PostgreSQL, Supabase, SQLite (WAL Mode), GraphQL, REST<br>
-          • Systems & Arch: Multi-tenant SaaS, RBAC, Electron, Docker, CI/CD, Git, Linux<br>
-          • Data & AI: Python, TensorFlow, OpenCV, Advanced algorithms
+          • Backend: Node.js, NestJS, Express 5, PostgreSQL, Supabase, SQLite (WAL mode), GraphQL, REST<br>
+          • Systems & architecture: multi-tenant SaaS, RBAC, offline-first, Electron, Docker, CI/CD, Git, Linux<br>
+          • Data & AI: Python, OpenCV, TensorFlow, algorithms
         `
   },
   adrs: {
     fr: `
           <strong>ARCHITECTURAL DECISION RECORDS :</strong><br>
-          • ADR-001 : Choix Offline-First SQLite (WAL) + Supabase pour résister aux pannes réseau.<br>
-          • ADR-002 : Isolation logique multi-tenant (PostgreSQL Row-Level Security) vs multi-instances.<br>
-          • ADR-003 : Migration React Router 7 SSR avec streaming de flux pour Maboo.
+          • ADR-001 (adopté, en production) : offline-first SQLite (WAL) + Supabase pour résister aux coupures réseau.<br>
+          • ADR-002 (cadré, migration en cours) : isolation multi-tenant par PostgreSQL Row-Level Security vs multi-bases.<br>
+          • ADR-003 (déployé) : rendu SSR React Router 7 avec streaming des blocs non critiques pour Maboo.
         `,
     en: `
           <strong>ARCHITECTURAL DECISION RECORDS:</strong><br>
-          • ADR-001: Offline-First SQLite (WAL) + Supabase choice to withstand network outages.<br>
-          • ADR-002: Logical multi-tenant isolation (PostgreSQL Row-Level Security) vs multi-instances.<br>
-          • ADR-003: React Router 7 SSR migration with stream rendering for Maboo.
+          • ADR-001 (adopted, in production): offline-first SQLite (WAL) + Supabase to withstand network outages.<br>
+          • ADR-002 (framed, migration in progress): multi-tenant isolation via PostgreSQL Row-Level Security vs multi-database.<br>
+          • ADR-003 (deployed): React Router 7 SSR rendering with streaming of non-critical blocks for Maboo.
         `
   },
   metrics: {
     fr: `
-          <strong>BENCHMARKS & RÉSULTATS :</strong><br>
-          • 100% Disponibilité locale en mode hors-ligne (Study-Agent)<br>
-          • -40% Latence globale grâce à Meilisearch & SSR (ToutPourSaGloire / Maboo)<br>
-          • -70% Temps de traitement administratif par automatisation OCR & Sage ERP (EQIMA)<br>
-          • Équipe de 4 ingénieurs pilotée avec succès (Given Day Tech)
+          <strong>CHIFFRES CLÉS & PÉRIMÈTRE :</strong><br>
+          • Saisie et édition de bulletins sans aucun appel réseau — Study-Agent, ERP scolaire en production (Lycée Manjary Soa)<br>
+          • -40% de temps de chargement — ToutPourSaGloire.com, après Meilisearch + refonte Next.js<br>
+          • -70% de temps de traitement comptable — EQIMA, pipeline OCR vers Sage ERP (stage, 2022)<br>
+          • 45 exigences tracées (TR-01 → TR-45) — ANKA, matrice de traçabilité du TDR bailleur AFD<br>
+          • 4 développeurs encadrés en remote — Given Day Tech<br>
+          <span class="system-msg">Mesures relevées en environnement de développement ou sur périmètre constaté, pas des engagements de service.</span>
         `,
     en: `
-          <strong>BENCHMARKS & RESULTS:</strong><br>
-          • 100% Local availability in offline mode (Study-Agent)<br>
-          • -40% Global latency thanks to Meilisearch & SSR (ToutPourSaGloire / Maboo)<br>
-          • -70% Administrative processing time via OCR & Sage ERP automation (EQIMA)<br>
-          • Team of 4 engineers successfully steered (Given Day Tech)
+          <strong>KEY FIGURES & SCOPE:</strong><br>
+          • Grade entry and report-card generation with no network call at all — Study-Agent, school ERP in production (Manjary Soa High School)<br>
+          • -40% loading time — ToutPourSaGloire.com, after Meilisearch + Next.js overhaul<br>
+          • -70% accounting processing time — EQIMA, OCR pipeline into Sage ERP (internship, 2022)<br>
+          • 45 traced requirements (TR-01 → TR-45) — ANKA, traceability matrix for the AFD terms of reference<br>
+          • 4 developers mentored remotely — Given Day Tech<br>
+          <span class="system-msg">Measured in development environments or on an observed scope, not service commitments.</span>
         `
   },
   cv: {
-    fr: "Ouverture du sélecteur de curriculum vitae...",
-    en: 'Opening the resume selector...'
+    fr: 'Ouverture du sélecteur de curriculum vitae…',
+    en: 'Opening the resume selector…'
   },
   themeOk: {
-    fr: 'Thème appliqué : <strong>{theme}</strong>',
-    en: 'Theme applied: <strong>{theme}</strong>'
+    fr: 'Accent appliqué : <strong>{theme}</strong>',
+    en: 'Accent applied: <strong>{theme}</strong>'
   },
   themeErr: {
-    fr: 'Thème inconnu "{arg}". Utilisez : cyan, emerald, amber, violet.',
-    en: 'Unknown theme "{arg}". Use: cyan, emerald, amber, violet.'
+    fr: 'Accent inconnu "{arg}". Utilisez : teal, indigo, ochre, moss.',
+    en: 'Unknown accent "{arg}". Use: teal, indigo, ochre, moss.'
+  },
+  langOk: {
+    fr: 'Langue du site : <strong>français</strong>.',
+    en: 'Site language: <strong>English</strong>.'
+  },
+  langErr: {
+    fr: 'Langue inconnue "{arg}". Utilisez : fr ou en.',
+    en: 'Unknown language "{arg}". Use: fr or en.'
   },
   contact: {
     fr: `
           <strong>COORDONNÉES DE CONTACT :</strong><br>
-          • Email    : <a href="mailto:manoa.wrk@gmail.com" style="color:var(--accent-primary)">manoa.wrk@gmail.com</a><br>
-          • Téléphone: <a href="tel:+261347151789" style="color:var(--accent-primary)">+261 34 71 517 89</a><br>
-          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" style="color:var(--accent-primary)">github.com/ManoaRANDRIANARISOA</a><br>
-          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" style="color:var(--accent-primary)">linkedin.com/in/manoa-randrianarisoa</a><br>
-          • Statut   : Disponible immédiatement (Remote ou Local)
+          • Email    : <a href="mailto:manoa.wrk@gmail.com" style="color:var(--accent)">manoa.wrk@gmail.com</a><br>
+          • Téléphone: <a href="tel:+261347151789" style="color:var(--accent)">+261 34 71 517 89</a><br>
+          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" style="color:var(--accent)">github.com/ManoaRANDRIANARISOA</a><br>
+          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" style="color:var(--accent)">linkedin.com/in/manoa-randrianarisoa</a><br>
+          • Statut   : disponible immédiatement (remote monde entier ou sur site)
         `,
     en: `
           <strong>CONTACT DETAILS:</strong><br>
-          • Email    : <a href="mailto:manoa.wrk@gmail.com" style="color:var(--accent-primary)">manoa.wrk@gmail.com</a><br>
-          • Phone    : <a href="tel:+261347151789" style="color:var(--accent-primary)">+261 34 71 517 89</a><br>
-          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" style="color:var(--accent-primary)">github.com/ManoaRANDRIANARISOA</a><br>
-          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" style="color:var(--accent-primary)">linkedin.com/in/manoa-randrianarisoa</a><br>
-          • Status   : Immediately available (Remote or On-site)
+          • Email    : <a href="mailto:manoa.wrk@gmail.com" style="color:var(--accent)">manoa.wrk@gmail.com</a><br>
+          • Phone    : <a href="tel:+261347151789" style="color:var(--accent)">+261 34 71 517 89</a><br>
+          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" style="color:var(--accent)">github.com/ManoaRANDRIANARISOA</a><br>
+          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" style="color:var(--accent)">linkedin.com/in/manoa-randrianarisoa</a><br>
+          • Status   : immediately available (remote worldwide or on-site)
         `
   },
   unknown: {
@@ -171,16 +215,26 @@ export function initTerminal() {
 
   const commandHistory = [];
   let historyIdx = -1;
+  let trigger = null;
 
   function openTerminal() {
+    if (modal.classList.contains('active')) return;
+    trigger = document.activeElement;
     modal.classList.add('active');
+    modal.removeAttribute('inert');
+    document.dispatchEvent(new CustomEvent('overlay:toggle'));
     inputEl.focus();
     sound.playClick();
   }
 
   function closeTerminal() {
+    if (!modal.classList.contains('active')) return;
     modal.classList.remove('active');
+    modal.setAttribute('inert', '');
+    document.dispatchEvent(new CustomEvent('overlay:toggle'));
     sound.playClick();
+    if (trigger?.isConnected) trigger.focus();
+    trigger = null;
   }
 
   openBtns.forEach(btn => btn.addEventListener('click', openTerminal));
@@ -237,6 +291,12 @@ export function initTerminal() {
         sound.playClick();
         break;
 
+      case 'journey':
+      case 'parcours':
+        appendLine(pick('journey'));
+        sound.playClick();
+        break;
+
       case 'projects':
         appendLine(pick('projects'));
         sound.playClick();
@@ -260,17 +320,27 @@ export function initTerminal() {
       case 'cv':
         appendLine(pick('cv'), 'highlight');
         closeTerminal();
-        const cvModal = document.getElementById('cv-modal');
-        if (cvModal) cvModal.classList.add('active');
+        document.dispatchEvent(new CustomEvent('cv:open'));
         sound.playClick();
         break;
 
       case 'theme':
-        if (['cyan', 'emerald', 'amber', 'violet'].includes(arg)) {
+        if (['teal', 'indigo', 'ochre', 'moss'].includes(arg)) {
           setTheme(arg, true);
-          appendLine(pick('themeOk', { theme: arg.toUpperCase() }), 'success');
+          appendLine(pick('themeOk', { theme: arg }), 'success');
         } else {
           appendLine(pick('themeErr', { arg: escapeHtml(arg) }), 'error');
+          sound.playError();
+        }
+        break;
+
+      case 'lang':
+      case 'language':
+        if (['fr', 'en'].includes(arg)) {
+          setLang(arg);
+          appendLine(pick('langOk'), 'success');
+        } else {
+          appendLine(pick('langErr', { arg: escapeHtml(arg) }), 'error');
           sound.playError();
         }
         break;

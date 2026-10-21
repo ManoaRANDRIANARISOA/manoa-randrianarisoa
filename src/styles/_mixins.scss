@@ -2,10 +2,10 @@
 // MIXINS & HELPERS
 // ==============================================================================
 
-@mixin glass($bg: var(--bg-card), $blur: 16px, $border: var(--border-subtle)) {
+@mixin glass($bg: var(--bg-veil), $blur: 14px, $border: var(--line)) {
   background: $bg;
-  backdrop-filter: blur($blur);
-  -webkit-backdrop-filter: blur($blur);
+  backdrop-filter: blur($blur) saturate(1.2);
+  -webkit-backdrop-filter: blur($blur) saturate(1.2);
   border: 1px solid $border;
 }
 
@@ -21,18 +21,18 @@
   justify-content: space-between;
 }
 
-@mixin gradient-text($gradient: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary) 100%)) {
+@mixin gradient-text($gradient: linear-gradient(135deg, var(--text) 30%, var(--accent) 100%)) {
   background: $gradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-@mixin blueprint-grid {
-  background-image: 
-    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
-  background-size: 36px 36px;
+@mixin blueprint-grid($size: 34px) {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: $size $size;
 }
 
 @mixin custom-scrollbar {
@@ -41,14 +41,51 @@
     height: 6px;
   }
   &::-webkit-scrollbar-track {
-    background: rgba(7, 9, 14, 0.5);
+    background: var(--bg-sunken);
   }
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 9999px;
+    background: var(--line-strong);
+    border-radius: var(--radius-full);
     &:hover {
-      background: var(--accent-primary);
+      background: var(--accent);
     }
+  }
+}
+
+// Raised card sitting on the current surface
+@mixin card($radius: var(--radius-lg)) {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: $radius;
+  box-shadow: var(--shadow-1);
+}
+
+// Small uppercase mono annotation, the "handwriting" of the drawing sheet
+@mixin mono-label($size: 0.7rem, $color: var(--text-3)) {
+  font-family: var(--font-mono);
+  font-size: $size;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+// Line-mask reveal: the child slides up from behind an overflow-hidden edge.
+// Pair with the .reveal / .is-in classes driven by scroll-animations.js.
+@mixin line-mask {
+  display: block;
+  overflow: hidden;
+
+  > * {
+    display: block;
+    transform: translateY(105%);
+    transition: transform 0.9s var(--ease-smooth);
   }
 }
 
@@ -73,6 +110,12 @@
 
 @mixin large {
   @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
     @content;
   }
 }

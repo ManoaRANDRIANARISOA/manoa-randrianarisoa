@@ -1,35 +1,40 @@
 // ==============================================================================
-// THEME & ACCENT SWITCHER (CYAN / EMERALD / AMBER / VIOLET)
+// ACCENT SWITCHER (TEAL / INDIGO / OCHRE / MOSS)
 // ==============================================================================
 import { sound } from './audio-engine.js';
 
-export function initThemeManager() {
-  const savedTheme = localStorage.getItem('manoa_arch_theme') || 'cyan';
-  setTheme(savedTheme, false);
+const ACCENTS = ['teal', 'indigo', 'ochre', 'moss'];
+const STORAGE_KEY = 'manoa_arch_accent';
+const LEGACY_KEY = 'manoa_arch_theme';
 
-  const themeBtns = document.querySelectorAll('.theme-color-btn');
-  themeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const theme = btn.getAttribute('data-theme');
-      setTheme(theme, true);
-    });
+function readSavedAccent() {
+  const saved = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_KEY);
+  localStorage.removeItem(LEGACY_KEY);
+  return ACCENTS.includes(saved) ? saved : 'teal';
+}
+
+export function initThemeManager() {
+  setTheme(readSavedAccent(), false);
+
+  document.querySelectorAll('.theme-color-btn').forEach((btn) => {
+    btn.addEventListener('click', () => setTheme(btn.getAttribute('data-theme'), true));
   });
 }
 
 export function setTheme(themeName, playAudio = true) {
-  if (themeName === 'cyan') {
+  const accent = ACCENTS.includes(themeName) ? themeName : 'teal';
+
+  if (accent === 'teal') {
     document.documentElement.removeAttribute('data-theme');
   } else {
-    document.documentElement.setAttribute('data-theme', themeName);
+    document.documentElement.setAttribute('data-theme', accent);
   }
 
-  localStorage.setItem('manoa_arch_theme', themeName);
+  localStorage.setItem(STORAGE_KEY, accent);
 
-  document.querySelectorAll('.theme-color-btn').forEach(b => {
-    b.classList.toggle('active', b.getAttribute('data-theme') === themeName);
+  document.querySelectorAll('.theme-color-btn').forEach((b) => {
+    b.classList.toggle('active', b.getAttribute('data-theme') === accent);
   });
 
-  if (playAudio) {
-    sound.playClick();
-  }
+  if (playAudio) sound.playClick();
 }

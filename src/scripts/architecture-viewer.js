@@ -17,17 +17,17 @@ const ARCH_NODES_DATA = [
     id: 'edge-client',
     index: '01',
     name: {
-      fr: 'Clients & Runtime Multi-Environnement',
-      en: 'Multi-Environment Clients & Runtime'
+      fr: 'Clients & runtime multi-environnement',
+      en: 'Multi-environment clients & runtime'
     },
-    badge: { fr: 'Desktop & Web & Mobile', en: 'Desktop & Web & Mobile' },
+    badge: { fr: 'Desktop · web · mobile', en: 'Desktop · web · mobile' },
     desc: {
       fr: 'Applications clientes découplées conçues pour fonctionner en environnements contraints, hybrides ou connectés.',
       en: 'Decoupled client applications designed to run in constrained, hybrid or connected environments.'
     },
-    latency: '< 1ms',
+    latency: '< 1 ms',
     protocol: 'IPC / HTTP/2',
-    health: { fr: '100% DISPONIBLE', en: '100% AVAILABLE' },
+    status: { fr: 'En production — Study-Agent', en: 'In production — Study-Agent' },
     tech: 'Electron • React 19 • React Native • Tailwind v4',
     guarantees: {
       fr: 'Rendu optimisé sans blocage du thread principal, bundling modulaire et consommation mémoire maîtrisée.',
@@ -37,11 +37,19 @@ const ARCH_NODES_DATA = [
       fr: "Choix d'Electron pour Study-Agent afin de garantir une installation locale autonome sous Windows avec pilote d'impression direct (jsPDF).",
       en: 'Electron chosen for Study-Agent to guarantee a standalone local installation on Windows with a direct print driver (jsPDF).'
     },
-    metrics: { 'Memory Base': '~65 MB', 'Cold Start': '< 750ms' },
-    codeSnippet: `// Study-Agent (Lycée Manjary Soa) - IPC Bridge
-const { ipcRenderer } = require('electron');
+    metrics: [
+      {
+        key: { fr: 'Mémoire résidente', en: 'Resident memory' },
+        value: { fr: '~65 Mo (dev)', en: '~65 MB (dev)' }
+      },
+      {
+        key: { fr: 'Démarrage à froid', en: 'Cold start' },
+        value: '~750 ms (dev)'
+      }
+    ],
+    codeSnippet: `// Study-Agent (Lycée Manjary Soa) - bridge IPC exposé au renderer via contextBridge
 export const printReportCard = async (studentId, grades) => {
-  return await ipcRenderer.invoke('generate-bulletin-pdf', {
+  return await window.api.invoke('generate-bulletin-pdf', {
     studentId,
     grades,
     sealVerification: true
@@ -53,17 +61,20 @@ export const printReportCard = async (studentId, grades) => {
     id: 'local-persistence',
     index: '02',
     name: {
-      fr: 'Persistance Locale & Cache Résilient',
-      en: 'Local Persistence & Resilient Cache'
+      fr: 'Persistance locale & cache résilient',
+      en: 'Local persistence & resilient cache'
     },
-    badge: { fr: 'Offline-First Engine', en: 'Offline-First Engine' },
+    badge: { fr: 'Moteur offline-first', en: 'Offline-first engine' },
     desc: {
-      fr: 'Moteur de base de données embarqué à latence zéro pour éliminer toute dépendance au réseau en temps réel.',
-      en: 'Zero-latency embedded database engine eliminating any real-time network dependency.'
+      fr: 'Moteur de base de données embarqué : les écritures passent par le disque local, jamais par le réseau.',
+      en: 'Embedded database engine: writes go to local disk, never through the network.'
     },
-    latency: '0.2 ms',
+    latency: '< 1 ms',
     protocol: 'SQLite WAL / IndexedDB',
-    health: { fr: 'ZERO PERTE', en: 'ZERO LOSS' },
+    status: {
+      fr: 'En production locale — Lycée Manjary Soa',
+      en: 'In local production — Manjary Soa School'
+    },
     tech: 'SQLite (WAL Mode) • Better-SQLite3 • IndexedDB',
     guarantees: {
       fr: 'Transactions atomiques ACID locales, journal de modifications (Delta Queue) persistant même après coupure de courant.',
@@ -73,33 +84,42 @@ export const printReportCard = async (studentId, grades) => {
       fr: "Le mode WAL (Write-Ahead Logging) permet des lectures simultanées sans bloquer l'écriture des notes scolaires et mouvements de stocks.",
       en: 'WAL mode (Write-Ahead Logging) allows concurrent reads without blocking writes of school grades and stock movements.'
     },
-    metrics: { 'Write Latency': '0.18ms', 'Offline Max': { fr: 'Illimité', en: 'Unlimited' } },
+    metrics: [
+      {
+        key: { fr: "Latence d'écriture", en: 'Write latency' },
+        value: '< 1 ms (dev)'
+      },
+      {
+        key: { fr: 'Autonomie hors-ligne', en: 'Offline endurance' },
+        value: { fr: 'Non bornée (disque)', en: 'Unbounded (disk)' }
+      }
+    ],
     codeSnippet: `// Offline-First WAL Transaction Engine
 db.pragma('journal_mode = WAL');
+const insertLedgerEntry = db.prepare(\`INSERT INTO local_audit_ledger
+  (id, tenant_id, payload, synced) VALUES (?, ?, ?, 0)\`);
 db.transaction((entries) => {
   for (const entry of entries) {
-    db.prepare(\`INSERT INTO local_audit_ledger
-      (id, tenant_id, payload, synced) VALUES (?, ?, ?, 0)\`
-    ).run(entry.id, entry.tenantId, entry.json);
+    insertLedgerEntry.run(entry.id, entry.tenantId, entry.json);
   }
-})();`,
+})(pendingEntries);`,
     groundedProject: { fr: 'Study-Agent (Lycée Privé Manjary Soa)', en: 'Study-Agent (Manjary Soa Private School)' }
   },
   {
     id: 'sync-gateway',
     index: '03',
     name: {
-      fr: 'Sync Gateway, RBAC & Déduplication',
-      en: 'Sync Gateway, RBAC & Deduplication'
+      fr: 'Sync gateway, RBAC & déduplication',
+      en: 'Sync gateway, RBAC & deduplication'
     },
-    badge: { fr: 'Middleware & Security', en: 'Middleware & Security' },
+    badge: { fr: 'Middleware & sécurité', en: 'Middleware & security' },
     desc: {
       fr: "Passerelle d'orchestration assurant le contrôle d'accès granulaire et la réconciliation bidirectionnelle idempotente.",
       en: 'Orchestration gateway ensuring granular access control and idempotent bidirectional reconciliation.'
     },
-    latency: '15 - 35 ms',
+    latency: '15 – 35 ms',
     protocol: 'REST / GraphQL / WebSockets',
-    health: { fr: 'STRICT RBAC', en: 'STRICT RBAC' },
+    status: { fr: 'En production — ResHPro', en: 'In production — ResHPro' },
     tech: 'Express 5 • Zod Validation • JWT Claims • Sync Workers',
     guarantees: {
       fr: 'Filtrage strict par rôle (Directeur, Comptable, Enseignant, Réceptionniste), rejet immédiat des requêtes hors-schéma.',
@@ -109,7 +129,16 @@ db.transaction((entries) => {
       fr: 'Détection de conflits basée sur des horodatages vectoriels (Vector Clocks) et résolution automatique "Last-Write-Wins" sécurisée par audit.',
       en: 'Conflict detection based on vector timestamps (Vector Clocks) and audited "Last-Write-Wins" automatic resolution.'
     },
-    metrics: { 'Auth Overhead': '< 3ms', 'Deduplication': '100% Idempotent' },
+    metrics: [
+      {
+        key: { fr: "Contrôle d'accès", en: 'Access control' },
+        value: { fr: 'JWT vérifié en mémoire', en: 'In-memory JWT check' }
+      },
+      {
+        key: { fr: 'Déduplication', en: 'Deduplication' },
+        value: { fr: 'Idempotente par conception', en: 'Idempotent by design' }
+      }
+    ],
     codeSnippet: `// Multi-Tenant RBAC Middleware (ResHPro)
 export const requireTenantPermission = (perm) => (req, res, next) => {
   const { user, tenant } = req.authClaims;
@@ -125,28 +154,41 @@ export const requireTenantPermission = (perm) => (req, res, next) => {
     id: 'cloud-primary',
     index: '04',
     name: {
-      fr: 'Persistance Cloud & Isolation Multi-Tenant',
-      en: 'Cloud Persistence & Multi-Tenant Isolation'
+      fr: 'Persistance cloud & isolation multi-tenant',
+      en: 'Cloud persistence & multi-tenant isolation'
     },
-    badge: { fr: 'Distributed Database', en: 'Distributed Database' },
+    badge: { fr: 'Base distribuée', en: 'Distributed database' },
     desc: {
-      fr: 'Cluster relationnel hébergeant le schéma unifié avec isolation logique stricte (Row-Level Security) et réplication continue.',
-      en: 'Relational cluster hosting the unified schema with strict logical isolation (Row-Level Security) and continuous replication.'
+      fr: 'Cluster relationnel hébergeant le schéma unifié, avec réplication continue et cloisonnement des locataires.',
+      en: 'Relational cluster hosting the unified schema, with continuous replication and tenant segregation.'
     },
-    latency: '28 ms',
+    latency: '~28 ms',
     protocol: 'PostgreSQL / Supabase',
-    health: { fr: '99.99% DISPONIBLE', en: '99.99% AVAILABLE' },
+    status: {
+      fr: 'Cible de migration — RLS (ADR-002)',
+      en: 'Migration target — RLS (ADR-002)'
+    },
+    target: true,
     tech: 'PostgreSQL 16 • Supabase • Connection Pooling (PgBouncer)',
     guarantees: {
-      fr: 'Cloisonnement étanche des locataires (Tenants), transactions financières vérifiables, sauvegardes incrémentales.',
-      en: 'Air-tight tenant segregation, verifiable financial transactions, incremental backups.'
+      fr: "Cloisonnement des locataires, transactions financières vérifiables, sauvegardes incrémentales. L'isolation est aujourd'hui portée par la couche applicative ; le passage à Row-Level Security est prototypé.",
+      en: "Tenant segregation, verifiable financial transactions, incremental backups. Isolation is currently enforced at the application layer; the move to Row-Level Security is prototyped."
     },
     tradeoff: {
-      fr: "Choix de l'isolation logique (Single DB, Row-Level Security) vs Multi-DB pour réduire les coûts d'infrastructure par 5 tout en garantissant l'étanchéité.",
-      en: 'Logical isolation (Single DB, Row-Level Security) chosen over Multi-DB to cut infrastructure costs by 5 while guaranteeing airtightness.'
+      fr: "Choix de l'isolation logique (Single DB, Row-Level Security) vs Multi-DB pour diviser les coûts d'infrastructure par ~5 à étanchéité égale.",
+      en: 'Logical isolation (Single DB, Row-Level Security) chosen over Multi-DB to cut infrastructure costs by ~5 at equal airtightness.'
     },
-    metrics: { 'Tenant Isolation': 'Strict RLS', 'Pooling': 'PgBouncer' },
-    codeSnippet: `-- Row-Level Security Policy (ResHPro)
+    metrics: [
+      {
+        key: { fr: 'Isolation tenant', en: 'Tenant isolation' },
+        value: { fr: 'Applicative → RLS (cible)', en: 'App layer → RLS (target)' }
+      },
+      {
+        key: 'Pooling',
+        value: 'PgBouncer (cible / target)'
+      }
+    ],
+    codeSnippet: `-- Row-Level Security Policy (cible ResHPro / repo démo offline-sync-engine)
 ALTER TABLE reservations ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY tenant_isolation_policy ON reservations
@@ -158,27 +200,42 @@ CREATE POLICY tenant_isolation_policy ON reservations
     id: 'search-analytics',
     index: '05',
     name: {
-      fr: 'Moteur de Recherche & Analytics Décisionnels',
-      en: 'Search Engine & Decision Analytics'
+      fr: 'Moteur de recherche & analytics décisionnels',
+      en: 'Search engine & decision analytics'
     },
-    badge: { fr: 'Fast Indexing & BI', en: 'Fast Indexing & BI' },
+    badge: { fr: 'Indexation & BI', en: 'Indexing & BI' },
     desc: {
       fr: 'Sous-système de recherche instantanée full-text et agrégations temps réel pour les tableaux de bord de gestion et stocks.',
       en: 'Instant full-text search subsystem and real-time aggregations for management and inventory dashboards.'
     },
     latency: '< 8 ms',
     protocol: 'Meilisearch / Recharts OLAP',
-    health: { fr: '-40% CHARGEMENT', en: '-40% LOAD TIME' },
+    status: {
+      fr: 'En production — ToutPourSaGloire.com',
+      en: 'In production — ToutPourSaGloire.com'
+    },
     tech: 'Meilisearch • Recharts • Sage API Ingestion • Vector Search',
     guarantees: {
-      fr: 'Indexation asynchrone des catalogues et articles, temps de réponse inférieurs à 10ms même sous forte charge.',
-      en: 'Asynchronous catalog and item indexing, response times under 10ms even under heavy load.'
+      fr: 'Indexation asynchrone des catalogues et articles ; la recherche est servie hors du cluster transactionnel.',
+      en: 'Asynchronous catalog and item indexing; search is served off the transactional cluster.'
     },
     tradeoff: {
       fr: 'Déchargement des requêtes lourdes de recherche de PostgreSQL vers Meilisearch pour préserver les ressources transactionnelles.',
       en: 'Offloading heavy search queries from PostgreSQL to Meilisearch to preserve transactional resources.'
     },
-    metrics: { 'Search Response': '6ms', 'Speed Gain': '-40% TTFB' },
+    metrics: [
+      {
+        key: { fr: 'Réponse recherche', en: 'Search response' },
+        value: '< 10 ms (dev)'
+      },
+      {
+        key: { fr: 'Gain mesuré', en: 'Measured gain' },
+        value: {
+          fr: '-40 % temps de chargement (TPSG, observé)',
+          en: '-40% loading time (TPSG, observed)'
+        }
+      }
+    ],
     codeSnippet: `// Instant Full-Text Search Integration
 const client = new MeiliSearch({ host: MEILI_HOST });
 const index = client.index('series_catalog');
@@ -195,11 +252,12 @@ export const instantLookup = async (query, filters) => {
 ];
 
 const INSPECTOR_LABELS = {
-  tier: { fr: 'PALIER ARCHITECTURAL', en: 'ARCHITECTURAL TIER' },
-  stack: { fr: 'Stack & Pratiques Clés', en: 'Stack & Key Practices' },
-  guarantee: { fr: 'Garantie & Rationale Système', en: 'System Guarantee & Rationale' },
-  tradeoff: { fr: "Arbitrage & Trade-Off d'Architecte", en: "Architect's Trade-Off" },
-  impl: { fr: 'Implémentation de Référence', en: 'Reference Implementation' },
+  tier: { fr: 'Palier architectural', en: 'Architectural tier' },
+  status: { fr: 'État :', en: 'State:' },
+  stack: { fr: 'Stack & pratiques clés', en: 'Stack & key practices' },
+  guarantee: { fr: 'Garantie & rationale système', en: 'System guarantee & rationale' },
+  tradeoff: { fr: "Arbitrage d'architecte", en: "Architect's trade-off" },
+  impl: { fr: 'Implémentation de référence', en: 'Reference implementation' },
   grounded: { fr: 'Projet concret :', en: 'Grounded project:' }
 };
 
@@ -212,23 +270,23 @@ export function initArchitectureViewer() {
 
   function renderNodes() {
     nodesContainer.innerHTML = ARCH_NODES_DATA.map((node, i) => `
-      <div class="arch-node ${i === activeIndex ? 'selected' : ''}" data-index="${i}">
-        <div class="node-index">${node.index}</div>
-        <div class="node-body">
-          <div class="node-header-row">
+      <button type="button" class="arch-node ${i === activeIndex ? 'selected' : ''}" data-index="${i}" aria-pressed="${i === activeIndex}">
+        <span class="node-index">${node.index}</span>
+        <span class="node-body">
+          <span class="node-header-row">
             <span class="node-name">${pick(node.name)}</span>
             <span class="node-badge">${pick(node.badge)}</span>
-          </div>
-          <p class="node-desc">${pick(node.desc)}</p>
-        </div>
-        <div class="node-meta">
+          </span>
+          <span class="node-desc">${pick(node.desc)}</span>
+        </span>
+        <span class="node-meta">
           <span class="latency-chip">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
             ${node.latency}
           </span>
           <span class="protocol-label">${node.protocol}</span>
-        </div>
-      </div>
+        </span>
+      </button>
     `).join('');
 
     // Attach click handlers
@@ -244,12 +302,12 @@ export function initArchitectureViewer() {
     inspectorEl.innerHTML = `
       <div class="inspector-header">
         <div class="inspector-title-wrap">
-          <div class="inspector-label">${pick(INSPECTOR_LABELS.tier)} ${node.index}</div>
-          <h4 class="inspector-title">${pick(node.name)}</h4>
+          <span class="inspector-label">${pick(INSPECTOR_LABELS.tier)} ${node.index}</span>
+          <h3 class="inspector-title">${pick(node.name)}</h3>
         </div>
-        <span class="node-health-status">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-          ${pick(node.health)}
+        <span class="node-state${node.target ? ' is-target' : ''}">
+          <span class="state-label">${pick(INSPECTOR_LABELS.status)}</span>
+          ${pick(node.status)}
         </span>
       </div>
 
@@ -260,10 +318,10 @@ export function initArchitectureViewer() {
         </div>
 
         <div class="metrics-chips-grid">
-          ${Object.entries(node.metrics).map(([k, v]) => `
+          ${node.metrics.map((metric) => `
             <div class="chip-card">
-              <span class="chip-key">${k}</span>
-              <span class="chip-val">${pick(v)}</span>
+              <span class="chip-key">${pick(metric.key)}</span>
+              <span class="chip-val">${pick(metric.value)}</span>
             </div>
           `).join('')}
         </div>
@@ -298,6 +356,7 @@ export function initArchitectureViewer() {
 
     nodesContainer.querySelectorAll('.arch-node').forEach((el, i) => {
       el.classList.toggle('selected', i === activeIndex);
+      el.setAttribute('aria-pressed', String(i === activeIndex));
     });
 
     renderInspector(ARCH_NODES_DATA[activeIndex]);
@@ -312,18 +371,19 @@ export function initArchitectureViewer() {
 
   // Presets selector buttons
   const presetChips = document.querySelectorAll('.preset-chip');
+  const PRESET_NODE = { all: 0, offline: 1, 'multi-tenant': 2, search: 4 };
+
   presetChips.forEach(chip => {
+    chip.setAttribute('aria-pressed', String(chip.classList.contains('active')));
+
     chip.addEventListener('click', () => {
-      presetChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const target = chip.getAttribute('data-preset');
-      if (target === 'offline') {
-        selectNode(1); // Local Persistence
-      } else if (target === 'multi-tenant') {
-        selectNode(2); // Sync & RBAC
-      } else if (target === 'search') {
-        selectNode(4); // Search & Analytics
-      }
+      presetChips.forEach(c => {
+        const on = c === chip;
+        c.classList.toggle('active', on);
+        c.setAttribute('aria-pressed', String(on));
+      });
+      const preset = chip.getAttribute('data-preset');
+      if (preset in PRESET_NODE) selectNode(PRESET_NODE[preset]);
     });
   });
 

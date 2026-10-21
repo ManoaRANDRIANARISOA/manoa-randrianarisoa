@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Notes d'audit internes (non destinées à être publiées)
+docs
+audit-comparatif-portfolio.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,5 +1,5 @@
 // ==============================================================================
-// BASE & RESET
+// BASE, RESET & SHARED PRIMITIVES
 // ==============================================================================
 @use "variables" as *;
 @use "mixins" as *;
@@ -12,16 +12,24 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: auto; // Handled smoothly by Lenis
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  color-scheme: dark;
+  scroll-behavior: auto; // driven by Lenis
+  background-color: var(--bg);
+  color: var(--text);
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+
+  // Overlays must trap the page, and Lenis does not: stopping it only stops the
+  // smoothing, so the root is clipped for as long as something is open.
+  &.scroll-locked {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,30 +38,22 @@ body {
   min-height: 100vh;
   @include custom-scrollbar;
 
+  // Drawing-sheet grid, kept faint so text stays the loudest thing on the page
   &::before {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    @include blueprint-grid;
+    @include blueprint-grid(38px);
+    mask-image: radial-gradient(120% 90% at 50% 0%, #000 25%, transparent 78%);
+    -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 25%, transparent 78%);
   }
+}
 
-  &::after {
-    content: '';
-    position: fixed;
-    top: -20vw;
-    right: -10vw;
-    width: 60vw;
-    height: 60vw;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--accent-subtle) 0%, transparent 70%);
-    filter: blur(100px);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.6;
-    transition: background 0.5s ease;
-  }
+::selection {
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  color: var(--text);
 }
 
 a {
@@ -75,179 +75,543 @@ img {
   display: block;
 }
 
-// Container & Section Structure
+:focus-visible {
+  @include focus-ring;
+}
+
+// Accessibility: jump straight to the content
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translate(-50%, -160%);
+  z-index: 400;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  transition: transform var(--duration-normal) var(--ease-smooth);
+
+  &:focus {
+    transform: translate(-50%, 0);
+  }
+}
+
+// Accessibility: text for assistive tech only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ==============================================================================
+// LAYOUT
+// ==============================================================================
 .app-container {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 1.5rem;
 
+  @media (min-width: 1200px) {
+    padding-left: 4.75rem; // gutter reserved for the thread rail
+    padding-right: 2rem;
+  }
+
   @include mobile {
-    padding: 0 1rem;
+    padding: 0 1.1rem;
   }
 }
 
 .section-wrapper {
-  padding: 7rem 0;
+  padding: 6.5rem 0;
   position: relative;
 
   @include mobile {
-    padding: 4.5rem 0;
+    padding: 4rem 0;
   }
 }
 
-// Section Header Component
-.section-meta-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent-primary);
-  background: var(--accent-badge-bg);
-  border: 1px solid var(--accent-badge-border);
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 1rem;
-  font-weight: 500;
+// Dark bands get their own grid so the technical sections read as blueprints
+.dark-band {
+  position: relative;
 
-  .pulse-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-primary);
-    box-shadow: 0 0 8px var(--accent-primary);
-    animation: pulse 2s infinite ease-in-out;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    @include blueprint-grid(32px);
+    opacity: 0.55;
+    mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Band-to-band transition: a drawn rule instead of a hard colour jump
+.band-seam {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line-strong) 18%, var(--line-strong) 82%, transparent);
+}
+
+// ==============================================================================
+// SECTION HEADERS — "planche" numbering
+// ==============================================================================
+.section-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  @include mono-label(0.72rem, var(--text-3));
+
+  .planche-no {
+    color: var(--signal);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .planche-rule {
+    position: relative;
+    width: clamp(28px, 6vw, 72px);
+    height: 1px;
+    background: var(--line-strong);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s var(--ease-draw) 0.1s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 1px;
+      height: 7px;
+      background: var(--line-strong);
+    }
+  }
+
+  &.is-in .planche-rule {
+    transform: scaleX(1);
   }
 }
 
 .section-title-group {
-  margin-bottom: 3.5rem;
+  margin-bottom: 3.25rem;
+  max-width: 900px;
 
   .section-heading {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
     margin-bottom: 1rem;
+    text-wrap: balance;
   }
 
   .section-subheading {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    max-width: 680px;
-    line-height: 1.6;
+    font-size: 1.02rem;
+    color: var(--text-2);
+    max-width: 720px;
+    line-height: 1.68;
   }
 }
 
-// Interactive Micro-Badges
+// ==============================================================================
+// THREAD — the fil conducteur
+// One continuous line runs down the whole page: fixed rail on wide screens,
+// top bar below that. It carries the section repères and the scroll progress,
+// and hands over to the career timeline in the Parcours section.
+// ==============================================================================
+.thread {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.thread-rail {
+  display: none;
+  position: fixed;
+  left: 1.6rem;
+  top: 7.5rem;
+  bottom: 5rem;
+  width: 22px;
+  pointer-events: auto;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.thread-track,
+.thread-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+}
+
+.thread-track {
+  height: 100%;
+  background: var(--chrome-track);
+}
+
+.thread-fill {
+  height: calc(var(--scroll-p, 0) * 100%);
+  background: var(--chrome-accent);
+  transition: height 90ms linear;
+}
+
+.thread-head {
+  position: absolute;
+  left: 0;
+  top: calc(var(--scroll-p, 0) * 100%);
+  width: 7px;
+  height: 7px;
+  margin-left: -3px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--chrome-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chrome-accent) 22%, transparent);
+  transition: top 90ms linear;
+}
+
+.thread-tick {
+  position: absolute;
+  left: -4px;
+  top: calc(var(--pos) * 100%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  transform: translateY(-50%);
+  color: var(--chrome-text-2);
+
+  &::before {
+    content: '';
+    width: 9px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+    transition: width var(--duration-normal) var(--ease-smooth), opacity var(--duration-fast) ease, background var(--duration-fast) ease;
+  }
+
+  .tick-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity var(--duration-normal) ease, transform var(--duration-normal) var(--ease-smooth);
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--chrome-text);
+
+    .tick-label {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &.active {
+    color: var(--chrome-accent);
+
+    &::before {
+      width: 16px;
+      opacity: 1;
+    }
+
+    .tick-label {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.thread-readout {
+  position: absolute;
+  left: -6px;
+  bottom: -2.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--chrome-text-2);
+  display: flex;
+  gap: 1px;
+
+  .thread-pct { color: var(--chrome-accent); font-weight: 700; }
+}
+
+// Narrow screens: the same thread, laid flat under the top edge
+.thread-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 120;
+  background: var(--chrome-track);
+  pointer-events: none;
+
+  span {
+    display: block;
+    height: 100%;
+    width: calc(var(--scroll-p, 0) * 100%);
+    background: var(--chrome-accent);
+    transition: width 90ms linear;
+  }
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+
+// ==============================================================================
+// PRIMITIVES
+// ==============================================================================
 .tech-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  padding: 0.24rem 0.6rem;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  transition: all var(--duration-fast) ease;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease, background var(--duration-fast) ease, transform var(--duration-fast) ease;
 
   &:hover {
-    border-color: var(--border-accent);
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-line);
+    color: var(--text);
+    transform: translateY(-1px);
   }
 
   &.primary {
-    border-color: var(--accent-badge-border);
-    color: var(--accent-primary);
-    background: var(--accent-badge-bg);
+    border-color: var(--accent-line);
+    color: var(--accent);
+    background: var(--accent-soft);
   }
 }
 
-// Global Buttons
-.btn-primary {
+// Dimension line: a measured annotation, straight out of a drawing sheet
+.dim {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+
+  &::before,
+  &::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+  }
+}
+
+// "En clair :" — the plain-language line for non-technical readers
+.plain-line {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-2);
+  padding: 0.7rem 0.9rem;
+  border-left: 2px solid var(--signal);
+  background: var(--signal-soft);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+
+  .plain-label {
+    @include mono-label(0.66rem, var(--signal));
+    flex-shrink: 0;
+  }
+}
+
+// ==============================================================================
+// BUTTONS
+// ==============================================================================
+.btn-primary,
+.btn-secondary {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.6rem;
+  padding: 0.8rem 1.45rem;
   border-radius: var(--radius-md);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: #07090e;
-  box-shadow: 0 4px 20px var(--accent-glow);
-  transition: transform var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--duration-fast) var(--ease-smooth), box-shadow var(--duration-fast) ease,
+              border-color var(--duration-fast) ease, color var(--duration-fast) ease, background var(--duration-fast) ease;
+
+  svg { flex-shrink: 0; }
+
+  &:active { transform: translateY(0) scale(0.99); }
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 1px solid var(--accent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--accent) 30%, transparent);
+
+  // Sheen sweeping across on hover
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-smooth);
+  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px var(--accent-glow);
-  }
+    box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 55%, transparent);
 
-  &:active {
-    transform: translateY(0);
+    &::after { transform: translateX(120%); }
   }
 }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.6rem;
-  border-radius: var(--radius-md);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  @include glass(rgba(255, 255, 255, 0.05), 12px, var(--border-light));
-  color: var(--text-primary);
-  transition: all var(--duration-fast) ease;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent-primary);
     transform: translateY(-2px);
-    color: var(--text-primary);
-  }
-
-  &:active {
-    transform: translateY(0);
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-soft);
   }
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
+  gap: 0.45rem;
+  padding: 0.55rem 0.2rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  border-radius: var(--radius-sm);
-  transition: all var(--duration-fast) ease;
+  font-size: 0.82rem;
+  color: var(--text-2);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0.2rem;
+    right: 0.2rem;
+    bottom: 0.3rem;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-normal) var(--ease-smooth);
+  }
 
   &:hover {
-    color: var(--accent-primary);
-    background: rgba(255, 255, 255, 0.04);
+    color: var(--accent);
+    &::after { transform: scaleX(1); }
+  }
+}
+
+// ==============================================================================
+// REVEAL PRIMITIVES (driven by IntersectionObserver in scroll-animations.js)
+// ==============================================================================
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s var(--ease-smooth), transform 0.75s var(--ease-smooth);
+  transition-delay: calc(var(--i, 0) * 70ms);
+
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Line-mask: text rises from behind a ruled edge
+.lm {
+  @include line-mask;
+  padding-bottom: 0.06em; // keeps descenders visible once revealed
+}
+
+.is-in .lm > *,
+.lm.is-in > * {
+  transform: translateY(0);
+}
+
+// Drawn hairline that wipes in from the left
+.draw-rule {
+  height: 1px;
+  background: var(--line-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s var(--ease-draw);
+
+  &.is-in { transform: scaleX(1); }
+}
+
+// ==============================================================================
+// MOTION PREFERENCES
+// ==============================================================================
+@include reduced-motion {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal, .lm > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .project-card {
+    --lift: 0px;
+    opacity: 1 !important;
+  }
+
+  .draw-rule, .planche-rule {
+    transform: scaleX(1) !important;
   }
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
 }

@@ -1,0 +1,45 @@
+    <!-- PL. 01 — SYSTEM ARCHITECTURE (dark band) -->
+    <section class="section-wrapper architecture-section dark-band" id="architecture">
+      <div class="app-container">
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="planche-no">PL. 01</span>
+            <span class="planche-rule" aria-hidden="true"></span>
+            <span data-i18n="arch.meta">Topologie &amp; conception systèmes</span>
+          </div>
+          <h2 class="section-heading lm"><span data-i18n="arch.heading">L'approche architecturale : résilience et évolutivité</span></h2>
+          <p class="section-subheading reveal" data-i18n="arch.subheading">
+            Chaque système que je conçois repose sur une stricte séparation des responsabilités, une isolation des données (RBAC) et une capacité à opérer en mode dégradé ou hors-ligne sans corruption. Cliquez sur chaque palier pour inspecter les garanties techniques et le code de référence. Les latences affichées sont des ordres de grandeur mesurés en environnement de développement, pas des engagements de service.
+          </p>
+          <p class="plain-line reveal" style="margin-top:1.25rem;">
+            <span class="plain-label" data-i18n="common.plainLabel">En clair</span>
+            <span data-i18n="arch.plain">Cette planche montre le chemin des données, du poste utilisateur jusqu'au cloud, et ce qui se passe quand le réseau tombe.</span>
+          </p>
+        </div>
+
+        <div class="blueprint-container reveal">
+          <div class="blueprint-stage" id="blueprint-stage">
+            <div class="stage-toolbar">
+              <div class="stage-title-wrap">
+                <svg class="icon-arch" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <h3 data-i18n="arch.pipelineTitle">Pipeline distribué unifié</h3>
+              </div>
+              <div class="preset-selector">
+                <button class="preset-chip active" data-preset="all" data-i18n="arch.presetAll">Vue globale</button>
+                <button class="preset-chip" data-preset="offline" data-i18n="arch.presetOffline">Flux offline-first</button>
+                <button class="preset-chip" data-preset="multi-tenant" data-i18n="arch.presetTenant">Isolation RBAC</button>
+                <button class="preset-chip" data-preset="search" data-i18n="arch.presetSearch">Moteur recherche</button>
+              </div>
+            </div>
+
+            <div class="pipeline-grid" id="pipeline-nodes-list">
+              <!-- Rendu par architecture-viewer.js -->
+            </div>
+          </div>
+
+          <aside class="blueprint-inspector" id="architecture-inspector" aria-label="Inspecteur de nœud architectural" data-i18n-aria="arch.inspectorAria">
+            <!-- Rempli par architecture-viewer.js -->
+          </aside>
+        </div>
+      </div>
+    </section>

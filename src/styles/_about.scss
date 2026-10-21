@@ -1,5 +1,5 @@
 // ==============================================================================
-// ABOUT, PHILOSOPHY & JOURNEY TIMELINE
+// ABOUT, PHILOSOPHY & JOURNEY TIMELINE — the thread becomes the career line
 // ==============================================================================
 @use "variables" as *;
 @use "mixins" as *;
@@ -10,7 +10,7 @@
 
 .about-layout {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 3.5rem;
   align-items: start;
 
@@ -20,61 +20,70 @@
   }
 }
 
-// Profile Card & Photo
+// ------------------------------------------------------------------ Profile card
 .profile-card-sticky {
   position: sticky;
-  top: 5.5rem;
-  @include glass(rgba(14, 19, 29, 0.8), 20px, var(--border-light));
-  border-radius: var(--radius-xl);
-  padding: 2rem;
+  top: 6.5rem;
+  padding: 1.75rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: var(--shadow-lg);
+
+  @include tablet {
+    position: static;
+  }
 
   .photo-frame {
     position: relative;
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    padding: 6px;
-    background: linear-gradient(135deg, var(--accent-primary), transparent 60%, var(--accent-secondary));
-    margin-bottom: 1.5rem;
+    width: 132px;
+    height: 132px;
+    margin-bottom: 1.25rem;
+    border-radius: 50% 50% var(--radius-md) var(--radius-md) / 38% 38% var(--radius-md) var(--radius-md);
+    border: 1px solid var(--line-strong);
+    overflow: hidden;
+    background: var(--bg-sunken);
 
     .photo-img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
-      object-position: center top;
-      background: var(--bg-surface);
+      object-position: center 22%;
+      filter: grayscale(0.15);
+      transition: filter var(--duration-normal) ease, transform 0.8s var(--ease-smooth);
+    }
+
+    &:hover .photo-img {
+      filter: none;
+      transform: scale(1.05);
     }
 
     .online-indicator {
       position: absolute;
       bottom: 8px;
       right: 8px;
-      width: 18px;
-      height: 18px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: var(--status-emerald);
-      border: 3px solid var(--bg-primary);
-      box-shadow: 0 0 10px var(--status-emerald);
+      background: var(--ok);
+      border: 3px solid var(--bg-raised);
     }
   }
 
   .profile-name {
     font-family: var(--font-display);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
   }
 
   .profile-title {
-    font-size: 0.85rem;
-    color: var(--accent-primary);
-    font-family: var(--font-mono);
+    @include mono-label(0.68rem, var(--accent));
     margin-bottom: 1.25rem;
   }
 
@@ -82,120 +91,253 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border-subtle);
-    font-size: 0.825rem;
-    color: var(--text-secondary);
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
     text-align: left;
 
     .meta-row {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.6rem;
+      padding: 0.45rem 0;
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.4;
 
       .row-icon {
-        color: var(--text-muted);
+        color: var(--text-3);
         flex-shrink: 0;
+        margin-top: 0.15rem;
       }
+    }
+  }
+
+  .proof-callout {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 0.85rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-sunken);
+    font-size: 0.76rem;
+    line-height: 1.45;
+    color: var(--text-2);
+    text-align: left;
+
+    strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 0.25rem;
     }
   }
 
   .profile-cta {
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 }
 
-// Timeline & Career narrative
+// -------------------------------------------------------------- Narrative column
 .timeline-narrative {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
 
-  .philosophy-card {
-    @include glass(rgba(18, 24, 36, 0.6), 16px, var(--border-subtle));
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    border-left: 3px solid var(--accent-primary);
+.philosophy-card {
+  position: relative;
+  padding: 2rem 2rem 1.75rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
 
-    h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-    }
+  &::before {
+    content: '“';
+    position: absolute;
+    top: -0.6rem;
+    left: 1.35rem;
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--signal);
+    opacity: 0.28;
+    pointer-events: none;
+  }
 
-    p {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 1rem;
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.85rem;
+    color: var(--text);
+  }
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+  p {
+    font-size: 0.94rem;
+    color: var(--text-2);
+    line-height: 1.72;
+    margin-bottom: 0.9rem;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  .philo-sign {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-hair);
+    @include mono-label(0.64rem, var(--text-3));
+  }
+}
+
+// --------------------------------------------------------------------- Timeline
+.timeline-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  @include mono-label(0.68rem, var(--text-3));
+
+  .head-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+}
+
+.timeline-container {
+  position: relative;
+
+  // Static rule + the drawn part that follows the scroll
+  .timeline-spine {
+    position: absolute;
+    left: 7rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--line);
+
+    @include tablet {
+      left: 5px;
     }
   }
 
-  .timeline-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    position: relative;
+  .timeline-spine-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: calc(var(--draw, 0) * 100%);
+    background: linear-gradient(to bottom, var(--accent), color-mix(in srgb, var(--accent) 45%, transparent));
+  }
+}
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 1rem;
-      bottom: 1rem;
-      left: 11px;
-      width: 2px;
-      background: var(--border-light);
-    }
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  column-gap: 2rem;
+  padding-bottom: 2rem;
+
+  &:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: 7rem;
+    top: 0.4rem;
+    width: 11px;
+    height: 11px;
+    margin-left: -5px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    transition: background var(--duration-normal) ease, border-color var(--duration-normal) ease,
+                box-shadow var(--duration-normal) ease, transform var(--duration-normal) var(--ease-bounce);
+    z-index: 1;
   }
 
-  .timeline-item {
-    position: relative;
-    padding-left: 2.75rem;
+  &.is-in .timeline-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+    transform: scale(1.05);
+  }
 
-    .timeline-dot {
-      position: absolute;
-      left: 3px;
-      top: 0.35rem;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--bg-surface);
-      border: 2px solid var(--accent-primary);
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
+  .tl-gutter {
+    text-align: right;
+    padding-top: 0.15rem;
 
     .timeline-year {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-primary);
-      font-weight: 600;
       display: block;
-      margin-bottom: 0.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 1.35;
     }
 
-    .timeline-role {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.2rem;
+    .timeline-kind {
+      display: inline-block;
+      margin-top: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--signal);
+      border: 1px solid var(--signal-soft);
+      background: var(--signal-soft);
+      border-radius: var(--radius-sm);
+      padding: 0.1rem 0.35rem;
+    }
+  }
+
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+
+  .timeline-company {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-3);
+    margin-bottom: 0.55rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-2);
+    line-height: 1.62;
+
+    strong { color: var(--text); font-weight: 600; }
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    padding-left: 1.75rem;
+    padding-bottom: 1.75rem;
+
+    .timeline-dot {
+      left: 5px;
+      top: 0.35rem;
+      margin-left: 0;
     }
 
-    .timeline-company {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
+    .tl-gutter {
+      text-align: left;
+      margin-bottom: 0.35rem;
 
-    .timeline-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
+      .timeline-year { font-size: 0.7rem; }
     }
   }
 }

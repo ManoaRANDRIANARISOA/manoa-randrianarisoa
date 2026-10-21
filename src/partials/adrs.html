@@ -1,0 +1,160 @@
+    <!-- PL. 03 — ARCHITECTURAL DECISION RECORDS (dark band) -->
+    <section class="section-wrapper adrs-section dark-band" id="adrs">
+      <div class="app-container">
+        <div class="section-title-group">
+          <div class="section-meta-tag">
+            <span class="planche-no">PL. 03</span>
+            <span class="planche-rule" aria-hidden="true"></span>
+            <span data-i18n="adrs.meta">Ingénierie &amp; arbitrages techniques</span>
+          </div>
+          <h2 class="section-heading lm"><span data-i18n="adrs.heading">Architectural Decision Records (ADR)</span></h2>
+          <p class="section-subheading reveal" data-i18n="adrs.subheading">
+            L'architecture est l'art du compromis éclairé. Voici trois décisions réelles, prises face à des contraintes de terrain : infrastructure instable, budget de lancement, temps de réponse critique.
+          </p>
+          <p class="plain-line reveal" style="margin-top:1.25rem;">
+            <span class="plain-label" data-i18n="common.plainLabel">En clair</span>
+            <span data-i18n="adrs.plain">Un ADR note le problème, la décision prise et ses conséquences. C'est la trace écrite du raisonnement, pas seulement du résultat.</span>
+          </p>
+        </div>
+
+        <div class="adr-list">
+          <!-- ADR 001 -->
+          <article class="adr-card open reveal">
+            <button class="adr-header" type="button" aria-expanded="true" aria-controls="adr-1-panel" id="adr-1-trigger">
+              <div class="adr-head-left">
+                <span class="adr-id-badge">ADR-001</span>
+                <h3 class="adr-title" data-i18n="adrs.adr1.title">Paradigme hybride Offline-First (SQLite + Supabase) vs cloud monolithique</h3>
+              </div>
+              <div class="adr-head-right">
+                <span class="adr-status-pill" data-i18n="adrs.adr1.status">Adopté &amp; en production</span>
+                <svg class="chevron-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </button>
+            <div class="adr-content" id="adr-1-panel" role="region" aria-labelledby="adr-1-trigger">
+              <div class="adr-content-inner">
+                <div class="adr-body">
+                  <div class="adr-grid">
+                    <div class="adr-column">
+                      <span class="col-title">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <span data-i18n="adrs.colContext">Contexte &amp; problème</span>
+                      </span>
+                      <p class="col-text" data-i18n="adrs.adr1.context">
+                        Au sein du Lycée Manjary Soa (Madagascar), les coupures d'électricité et d'accès internet sont fréquentes. Une solution 100% Web Cloud bloquait la saisie des notes et la délibération des conseils de classe.
+                      </p>
+                    </div>
+                    <div class="adr-column">
+                      <span class="col-title">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span data-i18n="adrs.colDecision">Décision d'architecture</span>
+                      </span>
+                      <p class="col-text" data-i18n="adrs.adr1.decision">
+                        Déploiement d'une application Electron avec base locale SQLite en mode WAL (Write-Ahead Logging). File d'attente de mutations (Delta Ledger) synchronisée de manière asynchrone et idempotente vers Supabase dès retour du réseau.
+                      </p>
+                    </div>
+                    <div class="adr-column">
+                      <span class="col-title">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span data-i18n="adrs.colConsequences">Conséquences &amp; bénéfices</span>
+                      </span>
+                      <p class="col-text" data-i18n="adrs.adr1.consequences">
+                        La saisie des notes et l'édition des bulletins restent possibles sans réseau, à la latence du disque local (&lt; 1 ms en dev). La resynchronisation est idempotente et les conflits sont résolus par horodatage vectoriel.
+                      </p>
+                    </div>
+                  </div>
+                  <p class="plain-line adr-plain">
+                    <span class="plain-label" data-i18n="common.plainLabel">En clair</span>
+                    <span data-i18n="adrs.adr1.plain">Même sans courant ni internet, le lycée saisit les notes et édite les bulletins ; tout se resynchronise seul au retour du réseau.</span>
+                  </p>
+                  <div class="adr-takeaway" data-i18n="adrs.adr1.takeaway">
+                    <strong>Enseignement clé :</strong> La résilience logicielle doit s'adapter à la réalité des infrastructures physiques, sans sacrifier la centralisation des données de l'administration.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ADR 002 -->
+          <article class="adr-card reveal">
+            <button class="adr-header" type="button" aria-expanded="false" aria-controls="adr-2-panel" id="adr-2-trigger">
+              <div class="adr-head-left">
+                <span class="adr-id-badge">ADR-002</span>
+                <h3 class="adr-title" data-i18n="adrs.adr2.title">Isolation logique multi-tenant (PostgreSQL Row-Level Security) vs multi-bases</h3>
+              </div>
+              <div class="adr-head-right">
+                <span class="adr-status-pill is-scoped" data-i18n="adrs.adr2.status">Cadré — migration en cours</span>
+                <svg class="chevron-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </button>
+            <div class="adr-content" id="adr-2-panel" role="region" aria-labelledby="adr-2-trigger">
+              <div class="adr-content-inner">
+                <div class="adr-body">
+                  <div class="adr-grid">
+                    <div class="adr-column">
+                      <span class="col-title" data-i18n="adrs.colContextShort">Contexte</span>
+                      <p class="col-text" data-i18n="adrs.adr2.context">Pour la suite SaaS hôtelière ResHPro, chaque établissement hôtelier doit disposer d'une étanchéité absolue de ses réservations, stocks et finances, tout en limitant les coûts d'hébergement au lancement.</p>
+                    </div>
+                    <div class="adr-column">
+                      <span class="col-title" data-i18n="adrs.colDecisionShort">Décision</span>
+                      <p class="col-text" data-i18n="adrs.adr2.decision">Décision cible : mono-base PostgreSQL avec politiques natives Row-Level Security (RLS) injectant le tenant_id validé par JWT dans le contexte de session. ResHPro ayant démarré sur Firebase Auth (coût de lancement nul), l'isolation est aujourd'hui portée par la couche applicative ; la migration RLS est prototypée et planifiée.</p>
+                    </div>
+                    <div class="adr-column">
+                      <span class="col-title" data-i18n="adrs.colConsequencesShort">Conséquences</span>
+                      <p class="col-text" data-i18n="adrs.adr2.consequences">Attendu : coût d'infrastructure divisé par ~5 versus multi-bases, migrations de schémas centralisées et isolation infalsifiable même en cas d'oubli d'une clause WHERE applicative. État actuel : isolation applicative en production, RLS en cours de migration.</p>
+                    </div>
+                  </div>
+                  <p class="plain-line adr-plain">
+                    <span class="plain-label" data-i18n="common.plainLabel">En clair</span>
+                    <span data-i18n="adrs.adr2.plain">Plusieurs hôtels partagent le même logiciel sans jamais pouvoir lire les données d'un autre.</span>
+                  </p>
+                  <div class="adr-takeaway" data-i18n="adrs.adr2.takeaway">
+                    <strong>Enseignement clé :</strong> Déplacer la sécurité d'isolation au plus près du moteur de base de données élimine les failles humaines du code applicatif.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ADR 003 -->
+          <article class="adr-card reveal">
+            <button class="adr-header" type="button" aria-expanded="false" aria-controls="adr-3-panel" id="adr-3-trigger">
+              <div class="adr-head-left">
+                <span class="adr-id-badge">ADR-003</span>
+                <h3 class="adr-title" data-i18n="adrs.adr3.title">Rendu hybride SSR &amp; streaming (React Router 7) pour Maboo E-Commerce</h3>
+              </div>
+              <div class="adr-head-right">
+                <span class="adr-status-pill" data-i18n="adrs.adr3.status">Déployé</span>
+                <svg class="chevron-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </button>
+            <div class="adr-content" id="adr-3-panel" role="region" aria-labelledby="adr-3-trigger">
+              <div class="adr-content-inner">
+                <div class="adr-body">
+                  <div class="adr-grid">
+                    <div class="adr-column">
+                      <span class="col-title" data-i18n="adrs.colContextShort">Contexte</span>
+                      <p class="col-text" data-i18n="adrs.adr3.context">L'ancienne version SPA souffrait d'un Time-To-Interactive trop élevé sur mobile et d'un indexage SEO insuffisant sur les catalogues multilingues.</p>
+                    </div>
+                    <div class="adr-column">
+                      <span class="col-title" data-i18n="adrs.colDecisionShort">Décision</span>
+                      <p class="col-text" data-i18n="adrs.adr3.decision">Refonte avec React Router 7 en mode SSR avec streaming HTTP des blocs non critiques (recommandations produits et avis) après le rendu instantané du shell produit.</p>
+                    </div>
+                    <div class="adr-column">
+                      <span class="col-title" data-i18n="adrs.colConsequencesShort">Conséquences</span>
+                      <p class="col-text" data-i18n="adrs.adr3.consequences">Score Core Web Vitals LCP inférieur à 1.2s sur réseau mobile 4G, visibilité SEO optimale pour les bots de recherche, et fluidité de navigation conservée via hydratation progressive.</p>
+                    </div>
+                  </div>
+                  <p class="plain-line adr-plain">
+                    <span class="plain-label" data-i18n="common.plainLabel">En clair</span>
+                    <span data-i18n="adrs.adr3.plain">La boutique s'affiche plus vite sur mobile et ses pages sont mieux indexées par Google.</span>
+                  </p>
+                  <div class="adr-takeaway" data-i18n="adrs.adr3.takeaway">
+                    <strong>Enseignement clé :</strong> Le streaming HTML moderne permet d'allier les bénéfices SEO du serveur à la vivacité de navigation d'une SPA sans compromis.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>

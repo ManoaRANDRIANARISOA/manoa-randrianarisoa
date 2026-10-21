@@ -1,0 +1,607 @@
+// ==============================================================================
+// JOURNEY SCENE — the ink walk across PL.05.
+// One sticky stage, three layers sliding at different speeds, a walker whose
+// stride is derived from the ground speed so the steps do not skate.
+// ==============================================================================
+@use "sass:math";
+@use "variables" as *;
+@use "mixins" as *;
+
+$stops: 5;
+$fig-x: 20; // where the walker stands, in % of the drawing width
+
+.journey {
+  --ground: 24%;
+  --journey-p: 0;
+  --bob: 0px;
+  --lean: 0deg;
+  margin-top: 3.75rem;
+  margin-bottom: 4.75rem;
+}
+
+// --------------------------------------------------------------------- heading
+.journey-head {
+  max-width: 760px;
+  margin-bottom: 2.25rem;
+}
+
+.journey-kicker {
+  display: block;
+  margin-bottom: 0.7rem;
+  @include mono-label(0.7rem, var(--signal));
+  font-weight: 700;
+}
+
+.journey-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+}
+
+.journey-lede {
+  max-width: 64ch;
+  margin-bottom: 1.1rem;
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+// ------------------------------------------------------------------- the stage
+.journey-runway {
+  position: relative;
+  height: 360vh;
+}
+
+.journey-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  row-gap: 0.9rem;
+  padding: 5.25rem 0 1.25rem;
+}
+
+.journey-drawing {
+  position: relative;
+  grid-row: 1;
+  min-height: 220px;
+  overflow: hidden;
+}
+
+.journey-world {
+  position: absolute;
+  inset: 0;
+}
+
+.journey-layer {
+  position: absolute;
+  bottom: var(--ground);
+  left: 0;
+  transform: translate3d(calc(var(--journey-p) * var(--travel) * -1%), 0, 0);
+  will-change: transform;
+}
+
+// far — horizon, low sun, traveller's palms
+.layer-far {
+  --travel: 44.444;
+  width: 180%;
+  color: var(--line-strong);
+  opacity: 0.75;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// mid — the five landmarks
+.layer-mid {
+  --travel: 66.667;
+  width: 300%;
+  height: 0;
+}
+
+.journey-station {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  transform: translateX(-50%);
+
+  // Annotation convention: motif on top, dashed leader, year plate on the ground.
+  .station-art { order: 1; }
+  .station-stem { order: 2; }
+  .station-year { order: 3; }
+
+  @for $i from 1 through $stops {
+    // +12: the landmark waits a step ahead of the walker, never behind its head.
+    &[data-stop="#{$i - 1}"] {
+      left: math.percentage(math.div($fig-x + 12 + 50 * ($i - 1), 300));
+    }
+  }
+}
+
+.station-art {
+  display: block;
+  width: clamp(56px, 7.2vw, 102px);
+  height: auto;
+  color: var(--text-3);
+  transition: color var(--duration-slow) var(--ease-smooth);
+}
+
+.station-stem {
+  width: 1px;
+  height: 22px;
+  background-image: repeating-linear-gradient(to bottom, var(--line-strong) 0 3px, transparent 3px 7px);
+}
+
+.station-year {
+  padding: 0.16rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-veil);
+  white-space: nowrap;
+  @include mono-label(0.62rem, var(--text-3));
+  font-weight: 600;
+  transition: color var(--duration-normal) ease, background var(--duration-normal) ease,
+              border-color var(--duration-normal) ease;
+}
+
+.journey-station.is-passed {
+  .station-art { color: var(--text-2); }
+  .station-year { color: var(--text-2); border-color: var(--line-strong); }
+}
+
+.journey-station.is-active {
+  .station-art { color: var(--accent); }
+  .station-year {
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+// near — the graduated rule, fastest layer
+.layer-near {
+  --travel: 80;
+  width: 500%;
+  height: 18px;
+  bottom: calc(var(--ground) - 18px);
+  opacity: 0.75;
+  background-image:
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1.5px, transparent 1.5px 130px);
+  background-size: 100% 6px, 100% 12px;
+  background-position: 0 0, 0 0;
+  background-repeat: repeat-x;
+}
+
+.journey-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--ground);
+  height: 1px;
+  background: var(--line-strong);
+}
+
+// ------------------------------------------------------------------- the walker
+.journey-figure {
+  position: absolute;
+  left: $fig-x * 1%;
+  bottom: var(--ground);
+  // The walker must never outgrow the sky above its own ground line.
+  height: clamp(110px, 42%, 268px);
+  max-height: calc(100% - var(--ground) - 6px);
+  color: var(--text);
+  pointer-events: none;
+  transform: translate(-50%, var(--bob)) rotate(var(--lean));
+  transform-origin: 50% 100%;
+}
+
+.figure-svg {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+// Limbs behind the body read lighter, so the walk has depth without shading.
+.limb-b {
+  stroke: var(--text-2);
+  stroke-width: 3;
+  opacity: 0.85;
+}
+
+.acc {
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-smooth);
+}
+
+@for $i from 1 through $stops {
+  .journey-figure[data-stop="#{$i - 1}"] .acc-#{$i} {
+    opacity: 1;
+  }
+}
+
+// -------------------------------------------------------------------- cartouche
+.journey-caption {
+  position: relative;
+  grid-row: 2;
+  padding: 1rem 1.1rem 1.1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  @include glass(var(--bg-veil), 10px, var(--line));
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--signal);
+    opacity: 0.7;
+  }
+
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  &::after {
+    right: -1px;
+    bottom: -1px;
+    border-left: 0;
+    border-top: 0;
+  }
+}
+
+.caption-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.85rem;
+}
+
+.caption-index {
+  @include mono-label(0.72rem, var(--accent));
+  font-weight: 700;
+}
+
+.caption-hint {
+  @include mono-label(0.62rem, var(--text-3));
+  transition: opacity var(--duration-normal) ease;
+
+  &::before {
+    content: '↓ ';
+    color: var(--signal);
+  }
+
+  &.is-spent {
+    opacity: 0;
+  }
+}
+
+// The five chapters share one grid cell: the cartouche is as tall as the longest
+// of them, so swapping chapter never moves the rail and nothing can spill out.
+.journey-chapters {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.journey-chapter {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  opacity: 0;
+  transform: translateY(9px);
+  transition: opacity var(--duration-normal) var(--ease-smooth), transform var(--duration-normal) var(--ease-smooth);
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+.chapter-year {
+  @include mono-label(0.7rem, var(--signal));
+  font-weight: 700;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.chapter-place {
+  @include mono-label(0.63rem, var(--text-3));
+  text-transform: none;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.chapter-text {
+  font-size: 0.88rem;
+  line-height: 1.62;
+  color: var(--text-2);
+}
+
+// ------------------------------------------------------------------------ rail
+.journey-progress {
+  grid-row: 3;
+}
+
+.journey-rail {
+  position: relative;
+  height: 26px;
+  margin-inline: 7px;
+}
+
+.rail-track,
+.rail-fill {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.rail-track {
+  background: var(--line);
+}
+
+.rail-fill {
+  background: var(--accent);
+  transform: scaleX(var(--journey-p));
+  transform-origin: left center;
+}
+
+.rail-dot {
+  position: absolute;
+  top: 6px;
+  transform: translate(-50%, -50%);
+
+  @for $i from 1 through $stops {
+    &[data-stop="#{$i - 1}"] {
+      left: math.percentage(math.div($i - 1, $stops - 1));
+    }
+  }
+
+  i {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-full);
+    background: var(--bg);
+    transition: background var(--duration-normal) ease, border-color var(--duration-normal) ease;
+  }
+
+  b {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    transform: translateX(-50%);
+    @include mono-label(0.58rem, var(--text-3));
+    font-weight: 500;
+  }
+
+  &.is-on i {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.journey-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.75rem;
+  margin-top: 1.1rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+.journey-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-line);
+  transition: border-color var(--duration-fast) ease;
+
+  &:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -------------------------------------------------------------------- desktop
+@include desktop {
+  .journey-stage {
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 31%);
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 1.5rem;
+  }
+
+  .journey-drawing {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .journey-caption {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    margin-bottom: 1.75rem;
+  }
+
+  .journey-progress {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@include mobile {
+  .journey {
+    margin-top: 2.75rem;
+    margin-bottom: 3.25rem;
+  }
+
+  .journey-runway {
+    height: 300vh;
+  }
+
+  .journey-stage {
+    grid-template-rows: minmax(140px, 1fr) auto auto;
+    padding-top: 4.5rem;
+    row-gap: 0.7rem;
+  }
+
+  .journey-drawing {
+    min-height: 0;
+  }
+
+  .journey-caption {
+    padding: 0.85rem 0.9rem 0.95rem;
+  }
+
+  .chapter-text {
+    font-size: 0.84rem;
+  }
+}
+
+// --------------------------------------------------------------------- static
+// Reduced motion and very short viewports get the same drawing as a ruled frieze:
+// the five landmarks side by side, every chapter readable at once, no scrubbing.
+@mixin journey-static {
+  .journey-runway {
+    height: auto;
+  }
+
+  .journey-stage {
+    position: static;
+    height: auto;
+    display: block;
+    padding: 0;
+  }
+
+  .journey-drawing {
+    height: 210px;
+    min-height: 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .journey-layer {
+    transform: none;
+  }
+
+  .layer-far,
+  .layer-near,
+  .journey-figure {
+    display: none;
+  }
+
+  .layer-mid {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+
+  .journey-station {
+    position: static;
+    transform: none;
+  }
+
+  // Nothing is "current" in the frieze: all five landmarks read the same.
+  .journey-station .station-art,
+  .journey-station.is-active .station-art {
+    color: var(--text-2);
+  }
+
+  .journey-station .station-year,
+  .journey-station.is-active .station-year {
+    color: var(--text-2);
+    background: var(--bg-veil);
+    border-color: var(--line-strong);
+  }
+
+  .station-year {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .station-stem {
+    height: 14px;
+  }
+
+  .journey-caption {
+    margin-bottom: 1.1rem;
+  }
+
+  .journey-chapters {
+    display: block;
+  }
+
+  .journey-chapter {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line-hair);
+
+    &:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  .caption-hint {
+    display: none;
+  }
+
+  .rail-fill {
+    transform: scaleX(1);
+  }
+
+  .rail-dot i {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+@include reduced-motion {
+  @include journey-static;
+}
+
+@media (max-height: 600px) {
+  @include journey-static;
+}

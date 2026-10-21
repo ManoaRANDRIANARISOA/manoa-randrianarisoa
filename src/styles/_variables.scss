@@ -1,100 +1,189 @@
 // ==============================================================================
-// VARIABLES & DESIGN TOKENS - ARCHITECTURAL BLUEPRINT DESIGN SYSTEM
+// DESIGN TOKENS — "PLANCHE D'ATELIER"
+// Light paper by default; dark bands for the technical sections.
+// Every surface/text token is semantic, so `.dark-band` only re-declares values.
 // ==============================================================================
 
+// Tokens derived from another token must be re-declared in every scope that
+// redefines their source: a custom property resolves var() where it is declared,
+// not where it is inherited.
+@mixin derived-tokens {
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-line: color-mix(in srgb, var(--accent) 34%, transparent);
+  --accent-wash: color-mix(in srgb, var(--accent) 5%, var(--bg-raised));
+  --signal-soft: color-mix(in srgb, var(--signal) 10%, transparent);
+  --ok-soft: color-mix(in srgb, var(--ok) 12%, transparent);
+  --ok-line: color-mix(in srgb, var(--ok) 32%, transparent);
+  --warn-soft: color-mix(in srgb, var(--warn) 12%, transparent);
+  --warn-line: color-mix(in srgb, var(--warn) 32%, transparent);
+
+  // Legacy aliases — still read by the terminal / CV overlays
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg);
+  --bg-surface: var(--bg-raised);
+  --bg-surface-elevated: var(--bg-raised);
+  --bg-card: var(--bg-raised);
+  --bg-card-hover: var(--bg-raised);
+  --text-primary: var(--text);
+  --text-secondary: var(--text-2);
+  --text-muted: var(--text-3);
+  --text-dim: var(--text-3);
+  --text-code: var(--accent);
+  --border-subtle: var(--line);
+  --border-light: var(--line-strong);
+  --border-accent: var(--accent-line);
+  --grid-line-color: var(--grid);
+  --accent-primary: var(--accent);
+  --accent-secondary: var(--accent);
+  --accent-subtle: var(--accent-soft);
+  --accent-glow: color-mix(in srgb, var(--accent) 26%, transparent);
+  --accent-badge-bg: var(--accent-soft);
+  --accent-badge-border: var(--accent-line);
+  --status-emerald: var(--ok);
+  --status-emerald-glow: var(--ok-line);
+  --status-amber: var(--warn);
+  --status-amber-glow: var(--warn-line);
+  --status-rose: var(--danger);
+  --shadow-sm: var(--shadow-1);
+  --shadow-md: var(--shadow-1);
+  --shadow-lg: var(--shadow-2);
+}
+
 :root {
-  // Base Palette (Obsidian & Slate)
-  --bg-primary: #07090e;
-  --bg-secondary: #0d111a;
-  --bg-surface: #121824;
-  --bg-surface-elevated: #182030;
-  --bg-card: rgba(18, 24, 36, 0.75);
-  --bg-card-hover: rgba(24, 32, 48, 0.85);
+  // ---------------------------------------------------------- Surface (paper)
+  --bg: #f4f2ed;
+  --bg-raised: #fffefa;
+  --bg-sunken: rgba(19, 23, 32, 0.035);
+  --bg-veil: rgba(244, 242, 237, 0.82);
 
-  // Border & Grid Lines
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-light: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(0, 242, 254, 0.25);
-  --grid-line-color: rgba(0, 242, 254, 0.04);
+  // -------------------------------------------------------------------- Ink
+  --text: #13171f;
+  --text-2: #47505e;
+  --text-3: #79828f;
+  --text-inverse: #f4f2ed;
 
-  // Text Colors
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-dim: #475569;
-  --text-code: #38bdf8;
+  // ------------------------------------------------------------------ Rules
+  --line: rgba(19, 23, 32, 0.13);
+  --line-strong: rgba(19, 23, 32, 0.26);
+  --line-hair: rgba(19, 23, 32, 0.07);
+  --grid: rgba(19, 23, 32, 0.055);
 
-  // Active Accent Theme (Default: Architectural Cyan)
-  --accent-primary: #00f2fe;
-  --accent-secondary: #4facfe;
-  --accent-glow: rgba(0, 242, 254, 0.35);
-  --accent-subtle: rgba(0, 242, 254, 0.1);
-  --accent-badge-bg: rgba(0, 242, 254, 0.08);
-  --accent-badge-border: rgba(0, 242, 254, 0.25);
+  // ---------------------------------------------------------------- Accents
+  --accent: #0e7c6b;          // deep teal — readable on paper
+  --accent-ink: #ffffff;      // text sitting on an accent fill
+  --signal: #a9552b;          // terracotta annotation ink
 
-  // Semantic Status Colors
-  --status-emerald: #10b981;
-  --status-emerald-glow: rgba(16, 185, 129, 0.3);
-  --status-amber: #f59e0b;
-  --status-amber-glow: rgba(245, 158, 11, 0.3);
-  --status-rose: #f43f5e;
+  // ----------------------------------------------------------------- Status
+  --ok: #16794f;
+  --warn: #96690f;
+  --danger: #b3283f;
 
-  // Typography
+  // -------------------------------------------------------------- Elevation
+  --shadow-1: 0 1px 2px rgba(19, 23, 32, 0.05), 0 10px 26px -16px rgba(19, 23, 32, 0.28);
+  --shadow-2: 0 2px 6px rgba(19, 23, 32, 0.06), 0 28px 56px -28px rgba(19, 23, 32, 0.34);
+
+  // ------------------------------------------------------------- Typography
   --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 
-  // Transitions & Easings
+  // --------------------------------------------------------- Motion & radii
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
+  --duration-normal: 280ms;
+  --duration-slow: 520ms;
 
-  // Elevation & Shadows
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 35px var(--accent-glow);
-
-  // Radii
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
   --radius-full: 9999px;
+
+  // ------------------------------------------------------ Fixed chrome (nav)
+  // Header + thread rail are position:fixed, so they cannot inherit band tokens.
+  // `html.chrome-dark` flips this set while they cross a dark band.
+  --chrome-bg: rgba(244, 242, 237, 0.78);
+  --chrome-text: #13171f;
+  --chrome-text-2: #47505e;
+  --chrome-line: rgba(19, 23, 32, 0.13);
+  --chrome-accent: #0e7c6b;
+  --chrome-track: rgba(19, 23, 32, 0.14);
+
+  @include derived-tokens;
 }
 
-// Preset Themes
-[data-theme="emerald"] {
-  --accent-primary: #10b981;
-  --accent-secondary: #059669;
-  --accent-glow: rgba(16, 185, 129, 0.35);
-  --accent-subtle: rgba(16, 185, 129, 0.1);
-  --accent-badge-bg: rgba(16, 185, 129, 0.08);
-  --accent-badge-border: rgba(16, 185, 129, 0.25);
-  --text-code: #34d399;
-  --grid-line-color: rgba(16, 185, 129, 0.04);
+// ==============================================================================
+// DARK BAND — technical sections (architecture, ADRs, contact) + overlays
+// ==============================================================================
+.dark-band {
+  --bg: #0b0f16;
+  --bg-raised: #121824;
+  --bg-sunken: rgba(255, 255, 255, 0.045);
+  --bg-veil: rgba(11, 15, 22, 0.82);
+
+  --text: #e9edf4;
+  --text-2: #a5afbf;
+  --text-3: #717c8c;
+  --text-inverse: #0b0f16;
+
+  --line: rgba(233, 237, 244, 0.13);
+  --line-strong: rgba(233, 237, 244, 0.26);
+  --line-hair: rgba(233, 237, 244, 0.07);
+  --grid: rgba(233, 237, 244, 0.05);
+
+  --accent: #46dcc4;
+  --accent-ink: #06131a;
+  --signal: #e2a06c;
+
+  --ok: #4bd08a;
+  --warn: #e0b25c;
+  --danger: #f0708a;
+
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 18px 40px -26px rgba(0, 0, 0, 0.95);
+  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 34px 70px -30px rgba(0, 0, 0, 1);
+
+  @include derived-tokens;
+
+  color-scheme: dark;
+  background: var(--bg);
+  color: var(--text);
 }
 
-[data-theme="amber"] {
-  --accent-primary: #f59e0b;
-  --accent-secondary: #d97706;
-  --accent-glow: rgba(245, 158, 11, 0.35);
-  --accent-subtle: rgba(245, 158, 11, 0.1);
-  --accent-badge-bg: rgba(245, 158, 11, 0.08);
-  --accent-badge-border: rgba(245, 158, 11, 0.25);
-  --text-code: #fbbf24;
-  --grid-line-color: rgba(245, 158, 11, 0.04);
+// Fixed chrome, inverted while crossing a dark band
+html.chrome-dark {
+  --chrome-bg: rgba(11, 15, 22, 0.72);
+  --chrome-text: #e9edf4;
+  --chrome-text-2: #a5afbf;
+  --chrome-line: rgba(233, 237, 244, 0.13);
+  --chrome-accent: #46dcc4;
+  --chrome-track: rgba(233, 237, 244, 0.16);
 }
 
-[data-theme="violet"] {
-  --accent-primary: #a855f7;
-  --accent-secondary: #7c3aed;
-  --accent-glow: rgba(168, 85, 247, 0.35);
-  --accent-subtle: rgba(168, 85, 247, 0.1);
-  --accent-badge-bg: rgba(168, 85, 247, 0.08);
-  --accent-badge-border: rgba(168, 85, 247, 0.25);
-  --text-code: #c084fc;
-  --grid-line-color: rgba(168, 85, 247, 0.04);
+// ==============================================================================
+// ACCENT PRESETS — each one carries its light and dark value
+// ==============================================================================
+:root[data-theme="indigo"] {
+  --accent: #3d4aa6;
+  --chrome-accent: #3d4aa6;
+  --signal: #a9552b;
 }
+:root[data-theme="ochre"] {
+  --accent: #8d5c12;
+  --chrome-accent: #8d5c12;
+  --signal: #2f6f62;
+}
+:root[data-theme="moss"] {
+  --accent: #4a6f2c;
+  --chrome-accent: #4a6f2c;
+  --signal: #a9552b;
+}
+
+:root[data-theme="indigo"] .dark-band { --accent: #9aa8ff; }
+:root[data-theme="ochre"] .dark-band  { --accent: #e9b25f; }
+:root[data-theme="moss"] .dark-band   { --accent: #a9d47c; }
+
+:root[data-theme="indigo"].chrome-dark { --chrome-accent: #9aa8ff; }
+:root[data-theme="ochre"].chrome-dark  { --chrome-accent: #e9b25f; }
+:root[data-theme="moss"].chrome-dark   { --chrome-accent: #a9d47c; }

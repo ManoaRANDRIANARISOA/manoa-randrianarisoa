@@ -1,5 +1,5 @@
 // ==============================================================================
-// ARCHITECTURAL DECISION RECORDS (ADRs)
+// ARCHITECTURAL DECISION RECORDS (dark band)
 // ==============================================================================
 @use "variables" as *;
 @use "mixins" as *;
@@ -11,103 +11,129 @@
 .adr-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  max-width: 1040px;
+  gap: 0.85rem;
+  max-width: 1080px;
 }
 
 .adr-card {
-  @include glass(rgba(14, 19, 29, 0.7), 16px, var(--border-subtle));
+  background: color-mix(in srgb, var(--bg-raised) 82%, transparent);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  transition: all var(--duration-fast) ease;
+  transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease;
 
   &.open {
-    border-color: var(--border-light);
-    background: rgba(18, 24, 36, 0.85);
+    border-color: var(--accent-line);
+    background: var(--bg-raised);
 
-    .adr-header .chevron-icon {
-      transform: rotate(180deg);
-    }
-
-    .adr-content {
-      display: block;
-    }
+    .adr-header .chevron-icon { transform: rotate(180deg); }
+    .adr-content { grid-template-rows: 1fr; }
   }
 
   .adr-header {
-    padding: 1.25rem 1.75rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    padding: 1.15rem 1.5rem;
+    text-align: left;
     cursor: pointer;
-    user-select: none;
+    transition: background var(--duration-fast) ease;
+
+    &:hover { background: var(--bg-sunken); }
 
     @include mobile {
-      padding: 1rem 1.25rem;
+      padding: 1rem 1.15rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
     }
 
     .adr-head-left {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
 
       .adr-id-badge {
         font-family: var(--font-mono);
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 700;
-        color: var(--accent-primary);
-        background: var(--accent-badge-bg);
-        border: 1px solid var(--accent-badge-border);
-        padding: 0.2rem 0.6rem;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+        background: var(--accent-soft);
+        border: 1px solid var(--accent-line);
+        padding: 0.2rem 0.55rem;
         border-radius: var(--radius-sm);
+        flex-shrink: 0;
       }
 
       .adr-title {
         font-family: var(--font-display);
-        font-size: 1.05rem;
+        font-size: 1.02rem;
         font-weight: 600;
-        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        color: var(--text);
+        line-height: 1.35;
       }
     }
 
     .adr-head-right {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
+      flex-shrink: 0;
 
       .adr-status-pill {
         font-family: var(--font-mono);
-        font-size: 0.7rem;
-        padding: 0.2rem 0.55rem;
+        font-size: 0.64rem;
+        letter-spacing: 0.05em;
+        padding: 0.22rem 0.55rem;
         border-radius: var(--radius-full);
-        background: rgba(16, 185, 129, 0.1);
-        color: var(--status-emerald);
-        border: 1px solid rgba(16, 185, 129, 0.25);
+        background: var(--ok-soft);
+        border: 1px solid var(--ok-line);
+        color: var(--ok);
+        white-space: nowrap;
+
+        &.is-scoped {
+          background: var(--warn-soft);
+          border-color: var(--warn-line);
+          color: var(--warn);
+        }
       }
 
       .chevron-icon {
-        color: var(--text-muted);
-        transition: transform var(--duration-fast) ease;
+        color: var(--text-3);
+        transition: transform var(--duration-normal) var(--ease-smooth);
       }
     }
   }
 
+  // Smooth expand without display toggling
   .adr-content {
-    display: none;
-    padding: 0 1.75rem 1.75rem 1.75rem;
-    border-top: 1px solid var(--border-subtle);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration-slow) var(--ease-smooth);
+
+    .adr-content-inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+  }
+
+  .adr-body {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--line);
 
     @include mobile {
-      padding: 0 1.25rem 1.25rem 1.25rem;
+      padding: 0 1.15rem 1.25rem;
     }
 
     .adr-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
       margin-top: 1.25rem;
 
       @include tablet {
@@ -118,42 +144,48 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        background: rgba(0, 0, 0, 0.2);
         padding: 1rem;
+        background: var(--bg-sunken);
+        border: 1px solid var(--line-hair);
         border-radius: var(--radius-md);
-        border: 1px solid rgba(255, 255, 255, 0.03);
 
         .col-title {
-          font-family: var(--font-mono);
-          font-size: 0.725rem;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: var(--text-muted);
           display: flex;
           align-items: center;
           gap: 0.4rem;
+          @include mono-label(0.66rem, var(--text-3));
+
+          svg { color: var(--accent); }
         }
 
         .col-text {
-          font-size: 0.875rem;
-          color: var(--text-secondary);
-          line-height: 1.55;
+          font-size: 0.86rem;
+          color: var(--text-2);
+          line-height: 1.6;
         }
       }
     }
 
+    .adr-plain {
+      margin-top: 1rem;
+    }
+
     .adr-takeaway {
-      margin-top: 1.25rem;
-      padding: 0.85rem 1.15rem;
-      background: var(--accent-badge-bg);
-      border-left: 3px solid var(--accent-primary);
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--accent-soft);
+      border-left: 2px solid var(--accent);
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      font-size: 0.85rem;
-      color: var(--text-primary);
+      font-size: 0.86rem;
+      color: var(--text);
+      line-height: 1.6;
 
       strong {
-        color: var(--accent-primary);
         font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
       }
     }
   }

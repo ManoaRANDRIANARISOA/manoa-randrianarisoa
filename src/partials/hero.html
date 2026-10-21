@@ -1,0 +1,125 @@
+    <!-- PL. 00 — HERO -->
+    <section class="hero-section" id="hero">
+      <div class="hero-canvas-wrapper">
+        <canvas id="hero-canvas"></canvas>
+        <span class="canvas-hint">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span data-i18n="hero.canvasHint">Maillage interactif — cliquez pour émettre une onde</span>
+        </span>
+      </div>
+
+      <div class="app-container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="hero-eyebrow">
+              <span class="eyebrow-rule" aria-hidden="true"></span>
+              <span data-i18n="hero.eyebrow1">Antananarivo, Madagascar — UTC+3</span>
+              <span class="eyebrow-scramble" data-scramble data-i18n="hero.eyebrow2">DISPONIBLE · REMOTE</span>
+            </p>
+
+            <h1 class="hero-name" id="hero-name">
+              <span class="lm"><span>Manoa</span></span>
+              <span class="lm"><span>Randrianarisoa</span></span>
+            </h1>
+
+            <div class="hero-role" id="hero-role">
+              <span class="role-text" data-i18n="hero.roleTitle">Architecte Technique &amp; Lead Full-Stack</span>
+              <span class="role-dim" aria-hidden="true"><span class="dim-end"></span></span>
+              <span class="role-badges">
+                <span class="role-badge" data-i18n="hero.roleBadgeAi">Master IA · ISPM</span>
+                <span class="role-badge" data-i18n="hero.roleBadgeOffline">Offline-first &amp; cloud</span>
+                <span class="role-badge" data-i18n="hero.roleBadgeLang">Français / Anglais</span>
+              </span>
+            </div>
+
+            <p class="plain-line hero-plain reveal" style="--i:1">
+              <span class="plain-label" data-i18n="common.plainLabel">En clair</span>
+              <span data-i18n="hero.plain">Je conçois et j'écris le code de logiciels métier qui doivent continuer à tourner même sans réseau — et j'encadre les équipes qui les font vivre.</span>
+            </p>
+
+            <ul class="hero-facts">
+              <li class="reveal" style="--i:2">
+                <span class="fact-no">01</span>
+                <span data-i18n="hero.fact1"><strong>4 systèmes livrés</strong>, dont un ERP scolaire en production locale au Lycée Manjary Soa.</span>
+              </li>
+              <li class="reveal" style="--i:3">
+                <span class="fact-no">02</span>
+                <span data-i18n="hero.fact2"><strong>Master IA soutenu et validé</strong> (ISPM) — diplôme en cours d'émission.</span>
+              </li>
+              <li class="reveal" style="--i:4">
+                <span class="fact-no">03</span>
+                <span data-i18n="hero.fact3"><strong>4 développeurs encadrés</strong> en remote : cadrage, backlog, revues de code.</span>
+              </li>
+            </ul>
+
+            <div class="hero-actions reveal" style="--i:5">
+              <button class="btn-primary" data-open-cv data-magnetic>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span data-i18n="hero.btnCv">Télécharger le CV</span>
+              </button>
+              <a href="#projects" class="btn-secondary" data-magnetic>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                <span data-i18n="hero.btnProjects">Voir les réalisations</span>
+              </a>
+              <button class="btn-ghost" data-open-terminal title="Console interactive (Ctrl+K)" data-i18n-title="header.cliTitle">
+                <span style="font-family: var(--font-mono);">&gt;_ CLI</span>
+              </button>
+            </div>
+          </div>
+
+          <figure class="hero-figure reveal" id="hero-figure" style="--i:2">
+            <div class="figure-frame" data-parallax data-tilt>
+              <img src="/assets/manoa.jpg" alt="Portrait de Manoa Randrianarisoa" class="portrait" width="768" height="1024" data-i18n-alt="about.photoAlt" loading="eager" decoding="async">
+            </div>
+            <img src="/assets/manoa-cutout.png" alt="" class="portrait-cutout" aria-hidden="true" data-cutout hidden>
+            <span class="fig-note note-top" data-i18n="hero.figNote1">FIG. 01 — Antananarivo</span>
+            <span class="fig-note note-bottom" data-i18n="hero.figNote2">Échelle 1:1</span>
+            <figcaption class="fig-badge">
+              <span class="badge-dot" aria-hidden="true"></span>
+              <span data-i18n="hero.figBadge">Ouvert aux missions remote</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Self-proving counts: each figure is verifiable by reading the page or the CV.
+             Performance deltas live in their case studies, not here. -->
+        <div class="hero-strip" id="hero-strip">
+          <div class="metric-item">
+            <div class="metric-value-wrap">
+              <span class="metric-value" data-count="7">7</span>
+              <span class="metric-unit" data-i18n="hero.metricUnit1">Systèmes documentés</span>
+            </div>
+            <span class="metric-label" data-i18n="hero.metric1Label">ANKA · ResHPro · Study-Agent · Maboo · Given Day · TPSG · EQIMA</span>
+          </div>
+
+          <div class="metric-item">
+            <div class="metric-value-wrap">
+              <span class="metric-value" data-count="8">8</span>
+              <span class="metric-unit" data-i18n="hero.metricUnit2">Ans de pratique</span>
+            </div>
+            <span class="metric-label" data-i18n="hero.metric2Label">De la licence ISPM (2018) au conseil d'architecture (2026)</span>
+          </div>
+
+          <div class="metric-item">
+            <div class="metric-value-wrap">
+              <span class="metric-value" data-count="45">45</span>
+              <span class="metric-unit" data-i18n="hero.metricUnit3">Exigences tracées</span>
+            </div>
+            <span class="metric-label" data-i18n="hero.metric3Label">Matrice de traçabilité du TDR bailleur (AFD) — ANKA</span>
+          </div>
+
+          <div class="metric-item">
+            <div class="metric-value-wrap">
+              <span class="metric-value" data-count="3">3</span>
+              <span class="metric-unit" data-i18n="hero.metricUnit4">Langues de travail</span>
+            </div>
+            <span class="metric-label" data-i18n="hero.metric4Label">Français courant · anglais professionnel · malgache natif</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-cue" aria-hidden="true">
+        <span class="cue-line"></span>
+        <span data-i18n="hero.scrollCue">Dérouler</span>
+      </div>
+    </section>
