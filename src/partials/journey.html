@@ -169,86 +169,114 @@
 
             <div class="journey-figure" id="journey-figure" data-stop="0" aria-hidden="true">
               <svg class="figure-svg" viewBox="0 0 120 166" preserveAspectRatio="xMidYMax meet" focusable="false">
-                <g fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+                <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
 
-                  <!-- limbs behind the body -->
-                  <g class="limb-b" data-limb="leg-b" data-pivot="56 98" transform="translate(56 98)">
-                    <path d="M0,0 L1,34"></path>
-                    <g data-limb="shin-b" data-pivot="1 34" transform="translate(1 34)">
-                      <path d="M0,0 L0,30"></path>
-                      <path d="M0,30 L11,30"></path>
-                    </g>
-                  </g>
-                  <g class="limb-b" data-limb="arm-b" data-pivot="44 50" transform="translate(44 50)">
-                    <path d="M0,0 L-7,22 L-3,40"></path>
-                  </g>
+    <!-- back arm -->
+    <g class="limb-b" data-limb="arm-b" data-pivot="58 48" transform="translate(58 48)">
+      <path d="M-2,0 C-2,5 -2,9 -1,13 L4,14 C4,9 4,5 3,0"></path>
+      <path d="M1,14 C0,20 1,26 2,30"></path>
+      <circle class="ink" cx="2" cy="32" r="2.6" stroke="none"></circle>
+    </g>
 
-                  <!-- torso, collar, head -->
-                  <path d="M46,48 L78,48"></path>
-                  <path d="M46,48 C43,66 45,84 49,98"></path>
-                  <path d="M78,48 C81,66 79,84 75,98"></path>
-                  <path d="M49,98 L75,98"></path>
-                  <path d="M62,37 L62,48"></path>
-                  <path d="M56,48 L62,60 L68,48"></path>
-                  <circle cx="62" cy="24" r="13"></circle>
+    <!-- back leg -->
+    <g class="limb-b" data-limb="leg-b" data-pivot="59 94" transform="translate(59 94)">
+      <path d="M-4,2 C-4,10 -4,19 -3,27"></path>
+      <path d="M4,2 C4,10 4,19 3,27"></path>
+      <g data-limb="shin-b" data-pivot="0 26" transform="translate(0 26)">
+        <path d="M-3,-1 C-3,8 -2,16 -1,24"></path>
+        <path d="M3,-1 C2,8 2,16 2,24"></path>
+        <path class="ink" d="M-2,24 C-3,29 -2,33 1,34 L13,34 C15,34 15,30 13,29 L5,25 L4,24 Z" stroke="none"></path>
+        <path class="thin" stroke="var(--bg)" d="M-1,31 L12,31"></path>
+      </g>
+    </g>
 
-                  <!-- limbs in front -->
-                  <g data-limb="leg-f" data-pivot="68 98" transform="translate(68 98)">
-                    <path d="M0,0 L1,34"></path>
-                    <g data-limb="shin-f" data-pivot="1 34" transform="translate(1 34)">
-                      <path d="M0,0 L0,30"></path>
-                      <path d="M0,30 L12,30"></path>
-                    </g>
-                  </g>
-                  <g data-limb="arm-f" data-pivot="80 50" transform="translate(80 50)">
-                    <path d="M0,0 L7,22 L3,40"></path>
-                  </g>
+    <!-- front leg -->
+    <g data-limb="leg-f" data-pivot="65 94" transform="translate(65 94)">
+      <path d="M-4,2 C-4,10 -4,19 -3,27"></path>
+      <path d="M4,2 C4,10 4,19 3,27"></path>
+      <g data-limb="shin-f" data-pivot="0 26" transform="translate(0 26)">
+        <path d="M-3,-1 C-3,8 -2,16 -1,24"></path>
+        <path d="M3,-1 C2,8 2,16 2,24"></path>
+        <path class="ink" d="M-2,24 C-3,29 -2,33 1,34 L13,34 C15,34 15,30 13,29 L5,25 L4,24 Z" stroke="none"></path>
+        <path class="thin" stroke="var(--bg)" d="M-1,31 L12,31"></path>
+      </g>
+    </g>
 
-                  <!-- attributes: one garment + held object per stage, cross-faded by data-stop -->
-                  <g class="acc acc-1">
-                    <path d="M50,50 L74,82"></path>
-                    <rect x="70" y="78" width="26" height="20" rx="3"></rect>
-                    <path d="M70,86 L96,86"></path>
-                    <path d="M82,86 L82,91"></path>
-                  </g>
-                  <g class="acc acc-2">
-                    <path d="M80,70 L106,64 L110,82 L84,88 Z"></path>
-                    <path d="M84,82 L108,76"></path>
-                    <path d="M96,66 L98,76"></path>
-                  </g>
-                  <g class="acc acc-3">
-                    <path d="M84,40 L110,20"></path>
-                    <path d="M40,62 L48,88 M46,60 L54,86"></path>
-                    <path d="M40,62 L46,60 M48,88 L54,86"></path>
-                  </g>
-                  <g class="acc acc-4">
-                    <path d="M62,60 L62,66"></path>
-                    <rect x="53" y="66" width="18" height="23" rx="2"></rect>
-                    <path d="M57,73 L67,73"></path>
-                    <path d="M57,80 L67,80"></path>
-                    <path d="M84,76 L104,70 L107,88 L87,94 Z"></path>
-                    <path d="M89,81 L101,77"></path>
-                  </g>
-                  <g class="acc acc-5">
-                    <path d="M62,2 L100,12 L62,22 L24,12 Z" fill="var(--bg)"></path>
-                    <path d="M96,13 L98,34"></path>
-                    <circle cx="98" cy="38" r="4"></circle>
-                  </g>
-                  <g class="acc acc-6">
-                    <path d="M49,22 C49,6 75,6 75,22"></path>
-                    <path d="M49,22 L49,30 M75,22 L75,30"></path>
-                    <path d="M75,30 C79,34 75,39 70,38"></path>
-                    <path d="M76,82 L108,76 L110,86 L78,92 Z"></path>
-                    <path d="M78,86 L108,80"></path>
-                  </g>
-                  <g class="acc acc-7">
-                    <path d="M76,68 L112,54 L116,66 L80,80 Z"></path>
-                    <ellipse cx="114" cy="60" rx="3" ry="7" transform="rotate(-21 114 60)"></ellipse>
-                    <path d="M34,76 L34,100 L56,100 Z"></path>
-                    <path d="M39,85 L39,95 L49,95"></path>
-                  </g>
-                </g>
-              </svg>
+    <!-- torso: shirt then shorts -->
+    <path class="p-shirt" d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z" stroke="none"></path>
+    <path d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z"></path>
+    <path d="M58,42 L62,50 L66,42"></path>
+    <path class="thin" d="M62,50 L62,90"></path>
+    <circle class="ink" cx="64.5" cy="60" r="1" stroke="none"></circle>
+    <circle class="ink" cx="64.5" cy="72" r="1" stroke="none"></circle>
+    <path class="ink" d="M53,90 L70,90 C71,98 71,106 70,112 L63,112 L61,100 L59,112 L53,112 C52,104 52,96 53,90 Z" stroke="none"></path>
+
+    <!-- head -->
+    <path class="p-skin" d="M58,8 C66,8 71,12 72,17 C73,19 74,21 75,23 C74,24 72,24 71,24 C72,27 71,29 69,30 C68,33 64,35 60,34 C53,33 49,28 49,21 C49,13 52,8 58,8 Z" stroke="none"></path>
+    <path d="M58,8 C66,8 71,12 72,17 C73,19 74,21 75,23 C74,24 72,24 71,24 C72,27 71,29 69,30 C68,33 64,35 60,34 C53,33 49,28 49,21 C49,13 52,8 58,8 Z"></path>
+    <path class="ink" d="M58,6 C66,6 72,11 73,17 C70,13 66,12 62,13 C56,14 53,18 52,24 C50,22 48,17 49,12 C51,8 54,6 58,6 Z M50,12 C49,18 50,25 54,29 C56,31 57,30 56,27 C54,23 53,18 54,14 C52,13 51,12 50,12 Z" stroke="none"></path>
+    <path class="thin" d="M54,21 C57,21 57,26 54,26"></path>
+    <circle class="ink" cx="67" cy="20" r="1.5" stroke="none"></circle>
+    <path class="thin" d="M65,16 C67,15 69,16 70,17"></path>
+    <path class="thin" d="M71,26 C70,27 69,27 68,26"></path>
+    <path d="M59,34 L58,40"></path>
+    <path d="M66,33 L67,40"></path>
+
+    <!-- front arm -->
+    <g data-limb="arm-f" data-pivot="64 48" transform="translate(64 48)">
+      <path class="p-shirt" d="M-3,0 C-2,6 -1,10 0,14 L6,13 C5,8 4,4 3,0 Z"></path>
+      <path class="halo" d="M2,14 C3,20 4,26 4,30"></path>
+      <path d="M2,14 C3,20 4,26 4,30"></path>
+      <circle class="ink" cx="4" cy="32" r="2.6" stroke="none"></circle>
+    </g>
+
+    <!-- attributes -->
+    <g class="acc acc-1">
+      <path fill="var(--j-fig)" d="M59,45 L64,43 L72,78 L67,80 Z" stroke="none"></path>
+      <rect fill="var(--j-fig)" x="68" y="78" width="26" height="21" rx="4" stroke="none"></rect>
+      <path class="thin" stroke="var(--bg)" d="M68,85 L94,85"></path>
+      <circle fill="var(--bg)" cx="81" cy="90" r="1.6" stroke="none"></circle>
+    </g>
+    <g class="acc acc-2">
+      <path fill="var(--j-fig)" d="M74,70 L102,64 L106,82 L78,88 Z" stroke="none"></path>
+      <path class="thin" stroke="var(--bg)" d="M78,84 L104,78"></path>
+      <path class="thin" stroke="var(--bg)" d="M90,67 L93,81"></path>
+    </g>
+    <g class="acc acc-3">
+      <path d="M69,80 L102,32"></path>
+      <circle fill="var(--j-fig)" cx="102" cy="32" r="2" stroke="none"></circle>
+      <rect fill="var(--j-fig)" x="40" y="62" width="9" height="26" rx="4" transform="rotate(18 44 75)" stroke="none"></rect>
+      <path class="thin" stroke="var(--bg)" d="M39,72 L48,70"></path>
+    </g>
+    <g class="acc acc-4">
+      <path class="thin" d="M60,44 L62,60 M66,44 L64,60"></path>
+      <rect fill="var(--bg)" x="56" y="60" width="13" height="17" rx="2" stroke-width="2"></rect>
+      <rect fill="var(--j-fig)" x="58" y="63" width="4" height="5" stroke="none"></rect>
+      <path class="thin" d="M64,65 L67,65 M58,72 L66,72"></path>
+      <path fill="var(--j-fig)" d="M76,70 L100,64 L103,82 L79,88 Z" stroke="none"></path>
+      <path class="thin" stroke="var(--bg)" d="M81,72 L97,68 M82,78 L98,74"></path>
+    </g>
+    <g class="acc acc-5">
+      <path fill="var(--j-fig)" d="M53,14 L71,14 L69,22 L55,22 Z" stroke="none"></path>
+      <path fill="var(--j-fig)" d="M62,2 L88,10 L62,18 L36,10 Z" stroke="none"></path>
+      <path class="thin" stroke="var(--j-sig)" d="M84,11 L86,26"></path>
+      <circle fill="var(--j-sig)" cx="86" cy="29" r="3" stroke="none"></circle>
+    </g>
+    <g class="acc acc-6">
+      <path d="M50,18 C50,4 72,4 72,18"></path>
+      <rect fill="var(--j-fig)" x="47" y="16" width="6" height="10" rx="3" stroke="none"></rect>
+      <rect fill="var(--j-fig)" x="69" y="16" width="6" height="10" rx="3" stroke="none"></rect>
+      <path class="thin" d="M72,26 C76,30 72,35 67,34"></path>
+      <path fill="var(--j-fig)" d="M72,78 L102,72 L104,82 L74,88 Z" stroke="none"></path>
+      <path class="thin" stroke="var(--bg)" d="M76,80 L100,75"></path>
+    </g>
+    <g class="acc acc-7">
+      <path fill="var(--j-fig)" d="M72,72 L102,60 L106,70 L76,82 Z" stroke="none"></path>
+      <ellipse fill="var(--bg)" stroke-width="2" cx="104" cy="65" rx="3" ry="6" transform="rotate(-23 104 65)"></ellipse>
+      <path stroke="var(--j-sig)" d="M56,78 L38,100 L56,100 Z"></path>
+      <path class="thin" stroke="var(--j-sig)" d="M51,86 L45,95 L51,95 Z"></path>
+    </g>
+  </g></svg>
             </div>
           </div>
 

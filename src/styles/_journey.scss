@@ -80,7 +80,14 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
     --j-acc-ink: var(--accent-ink);
     --j-sig: var(--signal);
     --j-fig: var(--accent);
+    --skin-o: 0.28;
   }
+}
+
+// Last stop: the crossing ends in colour — skin and shirt take their tints.
+.journey-stage[data-stop="#{$stops - 1}"] {
+  --skin-o: 0.4;
+  --shirt-o: 0.16;
 }
 
 .journey-drawing {
@@ -235,6 +242,18 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   stroke: var(--text-2);
   stroke-width: 3;
   opacity: 0.85;
+
+  .ink { fill: var(--text-2); }
+}
+
+// Illustrated walker: solid ink masses, a paper halo that lifts the near forearm
+// off the shirt, and skin/shirt tints whose opacity the stage ramps per stop.
+.figure-svg {
+  .ink { fill: currentColor; }
+  .thin { stroke-width: 1.6; }
+  .halo { stroke: var(--bg); stroke-width: 7; }
+  .p-skin { fill: var(--signal); fill-opacity: var(--skin-o, 0); }
+  .p-shirt { fill: var(--accent); fill-opacity: var(--shirt-o, 0); }
 }
 
 .acc {
