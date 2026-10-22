@@ -130,6 +130,27 @@
       animation: pulse 2.4s infinite ease-in-out;
     }
   }
+
+  .billing-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.85rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--line-strong);
+    background: var(--bg-sunken);
+
+    .billing-label {
+      @include mono-label(0.62rem, var(--text-3));
+    }
+
+    .billing-value {
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--text-2);
+    }
+  }
 }
 
 // ------------------------------------------------------------------------ Form

@@ -7,7 +7,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-$stops: 5;
+$stops: 7;
 $fig-x: 20; // where the walker stands, in % of the drawing width
 
 .journey {
@@ -52,7 +52,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 // ------------------------------------------------------------------- the stage
 .journey-runway {
   position: relative;
-  height: 360vh;
+  height: 420vh;
 }
 
 .journey-stage {
@@ -65,6 +65,22 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   grid-template-rows: minmax(0, 1fr) auto auto;
   row-gap: 0.9rem;
   padding: 5.25rem 0 1.25rem;
+
+  // The crossing is ink-only until the master: from that stop on, the teal and
+  // terracotta inks enter the scene — sober accents, never full color.
+  --j-acc: var(--text-3);
+  --j-acc-ink: var(--text-2);
+  --j-sig: var(--text-2);
+  --j-fig: var(--text);
+}
+
+@for $i from 5 through $stops {
+  .journey-stage[data-stop="#{$i - 1}"] {
+    --j-acc: var(--accent);
+    --j-acc-ink: var(--accent-ink);
+    --j-sig: var(--signal);
+    --j-fig: var(--accent);
+  }
 }
 
 .journey-drawing {
@@ -101,9 +117,9 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 }
 
-// mid — the five landmarks
+// mid — the seven landmarks
 .layer-mid {
-  --travel: 66.667;
+  --travel: 100;
   width: 300%;
   height: 0;
 }
@@ -162,11 +178,11 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 }
 
 .journey-station.is-active {
-  .station-art { color: var(--accent); }
+  .station-art { color: var(--j-acc); }
   .station-year {
-    color: var(--accent-ink);
-    background: var(--accent);
-    border-color: var(--accent);
+    color: var(--j-acc-ink);
+    background: var(--j-acc);
+    border-color: var(--j-acc);
   }
 }
 
@@ -223,7 +239,8 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 
 .acc {
   opacity: 0;
-  transition: opacity var(--duration-slow) var(--ease-smooth);
+  stroke: var(--j-fig);
+  transition: opacity var(--duration-slow) var(--ease-smooth), stroke var(--duration-slow) var(--ease-smooth);
 }
 
 @for $i from 1 through $stops {
@@ -275,7 +292,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 }
 
 .caption-index {
-  @include mono-label(0.72rem, var(--accent));
+  @include mono-label(0.72rem, var(--j-acc));
   font-weight: 700;
 }
 
@@ -320,7 +337,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 }
 
 .chapter-year {
-  @include mono-label(0.7rem, var(--signal));
+  @include mono-label(0.7rem, var(--j-sig));
   font-weight: 700;
 }
 
@@ -371,7 +388,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 }
 
 .rail-fill {
-  background: var(--accent);
+  background: var(--j-acc);
   transform: scaleX(var(--journey-p));
   transform-origin: left center;
 }
@@ -407,8 +424,8 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 
   &.is-on i {
-    background: var(--accent);
-    border-color: var(--accent);
+    background: var(--j-acc);
+    border-color: var(--j-acc);
   }
 }
 
@@ -472,7 +489,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 
   .journey-runway {
-    height: 300vh;
+    height: 340vh;
   }
 
   .journey-stage {
@@ -593,8 +610,8 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 
   .rail-dot i {
-    background: var(--accent);
-    border-color: var(--accent);
+    background: var(--j-acc);
+    border-color: var(--j-acc);
   }
 }
 

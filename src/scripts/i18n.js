@@ -146,6 +146,21 @@ const STRINGS = {
     fr: 'systèmes affichés sur',
     en: 'systems shown out of'
   },
+  'projects.studyTitle': { fr: "Projets d'étude — ISPM", en: 'Study projects — ISPM' },
+  'projects.studyNote': {
+    fr: "Projets annuels menés en groupe de 3 à 5 : rôle touche-à-tout, souvent full-stack, chef de groupe sur certains. Ce sont les preuves concrètes des compétences IA, vision par ordinateur et électronique de la matrice.",
+    en: 'Year-long projects carried in groups of 3 to 5: jack-of-all-trades role, often full-stack, group lead on some. These are the concrete evidence behind the AI, computer-vision and electronics skills of the matrix.'
+  },
+  'projects.st1Title': { fr: 'Aizah — assistant de navigation en réalité augmentée', en: 'Aizah — augmented-reality navigation assistant' },
+  'projects.st1Desc': { fr: 'Navigation intérieure par RA et IA pour une localisation précise et intuitive.', en: 'Indoor navigation through AR and AI for precise, intuitive localization.' },
+  'projects.st2Title': { fr: 'Pointage biométrique & suivi du personnel', en: 'Biometric attendance & staff tracking' },
+  'projects.st2Desc': { fr: 'Authentification par empreinte digitale, suivi en temps réel et reporting automatique.', en: 'Fingerprint authentication, real-time tracking and automatic reporting.' },
+  'projects.st3Title': { fr: "Géolocalisation d'actifs mobiles", en: 'Geolocation of mobile assets' },
+  'projects.st3Desc': { fr: "Tracking GPS en temps réel, précision optimisée pour le suivi d'actifs mobiles.", en: 'Real-time GPS tracking with optimized accuracy for mobile asset monitoring.' },
+  'projects.st4Title': { fr: 'Distributeur automatique de boissons', en: 'Automated drink vending machine' },
+  'projects.st4Desc': { fr: 'Distribution pilotée à distance via une application mobile, architecture modulaire.', en: 'Remote-controlled dispensing through a mobile app, modular architecture.' },
+  'projects.st5Title': { fr: 'Transmission de données par laser', en: 'Laser data transmission' },
+  'projects.st5Desc': { fr: 'Communication par modulation laser avec protocole de vérification des données.', en: 'Communication by laser modulation with a data verification protocol.' },
 
   // ---------------------------------------------------------------- ADRs SECTION
   'adrs.meta': { fr: 'Ingénierie & arbitrages techniques', en: 'Engineering & technical trade-offs' },
@@ -280,8 +295,8 @@ const STRINGS = {
   },
   'stack.card6Title': { fr: 'Intégration ERP & métier', en: 'ERP & business integration' },
   'stack.card6Note': {
-    fr: "Flux financiers, traçabilité d'inventaires et conformité comptable.",
-    en: 'Financial flows, inventory traceability and accounting compliance.'
+    fr: "Flux financiers, traçabilité d'inventaires, automatisation des flux métier et conformité comptable.",
+    en: 'Financial flows, inventory traceability, business-flow automation and accounting compliance.'
   },
 
   // ---------------------------------------------------------------- ABOUT SECTION
@@ -324,6 +339,7 @@ const STRINGS = {
   'about.kindIntern': { fr: 'Stage', en: 'Internship' },
   'about.kindTeach': { fr: 'Enseignement', en: 'Teaching' },
   'about.kindStudy': { fr: 'Formation', en: 'Education' },
+  'about.kindJob': { fr: 'Emploi', en: 'Employment' },
 
   'about.tl1.year': { fr: '2025 — présent', en: '2025 — present' },
   'about.tl1.role': { fr: 'Consultant indépendant / Architecte technique', en: 'Independent consultant / Technical architect' },
@@ -385,21 +401,35 @@ const STRINGS = {
     fr: 'Génie logiciel, architectures système, programmation concurrente et réseaux de communication.',
     en: 'Software engineering, system architectures, concurrent programming and communication networks.'
   },
+  'about.tl9.year': { fr: '2019 (oct. — déc.)', en: '2019 (Oct — Dec)' },
+  'about.tl9.role': { fr: 'Service technique ADSL — clientèle SFR France', en: 'ADSL technical service — SFR France customers' },
+  'about.tl9.company': { fr: 'Intelcia Tanjombato, Antananarivo', en: 'Intelcia Tanjombato, Antananarivo' },
+  'about.tl9.desc': {
+    fr: "Support technique de niveau 1 sur les lignes ADSL d'un opérateur français : diagnostic, procédure, exigence de qualité de service. Première école de rigueur et de communication client.",
+    en: 'Level-1 technical support on a French carrier\'s ADSL lines: diagnosis, procedure, service-quality requirement. A first school of rigour and customer communication.'
+  },
+  'about.tl10.year': { fr: '2018', en: '2018' },
+  'about.tl10.role': { fr: 'Baccalauréat série D', en: 'Baccalauréat série D (science track)' },
+  'about.tl10.company': { fr: "Lycée privé La Pépite d'Or, Antananarivo", en: "La Pépite d'Or private high school, Antananarivo" },
+  'about.tl10.desc': {
+    fr: 'Point de départ du fil : mathématiques et sciences expérimentales, obtenu fin 2018.',
+    en: 'Where the thread starts: mathematics and experimental sciences, passed at the end of 2018.'
+  },
 
   // ---------------------------------------------------------------- JOURNEY SCENE
   'journey.kicker': { fr: 'Traversée 2018 → 2026', en: 'Crossing 2018 → 2026' },
   'journey.heading': { fr: 'Le parcours, en une traversée', en: 'The journey, in one crossing' },
   'journey.subheading': {
-    fr: "Cinq étapes, de l'amphithéâtre de l'ISPM au conseil d'architecture. Déroulez : la silhouette avance, change d'attribut à chaque étape et le décor défile derrière elle.",
-    en: 'Five stages, from the ISPM lecture hall to architecture consulting. Scroll: the figure walks on, picks up a new attribute at each stage, and the scenery slides past.'
+    fr: "Sept étapes, du banc du lycée au conseil d'architecture. Déroulez : la silhouette avance, change de tenue et d'attribut à chaque étape, et le décor défile derrière elle — en noir et blanc jusqu'au master, puis teinté de ses encres.",
+    en: 'Seven stages, from the high-school bench to architecture consulting. Scroll: the figure walks on, changes garment and attribute at each stage, and the scenery slides past — black and white until the master, then tinted with its inks.'
   },
   'journey.plain': {
     fr: "Chaque étape reprend un fait déjà écrit dans le registre ci-dessous : rien n'est ajouté pour faire joli.",
     en: 'Every stage restates a fact already written in the register below: nothing is added for decoration.'
   },
   'journey.drawingLabel': {
-    fr: 'Silhouette marchant de gauche à droite devant cinq repères dessinés à la plume : un livre ouvert, un scanner à plat, une toque de diplômé, un ordinateur portable, un plan roulé et une équerre.',
-    en: 'A figure walking left to right past five pen-drawn landmarks: an open book, a flatbed scanner, a graduation cap, a laptop, a rolled plan and a set square.'
+    fr: 'Silhouette marchant de gauche à droite devant sept repères dessinés à la plume : un parchemin scellé, un livre ouvert, un tableau noir, un scanner à plat, une toque de diplômé, un ordinateur portable relié, un plan roulé et une équerre.',
+    en: 'A figure walking left to right past seven pen-drawn landmarks: a sealed scroll, an open book, a blackboard, a flatbed scanner, a graduation cap, a connected laptop, a rolled plan and a set square.'
   },
   'journey.hint': { fr: 'Dérouler pour avancer', en: 'Scroll to walk on' },
   'journey.railLabel': { fr: 'Progression de la traversée', en: 'Crossing progress' },
@@ -408,38 +438,52 @@ const STRINGS = {
     en: 'The periods partly overlap; the detailed register below is authoritative.'
   },
   'journey.registerLink': { fr: 'Voir le registre détaillé', en: 'See the detailed register' },
-  'journey.c1.year': { fr: '2018 — 2022', en: '2018 — 2022' },
-  'journey.c1.title': { fr: 'Licence en Électronique & Informatique', en: "Bachelor's in Electronics & Computer Science" },
-  'journey.c1.place': { fr: 'ISPM · Antananarivo', en: 'ISPM · Antananarivo' },
+  'journey.c1.year': { fr: '2018', en: '2018' },
+  'journey.c1.title': { fr: 'Baccalauréat série D', en: 'Baccalaureate, science track D' },
+  'journey.c1.place': { fr: "Lycée privé La Pépite d'Or · Antananarivo", en: "La Pépite d'Or private high school · Antananarivo" },
   'journey.c1.text': {
-    fr: 'Les fondations : génie logiciel, architectures système, réseaux. Les premiers circuits et les premiers dépôts.',
-    en: 'The foundations: software engineering, system architectures, networks. The first circuits and the first repositories.'
+    fr: 'Le point de départ : sciences et mathématiques, série D. Le socle qui décidera du reste.',
+    en: 'The starting point: science and mathematics, D track. The foundation that decides the rest.'
   },
-  'journey.c2.year': { fr: '2022', en: '2022' },
-  'journey.c2.title': { fr: 'Stage — pipeline OCR vers Sage ERP', en: 'Internship — OCR pipeline into Sage ERP' },
-  'journey.c2.place': { fr: 'EQIMA · Antananarivo', en: 'EQIMA · Antananarivo' },
+  'journey.c2.year': { fr: '2018 — 2022', en: '2018 — 2022' },
+  'journey.c2.title': { fr: 'Licence en Électronique & Informatique', en: "Bachelor's in Electronics & Computer Science" },
+  'journey.c2.place': { fr: 'ISPM · Antananarivo', en: 'ISPM · Antananarivo' },
   'journey.c2.text': {
+    fr: "Les fondations : génie logiciel, architectures système, réseaux — et les projets d'étude annuels en groupe, déjà documentés au registre.",
+    en: 'The foundations: software engineering, system architectures, networks — and the year-long group study projects, already documented in the register.'
+  },
+  'journey.c3.year': { fr: '2020 — 2023', en: '2020 — 2023' },
+  'journey.c3.title': { fr: 'Enseignement & cours particuliers', en: 'Teaching & private lessons' },
+  'journey.c3.place': { fr: 'Informatique, électronique, mathématiques · Antananarivo', en: 'Computer science, electronics, mathematics · Antananarivo' },
+  'journey.c3.text': {
+    fr: "Transmettre impose de structurer ce que l'on sait : pédagogie appliquée pendant les années de licence et de master.",
+    en: 'Teaching forces you to structure what you know: applied pedagogy through the bachelor and master years.'
+  },
+  'journey.c4.year': { fr: '2022', en: '2022' },
+  'journey.c4.title': { fr: 'Stage — pipeline OCR vers Sage ERP', en: 'Internship — OCR pipeline into Sage ERP' },
+  'journey.c4.place': { fr: 'EQIMA · Antananarivo', en: 'EQIMA · Antananarivo' },
+  'journey.c4.text': {
     fr: "Premier système livré en entreprise : les pièces comptables scannées entrent directement dans l'ERP, -70 % de temps de traitement.",
     en: 'First system shipped in a company: scanned accounting documents go straight into the ERP, 70% less processing time.'
   },
-  'journey.c3.year': { fr: '2022 — 2024', en: '2022 — 2024' },
-  'journey.c3.title': { fr: 'Master Électronique, Informatique & IA', en: 'MSc Electronics, Computer Science & AI' },
-  'journey.c3.place': { fr: "ISPM · soutenu et validé, diplôme en cours d'émission", en: 'ISPM · defended and validated, diploma pending issuance' },
-  'journey.c3.text': {
+  'journey.c5.year': { fr: '2022 — 2024', en: '2022 — 2024' },
+  'journey.c5.title': { fr: 'Master Électronique, Informatique & IA', en: 'MSc Electronics, Computer Science & AI' },
+  'journey.c5.place': { fr: "ISPM · soutenu et validé, diplôme en cours d'émission", en: 'ISPM · defended and validated, diploma pending issuance' },
+  'journey.c5.text': {
     fr: "Vision par ordinateur, Deep Learning, traitement d'images (OpenCV) et vision industrielle.",
     en: 'Computer vision, Deep Learning, image processing (OpenCV) and industrial vision.'
   },
-  'journey.c4.year': { fr: '2023 — 2025', en: '2023 — 2025' },
-  'journey.c4.title': { fr: 'Contrats remote internationaux', en: 'International remote contracts' },
-  'journey.c4.place': { fr: 'RICSM · ToutPourSaGloire.com · Given Day Tech', en: 'RICSM · ToutPourSaGloire.com · Given Day Tech' },
-  'journey.c4.text': {
+  'journey.c6.year': { fr: '2023 — 2025', en: '2023 — 2025' },
+  'journey.c6.title': { fr: 'Contrats remote internationaux', en: 'International remote contracts' },
+  'journey.c6.place': { fr: 'RICSM · ToutPourSaGloire.com · Given Day Tech', en: 'RICSM · ToutPourSaGloire.com · Given Day Tech' },
+  'journey.c6.text': {
     fr: "Standards d'accessibilité américains, refonte Next.js + Meilisearch, puis encadrement de 4 développeurs.",
     en: 'US accessibility standards, a Next.js + Meilisearch overhaul, then leading a team of 4 developers.'
   },
-  'journey.c5.year': { fr: "2025 — aujourd'hui", en: '2025 — today' },
-  'journey.c5.title': { fr: 'Indépendant · architecte technique', en: 'Independent · technical architect' },
-  'journey.c5.place': { fr: 'ANKA · ResHPro · Study-Agent · Maboo', en: 'ANKA · ResHPro · Study-Agent · Maboo' },
-  'journey.c5.text': {
+  'journey.c7.year': { fr: "2025 — aujourd'hui", en: '2025 — today' },
+  'journey.c7.title': { fr: 'Indépendant · architecte technique', en: 'Independent · technical architect' },
+  'journey.c7.place': { fr: 'Missi Innovation · ANKA · ResHPro · Study-Agent · Maboo', en: 'Missi Innovation · ANKA · ResHPro · Study-Agent · Maboo' },
+  'journey.c7.text': {
     fr: 'Conception de bout en bout, décisions tracées en ADR, systèmes qui tiennent quand le réseau tombe.',
     en: 'End-to-end design, decisions traced as ADRs, systems that hold up when the network drops.'
   },
@@ -467,6 +511,11 @@ const STRINGS = {
   'contact.availability': {
     fr: 'Disponible immédiatement · remote monde entier ou sur site',
     en: 'Available immediately · remote worldwide or on-site'
+  },
+  'contact.billingLabel': { fr: 'Cadre de facturation', en: 'Invoicing framework' },
+  'contact.billingValue': {
+    fr: 'Missi Innovation — entreprise individuelle immatriculée à Madagascar · identifiants fiscaux (NIF / STAT) communiqués sur demande, dans le cadre contractuel',
+    en: 'Missi Innovation — sole proprietorship registered in Madagascar · tax identifiers (NIF / STAT) provided on request, within the contractual framework'
   },
   'contact.formAria': { fr: 'Formulaire de contact', en: 'Contact form' },
   'contact.formNote': {
@@ -534,21 +583,21 @@ const STRINGS = {
   'cv.aria': { fr: 'Hub de téléchargement des CVs', en: 'Resume download hub' },
   'cv.heading': { fr: 'Curriculum Vitae — Manoa Randrianarisoa', en: 'Curriculum Vitae — Manoa Randrianarisoa' },
   'cv.subtitle': {
-    fr: 'Sélectionnez la version adaptée à vos exigences de recrutement',
-    en: 'Select the version suited to your hiring requirements'
+    fr: 'Un CV unique, fidèle au parcours réel — choisissez la langue',
+    en: 'One single resume, faithful to the real track record — choose the language'
   },
   'cv.closeAria': { fr: 'Fermer la fenêtre de CV', en: 'Close resume window' },
-  'cv.tag1': { fr: 'Offre Technique & Ingénierie', en: 'Technical & Engineering Offer' },
-  'cv.title1': { fr: 'Développeur Full-Stack & Architecte Technique Senior', en: 'Senior Full-Stack Developer & Technical Architect' },
+  'cv.tag1': { fr: 'Version française', en: 'French version' },
+  'cv.title1': { fr: 'CV unifié — Architecte Technique & Lead Full-Stack', en: 'Unified resume — Technical Architect & Lead Full-Stack' },
   'cv.desc1': {
-    fr: 'Focus systèmes distribués, SaaS multi-tenant, architecture Offline-First, React 19, TypeScript, Express 5, PostgreSQL et Master IA.',
-    en: 'Focus on distributed systems, multi-tenant SaaS, Offline-First architecture, React 19, TypeScript, Express 5, PostgreSQL and an AI MSc.'
+    fr: "Une page A4 fidèle au parcours réel : profil, six expériences, projets d'étude ISPM, décisions d'architecture (ADR-001 à 003), compétences et disponibilité.",
+    en: 'One A4 page faithful to the real track record: profile, six roles, ISPM study projects, architecture decisions (ADR-001 to 003), skills and availability.'
   },
-  'cv.tag2': { fr: 'Offre Produit & Gestion Métier', en: 'Product & Business Management Offer' },
-  'cv.title2': { fr: 'Product Owner ERP & Recette SQL', en: 'ERP Product Owner & SQL Validation' },
+  'cv.tag2': { fr: 'Version anglaise', en: 'English version' },
+  'cv.title2': { fr: 'CV unifié — Technical Architect & Senior Lead Full-Stack', en: 'Unified resume — Technical Architect & Senior Lead Full-Stack' },
   'cv.desc2': {
-    fr: 'Focus cadrage fonctionnel, modélisation de flux stocks & hôtellerie, validation SQL, conformité comptable et pilotage agile.',
-    en: 'Focus on functional framing, hotel & inventory flow modeling, SQL validation, accounting compliance and agile steering.'
+    fr: 'Même document, traduit intégralement pour les processus de recrutement internationaux et les RH anglophones.',
+    en: 'The same document, fully translated for international hiring processes and English-speaking recruiters.'
   },
   'cv.download': { fr: 'Télécharger PDF', en: 'Download PDF' },
   'cv.open': { fr: 'Ouvrir', en: 'Open' },

@@ -95,9 +95,10 @@ export const PROJECTS_DATA = [
       'Architecture offline-first : cache local SQLite ultra-rapide combiné à une synchronisation cloud Supabase / Postgres dès rétablissement du réseau.',
       'Moteur de génération vectorielle de bulletins scolaires via jsPDF, avec calcul pondéré instantané des moyennes.',
       'Gestion complète : scolarité, inscriptions, suivi des paiements des frais et comptabilité interne.',
+      'Volet recrutement et réception des formulaires externalisé vers Make et n8n : webhooks entrants, relances et écritures en base sans exposer le serveur.',
       'Application packagée sous Electron avec interface réactive en React 19 et Tailwind CSS v4.'
     ],
-    stack: ['Electron', 'React 19', 'Tailwind v4', 'SQLite (WAL)', 'Supabase / Postgres', 'jsPDF', 'TypeScript'],
+    stack: ['Electron', 'React 19', 'Tailwind v4', 'SQLite (WAL)', 'Supabase / Postgres', 'jsPDF', 'Make', 'n8n', 'TypeScript'],
     metrics: 'Production locale · saisie garantie hors-ligne',
     githubUrl: 'https://github.com/ManoaRANDRIANARISOA/study-agent',
     secondaryGithub: 'https://github.com/ManoaRANDRIANARISOA/lms',
@@ -113,6 +114,7 @@ export const PROJECTS_DATA = [
         'Offline-first architecture: ultra-fast local SQLite cache combined with Supabase / Postgres cloud sync as soon as the network returns.',
         'Vector-based report card generation via jsPDF, with instant weighted grade computation.',
         'Full management coverage: tuition, enrollments, fee payment tracking and internal accounting.',
+        'Recruitment and form intake offloaded to Make and n8n: inbound webhooks, reminders and database writes without exposing the server.',
         'Packaged as an Electron application with a reactive React 19 and Tailwind CSS v4 interface.'
       ],
       metrics: 'Local production · offline-safe entry',
@@ -245,7 +247,7 @@ export const PROJECTS_DATA = [
       'Interfaçage bidirectionnel avec l\'API Sage pour l\'enregistrement automatisé des écritures.',
       'Réduction de 70 % du temps de traitement administratif des équipes comptables.'
     ],
-    stack: ['Python', 'OpenCV / OCR', 'API Sage ERP', 'Node.js', 'PostgreSQL'],
+    stack: ['Python', 'OpenCV / OCR', 'TensorFlow.js', 'Angular', 'Node.js', 'Firebase', 'API Sage ERP', 'PostgreSQL'],
     metrics: '-70 % de temps de traitement · zéro saisie manuelle',
     githubUrl: null,
     liveUrl: null,

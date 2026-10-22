@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Carte OG — Manoa Randrianarisoa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f2ed;
+    --ink: #13171f;
+    --ink-2: #47505e;
+    --line: rgba(19, 23, 32, 0.34);
+    --hair: rgba(19, 23, 32, 0.055);
+    --accent: #0e7c6b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      repeating-linear-gradient(0deg, var(--hair) 0 1px, transparent 1px 42px),
+      repeating-linear-gradient(90deg, var(--hair) 0 1px, transparent 1px 42px),
+      var(--paper);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--ink);
+  }
+  .frame { position: absolute; inset: 26px; border: 1px solid var(--line); }
+  .marks { position: absolute; inset: 0; }
+  .head {
+    position: absolute; top: 58px; left: 66px; right: 66px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .head svg { width: 62px; height: 62px; flex-shrink: 0; }
+  .name {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 31px; letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .role {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    letter-spacing: 0.17em; text-transform: uppercase; color: var(--ink-2);
+    margin-top: 7px;
+  }
+  .planche {
+    position: absolute; top: 62px; right: 66px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.14em; color: var(--ink-2);
+    border: 1px solid var(--line); padding: 6px 10px;
+  }
+  .claim {
+    position: absolute; left: 66px; top: 178px; width: 760px;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 60px; line-height: 1.06; letter-spacing: -0.028em;
+  }
+  .claim em { font-style: normal; color: var(--accent); }
+  .sub {
+    position: absolute; left: 66px; top: 330px; width: 700px;
+    font-size: 18.5px; line-height: 1.5; color: var(--ink-2);
+  }
+  .chips { position: absolute; left: 66px; bottom: 104px; display: flex; gap: 12px; }
+  .chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 500;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    border: 1px solid var(--ink); padding: 9px 13px; background: var(--paper);
+  }
+  .chip.accent { border-color: var(--accent); color: var(--accent); }
+  .foot {
+    position: absolute; left: 66px; right: 66px; bottom: 50px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+  }
+  .url { color: var(--accent); font-weight: 700; letter-spacing: 0.04em; }
+  .langs { color: var(--ink-2); letter-spacing: 0.14em; }
+  .watermark { position: absolute; right: -34px; bottom: -52px; width: 400px; height: 400px; opacity: 0.07; }
+</style>
+</head>
+<body>
+  <div class="frame"></div>
+  <svg class="marks" viewBox="0 0 1200 630" aria-hidden="true">
+    <g stroke="#0e7c6b" stroke-width="1.4">
+      <path d="M26 12v28M12 26h28"></path>
+      <path d="M1174 12v28M1160 26h28"></path>
+      <path d="M26 590v28M12 604h28"></path>
+      <path d="M1174 590v28M1160 604h28"></path>
+    </g>
+  </svg>
+
+  <div class="head">
+    <svg viewBox="0 0 64 64" fill="none" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+      <g stroke="#13171f" stroke-width="6">
+        <path d="M10 54V10"></path><path d="M10 10 26 36 42 10"></path><path d="M42 54V10"></path><path d="M42 10h11v16H42"></path>
+      </g>
+      <path d="M42 26 56 54" stroke="#0e7c6b" stroke-width="6"></path>
+    </svg>
+    <div>
+      <div class="name">Manoa Randrianarisoa</div>
+      <div class="role">Architecte technique &amp; lead full-stack · Antananarivo (UTC+3)</div>
+    </div>
+  </div>
+  <div class="planche">PL. 00 — PORTFOLIO</div>
+
+  <h1 class="claim">Des systèmes qui tiennent<br>quand le réseau <em>tombe</em>.</h1>
+  <p class="sub">Offline-first, SaaS multi-tenant, ERP scolaire en production : sept systèmes documentés, décisions d'architecture et périmètres de mesure compris.</p>
+
+  <div class="chips">
+    <span class="chip">7 systèmes documentés</span>
+    <span class="chip">45 exigences tracées (AFD)</span>
+    <span class="chip accent">ERP en production locale</span>
+  </div>
+
+  <div class="foot">
+    <span class="url">manoa-arch.vercel.app</span>
+    <span class="langs">FR / EN</span>
+  </div>
+
+  <svg class="watermark" viewBox="0 0 64 64" fill="none" stroke="#13171f" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+    <path d="M10 54V10"></path><path d="M10 10 26 36 42 10"></path><path d="M42 54V10"></path><path d="M42 10h11v16H42"></path><path d="M42 26 56 54"></path>
+  </svg>
+</body>
+</html>

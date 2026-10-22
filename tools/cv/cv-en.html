@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CV — Manoa Randrianarisoa (EN)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f2ed;
+    --paper-2: #ecebe4;
+    --ink: #13171f;
+    --ink-2: #40495a;
+    --ink-3: #6b7482;
+    --line: rgba(19, 23, 32, 0.16);
+    --teal: #0e7c6b;
+    --terra: #a9552b;
+    --indigo: #3d4fa1;
+    --ochre: #b07d18;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+  html, body { width: 210mm; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 7.85pt;
+    line-height: 1.35;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ------------------------------------------------------------------ header */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5.5mm 8mm 5mm;
+    display: flex;
+    gap: 5.5mm;
+    align-items: center;
+  }
+  header svg { width: 15mm; height: 15mm; flex-shrink: 0; }
+  .h-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .h-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.8pt; letter-spacing: 0.13em; text-transform: uppercase;
+    color: #46dcc4; margin-top: 1.3mm;
+  }
+  .h-contact {
+    display: flex; flex-wrap: wrap; gap: 0.9mm 3.6mm;
+    margin-top: 2.1mm; font-family: 'JetBrains Mono', monospace;
+    font-size: 6.6pt; color: rgba(244, 242, 237, 0.82);
+  }
+  .h-contact span::before { content: '—'; color: #46dcc4; margin-right: 1.4mm; }
+
+  /* -------------------------------------------------------------------- grid */
+  main { display: grid; grid-template-columns: 60mm 1fr; }
+  aside { background: var(--paper-2); padding: 4mm 4mm 5mm 7mm; border-right: 1px solid var(--line); }
+  .col { padding: 4mm 8mm 5mm 5mm; }
+
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.9mm 0 0.9mm 2.2mm;
+    border-left: 1.1mm solid var(--sec, var(--teal));
+    background: color-mix(in srgb, var(--sec, var(--teal)) 9%, transparent);
+    color: var(--ink);
+    margin: 0 0 1.8mm;
+  }
+  section { margin-bottom: 3mm; }
+  section:last-child { margin-bottom: 0; }
+
+  /* ------------------------------------------------------------------- aside */
+  .skill-group { margin-bottom: 1.5mm; }
+  .skill-group b {
+    display: block; font-family: 'JetBrains Mono', monospace;
+    font-size: 6.4pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--g, var(--teal));
+    margin-bottom: 0.2mm;
+  }
+  .skill-group span { color: var(--ink-2); font-size: 7.3pt; }
+
+  .edu { margin-bottom: 1.6mm; }
+  .edu b { display: block; font-size: 7.7pt; font-weight: 700; }
+  .edu i { font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 6.4pt; color: var(--ink-3); }
+  .edu p { color: var(--ink-2); font-size: 7.1pt; }
+
+  .factbox {
+    border: 1px dashed var(--ink-3);
+    padding: 2mm 2.2mm;
+    font-size: 7pt; color: var(--ink-2);
+    background: rgba(255, 255, 255, 0.45);
+  }
+  .factbox b { color: var(--ink); }
+  .side-p { color: var(--ink-2); font-size: 7.2pt; }
+
+  /* -------------------------------------------------------------------- main */
+  .profile { color: var(--ink-2); font-size: 7.9pt; }
+  .profile b { color: var(--ink); }
+
+  .xp { margin-bottom: 2.2mm; page-break-inside: avoid; }
+  .xp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+  .xp-role { font-size: 8.1pt; font-weight: 700; }
+  .xp-when {
+    font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; color: var(--ink-3);
+    white-space: nowrap;
+  }
+  .xp-co {
+    font-family: 'JetBrains Mono', monospace; font-size: 6.6pt;
+    color: var(--xc, var(--teal)); margin: 0.2mm 0 0.6mm;
+  }
+  .xp ul { list-style: none; }
+  .xp li { padding-left: 3mm; position: relative; margin-bottom: 0.45mm; color: var(--ink-2); font-size: 7.5pt; }
+  .xp li::before {
+    content: ''; position: absolute; left: 0; top: 1.3mm;
+    width: 1.5mm; height: 1.5mm; background: var(--xc, var(--teal));
+  }
+  .xp li b { color: var(--ink); }
+
+  .st-row { display: grid; grid-template-columns: 13mm 1fr; gap: 1.8mm; margin-bottom: 0.9mm; font-size: 7.3pt; }
+  .st-row .y { font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; color: var(--ink-3); padding-top: 0.2mm; }
+  .st-row b { font-size: 7.4pt; }
+  .st-row p { display: inline; color: var(--ink-2); }
+  .st-row i { font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 6.4pt; color: var(--terra); }
+
+  footer {
+    background: var(--ink); color: rgba(244, 242, 237, 0.75);
+    font-family: 'JetBrains Mono', monospace; font-size: 6.2pt;
+    padding: 1.9mm 8mm; display: flex; justify-content: space-between; letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <svg viewBox="0 0 64 64" fill="none" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+      <g stroke="#f4f2ed" stroke-width="6">
+        <path d="M10 54V10"></path><path d="M10 10 26 36 42 10"></path><path d="M42 54V10"></path><path d="M42 10h11v16H42"></path>
+      </g>
+      <path d="M42 26 56 54" stroke="#46dcc4" stroke-width="6"></path>
+    </svg>
+    <div>
+      <div class="h-name">Manoa Randrianarisoa</div>
+      <div class="h-title">Technical architect &amp; senior lead full-stack</div>
+      <div class="h-contact">
+        <span>manoa.wrk@gmail.com</span>
+        <span>+261 34 71 517 89</span>
+        <span>Antananarivo, Madagascar (UTC+3)</span>
+        <span>github.com/ManoaRANDRIANARISOA</span>
+        <span>linkedin.com/in/manoa-randrianarisoa</span>
+        <span>manoa-arch.vercel.app</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside>
+      <section style="--sec: var(--indigo)">
+        <h2>Skills</h2>
+        <div class="skill-group" style="--g: var(--indigo)"><b>Frontend</b><span>React 18/19, TypeScript, Next.js, React Native, Tailwind CSS, Vite, Zustand</span></div>
+        <div class="skill-group" style="--g: var(--indigo)"><b>Backend</b><span>Node.js, NestJS, Express 5, PostgreSQL, Supabase, Firebase, SQLite (WAL), GraphQL, REST</span></div>
+        <div class="skill-group" style="--g: var(--indigo)"><b>Architecture</b><span>Multi-tenant SaaS, RBAC, offline-first, Electron, PWA / IndexedDB, Docker, CI/CD, Linux</span></div>
+        <div class="skill-group" style="--g: var(--indigo)"><b>Integration &amp; automation</b><span>Make, n8n, webhooks, Sage ERP APIs, BI dashboards</span></div>
+        <div class="skill-group" style="--g: var(--indigo)"><b>AI &amp; data</b><span>Python, OpenCV, TensorFlow, algorithms</span></div>
+        <div class="skill-group" style="--g: var(--indigo)"><b>Governance</b><span>Agile / Scrum, functional framing, SQL acceptance, traceability matrix, mentoring</span></div>
+      </section>
+
+      <section style="--sec: var(--ochre)">
+        <h2>Education</h2>
+        <div class="edu">
+          <b>MSc Electronics, Computer Science &amp; AI</b>
+          <i>ISPM · 2022 — 2024</i>
+          <p>Defended and validated; diploma pending issuance. Computer vision, Deep Learning, signal processing.</p>
+        </div>
+        <div class="edu">
+          <b>BSc Electronics &amp; Computer Science</b>
+          <i>ISPM · 2018 — 2022</i>
+          <p>Software engineering, system architectures, concurrent programming, networks.</p>
+        </div>
+        <div class="edu">
+          <b>Baccalauréat série D (science track)</b>
+          <i>La Pépite d'Or private high school, Antananarivo · 2018</i>
+        </div>
+      </section>
+
+      <section style="--sec: var(--terra)">
+        <h2>Languages</h2>
+        <p class="side-p">French (fluent) · English (professional, technical interviews) · Malagasy (native)</p>
+      </section>
+
+      <section style="--sec: var(--teal)">
+        <h2>Contractual framework</h2>
+        <div class="factbox">
+          <b>Missi Innovation</b> — sole proprietorship registered in Madagascar. Invoicing in MGA or EUR with full statutory details; tax identifiers (NIF / STAT) provided on request, within the contractual framework. Direct freelance, international umbrella company or agency subcontracting.
+        </div>
+      </section>
+
+      <section style="--sec: var(--teal)">
+        <h2>Availability</h2>
+        <p class="side-p">Immediate — remote worldwide or on-site. Time zone UTC+3 (2 hours ahead of Paris in winter). Full-time, part-time or one-off framing.</p>
+      </section>
+    </aside>
+
+    <div class="col">
+      <section style="--sec: var(--teal)">
+        <h2>Profile</h2>
+        <p class="profile">Technical architect and lead full-stack, <b>8 years of practice</b>: system resilience (<b>offline-first</b>), <b>multi-tenant SaaS</b>, mentoring remote teams. From functional framing to production, I design measurable systems and train the teams that keep them alive.</p>
+      </section>
+
+      <section style="--sec: var(--teal)">
+        <h2>Professional experience</h2>
+
+        <div class="xp" style="--xc: var(--teal)">
+          <div class="xp-head"><span class="xp-role">Independent consultant / Technical architect</span><span class="xp-when">2025 — present</span></div>
+          <div class="xp-co">Missi Innovation · Antananarivo — international remote</div>
+          <ul>
+            <li><b>ANKA (AFD)</b>: offline-first ESG field collection — 45 traced requirements, React + Dexie PWA, NestJS API, 14 days offline.</li>
+            <li><b>ResHPro</b>: multi-tenant hospitality SaaS (POS, inventory, RBAC) — React 18, PostgreSQL, RLS isolation (ADR-002).</li>
+            <li><b>Study-Agent</b>: school ERP in production (Manjary Soa High School) — Electron, SQLite WAL, Supabase, offline-safe entry; Make &amp; n8n.</li>
+            <li><b>Maboo</b>: frontend lead, headless storefront React 19 / React Router 7 SSR (client code not public).</li>
+          </ul>
+        </div>
+
+        <div class="xp" style="--xc: var(--indigo)">
+          <div class="xp-head"><span class="xp-role">Technical architect &amp; mobile lead</span><span class="xp-when">2025 — 2026</span></div>
+          <div class="xp-co">Given Day Tech · France (non-profit) — remote</div>
+          <ul>
+            <li>Mentoring <b>4 developers</b> remotely: React Native + Node.js application architecture, code reviews, mentoring.</li>
+          </ul>
+        </div>
+
+        <div class="xp" style="--xc: var(--indigo)">
+          <div class="xp-head"><span class="xp-role">Senior full-stack developer</span><span class="xp-when">2025 — present</span></div>
+          <div class="xp-co">ToutPourSaGloire.com · international — remote</div>
+          <ul>
+            <li>Meilisearch search engine and Next.js overhaul: <b>40% less loading time</b> (measured in development environment).</li>
+          </ul>
+        </div>
+
+        <div class="xp" style="--xc: var(--terra)">
+          <div class="xp-head"><span class="xp-role">CMS developer &amp; UI/UX designer</span><span class="xp-when">2023 — 2024</span></div>
+          <div class="xp-co">RICSM · United States — remote, contracted via IKS Antananarivo</div>
+          <ul>
+            <li>Squarespace sites for international clients, Figma mockups, performance &amp; SEO; successful launches (ricsm.org).</li>
+          </ul>
+        </div>
+
+        <div class="xp" style="--xc: var(--terra)">
+          <div class="xp-head"><span class="xp-role">Full-stack &amp; OCR pipeline engineering intern</span><span class="xp-when">May — Oct 2022</span></div>
+          <div class="xp-co">EQIMA Solution · Ivandry, Antananarivo</div>
+          <ul>
+            <li>OCR pipeline (OpenCV) into the Sage ERP API: <b>70% less processing time</b> for accounting teams.</li>
+          </ul>
+        </div>
+
+        <div class="xp" style="--xc: var(--ochre)">
+          <div class="xp-head"><span class="xp-role">Other experience</span><span class="xp-when">2019 — 2023</span></div>
+          <div class="xp-co">Teaching &amp; customer service — Antananarivo</div>
+          <ul>
+            <li>Part-time teacher (2020 — 2023): computer science, electronics, applied mathematics — private lessons and groups.</li>
+            <li>ADSL technical service, SFR France customers (Oct — Dec 2019) — Intelcia Tanjombato, level-1 support.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section style="--sec: var(--terra)">
+        <h2>Study projects — ISPM</h2>
+        <div class="st-row"><span class="y">2024</span><div><b>Aizah — augmented-reality navigation.</b> <p>Indoor navigation through AR and AI, precise localization.</p> <i>Vue · React Native · Python · OpenCV · TensorFlow</i></div></div>
+        <div class="st-row"><span class="y">2023</span><div><b>Biometric attendance &amp; staff tracking.</b> <p>Fingerprint authentication, real time, automatic reporting.</p> <i>React · Node.js · Prisma · PostgreSQL · Arduino</i></div></div>
+        <div class="st-row"><span class="y">2021-22</span><div><b>Geolocation of mobile assets.</b> <p>Real-time GPS tracking with optimized accuracy.</p> <i>Ionic · Laravel · REST API</i></div></div>
+        <div class="st-row"><span class="y">2020</span><div><b>Automated drink vending machine.</b> <p>Remote control through a mobile application.</p> <i>Angular · Python · Arduino</i></div></div>
+        <div class="st-row"><span class="y">2019</span><div><b>Laser data transmission.</b> <p>Laser modulation with a verification protocol.</p> <i>JavaScript · Python · C · Arduino</i></div></div>
+        <p style="color: var(--ink-3); font-size: 6.6pt; margin-top: 0.8mm;">Year-long projects carried in groups of 3 to 5: jack-of-all-trades role, often full-stack, group lead on some.</p>
+      </section>
+
+      <section style="--sec: var(--indigo)">
+        <h2>Architecture decisions</h2>
+        <div class="st-row"><span class="y">ADR-001</span><div><b>Offline-first SQLite (WAL) + Supabase.</b> <p>Adopted, in production: withstand unstable network and power.</p></div></div>
+        <div class="st-row"><span class="y">ADR-002</span><div><b>Multi-tenant isolation via PostgreSQL RLS.</b> <p>Framed, migration in progress: preferred over multi-database splitting.</p></div></div>
+        <div class="st-row"><span class="y">ADR-003</span><div><b>React Router 7 SSR with streaming.</b> <p>Deployed (Maboo): non-critical blocks streamed after critical content.</p></div></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span>Manoa Randrianarisoa — CV_en · generated from the portfolio (manoa-arch.vercel.app)</span>
+    <span>Case studies and detailed references on request</span>
+  </footer>
+</body>
+</html>

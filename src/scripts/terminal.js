@@ -11,30 +11,38 @@ const TERM_STRINGS = {
     fr: `
           <strong>COMMANDES DISPONIBLES :</strong><br>
           • <span class="highlight">whoami</span>       : Profil, formation et statut de disponibilité<br>
-          • <span class="highlight">journey</span>      : Parcours chronologique (missions, stage, enseignement, diplômes)<br>
+          • <span class="highlight">journey</span>      : Parcours chronologique (BAC → missions, stage, enseignement, diplômes)<br>
           • <span class="highlight">projects</span>     : Systèmes livrés & liens GitHub<br>
           • <span class="highlight">stack</span>        : Matrice des technologies réellement utilisées<br>
           • <span class="highlight">adrs</span>         : Registre des décisions d'architecture (ADR)<br>
           • <span class="highlight">metrics</span>      : Chiffres clés, avec leur périmètre de mesure<br>
+          • <span class="highlight">academique</span>   : Projets universitaires (IA, vision, électronique) & enseignement<br>
+          • <span class="highlight">societe</span>      : Cadre de facturation et formes de collaboration<br>
+          • <span class="highlight">dispo</span>        : Disponibilité, fuseau horaire et formats de mission<br>
           • <span class="highlight">cv</span>           : Ouvrir le hub de téléchargement CV (PDF)<br>
           • <span class="highlight">theme &lt;nom&gt;</span>  : Couleur d'accent (teal | indigo | ochre | moss)<br>
           • <span class="highlight">lang &lt;fr|en&gt;</span> : Basculer la langue du site<br>
           • <span class="highlight">contact</span>      : Coordonnées directes<br>
-          • <span class="highlight">clear</span>        : Effacer la console
+          • <span class="highlight">clear</span>        : Effacer la console<br>
+          • <span class="highlight">exit</span>         : Fermer la console
         `,
     en: `
           <strong>AVAILABLE COMMANDS:</strong><br>
           • <span class="highlight">whoami</span>       : Profile, education and availability status<br>
-          • <span class="highlight">journey</span>      : Chronological career path (missions, internship, teaching, degrees)<br>
+          • <span class="highlight">journey</span>      : Chronological career path (A-levels → missions, internship, teaching, degrees)<br>
           • <span class="highlight">projects</span>     : Shipped systems & GitHub links<br>
           • <span class="highlight">stack</span>        : Matrix of technologies actually used<br>
           • <span class="highlight">adrs</span>         : Architectural decision records (ADR)<br>
           • <span class="highlight">metrics</span>      : Key figures, with their measurement scope<br>
+          • <span class="highlight">research</span>     : University projects (AI, vision, electronics) & teaching<br>
+          • <span class="highlight">company</span>      : Invoicing framework and collaboration models<br>
+          • <span class="highlight">availability</span> : Availability, time zone and mission formats<br>
           • <span class="highlight">cv</span>           : Open the resume download hub (PDF)<br>
           • <span class="highlight">theme &lt;name&gt;</span> : Accent colour (teal | indigo | ochre | moss)<br>
           • <span class="highlight">lang &lt;fr|en&gt;</span> : Switch the site language<br>
           • <span class="highlight">contact</span>      : Direct contact details<br>
-          • <span class="highlight">clear</span>        : Clear the console
+          • <span class="highlight">clear</span>        : Clear the console<br>
+          • <span class="highlight">exit</span>         : Close the console
         `
   },
   whoami: {
@@ -42,15 +50,17 @@ const TERM_STRINGS = {
           <strong>MANOA RANDRIANARISOA</strong><br>
           Architecte technique & développeur full-stack senior — Antananarivo, Madagascar (UTC+3)<br>
           Master Électronique, Informatique & IA (ISPM) : soutenu et validé, diplôme en cours d'émission.<br>
-          Licence Électronique & Informatique (ISPM, 2018—2022).<br>
-          Spécialisé dans la résilience des systèmes (offline-first), le multi-tenant cloud et l'encadrement d'équipes remote.
+          Licence Électronique & Informatique (ISPM, 2018—2022) · Baccalauréat série D (2018).<br>
+          Spécialisé dans la résilience des systèmes (offline-first), le multi-tenant cloud et l'encadrement d'équipes remote.<br>
+          Exercice indépendant via <strong>Missi Innovation</strong> — tapez <span class="highlight">societe</span> pour le cadre de facturation.
         `,
     en: `
           <strong>MANOA RANDRIANARISOA</strong><br>
           Technical architect & senior full-stack developer — Antananarivo, Madagascar (UTC+3)<br>
           MSc Electronics, Computer Science & AI (ISPM): defended and validated, diploma pending issuance.<br>
-          Bachelor's in Electronics & Computer Science (ISPM, 2018—2022).<br>
-          Specialized in system resilience (offline-first), cloud multi-tenancy and mentoring remote teams.
+          Bachelor's in Electronics & Computer Science (ISPM, 2018—2022) · French Baccalauréat equivalent, science track (2018).<br>
+          Specialized in system resilience (offline-first), cloud multi-tenancy and mentoring remote teams.<br>
+          Independent practice through <strong>Missi Innovation</strong> — type <span class="highlight">company</span> for the invoicing framework.
         `
   },
   journey: {
@@ -62,8 +72,10 @@ const TERM_STRINGS = {
           • 2023 — 2024    : Développeur CMS & designer UI/UX, RICSM (États-Unis, remote) via IKS Antananarivo<br>
           • 2022 (6 mois)  : Stage full-stack & pipeline OCR, EQIMA (Antananarivo)<br>
           • 2020 — 2023    : Enseignant vacataire en informatique, électronique et mathématiques appliquées<br>
+          • 2019 (oct.—déc.): Service technique ADSL — clientèle SFR France, Intelcia Tanjombato (Antananarivo)<br>
           • 2022 — 2024    : Master Électronique, Informatique & IA — ISPM<br>
-          • 2018 — 2022    : Licence Électronique & Informatique — ISPM
+          • 2018 — 2022    : Licence Électronique & Informatique — ISPM<br>
+          • 2018           : Baccalauréat série D
         `,
     en: `
           <strong>CAREER THREAD:</strong><br>
@@ -73,8 +85,10 @@ const TERM_STRINGS = {
           • 2023 — 2024    : CMS developer & UI/UX designer, RICSM (United States, remote) via IKS Antananarivo<br>
           • 2022 (6 months): Full-stack & OCR pipeline internship, EQIMA (Antananarivo)<br>
           • 2020 — 2023    : Part-time teacher in computer science, electronics and applied mathematics<br>
+          • 2019 (Oct—Dec) : ADSL technical service — SFR France customers, Intelcia Tanjombato (Antananarivo)<br>
           • 2022 — 2024    : MSc Electronics, Computer Science & AI — ISPM<br>
-          • 2018 — 2022    : Bachelor's in Electronics & Computer Science — ISPM
+          • 2018 — 2022    : Bachelor's in Electronics & Computer Science — ISPM<br>
+          • 2018           : High-school diploma, science track (série D)
         `
   },
   projects: {
@@ -105,15 +119,17 @@ const TERM_STRINGS = {
     fr: `
           <strong>COMPÉTENCES PRINCIPALES :</strong><br>
           • Frontend : React 18/19, TypeScript, Next.js, React Native, Tailwind CSS, Vite, Zustand<br>
-          • Backend : Node.js, NestJS, Express 5, PostgreSQL, Supabase, SQLite (mode WAL), GraphQL, REST<br>
+          • Backend : Node.js, NestJS, Express 5, PostgreSQL, Supabase, Firebase, SQLite (mode WAL), GraphQL, REST<br>
           • Systèmes & architecture : SaaS multi-tenant, RBAC, offline-first, Electron, Docker, CI/CD, Git, Linux<br>
+          • Intégration & automatisation : Make, n8n, webhooks, Sage ERP APIs, dashboards BI<br>
           • Données & IA : Python, OpenCV, TensorFlow, algorithmique
         `,
     en: `
           <strong>CORE SKILLS:</strong><br>
           • Frontend: React 18/19, TypeScript, Next.js, React Native, Tailwind CSS, Vite, Zustand<br>
-          • Backend: Node.js, NestJS, Express 5, PostgreSQL, Supabase, SQLite (WAL mode), GraphQL, REST<br>
+          • Backend: Node.js, NestJS, Express 5, PostgreSQL, Supabase, Firebase, SQLite (WAL mode), GraphQL, REST<br>
           • Systems & architecture: multi-tenant SaaS, RBAC, offline-first, Electron, Docker, CI/CD, Git, Linux<br>
+          • Integration & automation: Make, n8n, webhooks, Sage ERP APIs, BI dashboards<br>
           • Data & AI: Python, OpenCV, TensorFlow, algorithms
         `
   },
@@ -176,24 +192,100 @@ const TERM_STRINGS = {
           <strong>COORDONNÉES DE CONTACT :</strong><br>
           • Email    : <a href="mailto:manoa.wrk@gmail.com" style="color:var(--accent)">manoa.wrk@gmail.com</a><br>
           • Téléphone: <a href="tel:+261347151789" style="color:var(--accent)">+261 34 71 517 89</a><br>
-          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" style="color:var(--accent)">github.com/ManoaRANDRIANARISOA</a><br>
-          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" style="color:var(--accent)">linkedin.com/in/manoa-randrianarisoa</a><br>
+          • Société  : Missi Innovation (entreprise individuelle) — Antananarivo<br>
+          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">github.com/ManoaRANDRIANARISOA</a><br>
+          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">linkedin.com/in/manoa-randrianarisoa</a><br>
           • Statut   : disponible immédiatement (remote monde entier ou sur site)
         `,
     en: `
           <strong>CONTACT DETAILS:</strong><br>
           • Email    : <a href="mailto:manoa.wrk@gmail.com" style="color:var(--accent)">manoa.wrk@gmail.com</a><br>
           • Phone    : <a href="tel:+261347151789" style="color:var(--accent)">+261 34 71 517 89</a><br>
-          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" style="color:var(--accent)">github.com/ManoaRANDRIANARISOA</a><br>
-          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" style="color:var(--accent)">linkedin.com/in/manoa-randrianarisoa</a><br>
+          • Company  : Missi Innovation (sole proprietorship) — Antananarivo<br>
+          • GitHub   : <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">github.com/ManoaRANDRIANARISOA</a><br>
+          • LinkedIn : <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">linkedin.com/in/manoa-randrianarisoa</a><br>
           • Status   : immediately available (remote worldwide or on-site)
         `
+  },
+  company: {
+    fr: `
+          <strong>CADRE DE FACTURATION :</strong><br>
+          • Structure  : <strong>Missi Innovation</strong> — entreprise individuelle immatriculée à Madagascar<br>
+          • Siège      : Lot H 80 Ter Miadana, Alasora — Antananarivo<br>
+          • Factures   : émises en MGA ou en EUR, mentions légales complètes<br>
+          • Identifiants fiscaux (NIF / STAT) : communiqués sur demande, dans le cadre contractuel<br>
+          • Formes de collaboration : mission freelance directe, portage salarial international, sous-traitance via ESN<br>
+          <span class="system-msg">Le véhicule de facturation existe déjà : aucune création de structure n'est nécessaire pour démarrer une mission.</span>
+        `,
+    en: `
+          <strong>INVOICING FRAMEWORK:</strong><br>
+          • Entity     : <strong>Missi Innovation</strong> — sole proprietorship registered in Madagascar<br>
+          • Address    : Lot H 80 Ter Miadana, Alasora — Antananarivo<br>
+          • Invoices   : issued in MGA or EUR, with full statutory details<br>
+          • Tax identifiers (NIF / STAT): provided on request, within the contractual framework<br>
+          • Collaboration models: direct freelance contract, international umbrella company, subcontracting through an agency<br>
+          <span class="system-msg">The invoicing vehicle already exists: no entity needs to be created before a mission starts.</span>
+        `
+  },
+  availability: {
+    fr: `
+          <strong>DISPONIBILITÉ :</strong><br>
+          • Statut   : disponible immédiatement<br>
+          • Format   : remote (monde entier) ou sur site à Antananarivo<br>
+          • Fuseau   : UTC+3 — 2 h d'avance sur Paris en hiver, 1 h en été<br>
+          • Rythme   : temps plein, temps partagé ou cadrage ponctuel (audit, ADR, revue d'architecture)
+        `,
+    en: `
+          <strong>AVAILABILITY:</strong><br>
+          • Status   : immediately available<br>
+          • Format   : remote (worldwide) or on-site in Antananarivo<br>
+          • Time zone: UTC+3 — 2 hours ahead of Paris in winter, 1 hour in summer<br>
+          • Pace     : full-time, part-time or one-off framing (audit, ADR, architecture review)
+        `
+  },
+  research: {
+    fr: `
+          <strong>PROJETS UNIVERSITAIRES (ISPM) :</strong><br>
+          • 2024          : Aizah — navigation en réalité augmentée [Vue · React Native · OpenCV · TensorFlow]<br>
+          • 2023          : pointage biométrique [Node.js · Prisma · PostgreSQL · Arduino]<br>
+          • 2021 — 2022   : suivi GPS de flotte [Ionic · Laravel]<br>
+          • 2020          : distributeur automatique [Angular · Python · Arduino]<br>
+          • 2019          : transmission laser — électronique et traitement du signal<br>
+          <strong>ENSEIGNEMENT (2020 — 2023) :</strong><br>
+          • Vacataire en informatique, électronique et mathématiques appliquées — cours particuliers et groupes, Antananarivo<br>
+          • Cadre : projets d'étude annuels en groupe de 3 à 5 — rôle touche-à-tout (full-stack), chef de groupe sur certains<br>
+          <span class="system-msg">Ces travaux sont les preuves concrètes des compétences IA, vision par ordinateur et électronique de la matrice.</span>
+        `,
+    en: `
+          <strong>UNIVERSITY PROJECTS (ISPM):</strong><br>
+          • 2024          : Aizah — augmented-reality navigation [Vue · React Native · OpenCV · TensorFlow]<br>
+          • 2023          : biometric attendance system [Node.js · Prisma · PostgreSQL · Arduino]<br>
+          • 2021 — 2022   : fleet GPS tracking [Ionic · Laravel]<br>
+          • 2020          : vending machine [Angular · Python · Arduino]<br>
+          • 2019          : laser transmission — electronics and signal processing<br>
+          <strong>TEACHING (2020 — 2023):</strong><br>
+          • Part-time lecturer in computer science, electronics and applied mathematics — private lessons and group classes, Antananarivo<br>
+          • Frame: year-long study projects in groups of 3 to 5 — jack-of-all-trades role (full-stack), group lead on some<br>
+          <span class="system-msg">These projects are the concrete evidence behind the AI, computer-vision and electronics skills in the matrix.</span>
+        `
+  },
+  sudo: {
+    fr: 'Permission refusée : cette console est en lecture seule. Aucun privilège à escalader — tout ce qui s\'affiche ici est déjà vérifiable.',
+    en: 'Permission denied: this console is read-only. There is no privilege to escalate — everything printed here is already verifiable.'
+  },
+  tooLong: {
+    fr: 'Commande trop longue ({n} caractères). Cette console accepte 120 caractères au maximum.',
+    en: 'Command too long ({n} characters). This console accepts up to 120 characters.'
   },
   unknown: {
     fr: 'Commande inconnue : "{cmd}". Tapez <span class="highlight">help</span> pour voir la liste des commandes.',
     en: 'Unknown command: "{cmd}". Type <span class="highlight">help</span> to see the list of commands.'
   }
 };
+
+// The console is a closed vocabulary: every answer comes from TERM_STRINGS above, and the only
+// user-controlled text that reaches innerHTML passes through escapeHtml first.
+const MAX_COMMAND_LENGTH = 120;
 
 function pick(key, replacements = {}) {
   const entry = TERM_STRINGS[key];
@@ -269,6 +361,12 @@ export function initTerminal() {
   function handleCommand(cmdRaw) {
     const trimmed = cmdRaw.trim();
     if (!trimmed) return;
+
+    if (trimmed.length > MAX_COMMAND_LENGTH) {
+      appendLine(pick('tooLong', { n: String(trimmed.length) }), 'error');
+      sound.playError();
+      return;
+    }
 
     commandHistory.push(trimmed);
     historyIdx = commandHistory.length;
@@ -350,6 +448,36 @@ export function initTerminal() {
         sound.playClick();
         break;
 
+      case 'societe':
+      case 'company':
+        appendLine(pick('company'));
+        sound.playClick();
+        break;
+
+      case 'dispo':
+      case 'disponibilite':
+      case 'availability':
+        appendLine(pick('availability'));
+        sound.playClick();
+        break;
+
+      case 'academique':
+      case 'recherche':
+      case 'research':
+        appendLine(pick('research'));
+        sound.playClick();
+        break;
+
+      case 'sudo':
+        appendLine(pick('sudo'), 'error');
+        sound.playError();
+        break;
+
+      case 'exit':
+      case 'quit':
+        closeTerminal();
+        break;
+
       case 'clear':
         bodyEl.innerHTML = '';
         sound.playClick();
@@ -384,6 +512,11 @@ export function initTerminal() {
   });
 
   function escapeHtml(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 }
