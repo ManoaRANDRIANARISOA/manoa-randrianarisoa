@@ -105,7 +105,16 @@ export function initScrollAnimations() {
   }
 
   // ---------------------------------------------------------------- counters
+  // The strip can sit inside the first viewport: the observer then fires at boot
+  // and the count ends before the page is even painted. Hold it until the fonts
+  // are in and the hero has drawn, so the 0 -> N run is actually witnessed.
+  let countReady = false;
+  const countGate = (document.fonts ? document.fonts.ready : Promise.resolve())
+    .then(() => new Promise((resolve) => setTimeout(resolve, 450)))
+    .then(() => { countReady = true; });
+
   function runCount(el) {
+    if (el.dataset.countStarted) return;
     const target = parseFloat(el.dataset.count);
     if (Number.isNaN(target)) return;
     const prefix = el.dataset.prefix || '';
@@ -114,6 +123,11 @@ export function initScrollAnimations() {
       el.textContent = `${prefix}${target}${suffix}`;
       return;
     }
+    if (!countReady) {
+      countGate.then(() => runCount(el));
+      return;
+    }
+    el.dataset.countStarted = '1';
     const duration = 1150;
     const start = performance.now();
     const step = (now) => {
