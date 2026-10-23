@@ -171,63 +171,166 @@
               <svg class="figure-svg" viewBox="0 0 120 166" preserveAspectRatio="xMidYMax meet" focusable="false">
                 <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
 
-    <!-- back arm -->
+    <!-- couleur : blob d'accent (derrière tout) -->
+    <path class="g-blob" fill="var(--accent)" fill-opacity=".13" stroke="none"
+      d="M22,64 C12,32 42,10 72,16 C102,22 116,52 108,88 C100,122 62,142 36,126 C10,110 32,96 22,64 Z"></path>
+
+    <!-- bras arrière -->
     <g class="limb-b" data-limb="arm-b" data-pivot="58 48" transform="translate(58 48)">
-      <path d="M-2,0 C-2,5 -2,9 -1,13 L4,14 C4,9 4,5 3,0"></path>
-      <path d="M1,14 C0,20 1,26 2,30"></path>
-      <circle class="ink" cx="2" cy="32" r="2.6" stroke="none"></circle>
+      <path class="l-stick" d="M0,0 C-1,10 0,22 2,30"></path>
+      <g class="l-formed">
+        <path d="M-2,0 C-2,5 -2,9 -1,13 L4,14 C4,9 4,5 3,0"></path>
+        <path d="M1,14 C0,20 1,26 2,30"></path>
+        <circle class="ink" cx="2" cy="32" r="2.6" stroke="none"></circle>
+      </g>
     </g>
 
-    <!-- back leg -->
+    <!-- jambe arrière -->
     <g class="limb-b" data-limb="leg-b" data-pivot="59 94" transform="translate(59 94)">
-      <path d="M-4,2 C-4,10 -4,19 -3,27"></path>
-      <path d="M4,2 C4,10 4,19 3,27"></path>
+      <path class="l-stick" d="M0,2 L0,27"></path>
+      <g class="l-bare">
+        <path d="M-4,2 C-4,10 -4,19 -3,27"></path>
+        <path d="M4,2 C4,10 4,19 3,27"></path>
+      </g>
+      <g class="l-trou">
+        <path class="trou-base" d="M-5.5,0 C-5.5,10 -5,20 -4.5,27 L5,27 C5,18 5.5,8 5.5,0 Z" stroke="none"></path>
+        <path class="p-trou" d="M-5.5,0 C-5.5,10 -5,20 -4.5,27 L5,27 C5,18 5.5,8 5.5,0 Z" stroke="none"></path>
+        <path d="M-5.5,0 C-5.5,10 -5,20 -4.5,27 M5.5,0 C5.5,8 5,18 5,27"></path>
+      </g>
       <g data-limb="shin-b" data-pivot="0 26" transform="translate(0 26)">
-        <path d="M-3,-1 C-3,8 -2,16 -1,24"></path>
-        <path d="M3,-1 C2,8 2,16 2,24"></path>
-        <path class="ink" d="M-2,24 C-3,29 -2,33 1,34 L13,34 C15,34 15,30 13,29 L5,25 L4,24 Z" stroke="none"></path>
-        <path class="thin" stroke="var(--bg)" d="M-1,31 L12,31"></path>
+        <path class="l-stick" d="M0,-1 L0,24"></path>
+        <g class="l-bare">
+          <path d="M-3,-1 C-3,8 -2,16 -1,24"></path>
+          <path d="M3,-1 C2,8 2,16 2,24"></path>
+        </g>
+        <g class="l-trou">
+          <path class="trou-base" d="M-4.6,-1 C-4.6,8 -3.6,16 -2.6,25 L4.4,25 C3.8,16 4.2,8 4.6,-1 Z" stroke="none"></path>
+          <path class="p-trou" d="M-4.6,-1 C-4.6,8 -3.6,16 -2.6,25 L4.4,25 C3.8,16 4.2,8 4.6,-1 Z" stroke="none"></path>
+          <path d="M-4.6,-1 C-4.6,8 -3.6,16 -2.6,25 M4.6,-1 C4.2,8 3.8,16 4.4,25"></path>
+          <path class="thin" d="M-3,21.5 L4,21.5"></path>
+        </g>
+        <g class="l-shoe">
+          <path class="ink" d="M-2,24 C-3,29 -2,33 1,34 L13,34 C15,34 15,30 13,29 L5,25 L4,24 Z" stroke="none"></path>
+          <path class="thin" stroke="var(--bg)" d="M-1,31 L12,31"></path>
+        </g>
       </g>
     </g>
 
-    <!-- front leg -->
+    <!-- sac à dos (derrière le torse) -->
+    <g class="g-pack">
+      <path class="ink" d="M52,46 C44,48 40,58 42,70 C43,78 48,82 52,82 C50,70 50,56 52,46 Z" stroke="none"></path>
+      <path class="thin" d="M57,42 C54,50 53,60 54,70"></path>
+    </g>
+
+    <!-- jambe avant -->
     <g data-limb="leg-f" data-pivot="65 94" transform="translate(65 94)">
-      <path d="M-4,2 C-4,10 -4,19 -3,27"></path>
-      <path d="M4,2 C4,10 4,19 3,27"></path>
+      <path class="l-stick" d="M0,2 L0,27"></path>
+      <g class="l-bare">
+        <path d="M-4,2 C-4,10 -4,19 -3,27"></path>
+        <path d="M4,2 C4,10 4,19 3,27"></path>
+      </g>
+      <g class="l-trou">
+        <path class="trou-base" d="M-5.5,0 C-5.5,10 -5,20 -4.5,27 L5,27 C5,18 5.5,8 5.5,0 Z" stroke="none"></path>
+        <path class="p-trou" d="M-5.5,0 C-5.5,10 -5,20 -4.5,27 L5,27 C5,18 5.5,8 5.5,0 Z" stroke="none"></path>
+        <path d="M-5.5,0 C-5.5,10 -5,20 -4.5,27 M5.5,0 C5.5,8 5,18 5,27"></path>
+      </g>
       <g data-limb="shin-f" data-pivot="0 26" transform="translate(0 26)">
-        <path d="M-3,-1 C-3,8 -2,16 -1,24"></path>
-        <path d="M3,-1 C2,8 2,16 2,24"></path>
-        <path class="ink" d="M-2,24 C-3,29 -2,33 1,34 L13,34 C15,34 15,30 13,29 L5,25 L4,24 Z" stroke="none"></path>
-        <path class="thin" stroke="var(--bg)" d="M-1,31 L12,31"></path>
+        <path class="l-stick" d="M0,-1 L0,24"></path>
+        <g class="l-bare">
+          <path d="M-3,-1 C-3,8 -2,16 -1,24"></path>
+          <path d="M3,-1 C2,8 2,16 2,24"></path>
+        </g>
+        <g class="l-trou">
+          <path class="trou-base" d="M-4.6,-1 C-4.6,8 -3.6,16 -2.6,25 L4.4,25 C3.8,16 4.2,8 4.6,-1 Z" stroke="none"></path>
+          <path class="p-trou" d="M-4.6,-1 C-4.6,8 -3.6,16 -2.6,25 L4.4,25 C3.8,16 4.2,8 4.6,-1 Z" stroke="none"></path>
+          <path d="M-4.6,-1 C-4.6,8 -3.6,16 -2.6,25 M4.6,-1 C4.2,8 3.8,16 4.4,25"></path>
+          <path class="thin" d="M-3,21.5 L4,21.5"></path>
+        </g>
+        <g class="l-shoe">
+          <path class="ink" d="M-2,24 C-3,29 -2,33 1,34 L13,34 C15,34 15,30 13,29 L5,25 L4,24 Z" stroke="none"></path>
+          <path class="thin" stroke="var(--bg)" d="M-1,31 L12,31"></path>
+        </g>
       </g>
     </g>
 
-    <!-- torso: shirt then shorts -->
-    <path class="p-shirt" d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z" stroke="none"></path>
-    <path d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z"></path>
-    <path d="M58,42 L62,50 L66,42"></path>
-    <path class="thin" d="M62,50 L62,90"></path>
-    <circle class="ink" cx="64.5" cy="60" r="1" stroke="none"></circle>
-    <circle class="ink" cx="64.5" cy="72" r="1" stroke="none"></circle>
-    <path class="ink" d="M53,90 L70,90 C71,98 71,106 70,112 L63,112 L61,100 L59,112 L53,112 C52,104 52,96 53,90 Z" stroke="none"></path>
+    <!-- torse stickman -->
+    <g class="g-stick-t">
+      <path d="M62,34 L62,94"></path>
+      <path d="M54,38 L70,38"></path>
+      <path d="M56,94 L68,94"></path>
+    </g>
 
-    <!-- head -->
-    <path class="p-skin" d="M58,8 C66,8 71,12 72,17 C73,19 74,21 75,23 C74,24 72,24 71,24 C72,27 71,29 69,30 C68,33 64,35 60,34 C53,33 49,28 49,21 C49,13 52,8 58,8 Z" stroke="none"></path>
-    <path d="M58,8 C66,8 71,12 72,17 C73,19 74,21 75,23 C74,24 72,24 71,24 C72,27 71,29 69,30 C68,33 64,35 60,34 C53,33 49,28 49,21 C49,13 52,8 58,8 Z"></path>
-    <path class="ink" d="M58,6 C66,6 72,11 73,17 C70,13 66,12 62,13 C56,14 53,18 52,24 C50,22 48,17 49,12 C51,8 54,6 58,6 Z M50,12 C49,18 50,25 54,29 C56,31 57,30 56,27 C54,23 53,18 54,14 C52,13 51,12 50,12 Z" stroke="none"></path>
-    <path class="thin" d="M54,21 C57,21 57,26 54,26"></path>
-    <circle class="ink" cx="67" cy="20" r="1.5" stroke="none"></circle>
-    <path class="thin" d="M65,16 C67,15 69,16 70,17"></path>
-    <path class="thin" d="M71,26 C70,27 69,27 68,26"></path>
-    <path d="M59,34 L58,40"></path>
-    <path d="M66,33 L67,40"></path>
+    <!-- hoodie (étudiant) -->
+    <g class="g-hood">
+      <path d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z"></path>
+      <path d="M52,41 C48,34 52,28 58,30 C62,31 63,36 62,40"></path>
+      <path d="M57,42 C60,46 64,46 67,42"></path>
+      <path class="thin" d="M60,47 L60,55 M64,47 L64,54"></path>
+      <path class="thin" d="M55,78 C60,81 65,81 69,78"></path>
+      <path class="ink" d="M53,90 L70,90 C71,95 71,99 70,102 L53,102 C52,98 52,94 53,90 Z" stroke="none"></path>
+    </g>
 
-    <!-- front arm -->
+    <!-- chemise (formé, N&B puis accents) -->
+    <g class="g-shirt">
+      <path class="p-shirt" d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z" stroke="none"></path>
+      <path d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z"></path>
+      <path d="M58,42 L62,50 L66,42"></path>
+      <path class="thin" d="M62,50 L62,90"></path>
+      <circle class="ink" cx="64.5" cy="60" r="1" stroke="none"></circle>
+      <circle class="ink" cx="64.5" cy="72" r="1" stroke="none"></circle>
+    </g>
+
+    <!-- short -->
+    <path class="g-shorts ink" d="M53,90 L70,90 C71,98 71,106 70,112 L63,112 L61,100 L59,112 L53,112 C52,104 52,96 53,90 Z" stroke="none"></path>
+
+    <!-- veste / maille noire (consultant, architecte) -->
+    <g class="g-jacket">
+      <path class="ink" d="M55,41 C60,38 65,38 69,41 C71,52 71,72 69,90 L55,90 C53,72 53,52 55,41 Z" stroke="none"></path>
+      <path class="thin" stroke="var(--bg)" d="M62,42 L58,53 L62,57 L66,53 L62,42"></path>
+      <path class="thin" stroke="var(--bg)" d="M57,42 C60,45 64,45 67,42"></path>
+      <path d="M54,42 C60,39 66,39 70,42 C73,52 73,72 70,92 L54,92 C51,72 51,52 54,42 Z"></path>
+      <path class="thin" d="M54,86 L58,86 M66,86 L70,86"></path>
+    </g>
+
+    <!-- tête stickman -->
+    <g class="g-head-stick">
+      <circle cx="62" cy="22" r="11"></circle>
+      <path d="M52,19 C54,11 70,11 72,19"></path>
+      <circle class="ink" cx="66" cy="21" r="1.4" stroke="none"></circle>
+    </g>
+
+    <!-- tête formée (3/4, coiffure uniforme) -->
+    <g class="g-head-f">
+      <path class="p-skin" d="M57,7 C65,7 70,11 71,16 C72,18 73,20 74,22 C73,23 71,23 70,23 C71,26 70,28 68,29 C67,32 63,34 59,33 C52,32 48,27 48,20 C48,12 51,7 57,7 Z" stroke="none"></path>
+      <path d="M57,7 C65,7 70,11 71,16 C72,18 73,20 74,22 C73,23 71,23 70,23 C71,26 70,28 68,29 C67,32 63,34 59,33 C52,32 48,27 48,20 C48,12 51,7 57,7 Z"></path>
+      <path class="thin" d="M68,29 C66,31 63,32 60,31"></path>
+      <path class="ink" d="M57,5 C65,5 71,10 72,17 C70,13 67,12 65,13 C67,15 68,17 68,19 C66,15 63,13 60,13 C55,13 52,17 51,23 C49,21 47,17 48,12 C50,7 53,5 57,5 Z" stroke="none"></path>
+      <path class="ink" d="M51,23 C51,26 52,28 53,29 C52,26 52,24 52,22 Z" stroke="none"></path>
+      <path class="thin" d="M54,20 C57,19 58,24 55,25 C54,25 53,24 53,22"></path>
+      <circle class="ink" cx="66" cy="19" r="1.5" stroke="none"></circle>
+      <path class="thin" d="M64,15 C66,14 68,15 69,16"></path>
+      <path class="thin" d="M70,26 C69,27 68,27 67,26"></path>
+      <path d="M58,33 L57,40"></path>
+      <path d="M65,32 L66,40"></path>
+    </g>
+
+    <!-- lunettes -->
+    <g class="g-glasses">
+      <circle fill="var(--bg)" fill-opacity=".55" stroke="none" cx="66" cy="19" r="4.2"></circle>
+      <circle class="thin" cx="66" cy="19" r="4.2"></circle>
+      <path class="thin" d="M70,18 L72.5,18"></path>
+      <path class="thin" d="M62,18.5 L56.5,20"></path>
+    </g>
+
+    <!-- bras avant -->
     <g data-limb="arm-f" data-pivot="64 48" transform="translate(64 48)">
-      <path class="p-shirt" d="M-3,0 C-2,6 -1,10 0,14 L6,13 C5,8 4,4 3,0 Z"></path>
-      <path class="halo" d="M2,14 C3,20 4,26 4,30"></path>
-      <path d="M2,14 C3,20 4,26 4,30"></path>
-      <circle class="ink" cx="4" cy="32" r="2.6" stroke="none"></circle>
+      <path class="l-stick" d="M0,0 C1,10 3,22 4,30"></path>
+      <g class="l-formed">
+        <path class="p-shirt" d="M-3,0 C-2,6 -1,10 0,14 L6,13 C5,8 4,4 3,0 Z"></path>
+        <path class="halo" d="M2,14 C3,20 4,26 4,30"></path>
+        <path d="M2,14 C3,20 4,26 4,30"></path>
+        <circle class="ink" cx="4" cy="32" r="2.6" stroke="none"></circle>
+      </g>
     </g>
 
     <!-- attributes -->

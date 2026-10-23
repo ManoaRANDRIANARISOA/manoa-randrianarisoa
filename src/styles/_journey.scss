@@ -90,6 +90,11 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   --shirt-o: 0.16;
 }
 
+// Trousers tint follows the outfit stops: jeans at the student stop, chinos later.
+.journey-stage[data-stop="1"] { --trou-o: 0.3; }
+.journey-stage[data-stop="5"],
+.journey-stage[data-stop="6"] { --trou-o: 0.35; }
+
 .journey-drawing {
   position: relative;
   grid-row: 1;
@@ -254,6 +259,77 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .halo { stroke: var(--bg); stroke-width: 7; }
   .p-skin { fill: var(--signal); fill-opacity: var(--skin-o, 0); }
   .p-shirt { fill: var(--accent); fill-opacity: var(--shirt-o, 0); }
+  .p-trou { fill: #b07d18; fill-opacity: var(--trou-o, 0); }
+  .trou-base { fill: var(--bg); }
+}
+
+// The walker grows up as he crosses: stickman, then hooded student, then the
+// formed shirt, then jacket and glasses. Each stop shows its own kit and fades
+// the others; the walk rig (pivots, strides) never changes.
+.journey-figure {
+  .g-stick-t,
+  .g-head-stick,
+  .g-hood,
+  .g-jacket,
+  .g-pack,
+  .g-glasses,
+  .g-blob,
+  .l-stick,
+  .l-trou,
+  .l-bare,
+  .l-shoe,
+  .l-formed,
+  .g-shirt,
+  .g-shorts,
+  .g-head-f {
+    transition: opacity var(--duration-slow) var(--ease-smooth);
+  }
+
+  .g-stick-t,
+  .g-head-stick,
+  .g-hood,
+  .g-jacket,
+  .g-pack,
+  .g-glasses,
+  .g-blob,
+  .l-stick,
+  .l-trou { opacity: 0; }
+
+  &[data-stop="0"] {
+    .g-stick-t,
+    .g-head-stick,
+    .l-stick { opacity: 1; }
+
+    .l-bare,
+    .l-shoe,
+    .l-formed,
+    .g-shirt,
+    .g-shorts,
+    .g-head-f { opacity: 0; }
+  }
+
+  &[data-stop="1"] {
+    .g-hood,
+    .g-pack,
+    .l-trou { opacity: 1; }
+
+    .g-shirt,
+    .g-shorts,
+    .l-bare { opacity: 0; }
+  }
+
+  &[data-stop="5"],
+  &[data-stop="6"] {
+    .g-jacket,
+    .g-glasses,
+    .l-trou { opacity: 1; }
+
+    .g-shirt,
+    .g-shorts,
+    .l-bare { opacity: 0; }
+  }
+
+  &[data-stop="6"] .g-blob { opacity: 1; }
 }
 
 .acc {

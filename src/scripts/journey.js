@@ -141,5 +141,7 @@ export function initJourney() {
   });
 
   measure();
-  setStop(0);
+  // Frieze fallback (reduced motion, short windows): show the arrived walker,
+  // not the opening stickman.
+  setStop(staticScene.matches ? STOPS - 1 : 0);
 }
