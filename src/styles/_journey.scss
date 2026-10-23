@@ -256,6 +256,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 .figure-svg {
   .ink { fill: currentColor; }
   .thin { stroke-width: 1.6; }
+  .sketch { stroke-dasharray: 26 2.4 15 2 34 2.8; }
   .halo { stroke: var(--bg); stroke-width: 7; }
   .p-skin { fill: var(--signal); fill-opacity: var(--skin-o, 0); }
   .p-shirt { fill: var(--accent); fill-opacity: var(--shirt-o, 0); }
@@ -272,7 +273,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .g-hood,
   .g-jacket,
   .g-pack,
-  .g-glasses,
   .g-blob,
   .l-stick,
   .l-trou,
@@ -290,7 +290,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .g-hood,
   .g-jacket,
   .g-pack,
-  .g-glasses,
   .g-blob,
   .l-stick,
   .l-trou { opacity: 0; }
@@ -321,7 +320,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   &[data-stop="5"],
   &[data-stop="6"] {
     .g-jacket,
-    .g-glasses,
     .l-trou { opacity: 1; }
 
     .g-shirt,
