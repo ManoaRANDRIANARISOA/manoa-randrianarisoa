@@ -92,7 +92,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 
 // Trousers tint follows the outfit stops: jeans at the student stop, chinos later.
 .journey-stage[data-stop="1"] { --trou-o: 0.3; }
-.journey-stage[data-stop="5"],
+.journey-stage[data-stop="5"] { --trou-o: 0.35; --skin-o: 0.32; --shirt-o: 0.14; }
 .journey-stage[data-stop="6"] { --trou-o: 0.35; }
 
 .journey-drawing {
@@ -245,23 +245,24 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 // Limbs behind the body read lighter, so the walk has depth without shading.
 .limb-b {
   stroke: var(--text-2);
-  stroke-width: 3;
-  opacity: 0.85;
+  opacity: 0.9;
 
   .ink { fill: var(--text-2); }
+  .f-base { fill: var(--bg); }
 }
 
-// Illustrated walker: solid ink masses, a paper halo that lifts the near forearm
-// off the shirt, and skin/shirt tints whose opacity the stage ramps per stop.
+// Flat editorial walker: clean continuous outlines over filled shapes, a paper
+// halo that lifts the near forearm, and skin/shirt/trouser tints whose opacity
+// the stage ramps per stop (monochrome until the colour arrives at the end).
 .figure-svg {
   .ink { fill: currentColor; }
-  .thin { stroke-width: 1.6; }
-  .sketch { stroke-dasharray: 26 2.4 15 2 34 2.8; }
-  .halo { stroke: var(--bg); stroke-width: 7; }
+  .thin { stroke-width: 1.5; }
+  .halo { stroke: var(--bg); stroke-width: 6; }
+  .f-base { fill: var(--bg); }
+  .f-grey { fill: var(--text-3); }
   .p-skin { fill: var(--signal); fill-opacity: var(--skin-o, 0); }
   .p-shirt { fill: var(--accent); fill-opacity: var(--shirt-o, 0); }
   .p-trou { fill: #b07d18; fill-opacity: var(--trou-o, 0); }
-  .trou-base { fill: var(--bg); }
 }
 
 // The walker grows up as he crosses: stickman, then hooded student, then the
