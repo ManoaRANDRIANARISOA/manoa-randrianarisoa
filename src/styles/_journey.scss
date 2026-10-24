@@ -72,6 +72,17 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   --j-acc-ink: var(--text-2);
   --j-sig: var(--text-2);
   --j-fig: var(--text);
+
+  // Flat walker palette: masses are filled by these vars — monochrome greys
+  // until the master, then skin and clothes take their colours.
+  --skin: var(--text-3);
+  --hair: var(--text);
+  --top: var(--text-2);
+  --bot: var(--text-3);
+  --shoe: var(--text);
+  --sole: var(--bg);
+  --acc: var(--text);
+  --acc2: var(--bg);
 }
 
 @for $i from 5 through $stops {
@@ -80,20 +91,19 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
     --j-acc-ink: var(--accent-ink);
     --j-sig: var(--signal);
     --j-fig: var(--accent);
-    --skin-o: 0.28;
+    --skin: #e0a183;
+    --shoe: #ece7db;
+    --sole: var(--text);
+    --acc: var(--accent);
   }
 }
 
-// Last stop: the crossing ends in colour — skin and shirt take their tints.
-.journey-stage[data-stop="#{$stops - 1}"] {
-  --skin-o: 0.4;
-  --shirt-o: 0.16;
-}
-
-// Trousers tint follows the outfit stops: jeans at the student stop, chinos later.
-.journey-stage[data-stop="1"] { --trou-o: 0.3; }
-.journey-stage[data-stop="5"] { --trou-o: 0.35; --skin-o: 0.32; --shirt-o: 0.14; }
-.journey-stage[data-stop="6"] { --trou-o: 0.35; }
+// Outfits per stop: shirt + shorts at the master, knit + chinos afterwards.
+.journey-stage[data-stop="2"],
+.journey-stage[data-stop="3"] { --bot: var(--text); }
+.journey-stage[data-stop="4"] { --top: var(--accent); --bot: var(--text); }
+.journey-stage[data-stop="5"],
+.journey-stage[data-stop="6"] { --top: var(--text); --bot: #b07d18; }
 
 .journey-drawing {
   position: relative;
@@ -244,25 +254,35 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 
 // Limbs behind the body read lighter, so the walk has depth without shading.
 .limb-b {
-  stroke: var(--text-2);
-  opacity: 0.9;
-
-  .ink { fill: var(--text-2); }
-  .f-base { fill: var(--bg); }
+  opacity: 0.78;
 }
 
-// Flat editorial walker: clean continuous outlines over filled shapes, a paper
-// halo that lifts the near forearm, and skin/shirt/trouser tints whose opacity
-// the stage ramps per stop (monochrome until the colour arrives at the end).
+// Flat editorial walker: colour masses without outlines — the fills carry the
+// silhouette, creases sit a tone darker, equipment reads in two clean tones.
 .figure-svg {
-  .ink { fill: currentColor; }
-  .thin { stroke-width: 1.5; }
-  .halo { stroke: var(--bg); stroke-width: 6; }
-  .f-base { fill: var(--bg); }
-  .f-grey { fill: var(--text-3); }
-  .p-skin { fill: var(--signal); fill-opacity: var(--skin-o, 0); }
-  .p-shirt { fill: var(--accent); fill-opacity: var(--shirt-o, 0); }
-  .p-trou { fill: #b07d18; fill-opacity: var(--trou-o, 0); }
+  .f-skin { fill: var(--skin); }
+  .f-hair { fill: var(--hair); }
+  .f-top { fill: var(--top); }
+  .f-bot { fill: var(--bot); }
+  .f-shoe { fill: var(--shoe); }
+  .f-sole { fill: var(--sole); }
+  .f-acc { fill: var(--acc); }
+  .f-acc2 { fill: var(--acc2); }
+  .f-sig { fill: var(--sig, var(--signal)); }
+  .f-dark { fill: rgba(19, 23, 31, 0.35); }
+  .st {
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .cr { fill: none; stroke: rgba(19, 23, 31, 0.22); stroke-width: 1.5; stroke-linecap: round; }
+  .crl { fill: none; stroke: rgba(244, 242, 237, 0.3); stroke-width: 1.5; stroke-linecap: round; }
+  .mo { fill: none; stroke: rgba(19, 23, 31, 0.4); stroke-width: 1.2; stroke-linecap: round; }
+  .sa { fill: none; stroke: var(--acc); stroke-linecap: round; }
+  .s2 { fill: none; stroke: var(--acc2); stroke-width: 1.6; stroke-linecap: round; }
+  .ss { fill: none; stroke: var(--sig, var(--signal)); stroke-width: 1.8; stroke-linecap: round; }
 }
 
 // The walker grows up as he crosses: stickman, then hooded student, then the
@@ -274,7 +294,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .g-hood,
   .g-jacket,
   .g-pack,
-  .g-blob,
   .l-stick,
   .l-trou,
   .l-bare,
@@ -291,7 +310,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .g-hood,
   .g-jacket,
   .g-pack,
-  .g-blob,
   .l-stick,
   .l-trou { opacity: 0; }
 
@@ -327,14 +345,11 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
     .g-shorts,
     .l-bare { opacity: 0; }
   }
-
-  &[data-stop="6"] .g-blob { opacity: 1; }
 }
 
 .acc {
   opacity: 0;
-  stroke: var(--j-fig);
-  transition: opacity var(--duration-slow) var(--ease-smooth), stroke var(--duration-slow) var(--ease-smooth);
+  transition: opacity var(--duration-slow) var(--ease-smooth);
 }
 
 @for $i from 1 through $stops {
