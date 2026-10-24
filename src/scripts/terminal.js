@@ -11,12 +11,12 @@ const TERM_STRINGS = {
     fr: `
           <strong>COMMANDES DISPONIBLES :</strong><br>
           • <span class="highlight">whoami</span>       : Profil, formation et statut de disponibilité<br>
-          • <span class="highlight">journey</span>      : Parcours chronologique (BAC → missions, stage, enseignement, diplômes)<br>
+          • <span class="highlight">journey</span>      : Parcours chronologique (BAC → missions, stage, mentorat, diplômes)<br>
           • <span class="highlight">projects</span>     : Systèmes livrés & liens GitHub<br>
           • <span class="highlight">stack</span>        : Matrice des technologies réellement utilisées<br>
           • <span class="highlight">adrs</span>         : Registre des décisions d'architecture (ADR)<br>
           • <span class="highlight">metrics</span>      : Chiffres clés, avec leur périmètre de mesure<br>
-          • <span class="highlight">academique</span>   : Projets universitaires (IA, vision, électronique) & enseignement<br>
+          • <span class="highlight">academique</span>   : Projets universitaires (IA, vision, électronique) & mentorat<br>
           • <span class="highlight">societe</span>      : Cadre de facturation et formes de collaboration<br>
           • <span class="highlight">dispo</span>        : Disponibilité, fuseau horaire et formats de mission<br>
           • <span class="highlight">cv</span>           : Ouvrir le hub de téléchargement CV (PDF)<br>
@@ -69,9 +69,8 @@ const TERM_STRINGS = {
           • 2025 — présent : Consultant indépendant / architecte technique (ANKA, ResHPro, Study-Agent, Maboo)<br>
           • 2025 — 2026    : Architecte technique & lead mobile, Given Day Tech (France, associatif) — 4 développeurs<br>
           • 2025 — présent : Développeur full-stack senior, ToutPourSaGloire.com (international)<br>
-          • 2023 — 2024    : Développeur CMS & designer UI/UX, RICSM (États-Unis, remote) via IKS Antananarivo<br>
+          • 2023 — 2024    : Développeur CMS & designer UI/UX, RICSM (États-Unis, remote) via IKS Antananarivo — forme l'équipe aux bases CMS<br>
           • 2022 (6 mois)  : Stage full-stack & pipeline OCR, EQIMA (Antananarivo)<br>
-          • 2020 — 2023    : Enseignant vacataire en informatique, électronique et mathématiques appliquées<br>
           • 2019 (oct.—déc.): Service technique ADSL — clientèle SFR France, Intelcia Tanjombato (Antananarivo)<br>
           • 2022 — 2024    : Master Électronique, Informatique & IA — ISPM<br>
           • 2018 — 2022    : Licence Électronique & Informatique — ISPM<br>
@@ -82,9 +81,8 @@ const TERM_STRINGS = {
           • 2025 — present : Independent consultant / technical architect (ANKA, ResHPro, Study-Agent, Maboo)<br>
           • 2025 — 2026    : Technical architect & mobile lead, Given Day Tech (France, non-profit) — 4 developers<br>
           • 2025 — present : Senior full-stack developer, ToutPourSaGloire.com (international)<br>
-          • 2023 — 2024    : CMS developer & UI/UX designer, RICSM (United States, remote) via IKS Antananarivo<br>
+          • 2023 — 2024    : CMS developer & UI/UX designer, RICSM (United States, remote) via IKS Antananarivo — trains the team on CMS basics<br>
           • 2022 (6 months): Full-stack & OCR pipeline internship, EQIMA (Antananarivo)<br>
-          • 2020 — 2023    : Part-time teacher in computer science, electronics and applied mathematics<br>
           • 2019 (Oct—Dec) : ADSL technical service — SFR France customers, Intelcia Tanjombato (Antananarivo)<br>
           • 2022 — 2024    : MSc Electronics, Computer Science & AI — ISPM<br>
           • 2018 — 2022    : Bachelor's in Electronics & Computer Science — ISPM<br>
@@ -251,8 +249,9 @@ const TERM_STRINGS = {
           • 2021 — 2022   : suivi GPS de flotte [Ionic · Laravel]<br>
           • 2020          : distributeur automatique [Angular · Python · Arduino]<br>
           • 2019          : transmission laser — électronique et traitement du signal<br>
-          <strong>ENSEIGNEMENT (2020 — 2023) :</strong><br>
-          • Vacataire en informatique, électronique et mathématiques appliquées — cours particuliers et groupes, Antananarivo<br>
+          <strong>MENTORAT & FORMATION D'ÉQUIPE :</strong><br>
+          • 2023 — 2024 : RICSM — formation de l'équipe aux bases CMS et entrée en programmation (fin M1 — M2)<br>
+          • 2025 — 2026 : Given Day Tech — encadrement de 4 développeurs (revues de code, montée en compétence)<br>
           • Cadre : projets d'étude annuels en groupe de 3 à 5 — rôle touche-à-tout (full-stack), chef de groupe sur certains<br>
           <span class="system-msg">Ces travaux sont les preuves concrètes des compétences IA, vision par ordinateur et électronique de la matrice.</span>
         `,
@@ -263,8 +262,9 @@ const TERM_STRINGS = {
           • 2021 — 2022   : fleet GPS tracking [Ionic · Laravel]<br>
           • 2020          : vending machine [Angular · Python · Arduino]<br>
           • 2019          : laser transmission — electronics and signal processing<br>
-          <strong>TEACHING (2020 — 2023):</strong><br>
-          • Part-time lecturer in computer science, electronics and applied mathematics — private lessons and group classes, Antananarivo<br>
+          <strong>MENTORING & TEAM TRAINING:</strong><br>
+          • 2023 — 2024 : RICSM — trained the team on CMS basics and introduced them to programming (end of M1 — M2)<br>
+          • 2025 — 2026 : Given Day Tech — mentoring 4 developers (code reviews, skill growth)<br>
           • Frame: year-long study projects in groups of 3 to 5 — jack-of-all-trades role (full-stack), group lead on some<br>
           <span class="system-msg">These projects are the concrete evidence behind the AI, computer-vision and electronics skills in the matrix.</span>
         `

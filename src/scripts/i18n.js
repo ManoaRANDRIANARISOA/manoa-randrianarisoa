@@ -337,7 +337,6 @@ const STRINGS = {
   'about.timelineRange': { fr: '2018 → 2026', en: '2018 → 2026' },
   'about.kindWork': { fr: 'Mission', en: 'Mission' },
   'about.kindIntern': { fr: 'Stage', en: 'Internship' },
-  'about.kindTeach': { fr: 'Enseignement', en: 'Teaching' },
   'about.kindStudy': { fr: 'Formation', en: 'Education' },
   'about.kindJob': { fr: 'Emploi', en: 'Employment' },
 
@@ -369,8 +368,8 @@ const STRINGS = {
   'about.tl4.role': { fr: 'Développeur CMS & designer UI/UX', en: 'CMS developer & UI/UX designer' },
   'about.tl4.company': { fr: 'RICSM (États-Unis / remote) — contrat via IKS Antananarivo', en: 'RICSM (United States / remote) — contracted via IKS Antananarivo' },
   'about.tl4.desc': {
-    fr: "Conception des maquettes sous Figma et livraison d'une plateforme web institutionnelle répondant aux standards américains d'accessibilité.",
-    en: 'Designed mockups in Figma and delivered an institutional web platform meeting US accessibility standards.'
+    fr: "Conception des maquettes sous Figma et livraison d'une plateforme web institutionnelle répondant aux standards américains d'accessibilité. Formation de l'équipe aux bases CMS et à la programmation.",
+    en: 'Designed mockups in Figma and delivered an institutional web platform meeting US accessibility standards. Trained the team on CMS basics and programming.'
   },
   'about.tl5.year': { fr: '2022 (6 mois)', en: '2022 (6 months)' },
   'about.tl5.role': { fr: 'Stage développeur full-stack & pipeline OCR', en: 'Full-stack & OCR pipeline intern' },
@@ -379,13 +378,6 @@ const STRINGS = {
     html: true,
     fr: "Digitalisation de la saisie comptable via OCR et synchronisation directe avec l'API Sage ERP : <strong>-70% de temps de traitement</strong>.",
     en: 'Digitization of accounting entry via OCR and direct synchronization with the Sage ERP API: <strong>70% less processing time</strong>.'
-  },
-  'about.tl8.year': { fr: '2020 — 2023', en: '2020 — 2023' },
-  'about.tl8.role': { fr: 'Enseignant vacataire — informatique & électronique', en: 'Part-time teacher — computer science & electronics' },
-  'about.tl8.company': { fr: 'Cours particuliers et groupes, Antananarivo', en: 'Private lessons and group classes, Antananarivo' },
-  'about.tl8.desc': {
-    fr: "Transmission des bases de la programmation, de l'électronique et des mathématiques appliquées à des lycéens et étudiants. Préparation aux examens, pédagogie par exercices guidés — la même discipline que celle exigée en revue de code.",
-    en: 'Teaching the fundamentals of programming, electronics and applied mathematics to high-school and university students. Exam preparation and guided-exercise pedagogy — the same discipline required in code review.'
   },
   'about.tl6.year': { fr: '2022 — 2024', en: '2022 — 2024' },
   'about.tl6.role': { fr: 'Master en Électronique, Informatique & IA', en: 'MSc in Electronics, Computer Science & AI' },
@@ -428,8 +420,8 @@ const STRINGS = {
     en: 'Every stage restates a fact already written in the register below: nothing is added for decoration.'
   },
   'journey.drawingLabel': {
-    fr: 'Silhouette marchant de gauche à droite devant sept repères dessinés à la plume : un parchemin scellé, un livre ouvert, un tableau noir, un scanner à plat, une toque de diplômé, un ordinateur portable relié, un plan roulé et une équerre.',
-    en: 'A figure walking left to right past seven pen-drawn landmarks: a sealed scroll, an open book, a blackboard, a flatbed scanner, a graduation cap, a connected laptop, a rolled plan and a set square.'
+    fr: 'Silhouette marchant de gauche à droite devant sept repères dessinés à la plume : un parchemin scellé, un livre ouvert, un casque micro de support, un scanner à plat, une toque de diplômé, un ordinateur portable relié et un diagramme de composants.',
+    en: 'A figure walking left to right past seven pen-drawn landmarks: a sealed scroll, an open book, a support headset, a flatbed scanner, a graduation cap, a connected laptop and a component diagram.'
   },
   'journey.hint': { fr: 'Dérouler pour avancer', en: 'Scroll to walk on' },
   'journey.railLabel': { fr: 'Progression de la traversée', en: 'Crossing progress' },
@@ -452,12 +444,12 @@ const STRINGS = {
     fr: "Les fondations : génie logiciel, architectures système, réseaux — et les projets d'étude annuels en groupe, déjà documentés au registre.",
     en: 'The foundations: software engineering, system architectures, networks — and the year-long group study projects, already documented in the register.'
   },
-  'journey.c3.year': { fr: '2020 — 2023', en: '2020 — 2023' },
-  'journey.c3.title': { fr: 'Enseignement & cours particuliers', en: 'Teaching & private lessons' },
-  'journey.c3.place': { fr: 'Informatique, électronique, mathématiques · Antananarivo', en: 'Computer science, electronics, mathematics · Antananarivo' },
+  'journey.c3.year': { fr: '2019 (oct. — déc.)', en: '2019 (Oct — Dec)' },
+  'journey.c3.title': { fr: 'Service tech ADSL — SFR France', en: 'ADSL technical service — SFR France' },
+  'journey.c3.place': { fr: 'Intelcia Tanjombato · Antananarivo', en: 'Intelcia Tanjombato · Antananarivo' },
   'journey.c3.text': {
-    fr: "Transmettre impose de structurer ce que l'on sait : pédagogie appliquée pendant les années de licence et de master.",
-    en: 'Teaching forces you to structure what you know: applied pedagogy through the bachelor and master years.'
+    fr: "Première expérience professionnelle, en L2 : support de niveau 1 pour la clientèle ADSL de SFR France.",
+    en: 'First professional experience, during the second bachelor year: level-1 support for SFR France ADSL customers.'
   },
   'journey.c4.year': { fr: '2022', en: '2022' },
   'journey.c4.title': { fr: 'Stage — pipeline OCR vers Sage ERP', en: 'Internship — OCR pipeline into Sage ERP' },
@@ -477,8 +469,8 @@ const STRINGS = {
   'journey.c6.title': { fr: 'Contrats remote internationaux', en: 'International remote contracts' },
   'journey.c6.place': { fr: 'RICSM · ToutPourSaGloire.com · Given Day Tech', en: 'RICSM · ToutPourSaGloire.com · Given Day Tech' },
   'journey.c6.text': {
-    fr: "Standards d'accessibilité américains, refonte Next.js + Meilisearch, puis encadrement de 4 développeurs.",
-    en: 'US accessibility standards, a Next.js + Meilisearch overhaul, then leading a team of 4 developers.'
+    fr: "Standards d'accessibilité américains, refonte Next.js + Meilisearch, formation de l'équipe RICSM aux bases CMS, puis encadrement de 4 développeurs.",
+    en: 'US accessibility standards, a Next.js + Meilisearch overhaul, training the RICSM team on CMS basics, then leading a team of 4 developers.'
   },
   'journey.c7.year': { fr: "2025 — aujourd'hui", en: '2025 — today' },
   'journey.c7.title': { fr: 'Indépendant · architecte technique', en: 'Independent · technical architect' },
