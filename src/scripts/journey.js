@@ -41,6 +41,7 @@ export function initJourney() {
   let strides = 24;
   let bob = 4;
   let lean = 0;
+  let amp = 1;
   let inView = false;
   let queued = 0;
   let lastP = -1;
@@ -64,7 +65,7 @@ export function initJourney() {
 
   function walk(p) {
     const phase = p * strides * TAU;
-    const s = Math.sin(phase);
+    const s = Math.sin(phase) * amp;
     rotate('leg-f', -SWING.thigh * s);
     rotate('leg-b', SWING.thigh * s);
     rotate('shin-f', SWING.knee * Math.max(0, s));
@@ -109,11 +110,14 @@ export function initJourney() {
 
     // The lean chases scroll velocity, then settles back to vertical on its own.
     lean += (clamp(delta * 420, -3.5, 3.5) - lean) * 0.16;
+    // The stride eases out to a standing pose instead of freezing mid-step, and
+    // eases back in from the same phase, so starting and stopping never jolt.
+    amp += ((delta !== 0 ? 1 : 0) - amp) * 0.06;
     walk(p);
     setStop(clamp(Math.round(p * (STOPS - 1)), 0, STOPS - 1));
 
     if (delta !== 0) hint?.classList.add('is-spent');
-    if (delta !== 0 || Math.abs(lean) > 0.04) request();
+    if (delta !== 0 || Math.abs(lean) > 0.04 || amp > 0.01) request();
   }
 
   const observer = new IntersectionObserver((entries) => {

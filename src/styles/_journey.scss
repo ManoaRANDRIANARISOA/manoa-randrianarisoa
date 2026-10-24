@@ -83,6 +83,13 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   --sole: var(--bg);
   --acc: var(--text);
   --acc2: var(--bg);
+  --tee: var(--bg);
+  --hs: var(--text-2);
+
+  // One clock for every change of kit: the outfit dissolves and the palette
+  // travels with it, so crossing a stop never reads as a cut.
+  --kit-ms: 640ms;
+  --kit-ease: cubic-bezier(0.45, 0, 0.25, 1);
 }
 
 @for $i from 5 through $stops {
@@ -190,8 +197,8 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   white-space: nowrap;
   @include mono-label(0.62rem, var(--text-3));
   font-weight: 600;
-  transition: color var(--duration-normal) ease, background var(--duration-normal) ease,
-              border-color var(--duration-normal) ease;
+  transition: color var(--duration-slow) ease, background var(--duration-slow) ease,
+              border-color var(--duration-slow) ease;
 }
 
 .journey-station.is-passed {
@@ -268,6 +275,8 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .f-sole { fill: var(--sole); }
   .f-acc { fill: var(--acc); }
   .f-acc2 { fill: var(--acc2); }
+  .f-tee { fill: var(--tee); }
+  .f-hs { fill: var(--hs); }
   .f-sig { fill: var(--sig, var(--signal)); }
   .f-dark { fill: rgba(19, 23, 31, 0.35); }
   .st {
@@ -283,79 +292,61 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .sa { fill: none; stroke: var(--acc); stroke-linecap: round; }
   .s2 { fill: none; stroke: var(--acc2); stroke-width: 1.6; stroke-linecap: round; }
   .ss { fill: none; stroke: var(--sig, var(--signal)); stroke-width: 1.8; stroke-linecap: round; }
+  .sh { fill: none; stroke: var(--hs); stroke-linecap: round; }
+
+  // Ink and cloth drift together with the kit, so the greys warming into teal
+  // at the master arrive as a wash, not a swap.
+  [class^="f-"],
+  .st, .cr, .mo, .sa, .s2, .ss, .sh {
+    transition: fill var(--kit-ms) var(--kit-ease), stroke var(--kit-ms) var(--kit-ease);
+  }
 }
 
-// The walker grows up as he crosses: stickman, then hooded student, then the
-// formed shirt, then jacket and glasses. Each stop shows its own kit and fades
-// the others; the walk rig (pivots, strides) never changes.
+// The walker grows up as he crosses: bare stickman, then hooded student with a
+// book in hand, support agent with headset and satchel, intern with a badge and
+// papers, graduate in gown with the mortarboard raised clear of his face,
+// consultant in an open jacket over a tee holding a tablet, architect with a
+// tie, a laptop in hand and a folder under the back arm. Every stop dissolves
+// into the next; the walk rig (pivots, strides) never changes.
 .journey-figure {
-  .g-stick-t,
-  .g-head-stick,
-  .g-hood,
-  .g-jacket,
-  .g-pack,
-  .l-stick,
-  .l-trou,
-  .l-bare,
-  .l-shoe,
-  .l-formed,
-  .g-shirt,
-  .g-shorts,
-  .g-head-f {
-    transition: opacity var(--duration-slow) var(--ease-smooth);
+  .g-stick-t, .g-head-stick, .g-hood, .g-shirt, .g-shorts-y, .g-gown,
+  .g-jacket, .g-tie, .g-pack, .g-head-f, .l-stick, .l-trou, .l-bare, .l-short,
+  .l-shoe, .l-formed, .w-satchel, .w-headset, .w-badge, .w-cap, .w-folder,
+  .held {
+    opacity: 0;
+    transition: opacity var(--kit-ms) var(--kit-ease);
   }
 
-  .g-stick-t,
-  .g-head-stick,
-  .g-hood,
-  .g-jacket,
-  .g-pack,
-  .l-stick,
-  .l-trou { opacity: 0; }
+  &[data-stop="0"] :is(
+    .g-stick-t, .g-head-stick, .l-stick
+  ) { opacity: 1; }
 
-  &[data-stop="0"] {
-    .g-stick-t,
-    .g-head-stick,
-    .l-stick { opacity: 1; }
+  &[data-stop="1"] :is(
+    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-hood, .g-pack, .held-book
+  ) { opacity: 1; }
 
-    .l-bare,
-    .l-shoe,
-    .l-formed,
-    .g-shirt,
-    .g-shorts,
-    .g-head-f { opacity: 0; }
-  }
+  &[data-stop="2"] :is(
+    .g-head-f, .l-formed, .l-shoe, .l-bare, .l-short,
+    .g-shorts-y, .g-shirt, .w-satchel, .w-headset
+  ) { opacity: 1; }
 
-  &[data-stop="1"] {
-    .g-hood,
-    .g-pack,
-    .l-trou { opacity: 1; }
+  &[data-stop="3"] :is(
+    .g-head-f, .l-formed, .l-shoe, .l-bare, .l-short,
+    .g-shorts-y, .g-shirt, .w-badge, .held-docs
+  ) { opacity: 1; }
 
-    .g-shirt,
-    .g-shorts,
-    .l-bare { opacity: 0; }
-  }
+  &[data-stop="4"] :is(
+    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-gown, .w-cap, .held-diploma
+  ) { opacity: 1; }
 
-  &[data-stop="5"],
-  &[data-stop="6"] {
-    .g-jacket,
-    .l-trou { opacity: 1; }
+  &[data-stop="5"] :is(
+    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-jacket, .held-tablet
+  ) { opacity: 1; }
 
-    .g-shirt,
-    .g-shorts,
-    .l-bare { opacity: 0; }
-  }
-}
-
-.acc {
-  opacity: 0;
-  transition: opacity var(--duration-slow) var(--ease-smooth);
-}
-
-@for $i from 1 through $stops {
-  .journey-figure[data-stop="#{$i - 1}"] .acc-#{$i} {
-    opacity: 1;
-  }
+  &[data-stop="6"] :is(
+    .g-head-f, .l-formed, .l-shoe, .l-trou,
+    .g-shirt, .g-tie, .w-folder, .held-laptop
+  ) { opacity: 1; }
 }
 
 // -------------------------------------------------------------------- cartouche
@@ -435,7 +426,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   gap: 0.3rem;
   opacity: 0;
   transform: translateY(9px);
-  transition: opacity var(--duration-normal) var(--ease-smooth), transform var(--duration-normal) var(--ease-smooth);
+  transition: opacity var(--kit-ms) var(--kit-ease), transform var(--kit-ms) var(--kit-ease);
   pointer-events: none;
 
   &.is-active {
