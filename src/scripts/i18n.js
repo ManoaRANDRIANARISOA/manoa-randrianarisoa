@@ -32,9 +32,8 @@ const STRINGS = {
   'header.navContact': { fr: 'Contact', en: 'Contact' },
   'header.themeTitle': { fr: "Choisir la couleur d'accent", en: 'Choose the accent colour' },
   'header.themeTeal': { fr: 'Accent sarcelle', en: 'Teal accent' },
-  'header.themeIndigo': { fr: 'Accent indigo', en: 'Indigo accent' },
+  'header.themeSilver': { fr: 'Accent argenté', en: 'Silver accent' },
   'header.themeOchre': { fr: 'Accent ocre', en: 'Ochre accent' },
-  'header.themeMoss': { fr: 'Accent mousse', en: 'Moss accent' },
   'header.soundAria': { fr: "Activer/désactiver le son d'interface", en: 'Toggle interface sound' },
   'header.soundTitleOn': { fr: "Son d'interface : activé", en: 'Interface sound: on' },
   'header.soundTitleOff': { fr: "Son d'interface : muet", en: 'Interface sound: muted' },
@@ -569,7 +568,7 @@ const STRINGS = {
     fr: "Tapez <span class=\"highlight\">help</span> pour afficher l'ensemble des commandes.",
     en: 'Type <span class="highlight">help</span> to display all available commands.'
   },
-  'term.placeholder': { fr: 'Ex : help, whoami, journey, projects, metrics, theme moss, lang en…', en: 'E.g. help, whoami, journey, projects, metrics, theme moss, lang fr…' },
+  'term.placeholder': { fr: 'Ex : help, whoami, journey, projects, metrics, theme silver, lang en…', en: 'E.g. help, whoami, journey, projects, metrics, theme silver, lang fr…' },
 
   // ---------------------------------------------------------------- CV MODAL
   'cv.aria': { fr: 'Hub de téléchargement des CVs', en: 'Resume download hub' },

@@ -1,9 +1,9 @@
 // ==============================================================================
-// ACCENT SWITCHER (TEAL / INDIGO / OCHRE / MOSS)
+// ACCENT SWITCHER (TEAL / SILVER / OCHRE)
 // ==============================================================================
 import { sound } from './audio-engine.js';
 
-const ACCENTS = ['teal', 'indigo', 'ochre', 'moss'];
+const ACCENTS = ['teal', 'silver', 'ochre'];
 const STORAGE_KEY = 'manoa_arch_accent';
 const LEGACY_KEY = 'manoa_arch_theme';
 

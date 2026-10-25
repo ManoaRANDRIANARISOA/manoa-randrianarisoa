@@ -176,9 +176,8 @@
       transition: transform var(--duration-fast) var(--ease-bounce), box-shadow var(--duration-fast) ease;
 
       &.teal   { background: #0e7c6b; }
-      &.indigo { background: #3d4aa6; }
+      &.silver { background: #6f7a86; }
       &.ochre  { background: #8d5c12; }
-      &.moss   { background: #4a6f2c; }
 
       &:hover { transform: scale(1.2); }
 

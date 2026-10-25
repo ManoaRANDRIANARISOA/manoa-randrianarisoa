@@ -164,26 +164,19 @@ html.chrome-dark {
 // ==============================================================================
 // ACCENT PRESETS — each one carries its light and dark value
 // ==============================================================================
-:root[data-theme="indigo"] {
-  --accent: #3d4aa6;
-  --chrome-accent: #3d4aa6;
+:root[data-theme="silver"] {
+  --accent: #6f7a86;
+  --chrome-accent: #6f7a86;
   --signal: #a9552b;
 }
 :root[data-theme="ochre"] {
   --accent: #8d5c12;
   --chrome-accent: #8d5c12;
-  --signal: #2f6f62;
-}
-:root[data-theme="moss"] {
-  --accent: #4a6f2c;
-  --chrome-accent: #4a6f2c;
   --signal: #a9552b;
 }
 
-:root[data-theme="indigo"] .dark-band { --accent: #9aa8ff; }
+:root[data-theme="silver"] .dark-band { --accent: #c9d2da; }
 :root[data-theme="ochre"] .dark-band  { --accent: #e9b25f; }
-:root[data-theme="moss"] .dark-band   { --accent: #a9d47c; }
 
-:root[data-theme="indigo"].chrome-dark { --chrome-accent: #9aa8ff; }
+:root[data-theme="silver"].chrome-dark { --chrome-accent: #c9d2da; }
 :root[data-theme="ochre"].chrome-dark  { --chrome-accent: #e9b25f; }
-:root[data-theme="moss"].chrome-dark   { --chrome-accent: #a9d47c; }

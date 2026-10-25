@@ -20,7 +20,7 @@ const TERM_STRINGS = {
           • <span class="highlight">societe</span>      : Cadre de facturation et formes de collaboration<br>
           • <span class="highlight">dispo</span>        : Disponibilité, fuseau horaire et formats de mission<br>
           • <span class="highlight">cv</span>           : Ouvrir le hub de téléchargement CV (PDF)<br>
-          • <span class="highlight">theme &lt;nom&gt;</span>  : Couleur d'accent (teal | indigo | ochre | moss)<br>
+          • <span class="highlight">theme &lt;nom&gt;</span>  : Couleur d'accent (teal | silver | ochre)<br>
           • <span class="highlight">lang &lt;fr|en&gt;</span> : Basculer la langue du site<br>
           • <span class="highlight">contact</span>      : Coordonnées directes<br>
           • <span class="highlight">clear</span>        : Effacer la console<br>
@@ -38,7 +38,7 @@ const TERM_STRINGS = {
           • <span class="highlight">company</span>      : Invoicing framework and collaboration models<br>
           • <span class="highlight">availability</span> : Availability, time zone and mission formats<br>
           • <span class="highlight">cv</span>           : Open the resume download hub (PDF)<br>
-          • <span class="highlight">theme &lt;name&gt;</span> : Accent colour (teal | indigo | ochre | moss)<br>
+          • <span class="highlight">theme &lt;name&gt;</span> : Accent colour (teal | silver | ochre)<br>
           • <span class="highlight">lang &lt;fr|en&gt;</span> : Switch the site language<br>
           • <span class="highlight">contact</span>      : Direct contact details<br>
           • <span class="highlight">clear</span>        : Clear the console<br>
@@ -174,8 +174,8 @@ const TERM_STRINGS = {
     en: 'Accent applied: <strong>{theme}</strong>'
   },
   themeErr: {
-    fr: 'Accent inconnu "{arg}". Utilisez : teal, indigo, ochre, moss.',
-    en: 'Unknown accent "{arg}". Use: teal, indigo, ochre, moss.'
+    fr: 'Accent inconnu "{arg}". Utilisez : teal, silver, ochre.',
+    en: 'Unknown accent "{arg}". Use: teal, silver, ochre.'
   },
   langOk: {
     fr: 'Langue du site : <strong>français</strong>.',
@@ -423,7 +423,7 @@ export function initTerminal() {
         break;
 
       case 'theme':
-        if (['teal', 'indigo', 'ochre', 'moss'].includes(arg)) {
+        if (['teal', 'silver', 'ochre'].includes(arg)) {
           setTheme(arg, true);
           appendLine(pick('themeOk', { theme: arg }), 'success');
         } else {
