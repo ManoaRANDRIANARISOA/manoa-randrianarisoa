@@ -11,6 +11,7 @@ const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 const TICKS = [
   { id: 'hero', key: 'drawer.home' },
+  { id: 'journey', key: 'header.navJourney' },
   { id: 'architecture', key: 'header.navArchitecture' },
   { id: 'projects', key: 'header.navProjects' },
   { id: 'adrs', key: 'header.navAdrs' },

@@ -88,7 +88,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: clamp(0.95rem, 1.25vw, 1.6rem);
   list-style: none;
 
   @include tablet {

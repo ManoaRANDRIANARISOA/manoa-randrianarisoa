@@ -24,11 +24,12 @@ const STRINGS = {
   'header.brandTitle': { fr: 'Manoa Randrianarisoa — Accueil', en: 'Manoa Randrianarisoa — Home' },
   'header.brandSub': { fr: 'Architecte technique & lead full-stack', en: 'Technical architect & lead full-stack' },
   'header.navMain': { fr: 'Navigation principale', en: 'Main navigation' },
+  'header.navJourney': { fr: 'Traversée', en: 'Journey' },
   'header.navArchitecture': { fr: 'Architecture', en: 'Architecture' },
   'header.navProjects': { fr: 'Réalisations', en: 'Work' },
   'header.navAdrs': { fr: 'Décisions', en: 'Decisions' },
   'header.navStack': { fr: 'Stack', en: 'Stack' },
-  'header.navAbout': { fr: 'Parcours', en: 'Journey' },
+  'header.navAbout': { fr: 'Parcours', en: 'Background' },
   'header.navContact': { fr: 'Contact', en: 'Contact' },
   'header.themeTitle': { fr: "Choisir la couleur d'accent", en: 'Choose the accent colour' },
   'header.themeTeal': { fr: 'Accent sarcelle', en: 'Teal accent' },
@@ -46,11 +47,12 @@ const STRINGS = {
   'drawer.aria': { fr: 'Menu mobile', en: 'Mobile menu' },
   'drawer.closeAria': { fr: 'Fermer le menu mobile', en: 'Close mobile menu' },
   'drawer.home': { fr: 'Accueil', en: 'Home' },
+  'drawer.journey': { fr: 'Traversée 2018 → 2026', en: 'Crossing 2018 → 2026' },
   'drawer.architecture': { fr: 'Architecture', en: 'Architecture' },
   'drawer.projects': { fr: 'Réalisations', en: 'Work' },
   'drawer.adrs': { fr: 'Décisions (ADR)', en: 'Decisions (ADR)' },
   'drawer.stack': { fr: 'Stack technique', en: 'Technical stack' },
-  'drawer.about': { fr: 'Parcours', en: 'Journey' },
+  'drawer.about': { fr: 'Parcours & registre', en: 'Background & register' },
   'drawer.contact': { fr: 'Contact', en: 'Contact' },
   'drawer.downloadCv': { fr: 'Consulter les CV (PDF)', en: 'View the resumes (PDF)' },
 
@@ -133,8 +135,12 @@ const STRINGS = {
   'projects.meta': { fr: 'Réalisations de production', en: 'Production work' },
   'projects.heading': { fr: 'Systèmes livrés & études de cas', en: 'Shipped systems & case studies' },
   'projects.subheading': {
-    fr: "Des applications concrètes utilisées au quotidien : suites SaaS multi-établissements, logiciel d'administration scolaire en production locale, boutique e-commerce headless et pipelines d'intégration d'entreprise. Chaque fiche commence par une ligne « En clair », puis détaille les choix techniques.",
-    en: 'Concrete applications used every day: multi-establishment SaaS suites, school administration software in local production, a headless e-commerce storefront and enterprise integration pipelines. Each entry opens with a plain-language line, then details the technical choices.'
+    fr: "Des applications concrètes utilisées au quotidien : suites SaaS multi-établissements, logiciel d'administration scolaire en production locale, boutique e-commerce headless et pipelines d'intégration d'entreprise.",
+    en: 'Concrete applications used every day: multi-establishment SaaS suites, school administration software in local production, a headless e-commerce storefront and enterprise integration pipelines.'
+  },
+  'projects.plain': {
+    fr: 'Chaque fiche dit qui utilise le système, quel problème il résout et ce qui tourne réellement en production — le détail technique vient ensuite.',
+    en: 'Each entry says who uses the system, which problem it solves and what actually runs in production — the technical detail comes after.'
   },
   'projects.filterAll': { fr: 'Tous les systèmes', en: 'All systems' },
   'projects.filterSaas': { fr: 'SaaS & cloud', en: 'SaaS & cloud' },
@@ -264,8 +270,12 @@ const STRINGS = {
   'stack.meta': { fr: 'Arsenal & écosystème', en: 'Arsenal & ecosystem' },
   'stack.heading': { fr: 'Matrice des compétences techniques', en: 'Technical skills matrix' },
   'stack.subheading': {
-    fr: "Les outils que j'utilise réellement, regroupés par nature de problème — pas de barre de niveau auto-attribuée, chaque ligne correspond à du code livré.",
-    en: 'The tools I actually use, grouped by the nature of the problem — no self-rated proficiency bars, every line maps to shipped code.'
+    fr: "Six familles d'outils, du rendu et du mobile jusqu'à l'intégration ERP : chaque ligne correspond à du code livré — pas de barre de niveau auto-attribuée.",
+    en: 'Six families of tools, from rendering and mobile to ERP integration: every line maps to shipped code — no self-rated proficiency bars.'
+  },
+  'stack.plain': {
+    fr: "Ma boîte à outils, rangée par type de problème à résoudre. Tout ce qui est écrit ici a servi à livrer un système ; rien n'est décoratif.",
+    en: 'My toolbox, sorted by the kind of problem it solves. Everything listed here shipped a system; nothing is decorative.'
   },
   'stack.card1Title': { fr: 'Frontend & mobile core', en: 'Frontend & mobile core' },
   'stack.card1Note': {
@@ -299,11 +309,11 @@ const STRINGS = {
   },
 
   // ---------------------------------------------------------------- ABOUT SECTION
-  'about.meta': { fr: 'Identité & parcours', en: 'Identity & journey' },
+  'about.meta': { fr: 'Identité & registre', en: 'Identity & register' },
   'about.heading': { fr: "L'ingénieur derrière les systèmes", en: 'The engineer behind the systems' },
   'about.subheading': {
-    fr: "Double formation en Électronique, Informatique & IA à l'ISPM, combinée à une pratique intensive du terrain sur des projets internationaux et locaux.",
-    en: 'Dual training in Electronics, Computer Science & AI at ISPM, combined with intensive field practice on international and local projects.'
+    fr: "La traversée de la planche 01 résume le fil ; voici le registre détaillé — chaque période, chaque système livré, chaque diplôme, et les pièces justificatives envoyées sur demande.",
+    en: 'The crossing on sheet 01 sums up the thread; this is the detailed register — every period, every shipped system, every degree, and the supporting documents sent on request.'
   },
   'about.profileAria': { fr: 'Carte profil de Manoa', en: "Manoa's profile card" },
   'about.photoAlt': { fr: 'Portrait de Manoa Randrianarisoa', en: 'Portrait of Manoa Randrianarisoa' },
@@ -415,18 +425,17 @@ const STRINGS = {
     en: 'Seven stages, from the high-school bench to architecture consulting. Scroll: the figure walks on, changes garment and attribute at each stage, and the scenery slides past — black and white until the master, then tinted with its inks.'
   },
   'journey.plain': {
-    fr: "Chaque étape reprend un fait déjà écrit dans le registre ci-dessous : rien n'est ajouté pour faire joli.",
-    en: 'Every stage restates a fact already written in the register below: nothing is added for decoration.'
+    fr: "Chaque étape reprend un fait déjà écrit dans le registre détaillé plus bas : rien n'est ajouté pour faire joli.",
+    en: 'Every stage restates a fact already written in the detailed register further down: nothing is added for decoration.'
   },
   'journey.drawingLabel': {
     fr: 'Silhouette marchant de gauche à droite devant sept repères dessinés à la plume : un parchemin scellé, un livre ouvert, un casque micro de support, un scanner à plat, une toque de diplômé, un ordinateur portable relié et un diagramme de composants.',
     en: 'A figure walking left to right past seven pen-drawn landmarks: a sealed scroll, an open book, a support headset, a flatbed scanner, a graduation cap, a connected laptop and a component diagram.'
   },
   'journey.hint': { fr: 'Dérouler pour avancer', en: 'Scroll to walk on' },
-  'journey.railLabel': { fr: 'Progression de la traversée', en: 'Crossing progress' },
   'journey.note': {
-    fr: 'Les périodes se recoupent en partie ; le registre détaillé ci-dessous fait foi.',
-    en: 'The periods partly overlap; the detailed register below is authoritative.'
+    fr: 'Les périodes se recoupent en partie ; le registre détaillé plus bas fait foi.',
+    en: 'The periods partly overlap; the detailed register further down is authoritative.'
   },
   'journey.registerLink': { fr: 'Voir le registre détaillé', en: 'See the detailed register' },
   'journey.c1.year': { fr: '2018', en: '2018' },
@@ -531,10 +540,11 @@ const STRINGS = {
   // ---------------------------------------------------------------- FOOTER
   'footer.brand': { fr: 'Manoa Randrianarisoa — Architecte technique', en: 'Manoa Randrianarisoa — Technical architect' },
   'footer.top': { fr: 'Haut de page', en: 'Back to top' },
+  'footer.journey': { fr: 'Traversée', en: 'Journey' },
   'footer.architecture': { fr: 'Architecture', en: 'Architecture' },
   'footer.systems': { fr: 'Réalisations', en: 'Work' },
   'footer.adrs': { fr: 'Décisions (ADR)', en: 'Decisions (ADR)' },
-  'footer.about': { fr: 'Parcours', en: 'Journey' },
+  'footer.about': { fr: 'Parcours & registre', en: 'Background & register' },
   'footer.ckProject': { fr: 'Projet', en: 'Project' },
   'footer.cvProject': { fr: "Portfolio d'architecte", en: 'Architect portfolio' },
   'footer.ckSheet': { fr: 'Planche', en: 'Sheet' },

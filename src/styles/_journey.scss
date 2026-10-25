@@ -1,5 +1,5 @@
 // ==============================================================================
-// JOURNEY SCENE — the ink walk across PL.05.
+// JOURNEY SCENE — the ink walk across PL.01.
 // One sticky stage, three layers sliding at different speeds, a walker whose
 // stride is derived from the ground speed so the steps do not skate.
 // ==============================================================================
@@ -15,38 +15,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   --journey-p: 0;
   --bob: 0px;
   --lean: 0deg;
-  margin-top: 3.75rem;
-  margin-bottom: 4.75rem;
-}
-
-// --------------------------------------------------------------------- heading
-.journey-head {
-  max-width: 760px;
-  margin-bottom: 2.25rem;
-}
-
-.journey-kicker {
-  display: block;
-  margin-bottom: 0.7rem;
-  @include mono-label(0.7rem, var(--signal));
-  font-weight: 700;
-}
-
-.journey-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  margin-bottom: 0.85rem;
-}
-
-.journey-lede {
-  max-width: 64ch;
-  margin-bottom: 1.1rem;
-  color: var(--text-2);
-  font-size: 0.95rem;
-  line-height: 1.7;
 }
 
 // ------------------------------------------------------------------- the stage
@@ -583,11 +551,6 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 }
 
 @include mobile {
-  .journey {
-    margin-top: 2.75rem;
-    margin-bottom: 3.25rem;
-  }
-
   .journey-runway {
     height: 340vh;
   }
