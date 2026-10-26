@@ -72,6 +72,28 @@
   max-width: 44rem;
 }
 
+// ------------------------------------------------------------------- Verse line
+.hero-verse {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.6rem;
+  max-width: 52ch;
+  margin-bottom: 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.65;
+  font-style: italic;
+  color: var(--text-3);
+
+  .verse-ref {
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+}
+
 // ---------------------------------------------------------------- Eyebrow line
 .hero-eyebrow {
   display: flex;

@@ -73,9 +73,19 @@ const STRINGS = {
   },
   'hero.fact1': {
     html: true,
-    fr: '<strong>4 systèmes livrés</strong>, dont un ERP scolaire en production locale au Lycée Manjary Soa.',
-    en: '<strong>4 shipped systems</strong>, including a school ERP in local production at Manjary Soa High School.'
+    fr: '<strong>7 systèmes livrés et documentés</strong>, dont un ERP scolaire en production locale au Lycée Manjary Soa.',
+    en: '<strong>7 shipped, documented systems</strong>, including a school ERP in local production at Manjary Soa High School.'
   },
+  'verse.top': {
+    fr: '« J\u2019ai été crucifié avec Christ ; et ce n\u2019est plus moi qui vis, c\u2019est Christ qui vit en moi. »',
+    en: '“I have been crucified with Christ. It is no longer I who live, but Christ who lives in me.”'
+  },
+  'verse.topRef': { fr: 'Galates 2:20', en: 'Galatians 2:20' },
+  'verse.bottom': {
+    fr: '« Soit donc que vous mangiez, soit que vous buviez, ou quoi que vous fassiez, faites tout pour la gloire de Dieu. »',
+    en: '“So, whether you eat or drink, or whatever you do, do all to the glory of God.”'
+  },
+  'verse.bottomRef': { fr: '1 Corinthiens 10:31', en: '1 Corinthians 10:31' },
   'hero.fact2': {
     html: true,
     fr: "<strong>Master IA soutenu et validé</strong> (ISPM) — diplôme en cours d'émission.",
@@ -392,8 +402,8 @@ const STRINGS = {
   'about.tl6.role': { fr: 'Master en Électronique, Informatique & IA', en: 'MSc in Electronics, Computer Science & AI' },
   'about.tl6.company': { fr: 'Institut Supérieur Polytechnique de Madagascar (ISPM)', en: 'Institut Supérieur Polytechnique de Madagascar (ISPM)' },
   'about.tl6.desc': {
-    fr: "Conception logicielle avancée, algorithmique, traitement d'images (OpenCV), vision industrielle et modèles de Deep Learning. Master soutenu et validé ; diplôme en cours d'émission.",
-    en: 'Advanced software design, algorithms, image processing (OpenCV), industrial vision and Deep Learning models. MSc defended and validated; diploma pending issuance.'
+    fr: "Conception logicielle avancée, algorithmique, traitement d'images (OpenCV), vision industrielle et modèles de Deep Learning.",
+    en: 'Advanced software design, algorithms, image processing (OpenCV), industrial vision and Deep Learning models.'
   },
   'about.tl7.year': { fr: '2018 — 2022', en: '2018 — 2022' },
   'about.tl7.role': { fr: 'Licence en Électronique & Informatique', en: "Bachelor's in Electronics & Computer Science" },

@@ -324,6 +324,26 @@
     }
   }
 
+  .footer-verse {
+    max-width: 74ch;
+    margin: 2.4rem auto 0;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--text-2);
+
+    .verse-ref {
+      display: block;
+      margin-top: 0.4rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+  }
+
   .footer-bottom {
     display: flex;
     justify-content: space-between;
