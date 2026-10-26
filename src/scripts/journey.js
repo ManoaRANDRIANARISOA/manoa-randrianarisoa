@@ -24,6 +24,10 @@ export function initJourney() {
   const figure = document.getElementById('journey-figure');
   if (!scene || !runway || !stage || !figure) return;
 
+  // The scene defaults (--journey-p and friends) are declared on the .journey
+  // board, so the scrub must write them there: an inline value on an ancestor
+  // would be shadowed by the board's own declaration and the decor would freeze.
+  const board = scene.querySelector('.journey') || scene;
   const drawing = scene.querySelector('.journey-drawing');
   const hint = document.getElementById('journey-hint');
   const indexEl = document.getElementById('journey-index');
@@ -106,7 +110,7 @@ export function initJourney() {
     const delta = lastP < 0 ? 0 : p - lastP;
     lastP = p;
 
-    scene.style.setProperty('--journey-p', p.toFixed(4));
+    board.style.setProperty('--journey-p', p.toFixed(4));
 
     // The lean chases scroll velocity, then settles back to vertical on its own.
     lean += (clamp(delta * 420, -3.5, 3.5) - lean) * 0.16;
