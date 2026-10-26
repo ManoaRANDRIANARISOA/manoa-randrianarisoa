@@ -143,6 +143,86 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 }
 
+// Era decor: line-art backdrops anchored to the ground, one per chapter,
+// placed with the same rule as the stations so they scroll past in step.
+.journey-decor {
+  position: absolute;
+  bottom: 0;
+  width: clamp(150px, 19vw, 240px);
+  transform: translateX(-50%);
+  color: var(--text-3);
+  opacity: 0.5;
+  pointer-events: none;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  @for $i from 1 through $stops {
+    &[data-stop="#{$i - 1}"] {
+      left: math.percentage(math.div($fig-x + 12 + 50 * ($i - 1), 300));
+    }
+  }
+}
+
+// Architect stop: dashboard panels orbiting the walker, drawn with the plate kit.
+.journey-orbit {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--kit-ms) var(--kit-ease);
+  pointer-events: none;
+
+  .orbit-panel {
+    position: absolute;
+    width: 76px;
+    height: 50px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    background: var(--bg-veil);
+    animation: orbit-float 4.6s ease-in-out infinite alternate;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      border-bottom: 1px solid var(--line-strong);
+      background-image: radial-gradient(circle at 5px 4px, var(--text-3) 1.2px, transparent 1.4px);
+      background-size: 10px 8px;
+      background-repeat: no-repeat;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 7px;
+      right: 7px;
+      bottom: 8px;
+      background-image: repeating-linear-gradient(to bottom, var(--line-strong) 0 1px, transparent 1px 8px);
+      opacity: 0.8;
+    }
+  }
+
+  .op-1 { left: calc(#{$fig-x * 1%} + 52px); top: 16%; }
+  .op-2 { left: calc(#{$fig-x * 1%} - 128px); top: 30%; animation-delay: -1.8s; }
+  .op-3 { left: calc(#{$fig-x * 1%} + 96px); top: 46%; width: 62px; height: 40px; animation-delay: -3.4s; }
+}
+
+.journey-stage[data-stop="6"] .journey-orbit { opacity: 1; }
+
+@keyframes orbit-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-7px); }
+}
+
 .station-art {
   display: block;
   width: clamp(56px, 7.2vw, 102px);
@@ -487,6 +567,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
     top: 11px;
     left: 50%;
     transform: translateX(-50%);
+    white-space: nowrap;
     @include mono-label(0.58rem, var(--text-3));
     font-weight: 500;
   }
@@ -601,7 +682,9 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 
   .layer-far,
   .layer-near,
-  .journey-figure {
+  .journey-figure,
+  .journey-decor,
+  .journey-orbit {
     display: none;
   }
 
