@@ -114,6 +114,13 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 }
 
+// decor — the era skylines: slower than the ridge, so they read as distance
+.layer-decor {
+  --travel: 70;
+  width: 240%;
+  height: 0;
+}
+
 // mid — the seven landmarks
 .layer-mid {
   --travel: 100;
@@ -143,15 +150,17 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 }
 
-// Era decor: line-art backdrops anchored to the ground, one per chapter,
-// placed with the same rule as the stations so they scroll past in step.
+// Era decor: line-art skylines anchored to the ground, one per chapter, drawn
+// small and faint on the slow background layer so they sit behind the landmarks
+// instead of competing with them. Spacing follows that layer's own ratio:
+// the cue point (fig-x over the layer width) plus 70% of the landmark travel.
 .journey-decor {
   position: absolute;
   bottom: 0;
-  width: clamp(150px, 19vw, 240px);
+  width: clamp(118px, 15vw, 190px);
   transform: translateX(-50%);
   color: var(--text-3);
-  opacity: 0.5;
+  opacity: 0.38;
   pointer-events: none;
 
   svg {
@@ -164,7 +173,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 
   @for $i from 1 through $stops {
     &[data-stop="#{$i - 1}"] {
-      left: math.percentage(math.div($fig-x + 12 + 50 * ($i - 1), 300));
+      left: math.percentage(math.div($fig-x, 240) + math.div(70 * (12 + 50 * ($i - 1)), 30000));
     }
   }
 }
@@ -354,8 +363,8 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 // book in hand, support agent with headset and satchel, intern with a badge and
 // papers, graduate in gown with the mortarboard raised clear of his face,
 // consultant in an open jacket over a tee holding a tablet, architect with a
-// tie, a laptop in hand and a folder under the back arm. Every stop dissolves
-// into the next; the walk rig (pivots, strides) never changes.
+// tie and an open laptop: near hand on the keyboard, far hand carrying it.
+// Every stop dissolves into the next; the walk rig (pivots, strides) never changes.
 .journey-figure {
   .g-stick-t, .g-head-stick, .g-hood, .g-shirt, .g-shorts-y, .g-gown,
   .g-jacket, .g-tie, .g-pack, .g-head-f, .l-stick, .l-trou, .l-bare, .l-short,
@@ -393,7 +402,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 
   &[data-stop="6"] :is(
     .g-head-f, .l-formed, .l-shoe, .l-trou,
-    .g-shirt, .g-tie, .w-folder, .held-laptop
+    .g-shirt, .g-tie, .held-laptop
   ) { opacity: 1; }
 }
 
@@ -681,6 +690,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   }
 
   .layer-far,
+  .layer-decor,
   .layer-near,
   .journey-figure,
   .journey-decor,

@@ -39,7 +39,7 @@
   header {
     background: var(--ink);
     color: var(--paper);
-    padding: 5mm 8mm 4.6mm;
+    padding: 4.6mm 8mm 4.2mm;
     display: flex;
     justify-content: space-between;
     gap: 6mm;
@@ -72,7 +72,7 @@
     border-bottom: 1px solid var(--line);
   }
   .counter {
-    padding: 2.4mm 3mm 2.2mm 4mm;
+    padding: 2.1mm 3mm 2.0mm 4mm;
     border-left: 1px solid var(--line);
     border-top: 0.8mm solid var(--c, var(--teal));
   }
@@ -102,9 +102,9 @@
     border-left: 1.1mm solid var(--sec, var(--teal));
     background: color-mix(in srgb, var(--sec, var(--teal)) 9%, transparent);
     color: var(--ink);
-    margin: 0 0 1.8mm;
+    margin: 0 0 1.5mm;
   }
-  section { margin-bottom: 2.6mm; }
+  section { margin-bottom: 2.1mm; }
   section:last-child { margin-bottom: 0; }
 
   /* ------------------------------------------------------------------- aside */
@@ -138,7 +138,7 @@
   .xp {
     position: relative;
     margin-left: 1.4mm;
-    padding: 0 0 2.0mm 4.2mm;
+    padding: 0 0 1.5mm 4.2mm;
     border-left: 1px solid var(--line);
     page-break-inside: avoid;
   }
@@ -160,7 +160,7 @@
   .xp-hook { color: var(--ink-2); font-size: 7.5pt; }
   .xp-hook b { color: var(--ink); }
   .xp ul { list-style: none; margin-top: 0.5mm; }
-  .xp li { padding-left: 3mm; position: relative; margin-bottom: 0.45mm; color: var(--ink-2); font-size: 7.5pt; }
+  .xp li { padding-left: 3mm; position: relative; margin-bottom: 0.3mm; color: var(--ink-2); font-size: 7.5pt; }
   .xp li::before {
     content: ''; position: absolute; left: 0; top: 1.3mm;
     width: 1.5mm; height: 1.5mm; background: var(--xc, var(--teal));
@@ -187,7 +187,7 @@
   footer {
     background: var(--ink); color: rgba(244, 242, 237, 0.75);
     font-family: 'JetBrains Mono', monospace; font-size: 6.2pt;
-    padding: 1.9mm 8mm; display: flex; justify-content: space-between; letter-spacing: 0.06em;
+    padding: 1.6mm 8mm; display: flex; justify-content: space-between; letter-spacing: 0.06em;
   }
 </style>
 </head>
@@ -263,31 +263,31 @@
           <div class="xp-co">Missi Innovation · Antananarivo — remote international</div>
           <p class="xp-hook">Conception de bout en bout, décisions tracées en ADR, <b>systèmes qui tiennent quand le réseau tombe</b>.</p>
           <ul>
-            <li><b>ANKA (AFD)</b> : collecte ESG offline-first — 45 exigences tracées, PWA React + Dexie, API NestJS, 14 j hors-ligne.</li>
-            <li><b>ResHPro</b> : SaaS multi-tenant hôtellerie (POS, stocks, RBAC) — React 18, PostgreSQL, isolation RLS (ADR-002).</li>
-            <li><b>Study-Agent</b> : ERP scolaire en production (Lycée Manjary Soa) — Electron, SQLite WAL, Supabase, saisie sans réseau ; Make &amp; n8n.</li>
-            <li><b>Maboo</b> : lead frontend, boutique headless React 19 / React Router 7 SSR (code client non public).</li>
+            <li><b>ANKA (Digital Energy Challenge, AFD/UE)</b> : dépouillement du TDR bailleur → MVP et matrice de 45 exigences tracées (TR-01→TR-45) ; collecte ESG offline-first (PWA React + Dexie, API NestJS, 14 j hors-ligne) ; dossier de conception remis au bailleur.</li>
+            <li><b>ResHPro</b> : SaaS multi-tenant hôtellerie (POS, stocks, RBAC) — moteur de réservation temps réel <b>zéro double réservation</b>, React 18, PostgreSQL, RLS (ADR-002).</li>
+            <li><b>Study-Agent</b> : ERP scolaire en production (Lycée Manjary Soa) — notes &amp; bulletins officiels, Electron, SQLite WAL, Supabase, saisie sans réseau ; Make &amp; n8n.</li>
+            <li><b>Maboo</b> : lead frontend, boutique headless React 19 / React Router 7 SSR — <b>LCP &lt; 1,2 s sur 4G</b>, i18n &amp; devis en ligne (code client non public).</li>
           </ul>
         </div>
 
         <div class="xp" style="--xc: var(--indigo)">
           <div class="xp-head"><span class="xp-role">Architecte technique &amp; lead mobile</span><span class="xp-when">2025 — 2026</span></div>
           <div class="xp-co">Given Day Tech · France (associatif) — remote</div>
-          <p class="xp-hook">Encadrement de <b>4 développeurs</b> remote : architecture React Native + Node.js, revues de code, mentoring.</p>
+          <p class="xp-hook">Pilotage de <b>4 développeurs</b> remote (backlog agile, priorisation, revues de code, suivi des livraisons) ; architecture React Native + Node.js issue des exigences métiers.</p>
           <p class="xp-tags">React Native · Node.js · revues de code · mentoring</p>
         </div>
 
         <div class="xp" style="--xc: var(--indigo)">
           <div class="xp-head"><span class="xp-role">Développeur full-stack senior</span><span class="xp-when">2025 — présent</span></div>
           <div class="xp-co">ToutPourSaGloire.com · international — remote</div>
-          <p class="xp-hook">Moteur Meilisearch et refonte Next.js : <b>-40 % de temps de chargement</b> (mesuré en environnement de dev).</p>
+          <p class="xp-hook">Refonte Next.js et APIs GraphQL ; moteur Meilisearch : <b>-40 % de temps de chargement</b> (mesuré en environnement de dev).</p>
           <p class="xp-tags">Next.js · Meilisearch · performance web</p>
         </div>
 
         <div class="xp" style="--xc: var(--terra)">
           <div class="xp-head"><span class="xp-role">Développeur CMS &amp; designer UI/UX</span><span class="xp-when">2023 — 2024</span></div>
           <div class="xp-co">RICSM · États-Unis — remote, contrat via IKS Antananarivo</div>
-          <p class="xp-hook">Sites Squarespace clients internationaux, maquettes Figma, performance &amp; SEO ; <b>équipe formée</b> aux bases CMS.</p>
+          <p class="xp-hook">Portail institutionnel US conforme <b>WCAG</b> ; sites Squarespace clients internationaux, maquettes Figma, SEO ; <b>équipe formée</b> aux bases CMS.</p>
           <p class="xp-tags">Squarespace · Figma · SEO · formation d'équipe</p>
         </div>
 

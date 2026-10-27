@@ -56,9 +56,9 @@
                     </svg>
                   </div>
 
-                  <!-- mid: the seven landmarks, placed so each one meets the walker on cue -->
-                  <div class="journey-layer layer-mid">
-                    <!-- era backdrops: they scroll past under the annotations, same pen style -->
+                  <!-- era backdrops: one line-art skyline per chapter, kept behind the
+                       ridge and the landmarks so it reads as distance, not as an icon -->
+                  <div class="journey-layer layer-decor">
                     <div class="journey-decor" data-stop="0" aria-hidden="true">
                       <svg viewBox="0 0 240 130" focusable="false">
                         <g stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -159,7 +159,10 @@
                         </g>
                       </svg>
                     </div>
+                  </div>
 
+                  <!-- mid: the seven landmarks, placed so each one meets the walker on cue -->
+                  <div class="journey-layer layer-mid">
                     <div class="journey-station" data-stop="0">
                       <span class="station-stem"></span>
                       <svg class="station-art" viewBox="0 0 120 120" focusable="false">
@@ -273,7 +276,9 @@
                 </div>
 
                 <div class="journey-figure" id="journey-figure" data-stop="0" aria-hidden="true">
-                  <svg class="figure-svg" viewBox="0 0 120 166" preserveAspectRatio="xMidYMax meet" focusable="false">
+                  <!-- viewBox is cropped to the rig: soles end at y=152.4, the raised
+                       mortarboard starts at y=-5 — anything wider lifts the walker off the ground. -->
+                  <svg class="figure-svg" viewBox="0 -7 120 159.5" preserveAspectRatio="xMidYMax meet" focusable="false">
                     <g>
 
         <!-- dossier sous le bras arrière (architecte) -->
@@ -308,7 +313,7 @@
             <path class="cr" d="M-1,4 C-1.4,12 -1.2,20 -0.8,26"></path>
           </g>
           <g data-limb="shin-b" data-pivot="0 26" transform="translate(0 26)">
-            <path class="st l-stick" d="M0,-1 L0,24"></path>
+            <path class="st l-stick" d="M0,-1 L0,32.4"></path>
             <g class="l-bare">
               <path class="f-skin" d="M-3,-1 C-3.2,8 -2.6,16 -2,24 L2.4,24 C2.8,16 3,8 2.8,-1 Z"></path>
             </g>
@@ -345,7 +350,7 @@
             <path class="cr" d="M-1,4 C-1.4,12 -1.2,20 -0.8,26"></path>
           </g>
           <g data-limb="shin-f" data-pivot="0 26" transform="translate(0 26)">
-            <path class="st l-stick" d="M0,-1 L0,24"></path>
+            <path class="st l-stick" d="M0,-1 L0,32.4"></path>
             <g class="l-bare">
               <path class="f-skin" d="M-3,-1 C-3.2,8 -2.6,16 -2,24 L2.4,24 C2.8,16 3,8 2.8,-1 Z"></path>
             </g>
@@ -485,12 +490,15 @@
               <path class="f-acc2" d="M2,39.6 L14.6,37.6 L16.2,47.4 L3.6,49.4 Z"></path>
               <path class="sa" stroke-width="1.2" d="M4.4,41.4 L12.4,40.1 M4.8,44 L11,43"></path>
             </g>
-            <g class="held held-laptop">
-              <path class="f-acc" d="M-2,45 L16,42 L14.6,28.5 L-3.4,31.5 Z"></path>
-              <path class="f-acc2" d="M-3.4,31.5 L14.6,28.5 L14.9,30 L-3.1,33 Z"></path>
-              <path class="s2" stroke-width="1.1" d="M3.2,39.4 L4.8,34.8 L6.6,37.8 L8.4,33.9 L10,36.6"></path>
-              <path class="f-acc" d="M-2,45 L16,42 L17,45.4 L-1,48.4 Z"></path>
-              <path class="f-acc2" d="M-1,48.4 L17,45.4 L17.2,46.8 L-0.8,49.8 Z"></path>
+            <g class="held held-laptop" transform="translate(2 45) scale(1.6) translate(-2 -45)">
+              <!-- open laptop, reference pose: wide hinge line, lid leaning back with
+                   its outer face (and logo) to the viewer, deck running to the hands -->
+              <path class="f-acc" d="M9.5,44.5 L19.5,42.8 L22.9,30.4 L12.9,32.1 Z"></path>
+              <path class="s2" stroke-width="1.2" d="M14.1,39.8 L15.2,35.6 L16.2,38.4 L17.3,34.2 L18.3,37"></path>
+              <path class="f-acc" fill-opacity="0.45" d="M9.5,44.5 L19.5,42.8 L11.5,47.4 L1.5,49.1 Z"></path>
+              <path class="f-acc" d="M1.5,49.1 L11.5,47.4 L11.5,49.2 L1.5,50.9 Z"></path>
+              <path class="f-skin" d="M0.8,44.2 L5.2,43.4 L6.4,45.8 L2,46.6 Z"></path>
+              <path class="f-skin" d="M5.6,44.3 L9.6,43.6 L10,44.8 L6,45.5 Z M6,45.6 L10,44.9 L10.4,46.1 L6.4,46.8 Z"></path>
             </g>
             <path class="f-skin" d="M-1.6,42.4 C-2.6,45.6 -2,49 0.4,49.8 C2.8,50.6 4.4,48.8 4.2,46 L3.6,42.2 Z"></path>
             <path class="cr" d="M-2,16.8 L3.4,16.2"></path>

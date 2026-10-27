@@ -71,11 +71,6 @@ const STRINGS = {
     fr: "Je conçois et j'écris le code de logiciels métier qui doivent continuer à tourner même sans réseau — et j'encadre les équipes qui les font vivre.",
     en: 'I design and write the code of business software that has to keep working even with no network — and I lead the teams that keep it alive.'
   },
-  'hero.fact1': {
-    html: true,
-    fr: '<strong>7 systèmes livrés et documentés</strong>, dont un ERP scolaire en production locale au Lycée Manjary Soa.',
-    en: '<strong>7 shipped, documented systems</strong>, including a school ERP in local production at Manjary Soa High School.'
-  },
   'verse.top': {
     fr: '« J\u2019ai été crucifié avec Christ ; et ce n\u2019est plus moi qui vis, c\u2019est Christ qui vit en moi. »',
     en: '“I have been crucified with Christ. It is no longer I who live, but Christ who lives in me.”'
@@ -86,16 +81,6 @@ const STRINGS = {
     en: '“So, whether you eat or drink, or whatever you do, do all to the glory of God.”'
   },
   'verse.bottomRef': { fr: '1 Corinthiens 10:31', en: '1 Corinthians 10:31' },
-  'hero.fact2': {
-    html: true,
-    fr: "<strong>Master IA soutenu et validé</strong> (ISPM) — diplôme en cours d'émission.",
-    en: "<strong>AI MSc defended and validated</strong> (ISPM) — diploma pending issuance."
-  },
-  'hero.fact3': {
-    html: true,
-    fr: '<strong>4 développeurs encadrés</strong> en remote : cadrage, backlog, revues de code.',
-    en: '<strong>4 developers mentored</strong> remotely: framing, backlog, code reviews.'
-  },
   'hero.btnCv': { fr: 'Consulter les CV (PDF)', en: 'View the resumes (PDF)' },
   'hero.btnProjects': { fr: 'Voir les réalisations', en: 'See the work' },
   'hero.figNote1': { fr: 'FIG. 01 — Antananarivo', en: 'FIG. 01 — Antananarivo' },

@@ -14,6 +14,11 @@ const TAU = Math.PI * 2;
 // figure faces right, so the front leg takes the negative half of the cycle.
 const SWING = { thigh: 24, knee: 34, arm: 20 };
 
+// Architect stop: the far arm leaves the swing and reaches under the open
+// laptop, so the near hand types while the far hand carries — the model's pose.
+const CARRY_STOP = 6;
+const CARRY_ARM = -35;
+
 // The near layer is 500% wide and travels 80% of itself: four drawing widths.
 const GROUND_TRAVEL = 4;
 
@@ -46,6 +51,7 @@ export function initJourney() {
   let bob = 4;
   let lean = 0;
   let amp = 1;
+  let carry = 0;
   let inView = false;
   let queued = 0;
   let lastP = -1;
@@ -75,7 +81,7 @@ export function initJourney() {
     rotate('shin-f', SWING.knee * Math.max(0, s));
     rotate('shin-b', SWING.knee * Math.max(0, -s));
     rotate('arm-f', SWING.arm * s);
-    rotate('arm-b', -SWING.arm * s);
+    rotate('arm-b', -SWING.arm * s * (1 - carry) + CARRY_ARM * carry);
     figure.style.setProperty('--bob', `${(-bob * Math.abs(s)).toFixed(2)}px`);
     figure.style.setProperty('--lean', `${lean.toFixed(2)}deg`);
   }
@@ -117,11 +123,14 @@ export function initJourney() {
     // The stride eases out to a standing pose instead of freezing mid-step, and
     // eases back in from the same phase, so starting and stopping never jolt.
     amp += ((delta !== 0 ? 1 : 0) - amp) * 0.06;
+    const carryTarget = stop === CARRY_STOP ? 1 : 0;
+    carry += (carryTarget - carry) * 0.08;
     walk(p);
     setStop(clamp(Math.round(p * (STOPS - 1)), 0, STOPS - 1));
 
     if (delta !== 0) hint?.classList.add('is-spent');
-    if (delta !== 0 || Math.abs(lean) > 0.04 || amp > 0.01) request();
+    if (delta !== 0 || Math.abs(lean) > 0.04 || amp > 0.01 ||
+        Math.abs(carry - carryTarget) > 0.01) request();
   }
 
   const observer = new IntersectionObserver((entries) => {
