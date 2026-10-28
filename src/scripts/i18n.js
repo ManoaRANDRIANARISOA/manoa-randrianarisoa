@@ -547,14 +547,6 @@ const STRINGS = {
   'footer.ckDegree': { fr: 'Diplôme', en: 'Degree' },
   'footer.cvDegree': { fr: 'Master soutenu & validé', en: 'MSc defended & validated' },
   'footer.ckStack': { fr: 'Stack', en: 'Stack' },
-  'footer.rights': {
-    fr: '© 2026 Manoa Randrianarisoa — conçu et codé sans modèle générique.',
-    en: '© 2026 Manoa Randrianarisoa — designed and coded without a generic template.'
-  },
-  'footer.credits': {
-    fr: 'Aucun traceur · Aucune donnée collectée',
-    en: 'No trackers · No data collected'
-  },
 
   // ---------------------------------------------------------------- TERMINAL (static shell)
   'term.aria': { fr: "Console interactive de l'Architecte", en: "The Architect's interactive console" },
