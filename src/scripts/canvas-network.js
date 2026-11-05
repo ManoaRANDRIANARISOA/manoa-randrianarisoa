@@ -249,7 +249,11 @@ export function initNetworkCanvas(canvasId = 'hero-canvas') {
     });
   }
 
-  canvas.addEventListener('click', (e) => {
+  // The canvas sits under the hero content, so listening on it alone would miss
+  // every click landing on the copy column's empty space. The section catches all
+  // of them; coordinates are still measured against the canvas.
+  const board = canvas.closest('section') || stage;
+  board.addEventListener('click', (e) => {
     const rect = canvas.getBoundingClientRect();
     pings.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, radius: 0, opacity: 0.55 });
     if (!running) render(performance.now());

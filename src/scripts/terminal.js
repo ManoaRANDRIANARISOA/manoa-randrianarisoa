@@ -48,7 +48,7 @@ const TERM_STRINGS = {
   whoami: {
     fr: `
           <strong>MANOA RANDRIANARISOA</strong><br>
-          Architecte technique & développeur full-stack senior — Antananarivo, Madagascar (UTC+3)<br>
+          Architecte technique & développeur full-stack — Antananarivo, Madagascar (UTC+3)<br>
           Master Électronique, Informatique & IA (ISPM) : soutenu et validé, diplôme en cours d'émission.<br>
           Licence Électronique & Informatique (ISPM, 2018—2022) · Baccalauréat série D (2018).<br>
           Spécialisé dans la résilience des systèmes (offline-first), le multi-tenant cloud et l'encadrement d'équipes remote.<br>
@@ -56,7 +56,7 @@ const TERM_STRINGS = {
         `,
     en: `
           <strong>MANOA RANDRIANARISOA</strong><br>
-          Technical architect & senior full-stack developer — Antananarivo, Madagascar (UTC+3)<br>
+          Technical architect & full-stack developer — Antananarivo, Madagascar (UTC+3)<br>
           MSc Electronics, Computer Science & AI (ISPM): defended and validated, diploma pending issuance.<br>
           Bachelor's in Electronics & Computer Science (ISPM, 2018—2022) · French Baccalauréat equivalent, science track (2018).<br>
           Specialized in system resilience (offline-first), cloud multi-tenancy and mentoring remote teams.<br>
@@ -66,27 +66,27 @@ const TERM_STRINGS = {
   journey: {
     fr: `
           <strong>FIL DU PARCOURS :</strong><br>
-          • 2025 — présent : Consultant indépendant / architecte technique (ANKA, ResHPro, Study-Agent, Maboo)<br>
-          • 2025 — 2026    : Architecte technique & lead mobile, Given Day Tech (France, associatif) — 4 développeurs<br>
-          • 2025 — présent : Développeur full-stack senior, ToutPourSaGloire.com (international)<br>
-          • 2023 — 2024    : Développeur CMS & designer UI/UX, RICSM (États-Unis, remote) via IKS Antananarivo — forme l'équipe aux bases CMS<br>
-          • 2022 (6 mois)  : Stage full-stack & pipeline OCR, EQIMA (Antananarivo)<br>
-          • 2019 (oct.—déc.): Service technique ADSL — clientèle SFR France, Intelcia Tanjombato (Antananarivo)<br>
-          • 2022 — 2024    : Master Électronique, Informatique & IA — ISPM<br>
-          • 2018 — 2022    : Licence Électronique & Informatique — ISPM<br>
-          • 2018           : Baccalauréat série D
+          • 2025 — présent        : Consultant indépendant / architecte technique (ANKA, ResHPro, Study-Agent, Maboo)<br>
+          • avr. 2025 — avr. 2026 : Architecte technique & lead mobile, Given Day Tech (France, associatif) — 4 développeurs<br>
+          • févr. 2025 — mai 2026 : Développeur full-stack, ToutPourSaGloire.com (international)<br>
+          • 2023 — 2024           : Développeur CMS & designer UI/UX, RICSM (États-Unis, remote) via IKS Antananarivo — forme l'équipe aux bases CMS<br>
+          • 2022 (6 mois)         : Stage full-stack & pipeline OCR, EQIMA (Antananarivo)<br>
+          • 2019 (oct.—déc.)      : Service technique ADSL — clientèle SFR France, Intelcia Tanjombato (Antananarivo)<br>
+          • 2022 — 2024           : Master Électronique, Informatique & IA — ISPM<br>
+          • 2018 — 2022           : Licence Électronique & Informatique — ISPM<br>
+          • 2018                  : Baccalauréat série D
         `,
     en: `
           <strong>CAREER THREAD:</strong><br>
-          • 2025 — present : Independent consultant / technical architect (ANKA, ResHPro, Study-Agent, Maboo)<br>
-          • 2025 — 2026    : Technical architect & mobile lead, Given Day Tech (France, non-profit) — 4 developers<br>
-          • 2025 — present : Senior full-stack developer, ToutPourSaGloire.com (international)<br>
-          • 2023 — 2024    : CMS developer & UI/UX designer, RICSM (United States, remote) via IKS Antananarivo — trains the team on CMS basics<br>
-          • 2022 (6 months): Full-stack & OCR pipeline internship, EQIMA (Antananarivo)<br>
-          • 2019 (Oct—Dec) : ADSL technical service — SFR France customers, Intelcia Tanjombato (Antananarivo)<br>
-          • 2022 — 2024    : MSc Electronics, Computer Science & AI — ISPM<br>
-          • 2018 — 2022    : Bachelor's in Electronics & Computer Science — ISPM<br>
-          • 2018           : High-school diploma, science track (série D)
+          • 2025 — present    : Independent consultant / technical architect (ANKA, ResHPro, Study-Agent, Maboo)<br>
+          • Apr 2025 – Apr 2026 : Technical architect & mobile lead, Given Day Tech (France, non-profit) — 4 developers<br>
+          • Feb 2025 – May 2026 : Full-stack developer, ToutPourSaGloire.com (international)<br>
+          • 2023 — 2024       : CMS developer & UI/UX designer, RICSM (United States, remote) via IKS Antananarivo — trains the team on CMS basics<br>
+          • 2022 (6 months)   : Full-stack & OCR pipeline internship, EQIMA (Antananarivo)<br>
+          • 2019 (Oct—Dec)    : ADSL technical service — SFR France customers, Intelcia Tanjombato (Antananarivo)<br>
+          • 2022 — 2024       : MSc Electronics, Computer Science & AI — ISPM<br>
+          • 2018 — 2022       : Bachelor's in Electronics & Computer Science — ISPM<br>
+          • 2018              : High-school diploma, science track (série D)
         `
   },
   projects: {
@@ -251,7 +251,7 @@ const TERM_STRINGS = {
           • 2019          : transmission laser — électronique et traitement du signal<br>
           <strong>MENTORAT & FORMATION D'ÉQUIPE :</strong><br>
           • 2023 — 2024 : RICSM — formation de l'équipe aux bases CMS et entrée en programmation (fin M1 — M2)<br>
-          • 2025 — 2026 : Given Day Tech — encadrement de 4 développeurs (revues de code, montée en compétence)<br>
+          • avr. 2025 — avr. 2026 : Given Day Tech — encadrement de 4 développeurs (revues de code, montée en compétence)<br>
           • Cadre : projets d'étude annuels en groupe de 3 à 5 — rôle touche-à-tout (full-stack), chef de groupe sur certains<br>
           <span class="system-msg">Ces travaux sont les preuves concrètes des compétences IA, vision par ordinateur et électronique de la matrice.</span>
         `,
@@ -264,7 +264,7 @@ const TERM_STRINGS = {
           • 2019          : laser transmission — electronics and signal processing<br>
           <strong>MENTORING & TEAM TRAINING:</strong><br>
           • 2023 — 2024 : RICSM — trained the team on CMS basics and introduced them to programming (end of M1 — M2)<br>
-          • 2025 — 2026 : Given Day Tech — mentoring 4 developers (code reviews, skill growth)<br>
+          • Apr 2025 – Apr 2026 : Given Day Tech — mentoring 4 developers (code reviews, skill growth)<br>
           • Frame: year-long study projects in groups of 3 to 5 — jack-of-all-trades role (full-stack), group lead on some<br>
           <span class="system-msg">These projects are the concrete evidence behind the AI, computer-vision and electronics skills in the matrix.</span>
         `

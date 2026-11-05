@@ -343,6 +343,27 @@
       color: var(--accent);
     }
   }
+
+  .footer-close {
+    position: relative;
+    display: block;
+    width: min(15rem, 46%);
+    height: 1px;
+    margin: 2.4rem auto 0;
+    background: var(--line-strong);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      transform: translate(-50%, -50%) rotate(45deg);
+      background: var(--signal);
+      opacity: 0.8;
+    }
+  }
 }
 
 

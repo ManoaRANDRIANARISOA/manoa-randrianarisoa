@@ -14,10 +14,11 @@ const TAU = Math.PI * 2;
 // figure faces right, so the front leg takes the negative half of the cycle.
 const SWING = { thigh: 24, knee: 34, arm: 20 };
 
-// Architect stop: the far arm leaves the swing and reaches under the open
-// laptop, so the near hand types while the far hand carries — the model's pose.
+// Architect stop: the far arm leaves the swing and cups the open laptop's base
+// from below while the near arm reaches forward, its hand typing on the keys.
 const CARRY_STOP = 6;
-const CARRY_ARM = -35;
+const CARRY_ARM = -16;
+const CARRY_ARM_F = -8;
 
 // The near layer is 500% wide and travels 80% of itself: four drawing widths.
 const GROUND_TRAVEL = 4;
@@ -73,14 +74,13 @@ export function initJourney() {
     limb.el.setAttribute('transform', `translate(${x} ${y}) rotate(${deg.toFixed(2)})`);
   }
 
-  function walk(p) {
-    const phase = p * strides * TAU;
-    const s = Math.sin(phase) * amp;
+  function walk(p, still) {
+    const s = still ? 0 : Math.sin(p * strides * TAU) * amp;
     rotate('leg-f', -SWING.thigh * s);
     rotate('leg-b', SWING.thigh * s);
     rotate('shin-f', SWING.knee * Math.max(0, s));
     rotate('shin-b', SWING.knee * Math.max(0, -s));
-    rotate('arm-f', SWING.arm * s);
+    rotate('arm-f', SWING.arm * s * (1 - carry) + CARRY_ARM_F * carry);
     rotate('arm-b', -SWING.arm * s * (1 - carry) + CARRY_ARM * carry);
     figure.style.setProperty('--bob', `${(-bob * Math.abs(s)).toFixed(2)}px`);
     figure.style.setProperty('--lean', `${lean.toFixed(2)}deg`);
@@ -108,29 +108,36 @@ export function initJourney() {
 
   function frame() {
     queued = 0;
-    if (!inView || staticScene.matches) return;
+    if (!inView) return;
 
-    const rect = runway.getBoundingClientRect();
-    const travel = Math.max(1, rect.height - window.innerHeight);
-    const p = clamp(-rect.top / travel, 0, 1);
-    const delta = lastP < 0 ? 0 : p - lastP;
-    lastP = p;
+    // Frieze mode (reduced motion, short windows): pose the arrived walker at
+    // the last stop instead of scrubbing, carry blend included.
+    const still = staticScene.matches;
+    let p = 1;
+    let delta = 0;
+    if (!still) {
+      const rect = runway.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      p = clamp(-rect.top / travel, 0, 1);
+      delta = lastP < 0 ? 0 : p - lastP;
+      lastP = p;
 
-    board.style.setProperty('--journey-p', p.toFixed(4));
+      board.style.setProperty('--journey-p', p.toFixed(4));
 
-    // The lean chases scroll velocity, then settles back to vertical on its own.
-    lean += (clamp(delta * 420, -3.5, 3.5) - lean) * 0.16;
-    // The stride eases out to a standing pose instead of freezing mid-step, and
-    // eases back in from the same phase, so starting and stopping never jolt.
-    amp += ((delta !== 0 ? 1 : 0) - amp) * 0.06;
+      // The lean chases scroll velocity, then settles back to vertical on its own.
+      lean += (clamp(delta * 420, -3.5, 3.5) - lean) * 0.16;
+      // The stride eases out to a standing pose instead of freezing mid-step, and
+      // eases back in from the same phase, so starting and stopping never jolt.
+      amp += ((delta !== 0 ? 1 : 0) - amp) * 0.06;
+      setStop(clamp(Math.round(p * (STOPS - 1)), 0, STOPS - 1));
+
+      if (delta !== 0) hint?.classList.add('is-spent');
+    }
     const carryTarget = stop === CARRY_STOP ? 1 : 0;
-    carry += (carryTarget - carry) * 0.08;
-    walk(p);
-    setStop(clamp(Math.round(p * (STOPS - 1)), 0, STOPS - 1));
-
-    if (delta !== 0) hint?.classList.add('is-spent');
-    if (delta !== 0 || Math.abs(lean) > 0.04 || amp > 0.01 ||
-        Math.abs(carry - carryTarget) > 0.01) request();
+    carry += (carryTarget - carry) * (still ? 1 : 0.08);
+    walk(p, still);
+    if (!still && (delta !== 0 || Math.abs(lean) > 0.04 || amp > 0.01 ||
+        Math.abs(carry - carryTarget) > 0.01)) request();
   }
 
   const observer = new IntersectionObserver((entries) => {

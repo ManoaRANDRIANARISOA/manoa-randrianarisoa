@@ -12,8 +12,8 @@ const STRINGS = {
     en: 'Manoa Randrianarisoa — Technical Architect & Lead Full-Stack'
   },
   'meta.description': {
-    fr: "Portfolio d'Architecte Technique & Lead Full-Stack Senior de Manoa Randrianarisoa. Systèmes distribués, Offline-First, SaaS Multi-Tenant (ANKA, ResHPro, Study-Agent, Maboo) et Master IA.",
-    en: 'Senior Technical Architect & Lead Full-Stack portfolio of Manoa Randrianarisoa. Distributed systems, Offline-First, Multi-Tenant SaaS (ANKA, ResHPro, Study-Agent, Maboo) and an AI MSc.'
+    fr: "Portfolio d'Architecte Technique & Lead Full-Stack de Manoa Randrianarisoa. Systèmes distribués, Offline-First, SaaS Multi-Tenant (ANKA, ResHPro, Study-Agent, Maboo) et Master IA.",
+    en: 'Technical Architect & Lead Full-Stack portfolio of Manoa Randrianarisoa. Distributed systems, Offline-First, Multi-Tenant SaaS (ANKA, ResHPro, Study-Agent, Maboo) and an AI MSc.'
   },
   'meta.ogDescription': {
     fr: "Concevoir des architectures logicielles résilientes, mesurables et centrées sur l'impact métier. Découvrir mes systèmes en production.",
@@ -90,7 +90,7 @@ const STRINGS = {
   'hero.metricUnit1': { fr: 'Systèmes documentés', en: 'Documented systems' },
   'hero.metricUnit2': { fr: 'Ans de pratique', en: 'Years of practice' },
   'hero.metricUnit3': { fr: 'Exigences tracées', en: 'Traced requirements' },
-  'hero.metricUnit4': { fr: 'Langues de travail', en: 'Working languages' },
+  'hero.metricUnit4': { fr: 'Développeurs encadrés', en: 'Developers mentored' },
   'hero.metric1Label': {
     fr: 'ANKA · ResHPro · Study-Agent · Maboo · Given Day · TPSG · EQIMA',
     en: 'ANKA · ResHPro · Study-Agent · Maboo · Given Day · TPSG · EQIMA'
@@ -104,8 +104,8 @@ const STRINGS = {
     en: "Traceability matrix for the funder's terms of reference (AFD) — ANKA"
   },
   'hero.metric4Label': {
-    fr: 'Français courant · anglais professionnel · malgache natif',
-    en: 'Fluent French · professional English · native Malagasy'
+    fr: 'Given Day Tech : cadrage, backlog, revues de code, suivis de livraison',
+    en: 'Given Day Tech: scoping, backlog, code reviews, delivery follow-ups'
   },
 
   // ---------------------------------------------------------------- ARCHITECTURE SECTION
@@ -352,7 +352,7 @@ const STRINGS = {
     fr: "Conception de bout en bout de la plateforme de collecte terrain <strong>ANKA</strong> (Digital Energy Challenge / AFD — PWA offline-first, matrice de 45 exigences), de la suite SaaS <strong>ResHPro</strong> (React 18 / multi-tenant, isolation applicative puis migration PostgreSQL RLS), du système ERP scolaire <strong>Study-Agent</strong> (en production locale, modèle Offline-First) et contribution frontend à la boutique <strong>Maboo</strong> (React 19 / SSR streaming).",
     en: 'End-to-end design of the <strong>ANKA</strong> field data collection platform (Digital Energy Challenge / AFD — offline-first PWA, 45-requirement matrix), the <strong>ResHPro</strong> SaaS suite (React 18 / multi-tenant, application-layer isolation then PostgreSQL RLS migration), the <strong>Study-Agent</strong> school ERP (in local production, Offline-First model) and frontend contribution to the <strong>Maboo</strong> storefront (React 19 / SSR streaming).'
   },
-  'about.tl2.year': { fr: '2025 — 2026', en: '2025 — 2026' },
+  'about.tl2.year': { fr: 'avr. 2025 — avr. 2026', en: 'Apr 2025 – Apr 2026' },
   'about.tl2.role': { fr: 'Architecte technique & lead mobile', en: 'Technical architect & mobile lead' },
   'about.tl2.company': { fr: 'Given Day Tech (France / associatif)', en: 'Given Day Tech (France / non-profit)' },
   'about.tl2.desc': {
@@ -360,8 +360,8 @@ const STRINGS = {
     fr: "Architecture logicielle mobile-first sous React Native et Node.js. Encadrement et coordination d'une équipe technique de <strong>4 développeurs</strong>, gouvernance agile et livraison dans le cadre d'un projet solidaire.",
     en: 'Mobile-first software architecture with React Native and Node.js. Mentoring and coordination of a <strong>4-developer</strong> engineering team, agile governance and delivery within a solidarity project.'
   },
-  'about.tl3.year': { fr: '2025 — présent', en: '2025 — present' },
-  'about.tl3.role': { fr: 'Développeur full-stack senior', en: 'Senior full-stack developer' },
+  'about.tl3.year': { fr: 'févr. 2025 — mai 2026', en: 'Feb 2025 – May 2026' },
+  'about.tl3.role': { fr: 'Développeur full-stack', en: 'Full-stack developer' },
   'about.tl3.company': { fr: 'ToutPourSaGloire.com (international)', en: 'ToutPourSaGloire.com (international)' },
   'about.tl3.desc': {
     html: true,
@@ -468,7 +468,7 @@ const STRINGS = {
     fr: "Vision par ordinateur, Deep Learning, traitement d'images (OpenCV) et vision industrielle.",
     en: 'Computer vision, Deep Learning, image processing (OpenCV) and industrial vision.'
   },
-  'journey.c6.year': { fr: '2023 — 2025', en: '2023 — 2025' },
+  'journey.c6.year': { fr: '2023 — 2026', en: '2023 — 2026' },
   'journey.c6.title': { fr: 'Contrats remote internationaux', en: 'International remote contracts' },
   'journey.c6.place': { fr: 'RICSM · ToutPourSaGloire.com · Given Day Tech', en: 'RICSM · ToutPourSaGloire.com · Given Day Tech' },
   'journey.c6.text': {
@@ -576,13 +576,13 @@ const STRINGS = {
   },
   'cv.closeAria': { fr: 'Fermer la fenêtre de CV', en: 'Close resume window' },
   'cv.tag1': { fr: 'Version française', en: 'French version' },
-  'cv.title1': { fr: 'CV unifié — Architecte Technique & Lead Full-Stack', en: 'Unified resume — Technical Architect & Lead Full-Stack' },
+  'cv.title1': { fr: 'CV — Ingénieur Logiciel Full-Stack & Architecte Applicatif', en: 'Resume — Full-Stack Software Engineer & Application Architect' },
   'cv.desc1': {
-    fr: "Une page A4 fidèle au parcours réel : profil, six expériences, projets d'étude ISPM, décisions d'architecture (ADR-001 à 003), compétences et disponibilité.",
-    en: 'One A4 page faithful to the real track record: profile, six roles, ISPM study projects, architecture decisions (ADR-001 to 003), skills and availability.'
+    fr: "Une page A4 : missions multi-projets (Missi Innovation, ANKA/AFD, Given Day, TPSG, Maboo), expériences antérieures (RICSM, EQIMA), compétences, formation et langues.",
+    en: 'One A4 page: multi-project missions (Missi Innovation, ANKA/AFD, Given Day, TPSG, Maboo), earlier roles (RICSM, EQIMA), skills, education and languages.'
   },
   'cv.tag2': { fr: 'Version anglaise', en: 'English version' },
-  'cv.title2': { fr: 'CV unifié — Technical Architect & Senior Lead Full-Stack', en: 'Unified resume — Technical Architect & Senior Lead Full-Stack' },
+  'cv.title2': { fr: 'CV — Full-Stack Software Engineer & Application Architect', en: 'Resume — Full-Stack Software Engineer & Application Architect' },
   'cv.desc2': {
     fr: 'Même document, traduit intégralement pour les processus de recrutement internationaux et les RH anglophones.',
     en: 'The same document, fully translated for international hiring processes and English-speaking recruiters.'

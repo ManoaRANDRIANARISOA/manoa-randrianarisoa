@@ -11,13 +11,23 @@
   flex-direction: column;
   justify-content: center;
   padding-top: 8.5rem;
-  padding-bottom: 3.5rem;
+  // Clears the scroll cue: the cue is ~50px tall at bottom 1.4rem, so the metrics
+  // strip must end above it or the cue overlaps the strip's rule.
+  padding-bottom: 6.5rem;
   overflow: hidden;
+  // Clicks here emit mesh waves; double-clicks must not drag-select the badges.
+  user-select: none;
 
   @include mobile {
     padding-top: 7rem;
+    padding-bottom: 3.5rem;
     min-height: auto;
   }
+}
+
+.hero-verse,
+.hero-plain {
+  user-select: text;
 }
 
 // Pointer-reactive mesh, recoloured for paper

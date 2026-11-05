@@ -215,7 +215,7 @@ export const PROJECTS_DATA = [
     metrics: '-40 % de temps de chargement · recherche instantanée',
     githubUrl: null,
     liveUrl: 'https://toutpoursagloire.com',
-    role: 'Développeur full-stack senior',
+    role: 'Développeur full-stack',
     en: {
       title: 'ToutPourSaGloire.com',
       type: 'Media platform & search engine',
@@ -229,7 +229,7 @@ export const PROJECTS_DATA = [
         'Instant search infrastructure with Meilisearch, reducing loading time by 40%.'
       ],
       metrics: '-40% loading time · instant search',
-      role: 'Senior full-stack developer'
+      role: 'Full-stack developer'
     }
   },
   {

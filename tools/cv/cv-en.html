@@ -1,341 +1,929 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>CV — Manoa Randrianarisoa (EN)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --paper: #f4f2ed;
-    --paper-2: #ecebe4;
-    --ink: #13171f;
-    --ink-2: #40495a;
-    --ink-3: #6b7482;
-    --line: rgba(19, 23, 32, 0.16);
-    --teal: #0e7c6b;
-    --terra: #a9552b;
-    --indigo: #3d4fa1;
-    --ochre: #b07d18;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  @page { size: A4; margin: 0; }
-  html, body { width: 210mm; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 7.85pt;
-    line-height: 1.35;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    height: 297mm;
-    display: flex;
-    flex-direction: column;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Manoa Randrianarisoa — Full-Stack Software Engineer &amp; Application Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
 
-  /* ------------------------------------------------------------------ header */
-  header {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 4.6mm 8mm 4.2mm;
-    display: flex;
-    justify-content: space-between;
-    gap: 6mm;
-    align-items: center;
-  }
-  .h-id { display: flex; gap: 4.5mm; align-items: center; }
-  header svg { width: 13.5mm; height: 13.5mm; flex-shrink: 0; }
-  .h-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15.5pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05;
-  }
-  .h-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 6.6pt; letter-spacing: 0.11em; text-transform: uppercase;
-    color: #46dcc4; margin-top: 1.2mm; white-space: nowrap;
-  }
-  .h-contact {
-    display: grid; grid-template-columns: auto auto; gap: 0.7mm 4mm;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 6.0pt; color: rgba(244, 242, 237, 0.82);
-    text-align: left;
-  }
-  .h-contact span { white-space: nowrap; }
-  .h-contact span::before { content: '—'; color: #46dcc4; margin-right: 1.2mm; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ---------------------------------------------------------------- counters */
-  .counters {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    background: var(--paper-2);
-    border-bottom: 1px solid var(--line);
-  }
-  .counter {
-    padding: 2.1mm 3mm 2.0mm 4mm;
-    border-left: 1px solid var(--line);
-    border-top: 0.8mm solid var(--c, var(--teal));
-  }
-  .counter:first-child { border-left: 0; }
-  .counter b {
-    display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15pt; font-weight: 700; line-height: 1;
-    color: var(--c, var(--teal));
-  }
-  .counter span {
-    display: block; margin-top: 0.8mm;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 5.9pt; letter-spacing: 0.07em; text-transform: uppercase;
-    color: var(--ink-3); line-height: 1.3;
-  }
+    :root {
+      --ink-950: #0a0f1d;
+      --ink-900: #0f172a;
+      --ink-800: #1e293b;
+      --ink-700: #334155;
+      --ink-600: #475569;
+      --ink-500: #64748b;
+      --primary: #1d4ed8;
+      --primary-dark: #1e40af;
+      --primary-deep: #172554;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+      --tech-highlight: #1e3a5f;
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --chip-bg: #f8fafc;
+      --chip-border: #e2e8f0;
+      --radius-xs: 3px;
+      --radius-sm: 4px;
+    }
 
-  /* -------------------------------------------------------------------- grid */
-  main { display: grid; grid-template-columns: 61mm 1fr; flex: 1; }
-  aside { background: var(--paper-2); padding: 4mm 4mm 5mm 7mm; border-right: 1px solid var(--line); }
-  .col { padding: 4mm 8mm 5mm 5.5mm; }
+    html, body {
+      background: #cbd5e1;
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink-800);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 8.5pt;
+      line-height: 1.40;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  h2 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 7pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 0.9mm 0 0.9mm 2.2mm;
-    border-left: 1.1mm solid var(--sec, var(--teal));
-    background: color-mix(in srgb, var(--sec, var(--teal)) 9%, transparent);
-    color: var(--ink);
-    margin: 0 0 1.5mm;
-  }
-  section { margin-bottom: 2.1mm; }
-  section:last-child { margin-bottom: 0; }
+    /* Floating action bar (hidden when printing) */
+    .toolbar {
+      width: 210mm;
+      margin: 10px auto;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    }
+    .toolbar-title {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar-title span {
+      background: #1d4ed8;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    .toolbar button {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s ease;
+    }
+    .toolbar button:hover {
+      background: #1d4ed8;
+    }
 
-  /* ------------------------------------------------------------------- aside */
-  .photo {
-    width: 100%; aspect-ratio: 1 / 1.12; object-fit: cover; object-position: 50% 16%;
-    border: 1px solid var(--line);
-    margin-bottom: 3mm;
-  }
-  .skill-group { margin-bottom: 1.5mm; }
-  .skill-group b {
-    display: block; font-family: 'JetBrains Mono', monospace;
-    font-size: 6.4pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--g, var(--teal));
-    margin-bottom: 0.2mm;
-  }
-  .skill-group span { color: var(--ink-2); font-size: 7.3pt; }
+    /* Strict A4 sheet */
+    .sheet-a4 {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      margin: 0 auto 30px auto;
+      background: #ffffff;
+      padding: 7.0mm 8.8mm 6.5mm 8.8mm;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
 
-  .factbox {
-    border: 1px dashed var(--ink-3);
-    padding: 2mm 2.2mm;
-    font-size: 7pt; color: var(--ink-2);
-    background: rgba(255, 255, 255, 0.45);
-  }
-  .factbox b { color: var(--ink); }
-  .side-p { color: var(--ink-2); font-size: 7.2pt; }
+    @media print {
+      html, body {
+        background: #ffffff;
+      }
+      .toolbar {
+        display: none !important;
+      }
+      .sheet-a4 {
+        margin: 0 !important;
+        box-shadow: none !important;
+        padding: 7.0mm 8.8mm 6.5mm 8.8mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+      }
+    }
 
-  /* -------------------------------------------------------------------- main */
-  .profile { color: var(--ink-2); font-size: 7.9pt; }
-  .profile b { color: var(--ink); }
+    /* ICONS */
+    svg.icon {
+      width: 3.4mm;
+      height: 3.4mm;
+      flex: 0 0 3.4mm;
+      vertical-align: -0.5mm;
+      color: var(--primary);
+    }
+    svg.icon-sm {
+      width: 2.85mm;
+      height: 2.85mm;
+      flex: 0 0 2.85mm;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    svg.icon-xs {
+      width: 2.4mm;
+      height: 2.4mm;
+      flex: 0 0 2.4mm;
+      color: var(--primary);
+      vertical-align: -0.25mm;
+      flex-shrink: 0;
+    }
 
-  /* timeline rail: one dot per experience, colour-coded like the plates */
-  .xp {
-    position: relative;
-    margin-left: 1.4mm;
-    padding: 0 0 1.5mm 4.2mm;
-    border-left: 1px solid var(--line);
-    page-break-inside: avoid;
-  }
-  .xp:last-child { padding-bottom: 0.4mm; border-left-color: transparent; }
-  .xp::before {
-    content: ''; position: absolute; left: -1.45mm; top: 1.1mm;
-    width: 1.9mm; height: 1.9mm; background: var(--xc, var(--teal));
-  }
-  .xp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
-  .xp-role { font-size: 8.1pt; font-weight: 700; }
-  .xp-when {
-    font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; color: var(--ink-3);
-    white-space: nowrap;
-  }
-  .xp-co {
-    font-family: 'JetBrains Mono', monospace; font-size: 6.6pt;
-    color: var(--xc, var(--teal)); margin: 0.2mm 0 0.6mm;
-  }
-  .xp-hook { color: var(--ink-2); font-size: 7.5pt; }
-  .xp-hook b { color: var(--ink); }
-  .xp ul { list-style: none; margin-top: 0.5mm; }
-  .xp li { padding-left: 3mm; position: relative; margin-bottom: 0.3mm; color: var(--ink-2); font-size: 7.5pt; }
-  .xp li::before {
-    content: ''; position: absolute; left: 0; top: 1.3mm;
-    width: 1.5mm; height: 1.5mm; background: var(--xc, var(--teal));
-  }
-  .xp li b { color: var(--ink); }
-  .xp-tags {
-    margin-top: 0.7mm;
-    font-family: 'JetBrains Mono', monospace; font-size: 6.3pt;
-    color: var(--ink-3); letter-spacing: 0.02em;
-  }
-  .xp-tags::before { content: '▸ '; color: var(--xc, var(--teal)); }
+    /* ========================================================
+       1. Editorial header & symmetrical high-visibility contacts
+       ======================================================== */
+    header.header {
+      display: grid;
+      grid-template-columns: 24.5mm 1fr 61mm;
+      gap: 4.2mm;
+      align-items: center;
+      padding-bottom: 2.8mm;
+      border-bottom: 0.35mm solid var(--border-medium);
+    }
 
-  .edu { margin-bottom: 1.5mm; }
-  .edu b { display: block; font-size: 7.7pt; font-weight: 700; }
-  .edu i { font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 6.4pt; color: var(--ink-3); }
-  .edu p { color: var(--ink-2); font-size: 7.1pt; }
-  .edu-note { color: var(--ink-3); font-size: 6.6pt; margin-top: 0.8mm; }
+    .photo-box {
+      width: 24.5mm;
+      height: 24.5mm;
+      border-radius: 50%;
+      border: 0.65mm solid var(--primary);
+      overflow: hidden;
+      background: var(--primary-light);
+      box-shadow: 0 1mm 2.5mm rgba(29, 78, 216, 0.12);
+    }
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 28%;
+    }
 
-  .st-row { display: grid; grid-template-columns: 13mm 1fr; gap: 1.8mm; margin-bottom: 0.9mm; font-size: 7.3pt; }
-  .st-row .y { font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; color: var(--ink-3); padding-top: 0.2mm; }
-  .st-row b { font-size: 7.4pt; }
-  .st-row p { display: inline; color: var(--ink-2); }
+    .identity {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-  footer {
-    background: var(--ink); color: rgba(244, 242, 237, 0.75);
-    font-family: 'JetBrains Mono', monospace; font-size: 6.2pt;
-    padding: 1.6mm 8mm; display: flex; justify-content: space-between; letter-spacing: 0.06em;
-  }
-</style>
+    h1.name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 17.5pt;
+      line-height: 1.05;
+      font-weight: 800;
+      color: var(--ink-950);
+      letter-spacing: -0.15mm;
+      text-transform: uppercase;
+    }
+
+    .role-title {
+      margin-top: 0.8mm;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.2mm;
+    }
+
+    /* Strict 2-column x 3-row grid, no truncation */
+    .contact-grid {
+      margin-top: 1.6mm;
+      display: grid;
+      grid-template-columns: 44.5mm 1fr;
+      row-gap: 0.85mm;
+      column-gap: 2.5mm;
+      font-size: 7.85pt;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2mm;
+      color: var(--ink-700);
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .contact-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .header-pitch {
+      background: var(--primary-light);
+      border-left: 0.85mm solid var(--primary);
+      border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+      padding: 2.4mm 3.2mm;
+      font-size: 8.05pt;
+      line-height: 1.40;
+      color: var(--ink-800);
+    }
+    .header-pitch strong {
+      color: var(--ink-950);
+      font-weight: 600;
+    }
+
+    /* ========================================================
+       2. Two-column body
+       ======================================================== */
+    .layout-grid {
+      display: flex;
+      gap: 5.2mm;
+      margin-top: 2.4mm;
+      flex: 1;
+    }
+
+    .col-main {
+      flex: 1;
+      display: block;
+    }
+
+    .col-side {
+      flex: 0 0 59mm;
+      border-left: 0.35mm solid var(--border-subtle);
+      padding-left: 4.8mm;
+      display: block;
+    }
+
+    /* Section headings */
+    h2.section-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.1pt;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.35mm;
+      display: flex;
+      align-items: center;
+      gap: 1.4mm;
+      padding-bottom: 0.6mm;
+      margin-bottom: 1.6mm;
+      border-bottom: 0.35mm solid var(--primary-border);
+    }
+
+    .col-side h2.section-heading {
+      font-size: 8.6pt;
+      letter-spacing: 0.25mm;
+      margin-bottom: 1.5mm;
+      padding-bottom: 0.55mm;
+    }
+
+    /* ========================================================
+       Experience: visual rhythm and readability
+       ======================================================== */
+    .main-job {
+      margin-bottom: 2.0mm;
+    }
+
+    .job-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2mm;
+    }
+    .job-role {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.3pt;
+      font-weight: 700;
+      color: var(--ink-950);
+    }
+    .meta-inline {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 7.15pt;
+      font-weight: 600;
+      letter-spacing: -0.05mm;
+      color: var(--primary-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 1.0mm;
+      white-space: nowrap;
+    }
+    .job-context {
+      font-size: 7.8pt;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 0.2mm;
+      margin-bottom: 2.0mm;
+    }
+
+    /* Timeline rail with milestone dots */
+    .missions-stream {
+      position: relative;
+      border-left: 0.45mm solid var(--primary-border);
+      padding-left: 3.0mm;
+      margin-left: 1.2mm;
+      display: block;
+      margin-bottom: 2.8mm;
+    }
+
+    .mission-node {
+      position: relative;
+      margin-bottom: 2.6mm;
+    }
+    .mission-node:last-child {
+      margin-bottom: 0;
+    }
+    .mission-node::before {
+      content: "";
+      position: absolute;
+      left: -4.0mm;
+      top: 1.2mm;
+      width: 1.6mm;
+      height: 1.6mm;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 0.45mm solid var(--primary);
+    }
+
+    .mission-head {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15mm;
+    }
+    .mission-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5mm;
+    }
+    .comp-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8.95pt;
+      font-weight: 800;
+      color: var(--ink-950);
+      letter-spacing: -0.1mm;
+    }
+    .mission-sub-role {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 8.05pt;
+      font-weight: 600;
+      color: var(--primary-dark);
+      line-height: 1.25;
+    }
+    .mission-context-note {
+      font-size: 7.35pt;
+      color: var(--ink-600);
+      margin-top: 0.1mm;
+    }
+    .comp-loc {
+      font-size: 7.55pt;
+      font-weight: 500;
+      color: var(--ink-500);
+    }
+
+    ul.bullet-list {
+      margin-top: 0.3mm;
+      padding-left: 3.2mm;
+    }
+    ul.bullet-list li {
+      font-size: 8.2pt;
+      line-height: 1.40;
+      color: var(--ink-700);
+      margin-bottom: 0.35mm;
+    }
+    ul.bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+    ul.bullet-list li::marker {
+      color: var(--primary);
+      font-size: 0.85em;
+    }
+    ul.bullet-list li strong {
+      color: var(--tech-highlight);
+      font-weight: 600;
+    }
+    /* KPI pills: numbered scan anchors (mono "data" voice) */
+    ul.bullet-list li strong.kpi {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-weight: 600;
+      color: var(--primary-deep);
+      background: var(--primary-light);
+      border: 0.2mm solid var(--primary-border);
+      padding: 0 0.9mm;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* Sub-projects nested under a company */
+    .sub-proj {
+      margin-top: 1.0mm;
+    }
+    .sub-proj-head {
+      font-size: 8.0pt;
+      line-height: 1.22;
+      margin-bottom: 0.2mm;
+    }
+    .sub-proj-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--ink-950);
+    }
+    .sub-proj-desc {
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 7.65pt;
+    }
+
+    /* Standalone jobs off the rail */
+    .standalone-job {
+      margin-top: 2.3mm;
+      padding-top: 1.7mm;
+      border-top: 0.25mm dashed var(--border-medium);
+    }
+    .standalone-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5mm;
+    }
+    .standalone-sub-role {
+      font-size: 8.05pt;
+      font-weight: 600;
+      color: var(--primary-dark);
+      line-height: 1.25;
+      margin-top: 0.15mm;
+    }
+
+    /* ========================================================
+       Sidebar
+       ======================================================== */
+    .side-block {
+      margin-bottom: 4.8mm;
+    }
+    .side-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-cat {
+      margin-bottom: 2.3mm;
+    }
+    .skill-cat:last-child {
+      margin-bottom: 0;
+    }
+    .skill-cat-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8.0pt;
+      font-weight: 700;
+      color: var(--ink-950);
+      display: flex;
+      align-items: center;
+      gap: 1.1mm;
+      margin-bottom: 0.6mm;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6mm 1.05mm;
+    }
+    .chip {
+      font-size: 7.35pt;
+      padding: 0.45mm 1.65mm;
+      background: var(--chip-bg);
+      border: 0.25mm solid var(--chip-border);
+      border-radius: var(--radius-xs);
+      color: var(--ink-800);
+      white-space: nowrap;
+    }
+    .chip.highlight {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* Education */
+    .edu-row {
+      margin-bottom: 2.3mm;
+    }
+    .edu-degree {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8.15pt;
+      font-weight: 700;
+      color: var(--ink-950);
+      line-height: 1.22;
+    }
+    .edu-meta {
+      font-size: 7.4pt;
+      color: var(--ink-600);
+      margin-top: 0.2mm;
+    }
+    .edu-desc {
+      font-size: 7.25pt;
+      color: var(--ink-500);
+      margin-top: 0.2mm;
+      font-style: italic;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.9pt;
+      margin-bottom: 1.5mm;
+      color: var(--ink-800);
+    }
+    .lang-item span:first-child {
+      font-weight: 600;
+      color: var(--ink-950);
+    }
+    .lang-item span:last-child {
+      color: var(--ink-600);
+      font-size: 7.4pt;
+    }
+
+  </style>
 </head>
 <body>
-  <header>
-    <div class="h-id">
-      <svg viewBox="0 0 64 64" fill="none" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
-        <g stroke="#f4f2ed" stroke-width="6">
-          <path d="M10 54V10"></path><path d="M10 10 26 36 42 10"></path><path d="M42 54V10"></path><path d="M42 10h11v16H42"></path>
-        </g>
-        <path d="M42 26 56 54" stroke="#46dcc4" stroke-width="6"></path>
-      </svg>
-      <div>
-        <div class="h-name">Manoa Randrianarisoa</div>
-        <div class="h-title">Technical architect &amp; senior lead full-stack</div>
+
+  <!-- Floating bar -->
+  <aside class="toolbar" aria-label="Commands">
+    <div class="toolbar-title">
+      <span>CV — EN</span>
+      <strong>Full-Stack Software Engineer &amp; Application Architect</strong>
+    </div>
+    <button onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      <span>Print / Export A4 PDF</span>
+    </button>
+  </aside>
+
+  <!-- A4 sheet -->
+  <main class="sheet-a4">
+
+    <!-- 1. Editorial header & strictly aligned contacts -->
+    <header class="header">
+      <div class="photo-box">
+        <img src="../../public/assets/manoa.jpg" alt="Manoa Randrianarisoa">
       </div>
-    </div>
-    <div class="h-contact">
-      <span>manoa.wrk@gmail.com</span>
-      <span>+261 34 71 517 89</span>
-      <span>github.com/ManoaRANDRIANARISOA</span>
-      <span>linkedin.com/in/manoa-randrianarisoa</span>
-      <span>Antananarivo, Madagascar (UTC+3)</span>
-      <span>manoa-arch.vercel.app</span>
-    </div>
-  </header>
 
-  <div class="counters">
-    <div class="counter" style="--c: var(--teal)"><b>7</b><span>shipped &amp;<br>documented systems</span></div>
-    <div class="counter" style="--c: var(--indigo)"><b>8</b><span>years of<br>full-stack practice</span></div>
-    <div class="counter" style="--c: var(--terra)"><b>45</b><span>traced requirements<br>(ANKA / AFD)</span></div>
-    <div class="counter" style="--c: var(--ochre)"><b>4</b><span>developers<br>mentored</span></div>
-  </div>
+      <div class="identity">
+        <h1 class="name">Manoa Randrianarisoa</h1>
+        <div class="role-title">Full-Stack Software Engineer &amp; Application Architect</div>
 
-  <main>
-    <aside>
-      <img class="photo" src="../../public/assets/manoa.jpg" alt="Portrait of Manoa Randrianarisoa">
-
-      <section style="--sec: var(--indigo)">
-        <h2>Skills</h2>
-        <div class="skill-group" style="--g: var(--indigo)"><b>Frontend</b><span>React 18/19, TypeScript, Next.js, React Native, Tailwind CSS, Vite, Zustand</span></div>
-        <div class="skill-group" style="--g: var(--indigo)"><b>Backend</b><span>Node.js, NestJS, Express 5, PostgreSQL, Supabase, Firebase, SQLite (WAL), GraphQL, REST</span></div>
-        <div class="skill-group" style="--g: var(--indigo)"><b>Architecture</b><span>Multi-tenant SaaS, RBAC, offline-first, Electron, PWA / IndexedDB, Docker, CI/CD, Linux</span></div>
-        <div class="skill-group" style="--g: var(--indigo)"><b>Integration &amp; automation</b><span>Make, n8n, webhooks, Sage ERP APIs, BI dashboards</span></div>
-        <div class="skill-group" style="--g: var(--indigo)"><b>AI &amp; data</b><span>Python, OpenCV, TensorFlow, algorithms</span></div>
-        <div class="skill-group" style="--g: var(--indigo)"><b>Governance</b><span>Agile / Scrum, functional framing, SQL acceptance, traceability matrix, mentoring</span></div>
-      </section>
-
-      <section style="--sec: var(--terra)">
-        <h2>Languages</h2>
-        <p class="side-p">French (fluent) · English (professional, technical interviews) · Malagasy (native)</p>
-      </section>
-
-      <section style="--sec: var(--teal)">
-        <h2>Framework &amp; availability</h2>
-        <div class="factbox">
-          <b>Missi Innovation</b> — sole proprietorship registered in Madagascar. Invoicing in MGA or EUR; tax identifiers (NIF / STAT) on request. Direct freelance, international employer-of-record or agency subcontracting. Available immediately, remote worldwide (UTC+3).
+        <!-- Strict 2x3 grid, no truncation -->
+        <div class="contact-grid">
+          <a href="tel:+261347151789" class="contact-link">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c1.5 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>+261 34 71 517 89</span>
+          </a>
+          <a href="https://linkedin.com/in/manoa-randrianarisoa" target="_blank" class="contact-link">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            <span>Manoa Randrianarisoa</span>
+          </a>
+          <a href="mailto:manoa.wrk@gmail.com" class="contact-link">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>manoa.wrk@gmail.com</span>
+          </a>
+          <a href="https://github.com/ManoaRANDRIANARISOA" target="_blank" class="contact-link">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            <span>ManoaRANDRIANARISOA</span>
+          </a>
+          <a href="https://manoa-arch.vercel.app" target="_blank" class="contact-link" style="color: var(--primary); font-weight: 600;">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>manoa-arch.vercel.app</span>
+          </a>
+          <span class="contact-link">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            <span>Antananarivo (UTC+3) · Available</span>
+          </span>
         </div>
+      </div>
+
+      <div class="header-pitch">
+        <p>
+          <strong>ISPM graduate (Master's in Electronics &amp; AI)</strong>, full-stack developer moving towards application architecture and technical leadership. Specialised in designing resilient systems (<strong>Offline-First, multi-tenant SaaS</strong>) and in end-to-end delivery, from functional scoping to production release.
+        </p>
+      </div>
+    </header>
+
+    <!-- 2. Body -->
+    <div class="layout-grid">
+
+      <!-- Main column: experience -->
+      <section class="col-main">
+        <h2 class="section-heading">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Professional Experience
+        </h2>
+
+        <!-- Independent consultant umbrella & multi-project missions -->
+        <article class="main-job">
+          <div class="job-title-row">
+            <span class="job-role">Independent Consultant &amp; Software Designer</span>
+            <span class="meta-inline">
+              <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <span>Jan 2025 – Present</span>
+            </span>
+          </div>
+          <div class="job-context">Multi-project engagements run in parallel · Madagascar, France &amp; International</div>
+
+          <!-- Mission rail in chronological order -->
+          <div class="missions-stream">
+
+            <!-- 1. MISSI INNOVATION (2025 – present): he heads the IT department (not founder) -->
+            <div class="mission-node">
+              <div class="mission-head">
+                <div class="mission-top-row">
+                  <strong class="comp-title">Missi Innovation</strong>
+                  <span class="meta-inline">
+                    <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                    <span>Head of IT · 2025 – Present</span>
+                  </span>
+                </div>
+                <div class="mission-sub-role">
+                  Publisher of a business suite &amp; SaaS (ResiPro, Study Agent Pro) <span class="comp-loc">(Antananarivo)</span>
+                </div>
+              </div>
+              <!-- Sub-project 1: ResHPro -->
+              <div class="sub-proj">
+                <div class="sub-proj-head">
+                  <strong class="sub-proj-title">ResHPro</strong> — <span class="sub-proj-desc">Hospitality, Restaurant &amp; Inventory SaaS Suite</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>Multi-tenant SaaS architecture (<strong>React, TypeScript, Node.js, PostgreSQL</strong>) with strict data isolation and role-based access control (<strong>RBAC</strong>).</li>
+                  <li>Real-time visual booking engine with <strong class="kpi">zero double bookings</strong>, traceable stock &amp; loss tracking and analytical reporting.</li>
+                </ul>
+              </div>
+
+              <!-- Sub-project 2: Study-Agent -->
+              <div class="sub-proj">
+                <div class="sub-proj-head">
+                  <strong class="sub-proj-title">Study-Agent</strong> — <span class="sub-proj-desc">School Management &amp; Desktop Application (Manjary Soa Private High School)</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>Desktop and web application deployed in production (<strong>Electron, React</strong>) automating schooling, grades and official report-card issuance.</li>
+                  <li>Resilient <strong>Offline-First</strong> architecture: cloud synchronisation (<strong>Supabase</strong>), high-speed local cache (<strong>SQLite</strong>) and automated <strong>n8n / Make.com</strong> flows (web forms → back-office → Excel exports).</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 2. ANKA (2026) -->
+            <div class="mission-node">
+              <div class="mission-head">
+                <div class="mission-top-row">
+                  <strong class="comp-title">ANKA Operator</strong>
+                  <span class="meta-inline">
+                    <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                    <span>Scoping &amp; Architecture · 2026</span>
+                  </span>
+                </div>
+                <div class="mission-sub-role">Digital Energy Challenge programme (AFD / EU)</div>
+                <div class="mission-context-note">ESG field-collection platform &amp; off-grid rural electrification</div>
+              </div>
+              <ul class="bullet-list">
+                <li>Analysis of the donor's ToR (AFD): MVP prioritisation and modelling of a <strong class="kpi">45 traced requirements</strong> matrix (TR-01 → TR-45).</li>
+                <li><strong>Offline-First</strong> architecture for field agents in isolated rural areas: local data model and deferred synchronisation.</li>
+                <li>End-to-end delivery of the technical foundation (offline field app, back-office, API and interface contracts) and of the design dossier handed to the donor.</li>
+              </ul>
+            </div>
+
+            <!-- 3. GIVEN DAY TECH (Apr 2025 – Apr 2026) -->
+            <div class="mission-node">
+              <div class="mission-head">
+                <div class="mission-top-row">
+                  <strong class="comp-title">Given Day Tech</strong>
+                  <span class="meta-inline">
+                    <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                    <span>Mobile Lead · Apr 2025 – Apr 2026</span>
+                  </span>
+                </div>
+                <div class="mission-sub-role">Mobile &amp; EdTech Platform Publisher (France, Remote)</div>
+              </div>
+              <ul class="bullet-list">
+                <li>Design of the complete software architecture (<strong>React Native, Node.js, PostgreSQL</strong>) derived from business requirements.</li>
+                <li>Technical leadership and coordination of <strong class="kpi">4 developers</strong>: agile backlog, prioritisation, code reviews and delivery follow-up.</li>
+              </ul>
+            </div>
+
+            <!-- 4. TOUTPOURSAGLOIRE (Feb 2025 – May 2026) -->
+            <div class="mission-node">
+              <div class="mission-head">
+                <div class="mission-top-row">
+                  <strong class="comp-title">ToutPourSaGloire.com</strong>
+                  <span class="meta-inline">
+                    <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                    <span>Full-Stack Developer · Feb 2025 – May 2026</span>
+                  </span>
+                </div>
+                <div class="mission-sub-role">Web Media Platform (International, Remote)</div>
+              </div>
+              <ul class="bullet-list">
+                <li>Modular refactoring of key sections with <strong>React / Next.js</strong> and <strong>GraphQL</strong> API integration.</li>
+                <li>Integration of the instant search engine (<strong>Meilisearch</strong>): <strong class="kpi">−40 %</strong> on measured load time.</li>
+              </ul>
+            </div>
+
+            <!-- 5. MABOO (2025) -->
+            <div class="mission-node">
+              <div class="mission-head">
+                <div class="mission-top-row">
+                  <strong class="comp-title">Maboo</strong>
+                  <span class="meta-inline">
+                    <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                    <span>Full-Stack SSR · 2025</span>
+                  </span>
+                </div>
+                <div class="mission-sub-role">Headless E-Commerce &amp; High-Performance CMS</div>
+              </div>
+              <ul class="bullet-list">
+                <li>Custom headless store (<strong>React 19, React Router SSR, Zustand</strong>): Core Web Vitals optimisation (<strong class="kpi">LCP &lt; 1.2s</strong> on 4G).</li>
+                <li>Multilingual dynamic catalogue (<strong>i18n</strong>), connected online quote management, checkout funnel and stock alerts.</li>
+              </ul>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Previous experience 1: RICSM (Dec 2023 – Dec 2024) -->
+        <article class="standalone-job">
+          <div class="standalone-top-row">
+            <strong class="comp-title">RICSM</strong>
+            <span class="meta-inline">
+              <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <span>Dec 2023 – Dec 2024</span>
+            </span>
+          </div>
+          <div class="standalone-sub-role">Web Developer &amp; UX/UI Designer · Institutional portal (United States, Remote)</div>
+          <ul class="bullet-list">
+            <li>UX/UI design (<strong>Figma</strong>) and responsive development with <strong>Squarespace / Web</strong>.</li>
+            <li>Delivery of a complete institutional portal compliant with accessibility requirements (<strong>WCAG</strong>) and US standards.</li>
+          </ul>
+        </article>
+
+        <!-- Previous experience 2: EQIMA (2022) -->
+        <article class="standalone-job" style="margin-top: 2.0mm; padding-top: 1.5mm;">
+          <div class="standalone-top-row">
+            <strong class="comp-title">EQIMA</strong>
+            <span class="meta-inline">
+              <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <span>May – Oct 2022</span>
+            </span>
+          </div>
+          <div class="standalone-sub-role">Full-Stack Developer · Accounting automation (Antananarivo)</div>
+          <ul class="bullet-list">
+            <li>Digitisation of accounting processing via OCR and <strong>direct integration with the Sage ERP API</strong>.</li>
+            <li>Invoice flow automation: <strong class="kpi">−70 %</strong> measured processing time.</li>
+          </ul>
+        </article>
+
       </section>
-    </aside>
 
-    <div class="col">
-      <section style="--sec: var(--teal)">
-        <h2>Profile</h2>
-        <p class="profile">Technical architect and lead full-stack, <b>8 years of practice</b>: system resilience (<b>offline-first</b>), <b>multi-tenant SaaS</b>, mentoring remote teams. From functional framing to production, I design measurable systems and train the teams that keep them alive.</p>
-      </section>
+      <!-- Side column: skills & strengths -->
+      <aside class="col-side">
 
-      <section style="--sec: var(--teal)">
-        <h2>Professional experience</h2>
+        <!-- Scannable skill chips -->
+        <div class="side-block">
+          <h2 class="section-heading">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            Key Skills
+          </h2>
 
-        <div class="xp" style="--xc: var(--teal)">
-          <div class="xp-head"><span class="xp-role">Independent consultant / Technical architect</span><span class="xp-when">2025 — present</span></div>
-          <div class="xp-co">Missi Innovation · Antananarivo — international remote</div>
-          <p class="xp-hook">End-to-end design, decisions traced in ADRs, <b>systems that hold up when the network goes down</b>.</p>
-          <ul>
-            <li><b>ANKA (Digital Energy Challenge, AFD/EU)</b>: donor TDR breakdown → MVP and matrix of 45 traced requirements (TR-01→TR-45); offline-first ESG field collection (React + Dexie PWA, NestJS API, 14 days offline); design dossier delivered to the donor.</li>
-            <li><b>ResHPro</b>: multi-tenant hospitality SaaS (POS, inventory, RBAC) — real-time booking engine with <b>zero double bookings</b>, React 18, PostgreSQL, RLS (ADR-002).</li>
-            <li><b>Study-Agent</b>: school ERP in production (Manjary Soa High School) — grades &amp; official report cards, Electron, SQLite WAL, Supabase, offline-safe entry; Make &amp; n8n.</li>
-            <li><b>Maboo</b>: frontend lead, headless storefront React 19 / React Router 7 SSR — <b>LCP &lt; 1.2s on 4G</b>, i18n &amp; online quotes (client code not public).</li>
+          <!-- Category 1 -->
+          <div class="skill-cat">
+            <div class="skill-cat-title">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Design &amp; Architecture
+            </div>
+            <div class="chip-wrap">
+              <span class="chip highlight">Offline-First</span>
+              <span class="chip highlight">Multi-Tenant SaaS</span>
+              <span class="chip">ToR scoping</span>
+              <span class="chip">Requirements matrix</span>
+              <span class="chip highlight">RBAC</span>
+              <span class="chip">OpenAPI contracts</span>
+              <span class="chip">SQL modelling</span>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="skill-cat">
+            <div class="skill-cat-title">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Front-End &amp; Mobile
+            </div>
+            <div class="chip-wrap">
+              <span class="chip highlight">React 18/19</span>
+              <span class="chip highlight">TypeScript</span>
+              <span class="chip highlight">Next.js</span>
+              <span class="chip highlight">React Native</span>
+              <span class="chip">Electron</span>
+              <span class="chip">PWA</span>
+              <span class="chip">TailwindCSS</span>
+              <span class="chip">Zustand</span>
+              <span class="chip">SSR / i18n</span>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="skill-cat">
+            <div class="skill-cat-title">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              Back-End &amp; Data
+            </div>
+            <div class="chip-wrap">
+              <span class="chip highlight">Node.js</span>
+              <span class="chip highlight">PostgreSQL</span>
+              <span class="chip highlight">NestJS</span>
+              <span class="chip">Express</span>
+              <span class="chip highlight">SQLite (WAL)</span>
+              <span class="chip">Supabase</span>
+              <span class="chip">GraphQL</span>
+              <span class="chip">REST</span>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="skill-cat">
+            <div class="skill-cat-title">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6"/><path d="M18 15V9a6 6 0 0 0-6-6H6"/></svg>
+              Automation &amp; Leadership
+            </div>
+            <div class="chip-wrap">
+              <span class="chip highlight">n8n / Make.com</span>
+              <span class="chip">Webhooks</span>
+              <span class="chip highlight">Docker</span>
+              <span class="chip">Git / CI/CD</span>
+              <span class="chip">Agile Scrum</span>
+              <span class="chip">Code reviews</span>
+              <span class="chip">Meilisearch</span>
+              <span class="chip">Figma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Methods & software culture -->
+        <div class="side-block">
+          <h2 class="section-heading">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Methods &amp; Strengths
+          </h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="font-size: 7.6pt; line-height: 1.36; color: var(--ink-700); margin-bottom: 1.3mm; position: relative; padding-left: 2.8mm;">
+              <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+              <strong>Engineering rigour:</strong> unit &amp; integration tests, CI/CD, code reviews and architecture documentation (ADR).
+            </li>
+            <li style="font-size: 7.6pt; line-height: 1.36; color: var(--ink-700); margin-bottom: 1.3mm; position: relative; padding-left: 2.8mm;">
+              <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+              <strong>Agile multi-project management:</strong> value-driven prioritisation, technical vulgarisation and full remote autonomy.
+            </li>
+            <li style="font-size: 7.6pt; line-height: 1.36; color: var(--ink-700); position: relative; padding-left: 2.8mm;">
+              <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+              <strong>Resilient systems:</strong> mastery of Offline-First constraints (deferred sync) and multi-tenant SaaS data isolation.
+            </li>
           </ul>
         </div>
 
-        <div class="xp" style="--xc: var(--indigo)">
-          <div class="xp-head"><span class="xp-role">Technical architect &amp; mobile lead</span><span class="xp-when">2025 — 2026</span></div>
-          <div class="xp-co">Given Day Tech · France (non-profit) — remote</div>
-          <p class="xp-hook">Leading <b>4 developers</b> remotely (agile backlog, prioritization, code reviews, delivery follow-up); React Native + Node.js architecture derived from business requirements.</p>
-          <p class="xp-tags">React Native · Node.js · code reviews · mentoring</p>
+        <!-- Education -->
+        <div class="side-block">
+          <h2 class="section-heading">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Education
+          </h2>
+          <div class="edu-row">
+            <div class="edu-degree">Master's in Electronics, Computer Science &amp; AI</div>
+            <div class="edu-meta">ISPM Antananarivo · 2022 – 2024</div>
+            <div class="edu-desc">Focus on advanced software engineering, algorithms &amp; AI</div>
+          </div>
+          <div class="edu-row" style="margin-bottom: 0;">
+            <div class="edu-degree">Bachelor's in Electronics &amp; Computer Science</div>
+            <div class="edu-meta">ISPM Antananarivo · 2018 – 2022</div>
+            <div class="edu-desc">Distributed systems, SQL modelling and architectures</div>
+          </div>
         </div>
 
-        <div class="xp" style="--xc: var(--indigo)">
-          <div class="xp-head"><span class="xp-role">Senior full-stack developer</span><span class="xp-when">2025 — present</span></div>
-          <div class="xp-co">ToutPourSaGloire.com · international — remote</div>
-          <p class="xp-hook">Next.js overhaul and GraphQL APIs; Meilisearch search engine: <b>40% less loading time</b> (measured in development environment).</p>
-          <p class="xp-tags">Next.js · Meilisearch · web performance</p>
+        <!-- Languages -->
+        <div class="side-block">
+          <h2 class="section-heading">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            Languages
+          </h2>
+          <div class="lang-item"><span>French</span><span>Bilingual (working language)</span></div>
+          <div class="lang-item"><span>English</span><span>Professional &amp; technical</span></div>
+          <div class="lang-item" style="margin-bottom: 0;"><span>Malagasy</span><span>Native language</span></div>
         </div>
 
-        <div class="xp" style="--xc: var(--terra)">
-          <div class="xp-head"><span class="xp-role">CMS developer &amp; UI/UX designer</span><span class="xp-when">2023 — 2024</span></div>
-          <div class="xp-co">RICSM · United States — remote, contracted via IKS Antananarivo</div>
-          <p class="xp-hook">US institutional portal compliant with <b>WCAG</b>; Squarespace sites for international clients, Figma mockups, SEO; <b>team trained</b> on CMS basics.</p>
-          <p class="xp-tags">Squarespace · Figma · SEO · team training</p>
-        </div>
-
-        <div class="xp" style="--xc: var(--terra)">
-          <div class="xp-head"><span class="xp-role">Full-stack &amp; OCR pipeline engineering intern</span><span class="xp-when">May — Oct 2022</span></div>
-          <div class="xp-co">EQIMA Solution · Ivandry, Antananarivo</div>
-          <p class="xp-hook">OCR pipeline (OpenCV) into the Sage ERP API: <b>70% less processing time</b> for accounting teams.</p>
-          <p class="xp-tags">Python · OpenCV · Sage ERP API</p>
-        </div>
-
-        <div class="xp" style="--xc: var(--ochre)">
-          <div class="xp-head"><span class="xp-role">ADSL technical service — SFR France customers</span><span class="xp-when">Oct — Dec 2019</span></div>
-          <div class="xp-co">Intelcia Tanjombato · Antananarivo</div>
-          <p class="xp-hook">Level-1 support for SFR France ADSL customers, during the second bachelor year.</p>
-          <p class="xp-tags">Level-1 support · ADSL · customer care</p>
-        </div>
-      </section>
-
-      <section style="--sec: var(--ochre)">
-        <h2>Education</h2>
-        <div class="edu">
-          <b>MSc Electronics, Computer Science &amp; AI</b>
-          <i>ISPM · 2022 — 2024</i>
-          <p>Defended and validated; diploma being issued. Computer vision, Deep Learning, signal processing.</p>
-        </div>
-        <div class="edu">
-          <b>BSc Electronics &amp; Computer Science</b>
-          <i>ISPM · 2018 — 2022</i>
-        </div>
-        <div class="edu">
-          <b>Baccalauréat série D (science track)</b>
-          <i>La Pépite d'Or private high school, Antananarivo · 2018</i>
-        </div>
-        <p class="edu-note">2019 → 2024: five annual group study projects (AR + AI, biometrics, GPS, embedded) — details on the portfolio.</p>
-      </section>
-
-      <section style="--sec: var(--indigo)">
-        <h2>Architecture decisions</h2>
-        <div class="st-row"><span class="y">ADR-001</span><div><b>Offline-first SQLite (WAL) + Supabase.</b> <p>Adopted, in production: hold up without stable network or power.</p></div></div>
-        <div class="st-row"><span class="y">ADR-002</span><div><b>Multi-tenant isolation via PostgreSQL RLS.</b> <p>Framed, migration in progress: preferred over multi-database splitting.</p></div></div>
-        <div class="st-row"><span class="y">ADR-003</span><div><b>SSR React Router 7 with streaming.</b> <p>Deployed (Maboo): non-critical blocks streamed after critical content.</p></div></div>
-      </section>
+      </aside>
     </div>
   </main>
 
-  <footer>
-    <span>Manoa Randrianarisoa — CV_en · generated from the portfolio (manoa-arch.vercel.app)</span>
-    <span>Case studies and detailed references on request</span>
-  </footer>
 </body>
 </html>
