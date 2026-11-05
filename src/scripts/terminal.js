@@ -49,7 +49,7 @@ const TERM_STRINGS = {
     fr: `
           <strong>MANOA RANDRIANARISOA</strong><br>
           Architecte technique & développeur full-stack — Antananarivo, Madagascar (UTC+3)<br>
-          Master Électronique, Informatique & IA (ISPM) : soutenu et validé, diplôme en cours d'émission.<br>
+          Master Électronique, Informatique & IA (ISPM) : obtenu, diplôme émis.<br>
           Licence Électronique & Informatique (ISPM, 2018—2022) · Baccalauréat série D (2018).<br>
           Spécialisé dans la résilience des systèmes (offline-first), le multi-tenant cloud et l'encadrement d'équipes remote.<br>
           Exercice indépendant via <strong>Missi Innovation</strong> — tapez <span class="highlight">societe</span> pour le cadre de facturation.
@@ -57,7 +57,7 @@ const TERM_STRINGS = {
     en: `
           <strong>MANOA RANDRIANARISOA</strong><br>
           Technical architect & full-stack developer — Antananarivo, Madagascar (UTC+3)<br>
-          MSc Electronics, Computer Science & AI (ISPM): defended and validated, diploma pending issuance.<br>
+          MSc Electronics, Computer Science & AI (ISPM): obtained, degree issued.<br>
           Bachelor's in Electronics & Computer Science (ISPM, 2018—2022) · French Baccalauréat equivalent, science track (2018).<br>
           Specialized in system resilience (offline-first), cloud multi-tenancy and mentoring remote teams.<br>
           Independent practice through <strong>Missi Innovation</strong> — type <span class="highlight">company</span> for the invoicing framework.

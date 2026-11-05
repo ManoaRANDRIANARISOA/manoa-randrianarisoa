@@ -323,8 +323,8 @@ const STRINGS = {
   },
   'about.proofTitle': { fr: 'Pièces justificatives', en: 'Supporting documents' },
   'about.proofText': {
-    fr: "Master soutenu et validé ; diplôme en cours d'émission. Attestation de réussite, relevés et références envoyés sur demande.",
-    en: 'MSc defended and validated; diploma pending issuance. Certificate of completion, transcripts and references sent on request.'
+    fr: "Diplômé de l'ISPM (Master Électronique, Informatique & IA). Relevés et références envoyés sur demande.",
+    en: 'ISPM graduate (MSc Electronics, Computer Science & AI). Transcripts and references sent on request.'
   },
   'about.downloadCv': { fr: 'Consulter les CV (PDF)', en: 'View the resumes (PDF)' },
   'about.philoTitle': { fr: "Philosophie d'ingénierie", en: 'Engineering philosophy' },
@@ -463,7 +463,7 @@ const STRINGS = {
   },
   'journey.c5.year': { fr: '2022 — 2024', en: '2022 — 2024' },
   'journey.c5.title': { fr: 'Master Électronique, Informatique & IA', en: 'MSc Electronics, Computer Science & AI' },
-  'journey.c5.place': { fr: "ISPM · soutenu et validé, diplôme en cours d'émission", en: 'ISPM · defended and validated, diploma pending issuance' },
+  'journey.c5.place': { fr: 'ISPM · diplôme émis', en: 'ISPM · degree issued' },
   'journey.c5.text': {
     fr: "Vision par ordinateur, Deep Learning, traitement d'images (OpenCV) et vision industrielle.",
     en: 'Computer vision, Deep Learning, image processing (OpenCV) and industrial vision.'
@@ -545,7 +545,7 @@ const STRINGS = {
   'footer.ckSheet': { fr: 'Planche', en: 'Sheet' },
   'footer.ckScale': { fr: 'Échelle', en: 'Scale' },
   'footer.ckDegree': { fr: 'Diplôme', en: 'Degree' },
-  'footer.cvDegree': { fr: 'Master soutenu & validé', en: 'MSc defended & validated' },
+  'footer.cvDegree': { fr: 'Master obtenu · diplôme émis', en: 'MSc obtained · degree issued' },
   'footer.ckStack': { fr: 'Stack', en: 'Stack' },
 
   // ---------------------------------------------------------------- TERMINAL (static shell)
