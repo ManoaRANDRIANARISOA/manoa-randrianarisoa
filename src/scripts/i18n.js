@@ -451,7 +451,7 @@ const STRINGS = {
   'journey.c3.title': { fr: 'Service tech ADSL — SFR France', en: 'ADSL technical service — SFR France' },
   'journey.c3.place': { fr: 'Intelcia Tanjombato · Antananarivo', en: 'Intelcia Tanjombato · Antananarivo' },
   'journey.c3.text': {
-    fr: "Première expérience professionnelle, en L2 : support de niveau 1 pour la clientèle ADSL de SFR France.",
+    fr: "Première expérience professionnelle, pendant la L2 : support de niveau 1 pour la clientèle ADSL de SFR France.",
     en: 'First professional experience, during the second bachelor year: level-1 support for SFR France ADSL customers.'
   },
   'journey.c4.year': { fr: '2022', en: '2022' },

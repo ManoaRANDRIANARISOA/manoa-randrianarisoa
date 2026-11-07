@@ -74,7 +74,7 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
 }
 
 // Outfits per stop: shirt + shorts at the master, knit + chinos afterwards.
-.journey-stage[data-stop="2"],
+.journey-stage[data-stop="1"],
 .journey-stage[data-stop="3"] { --bot: var(--text); }
 .journey-stage[data-stop="4"] { --top: var(--accent); --bot: var(--text); }
 .journey-stage[data-stop="5"],
@@ -369,8 +369,16 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   .g-stick-t, .g-head-stick, .g-hood, .g-shirt, .g-shorts-y, .g-gown,
   .g-jacket, .g-tie, .g-pack, .g-head-f, .l-stick, .l-trou, .l-bare, .l-short,
   .l-shoe, .l-formed, .w-satchel, .w-headset, .w-badge, .w-cap, .w-folder,
-  .g-shldr-b, .l-long, .w-watch,
+  .l-long, .w-watch, .l-carry, .l-carry-b, .w-watch-c,
   .held {
+    opacity: 0;
+    transition: opacity var(--kit-ms) var(--kit-ease);
+  }
+
+  // Straight-arm kit dissolves out at the carry stop: the bent variants take over.
+  &:is([data-stop="6"]) :is(
+    .h-fore-f, .h-palm-f, .h-fing-f, .h-fore-b, .h-mitt-b, .h-cre-f, .h-cre-b
+  ) {
     opacity: 0;
     transition: opacity var(--kit-ms) var(--kit-ease);
   }
@@ -380,41 +388,31 @@ $fig-x: 20; // where the walker stands, in % of the drawing width
   ) { opacity: 1; }
 
   &[data-stop="1"] :is(
-    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-hood, .g-pack, .held-book, .g-shldr-b
+    .g-head-f, .l-formed, .l-shoe, .l-bare, .l-short,
+    .g-shorts-y, .g-shirt, .w-satchel, .w-headset
   ) { opacity: 1; }
 
   &[data-stop="2"] :is(
-    .g-head-f, .l-formed, .l-shoe, .l-bare, .l-short,
-    .g-shorts-y, .g-shirt, .w-satchel, .w-headset, .g-shldr-b
+    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-hood, .g-pack, .held-book
   ) { opacity: 1; }
 
   &[data-stop="3"] :is(
     .g-head-f, .l-formed, .l-shoe, .l-bare, .l-short,
-    .g-shorts-y, .g-shirt, .w-badge, .held-docs, .g-shldr-b
+    .g-shorts-y, .g-shirt, .w-badge, .held-docs
   ) { opacity: 1; }
 
   &[data-stop="4"] :is(
-    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-gown, .w-cap, .held-diploma, .g-shldr-b
+    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-gown, .w-cap, .held-diploma
   ) { opacity: 1; }
 
   &[data-stop="5"] :is(
-    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-jacket, .held-tablet, .g-shldr-b
+    .g-head-f, .l-formed, .l-shoe, .l-trou, .g-jacket, .held-tablet
   ) { opacity: 1; }
 
   &[data-stop="6"] :is(
     .g-head-f, .l-formed, .l-shoe, .l-trou,
-    .g-shirt, .g-tie, .held-laptop, .g-shldr-b, .l-long, .w-watch
+    .g-shirt, .g-tie, .held-laptop, .l-carry, .l-carry-b, .w-watch-c
   ) { opacity: 1; }
-}
-
-// The far shoulder sits a tone back, like every mass on the far side of the body.
-.journey-figure[data-stop="1"] .g-shldr-b,
-.journey-figure[data-stop="2"] .g-shldr-b,
-.journey-figure[data-stop="3"] .g-shldr-b,
-.journey-figure[data-stop="4"] .g-shldr-b,
-.journey-figure[data-stop="5"] .g-shldr-b,
-.journey-figure[data-stop="6"] .g-shldr-b {
-  opacity: 0.85;
 }
 
 // -------------------------------------------------------------------- cartouche

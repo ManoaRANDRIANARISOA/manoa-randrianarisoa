@@ -79,6 +79,22 @@
                       <svg viewBox="0 0 240 130" focusable="false">
                         <g stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                           <path d="M10,130 L230,130"></path>
+                          <path d="M10,112 C40,84 70,84 96,108 C120,88 150,86 176,104 C198,88 220,92 232,110"></path>
+                          <path d="M74,118 L74,96 L98,84 L122,96 L122,118"></path>
+                          <path d="M74,96 L122,96"></path>
+                          <path d="M90,66 L90,88 M106,62 L106,86"></path>
+                          <circle cx="90" cy="62" r="4"></circle>
+                          <circle cx="106" cy="58" r="4"></circle>
+                          <path d="M84,118 L84,104 L92,104 L92,118 M104,118 L104,104 L112,104 L112,118"></path>
+                          <path d="M150,124 C156,116 166,116 172,124 M186,122 C191,115 199,115 204,122"></path>
+                        </g>
+                      </svg>
+                    </div>
+
+                    <div class="journey-decor" data-stop="2" aria-hidden="true">
+                      <svg viewBox="0 0 240 130" focusable="false">
+                        <g stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M10,130 L230,130"></path>
                           <path d="M28,130 L28,70 L120,70 L120,130"></path>
                           <path d="M120,70 L192,70 L192,130"></path>
                           <path d="M140,130 L140,44 L212,44 L212,130"></path>
@@ -88,22 +104,6 @@
                           <path d="M152,58 L164,58 L164,70 L152,70 Z M184,58 L196,58 L196,70 L184,70 Z"></path>
                           <path d="M152,84 L164,84 L164,96 L152,96 Z M184,84 L196,84 L196,96 L184,96 Z M152,110 L164,110 L164,122 L152,122 Z"></path>
                           <path d="M163,98 L175,98 L175,112 L163,112 Z"></path>
-                        </g>
-                      </svg>
-                    </div>
-
-                    <div class="journey-decor" data-stop="2" aria-hidden="true">
-                      <svg viewBox="0 0 240 130" focusable="false">
-                        <g stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M10,130 L230,130"></path>
-                          <path d="M10,112 C40,84 70,84 96,108 C120,88 150,86 176,104 C198,88 220,92 232,110"></path>
-                          <path d="M74,118 L74,96 L98,84 L122,96 L122,118"></path>
-                          <path d="M74,96 L122,96"></path>
-                          <path d="M90,66 L90,88 M106,62 L106,86"></path>
-                          <circle cx="90" cy="62" r="4"></circle>
-                          <circle cx="106" cy="58" r="4"></circle>
-                          <path d="M84,118 L84,104 L92,104 L92,118 M104,118 L104,104 L112,104 L112,118"></path>
-                          <path d="M150,124 C156,116 166,116 172,124 M186,122 C191,115 199,115 204,122"></path>
                         </g>
                       </svg>
                     </div>
@@ -181,6 +181,20 @@
                       <span class="station-stem"></span>
                       <svg class="station-art" viewBox="0 0 120 120" focusable="false">
                         <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M28,66 C28,34 92,34 92,66"></path>
+                          <rect x="20" y="62" width="14" height="24" rx="7"></rect>
+                          <rect x="86" y="62" width="14" height="24" rx="7"></rect>
+                          <path d="M93,86 C93,100 74,102 66,98"></path>
+                          <circle cx="62" cy="96" r="4"></circle>
+                        </g>
+                      </svg>
+                      <span class="station-year">2019</span>
+                    </div>
+
+                    <div class="journey-station" data-stop="2">
+                      <span class="station-stem"></span>
+                      <svg class="station-art" viewBox="0 0 120 120" focusable="false">
+                        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                           <path d="M12,88 C28,79 46,79 60,88 C74,79 92,79 108,88 L108,52 C92,43 74,43 60,52 C46,43 28,43 12,52 Z"></path>
                           <path d="M60,52 L60,88"></path>
                           <path d="M24,62 C33,58 44,58 52,61"></path>
@@ -190,20 +204,6 @@
                         </g>
                       </svg>
                       <span class="station-year">2018–22</span>
-                    </div>
-
-                    <div class="journey-station" data-stop="2">
-                      <span class="station-stem"></span>
-                      <svg class="station-art" viewBox="0 0 120 120" focusable="false">
-                        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M28,66 C28,34 92,34 92,66"></path>
-                          <rect x="20" y="62" width="14" height="24" rx="7"></rect>
-                          <rect x="86" y="62" width="14" height="24" rx="7"></rect>
-                          <path d="M93,86 C93,100 74,102 66,98"></path>
-                          <circle cx="62" cy="96" r="4"></circle>
-                        </g>
-                      </svg>
-                      <span class="station-year">2019</span>
                     </div>
 
                     <div class="journey-station" data-stop="3">
@@ -292,13 +292,19 @@
           <path class="st l-stick" d="M0,0 C-2,12 -1,30 1,44"></path>
           <g class="l-formed">
             <path class="f-top" d="M-2.8,0 C-3.2,6 -2.8,11 -1.8,17 L3.8,16.4 C3.4,10.5 3,5 2.6,0 Z"></path>
-            <path class="f-skin" d="M-1.8,17 C-1.2,24 -0.8,31 -0.2,37 L4,36.6 C3.4,31.6 3,24.6 3.8,16.4 Z"></path>
+            <path class="f-skin h-fore-b" d="M-1.8,17 C-1.2,24 -0.8,31 -0.2,37 L4,36.6 C3.4,31.6 3,24.6 3.8,16.4 Z"></path>
             <g class="l-long">
               <path class="f-top" d="M-2.8,0 C-3.2,6 -2.8,11 -1.8,17 C-1.2,24 -0.8,31 -0.3,37.4 L-0.1,40.4 L4.3,40 C4.1,37 3.4,31.6 3.8,16.4 C3.4,10.5 3,5 2.6,0 Z"></path>
               <path class="cr" d="M-0.1,40.2 L4.3,39.8"></path>
             </g>
-            <path class="f-skin" d="M-1.3,40.4 C-2.3,44.5 -2,48 0,49.4 C1.5,50.4 3.4,50.6 5.6,50.4 C7.6,50.2 8.5,51 8.3,52 C8.1,53 6.8,53.4 5.2,53.4 L0.6,53.2 C-1.6,52.6 -2.6,49.4 -2,45.2 Z"></path>
-            <path class="cr" d="M-2,16.8 L3.4,16.2"></path>
+            <path class="f-skin h-mitt-b" d="M-1.3,40.4 C-2.3,44.5 -2,48 0,49.4 C1.5,50.4 3.4,50.6 5.6,50.4 C7.6,50.2 8.5,51 8.3,52 C8.1,53 6.8,53.4 5.2,53.4 L0.6,53.2 C-1.6,52.6 -2.6,49.4 -2,45.2 Z"></path>
+            <!-- portage : coude plié, avant-bras vers l'avant, main en coupe sous la base -->
+            <g class="l-carry-b">
+              <path class="f-top" d="M-2.8,0 C-3.4,8 -3.0,17 -2.0,26 L3.6,25.4 C3.0,16.8 2.6,8.4 2.4,0 Z"></path>
+              <path class="f-top" d="M-2.0,26 C0,24.2 4,24.0 8,25.0 L26,29.6 C29.6,30.0 31.4,31.4 31.2,33.0 C31.0,34.6 29.4,35.6 27.4,35.1 L7,30.8 C2,29.6 -1.4,28.4 -2.0,26 Z"></path>
+              <path class="cr" d="M-1.8,25.6 L3.4,25.0"></path>
+            </g>
+            <path class="cr h-cre-b" d="M-2,16.8 L3.4,16.2"></path>
           </g>
         </g>
 
@@ -373,11 +379,6 @@
           <path class="st" d="M64,34 L60,94"></path>
         </g>
 
-        <!-- épaule éloignée (lecture 3/4) : pointe derrière le torse -->
-        <g class="g-shldr-b">
-          <path class="f-top" d="M56.6,42.5 C55.4,39.4 57.2,36.4 60.2,36.2 C62.6,36.1 64.3,37.7 64.7,39.8 L64.7,43.2 L57.4,43.2 Z"></path>
-        </g>
-
         <!-- hoodie (étudiant) -->
         <g class="g-hood">
           <path class="f-top" d="M57,40 C52,34 56,28.5 61.5,29.5 C65,30.2 66.5,34 65.5,38 Z"></path>
@@ -392,6 +393,7 @@
         <!-- chemise -->
         <g class="g-shirt">
           <path class="f-top" d="M60,38 C66,35.5 72.5,36.5 75,41 C78.2,46 77.8,54 76.6,62 C75.4,72 73,82 70.5,92 L54.5,92 C51.5,72 52.5,50 56.5,42 Z"></path>
+          <path class="f-dark" opacity="0.10" d="M56.5,42 C52.5,50 51.5,72 54.5,92 L57.3,92 C54.3,72 55.3,50 59.2,41.2 Z"></path>
           <path class="f-acc2" d="M62.5,38.5 L66.5,44.5 L70.5,38.5 L68.6,38 L66.5,41.4 L64.4,38 Z"></path>
           <path class="cr" d="M66.5,44.5 L64,90"></path>
           <circle class="f-dark" cx="65.8" cy="58" r="1"></circle>
@@ -482,7 +484,7 @@
           <path class="st l-stick" d="M0,0 C0,12 2,30 3,44"></path>
           <g class="l-formed">
             <path class="f-top" d="M-3,0 C-3.4,6 -3,11 -2,17 L3.4,16.4 C3,10.5 2.6,5 2.2,0 Z"></path>
-            <path class="f-skin" d="M-2,17 C-1.2,24 -0.6,31 0,37 L3.8,36.6 C3.2,30.6 2.6,23.6 3.4,16.4 Z"></path>
+            <path class="f-skin h-fore-f" d="M-2,17 C-1.2,24 -0.6,31 0,37 L3.8,36.6 C3.2,30.6 2.6,23.6 3.4,16.4 Z"></path>
             <g class="l-long">
               <path class="f-top" d="M-3,0 C-3.4,6 -3,11 -2,17 C-1.4,24 -0.9,31 -0.4,37.4 L-0.2,40.4 L4.4,40 C4.2,37 3.6,30.6 3.4,16.4 C3,10.5 2.6,5 2.2,0 Z"></path>
               <path class="cr" d="M-0.2,40.2 L4.4,39.8"></path>
@@ -504,34 +506,49 @@
               <path class="f-acc2" d="M2,39.6 L14.6,37.6 L16.2,47.4 L3.6,49.4 Z"></path>
               <path class="sa" stroke-width="1.2" d="M4.4,41.4 L12.4,40.1 M4.8,44 L11,43"></path>
             </g>
-            <g class="held held-laptop" transform="rotate(8) translate(-4 43) scale(1.6) translate(-2 -45)">
-              <!-- open laptop: one hinge edge shared by lid and deck, opaque deck,
-                   the Missi sticker skewed into the lid plane -->
-              <path class="f-acc" d="M9.5,44.5 L19.5,42.8 L22.7,30.6 L12.7,32.3 Z"></path>
-              <g transform="matrix(0.1068 -0.0182 -0.0275 0.1048 14.197 35.471)">
+            <g class="held held-laptop" transform="translate(13 25) rotate(2)">
+              <!-- pc.png geometry, one local space: lid back to the viewer, deck
+                   edge-on so the keyboard never faces the camera, near hand on
+                   the deck, far hand cupping the base under the hinge -->
+              <path class="f-acc" d="M16,-1.5 L19.6,-19.6 Q19.8,-20.6 20.8,-20.5 L28.6,-19.8 Q29.6,-19.7 29.4,-18.7 L26,-1.0 Z"></path>
+              <g transform="matrix(0.1068 -0.0182 -0.0275 0.1048 20.5 -13.5)">
                 <rect width="48" height="48" rx="12" fill="#191614"></rect>
                 <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="11.25" fill="none" stroke="#443E3A" stroke-width="1.5"></rect>
                 <path d="M12 34V17.5C12 16.1 13.6 15.3 14.7 16.2L24 23.5L33.3 16.2C34.4 15.3 36 16.1 36 17.5V34" fill="none" stroke="#FAF8F5" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"></path>
                 <circle cx="24" cy="12.5" r="3.4" fill="#F59E0B"></circle>
                 <path d="M24 25.5V34" fill="none" stroke="#F59E0B" stroke-width="4.6" stroke-linecap="round"></path>
               </g>
-              <path class="f-acc2" d="M9.5,44.5 L19.5,42.8 L11.5,47.4 L1.5,49.1 Z"></path>
-              <path class="sa" stroke-width="0.5" opacity="0.75" d="M8.5,45.9 L14.5,44.9 M6.9,46.8 L12.9,45.8"></path>
-              <path class="f-acc" d="M1.5,49.1 L11.5,47.4 L11.5,49 L1.5,50.7 Z"></path>
-              <path class="f-dark" d="M1.5,49.1 L11.5,47.4 L11.5,49 L1.5,50.7 Z"></path>
-              <path class="f-acc" d="M19.5,42.8 L11.5,47.4 L11.5,49 L19.5,44.4 Z"></path>
-              <path class="f-dark" d="M19.5,42.8 L11.5,47.4 L11.5,49 L19.5,44.4 Z"></path>
+              <path class="f-hs" d="M6.5,-0.2 L16,-1.3 L18,-2.4 L8.5,-1.3 Z"></path>
+              <path class="f-dark" d="M6.5,-0.2 L16,-1.3 L16,0.6 L6.5,1.7 Z"></path>
+              <path class="f-skin" d="M5.4,-2.6 C4.4,-0.4 4.8,1.4 6.8,1.8 C8.8,2.2 10.2,1.0 10.0,-1.0 L9.4,-2.8 Z"></path>
+              <path class="f-skin" d="M9.8,-2.2 L13.4,-2.55 L13.5,-1.55 L9.9,-1.2 Z"></path>
+              <path class="f-skin" d="M10.0,-1.0 L13.0,-1.3 L13.1,-0.3 L10.1,0.0 Z"></path>
+              <path class="f-skin" d="M15.0,0.6 C14.4,2.6 15.4,4.4 17.6,4.6 C19.8,4.8 21.2,3.4 20.8,1.4 C20.5,-0.2 19.2,-1.0 17.6,-0.8 C16.2,-0.6 15.4,-0.4 15.0,0.6 Z"></path>
+              <path class="f-skin" d="M14.6,-1.6 L18.6,-2.0 L18.7,-0.9 L14.7,-0.5 Z"></path>
+              <path class="f-skin" d="M15.0,-3.0 L18.2,-3.3 L18.3,-2.3 L15.1,-2.0 Z"></path>
             </g>
-            <path class="f-skin" d="M-1.5,40.7 C-2.6,45.6 -2,49 0.4,49.8 C2.8,50.6 4.4,48.8 4.2,46 L3.5,40.5 Z"></path>
-            <!-- doigts posés sur le clavier, dans le plan du bras incliné -->
-            <path class="f-skin" d="M3.8,43.2 L9.6,43.5 L9.5,44.7 L3.7,44.4 Z"></path>
-            <path class="f-skin" d="M3.9,45.2 L9.2,45.5 L9.1,46.7 L3.8,46.4 Z"></path>
+            <path class="f-skin h-palm-f" d="M-1.5,40.7 C-2.6,45.6 -2,49 0.4,49.8 C2.8,50.6 4.4,48.8 4.2,46 L3.5,40.5 Z"></path>
+            <!-- doigts posés sur l'objet tenu, dans le plan du bras incliné -->
+            <path class="f-skin h-fing-f" d="M3.8,42.3 L9.6,41.6 L9.5,42.8 L3.7,43.5 Z"></path>
+            <path class="f-skin h-fing-f" d="M3.9,44.0 L9.2,43.4 L9.1,44.6 L3.8,45.2 Z"></path>
+            <!-- portage : coude plié, avant-bras horizontal, main au clavier -->
+            <g class="l-carry">
+              <path class="f-top" d="M-3,0 C-3.6,8 -3.2,16 -2.2,24 L3.6,23.4 C3.0,15.6 2.6,7.8 2.4,0 Z"></path>
+              <path class="f-top" d="M-2.2,24 C-1,21.6 2,20.4 6,20.2 L14.5,20.0 C16.5,20.0 17.5,21.4 17.4,23.0 C17.3,24.6 16.2,25.8 14.4,25.9 L5,26.4 C1,26.6 -1.6,26.2 -2.2,24 Z"></path>
+              <path class="f-skin" d="M14.2,19.6 C17.4,19.2 20.2,20.2 20.8,22.4 C21.4,24.6 20.2,26.6 17.6,27.0 C15.4,27.3 13.6,26.4 13.2,24.2 C12.9,22.2 12.6,20.4 14.2,19.6 Z"></path>
+              <g class="w-watch-c">
+                <path class="f-acc" d="M12.2,20.2 L14.6,20.0 L14.9,26.6 L12.5,26.8 Z"></path>
+                <circle class="f-acc2" cx="13.5" cy="23.4" r="1.25"></circle>
+                <circle class="f-dark" cx="13.5" cy="23.4" r="0.45"></circle>
+              </g>
+              <path class="cr" d="M-2.0,23.6 L3.4,23.0"></path>
+            </g>
             <g class="w-watch">
               <path class="f-acc" d="M-1.7,40.2 L4.5,39.8 L4.7,42.4 L-1.5,42.8 Z"></path>
               <circle class="f-acc2" cx="1.5" cy="41.3" r="1.25"></circle>
               <circle class="f-dark" cx="1.5" cy="41.3" r="0.45"></circle>
             </g>
-            <path class="cr" d="M-2,16.8 L3.4,16.2"></path>
+            <path class="cr h-cre-f" d="M-2,16.8 L3.4,16.2"></path>
           </g>
         </g>
       </g></svg>
@@ -559,16 +576,16 @@
                     <span class="chapter-text" data-i18n="journey.c1.text">Le point de départ : sciences et mathématiques, série D. Le socle qui décidera du reste.</span>
                   </li>
                   <li class="journey-chapter" data-stop="1">
+                    <span class="chapter-year" data-i18n="journey.c3.year">2019 (oct. — déc.)</span>
+                    <span class="chapter-title" data-i18n="journey.c3.title">Service tech ADSL — SFR France</span>
+                    <span class="chapter-place" data-i18n="journey.c3.place">Intelcia Tanjombato · Antananarivo</span>
+                    <span class="chapter-text" data-i18n="journey.c3.text">Première expérience professionnelle, pendant la L2 : support de niveau 1 pour la clientèle ADSL de SFR France.</span>
+                  </li>
+                  <li class="journey-chapter" data-stop="2">
                     <span class="chapter-year" data-i18n="journey.c2.year">2018 — 2022</span>
                     <span class="chapter-title" data-i18n="journey.c2.title">Licence en Électronique &amp; Informatique</span>
                     <span class="chapter-place" data-i18n="journey.c2.place">ISPM · Antananarivo</span>
                     <span class="chapter-text" data-i18n="journey.c2.text">Les fondations : génie logiciel, architectures système, réseaux — et les projets d'étude annuels en groupe, déjà documentés au registre.</span>
-                  </li>
-                  <li class="journey-chapter" data-stop="2">
-                    <span class="chapter-year" data-i18n="journey.c3.year">2019 (oct. — déc.)</span>
-                    <span class="chapter-title" data-i18n="journey.c3.title">Service tech ADSL — SFR France</span>
-                    <span class="chapter-place" data-i18n="journey.c3.place">Intelcia Tanjombato · Antananarivo</span>
-                    <span class="chapter-text" data-i18n="journey.c3.text">Première expérience professionnelle, en L2 : support de niveau 1 pour la clientèle ADSL de SFR France.</span>
                   </li>
                   <li class="journey-chapter" data-stop="3">
                     <span class="chapter-year" data-i18n="journey.c4.year">2022</span>
@@ -602,8 +619,8 @@
                   <span class="rail-track"></span>
                   <span class="rail-fill"></span>
                   <span class="rail-dot" data-stop="0"><i></i><b>2018</b></span>
-                  <span class="rail-dot" data-stop="1"><i></i><b>2018–22</b></span>
-                  <span class="rail-dot" data-stop="2"><i></i><b>2019</b></span>
+                  <span class="rail-dot" data-stop="1"><i></i><b>2019</b></span>
+                  <span class="rail-dot" data-stop="2"><i></i><b>2022</b></span>
                   <span class="rail-dot" data-stop="3"><i></i><b>2022</b></span>
                   <span class="rail-dot" data-stop="4"><i></i><b>2022–24</b></span>
                   <span class="rail-dot" data-stop="5"><i></i><b>2023–26</b></span>

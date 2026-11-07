@@ -17,8 +17,8 @@ const SWING = { thigh: 24, knee: 34, arm: 20 };
 // Architect stop: the far arm leaves the swing and cups the open laptop's base
 // from below while the near arm reaches forward, its hand typing on the keys.
 const CARRY_STOP = 6;
-const CARRY_ARM = -16;
-const CARRY_ARM_F = -8;
+const CARRY_ARM = -10;
+const CARRY_ARM_F = -4;
 
 // The near layer is 500% wide and travels 80% of itself: four drawing widths.
 const GROUND_TRAVEL = 4;
